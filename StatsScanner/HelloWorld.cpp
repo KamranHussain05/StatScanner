@@ -6,10 +6,7 @@
 //
 
 #include "HelloWorld.hpp"
-#include <string>
 
-using namespace std;
-
-string HelloWorld::sayHello(int x, int y) {
-    return to_string(x * y);
+std::string HelloWorld::sayHello() {
+    return "Hello from CPP End!!";
 }

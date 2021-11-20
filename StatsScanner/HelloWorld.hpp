@@ -13,7 +13,7 @@
 
 class HelloWorld {
 public:
-    std::string sayHello();
+    std::string sayHello(int x, int y);
 };
 
 #endif /* HelloWorld_hpp */

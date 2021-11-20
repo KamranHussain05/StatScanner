@@ -12,9 +12,10 @@
 
 @implementation HelloWorldWrapper
 
+
 -(NSString *) sayHello {
     HelloWorld helloWorld;
-    std::string helloWorldMessage = helloWorld.sayHello();
+    std::string helloWorldMessage = helloWorld.sayHello(3, 5);
     return [NSString
             stringWithCString:helloWorldMessage.c_str()
             encoding:NSUTF8StringEncoding];

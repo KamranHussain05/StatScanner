@@ -8,5 +8,5 @@
 #include "HelloWorld.hpp"
 
 std::string HelloWorld::sayHello() {
-    return "Hello fromm CPP End!!";
+    return "Hello from CPP End!!";
 }

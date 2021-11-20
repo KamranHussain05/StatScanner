@@ -13,7 +13,7 @@
 @implementation HelloWorldWrapper
 
 
--(NSString *) sayHello {
+-(NSString *) sayHell {
     HelloWorld helloWorld;
     std::string helloWorldMessage = helloWorld.sayHello(3, 5);
     return [NSString

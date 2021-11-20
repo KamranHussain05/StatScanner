@@ -7,9 +7,7 @@
 
 import UIKit
 
-@objc class ViewController:
-    public var test:int = 3
-    UIViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +15,16 @@ import UIKit
     }
 
     @IBOutlet weak var txt: UILabel!
+    @IBAction func field(_ sender: UITextField) {
+        if(sender.)
+        print(sender.text)
+    }
     
     @IBAction func swit(_ sender: UISwitch) {
         if(sender.isOn) {
             txt.text = "Among Us."
         } else {
-            txt.text = HelloWorldWrapper().sayHello()
+            txt.text = "no"
         }
     }
     

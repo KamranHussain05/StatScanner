@@ -17,6 +17,8 @@
 		A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092D327497F7A00392240 /* StatsScannerTests.swift */; };
 		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
+		A85092EE2749822C00392240 /* HelloWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A85092ED2749822C00392240 /* HelloWorld.cpp */; };
+		A85092F12749824900392240 /* HelloWorldWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A85092F02749824900392240 /* HelloWorldWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,11 @@
 		A85092D927497F7A00392240 /* StatsScannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StatsScannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092DD27497F7B00392240 /* StatsScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITests.swift; sourceTree = "<group>"; };
 		A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
+		A85092ED2749822C00392240 /* HelloWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorld.cpp; sourceTree = "<group>"; };
+		A85092EF2749823700392240 /* HelloWorldWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldWrapper.h; sourceTree = "<group>"; };
+		A85092F02749824900392240 /* HelloWorldWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HelloWorldWrapper.mm; sourceTree = "<group>"; };
+		A85092F22749824F00392240 /* HelloWorld.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HelloWorld.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +108,10 @@
 		A85092B827497F6F00392240 /* StatsScanner */ = {
 			isa = PBXGroup;
 			children = (
+				A85092F22749824F00392240 /* HelloWorld.hpp */,
+				A85092F02749824900392240 /* HelloWorldWrapper.mm */,
+				A85092EF2749823700392240 /* HelloWorldWrapper.h */,
+				A85092ED2749822C00392240 /* HelloWorld.cpp */,
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				A85092BD27497F6F00392240 /* ViewController.swift */,
@@ -109,6 +120,7 @@
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092CA27497F7A00392240 /* Info.plist */,
 				A85092C227497F7000392240 /* StatsScanner.xcdatamodeld */,
+				A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */,
 			);
 			path = StatsScanner;
 			sourceTree = "<group>";
@@ -198,6 +210,7 @@
 				TargetAttributes = {
 					A85092B527497F6F00392240 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 					};
 					A85092CE27497F7A00392240 = {
 						CreatedOnToolsVersion = 13.1;
@@ -261,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85092EE2749822C00392240 /* HelloWorld.cpp in Sources */,
+				A85092F12749824900392240 /* HelloWorldWrapper.mm in Sources */,
 				A85092BE27497F6F00392240 /* ViewController.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
@@ -441,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -458,6 +474,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Team417ExpectationFailed.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "StatsScanner/StatsScanner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -485,6 +504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Team417ExpectationFailed.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "StatsScanner/StatsScanner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

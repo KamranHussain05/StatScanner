@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var txt: UILabel!
     @IBAction func field(_ sender: UITextField) {
-        if(sender.)
+//        if(sender.)
         print(sender.text)
     }
     

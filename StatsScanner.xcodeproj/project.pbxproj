@@ -17,6 +17,7 @@
 		A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092D327497F7A00392240 /* StatsScannerTests.swift */; };
 		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
+		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		A85092DD27497F7B00392240 /* StatsScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITests.swift; sourceTree = "<group>"; };
 		A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				A85092BD27497F6F00392240 /* ViewController.swift */,
+				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			files = (
 				A85092BE27497F6F00392240 /* ViewController.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
+				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 			);

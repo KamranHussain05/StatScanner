@@ -39,6 +39,15 @@
                                     <action selector="field:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="i6v-P3-jyK"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcy-PA-UiN">
+                                <rect key="frame" x="117" y="291" width="180" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Scan Image"/>
+                                <connections>
+                                    <action selector="TakePictureButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IXr-zx-Spn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

@@ -29,6 +29,7 @@
 		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
+		A8CA564B2773A310006BDF61 /* DataImporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA564A2773A30F006BDF61 /* DataImporting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		A8CA564427729918006BDF61 /* Smoker_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Smoker_R.csv; sourceTree = "<group>"; };
 		A8CA56462772991E006BDF61 /* Titanic_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Titanic_R.csv; sourceTree = "<group>"; };
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
+		A8CA564A2773A30F006BDF61 /* DataImporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataImporting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				A85092BD27497F6F00392240 /* ViewController.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
+				A8CA564A2773A30F006BDF61 /* DataImporting.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
@@ -324,6 +327,7 @@
 				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
+				A8CA564B2773A310006BDF61 /* DataImporting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

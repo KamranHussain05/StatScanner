@@ -18,6 +18,17 @@
 		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
 		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
+		A8CA563527729867006BDF61 /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563427729867006BDF61 /* Awards_R.csv */; };
+		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
+		A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56382772989D006BDF61 /* Cholesterol_R.csv */; };
+		A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563A277298AD006BDF61 /* Crime_R.csv */; };
+		A8CA563D277298B9006BDF61 /* Diet_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563C277298B9006BDF61 /* Diet_R.csv */; };
+		A8CA563F277298C7006BDF61 /* Graduate_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563E277298C7006BDF61 /* Graduate_R.csv */; };
+		A8CA564127729909006BDF61 /* Ice_cream_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564027729909006BDF61 /* Ice_cream_R.csv */; };
+		A8CA56432772990F006BDF61 /* Normal_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56422772990F006BDF61 /* Normal_R.csv */; };
+		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
+		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
+		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +65,17 @@
 		A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
+		A8CA563427729867006BDF61 /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; };
+		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
+		A8CA56382772989D006BDF61 /* Cholesterol_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cholesterol_R.csv; sourceTree = "<group>"; };
+		A8CA563A277298AD006BDF61 /* Crime_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Crime_R.csv; sourceTree = "<group>"; };
+		A8CA563C277298B9006BDF61 /* Diet_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Diet_R.csv; sourceTree = "<group>"; };
+		A8CA563E277298C7006BDF61 /* Graduate_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Graduate_R.csv; sourceTree = "<group>"; };
+		A8CA564027729909006BDF61 /* Ice_cream_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ice_cream_R.csv; sourceTree = "<group>"; };
+		A8CA56422772990F006BDF61 /* Normal_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Normal_R.csv; sourceTree = "<group>"; };
+		A8CA564427729918006BDF61 /* Smoker_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Smoker_R.csv; sourceTree = "<group>"; };
+		A8CA56462772991E006BDF61 /* Titanic_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Titanic_R.csv; sourceTree = "<group>"; };
+		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +136,7 @@
 				A85092CA27497F7A00392240 /* Info.plist */,
 				A85092C227497F7000392240 /* StatsScanner.xcdatamodeld */,
 				A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */,
+				A8CA5633277295BC006BDF61 /* Sample Data */,
 			);
 			path = StatsScanner;
 			sourceTree = "<group>";
@@ -133,6 +156,24 @@
 				A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */,
 			);
 			path = StatsScannerUITests;
+			sourceTree = "<group>";
+		};
+		A8CA5633277295BC006BDF61 /* Sample Data */ = {
+			isa = PBXGroup;
+			children = (
+				A8CA564827729924006BDF61 /* Video_R.csv */,
+				A8CA56462772991E006BDF61 /* Titanic_R.csv */,
+				A8CA564427729918006BDF61 /* Smoker_R.csv */,
+				A8CA56422772990F006BDF61 /* Normal_R.csv */,
+				A8CA564027729909006BDF61 /* Ice_cream_R.csv */,
+				A8CA563E277298C7006BDF61 /* Graduate_R.csv */,
+				A8CA563C277298B9006BDF61 /* Diet_R.csv */,
+				A8CA563A277298AD006BDF61 /* Crime_R.csv */,
+				A8CA56382772989D006BDF61 /* Cholesterol_R.csv */,
+				A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */,
+				A8CA563427729867006BDF61 /* Awards_R.csv */,
+			);
+			path = "Sample Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,8 +281,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */,
+				A8CA564127729909006BDF61 /* Ice_cream_R.csv in Resources */,
+				A8CA56432772990F006BDF61 /* Normal_R.csv in Resources */,
+				A8CA564927729924006BDF61 /* Video_R.csv in Resources */,
 				A85092C927497F7A00392240 /* LaunchScreen.storyboard in Resources */,
+				A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */,
+				A8CA563527729867006BDF61 /* Awards_R.csv in Resources */,
+				A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */,
+				A8CA563D277298B9006BDF61 /* Diet_R.csv in Resources */,
+				A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */,
+				A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */,
 				A85092C627497F7A00392240 /* Assets.xcassets in Resources */,
+				A8CA563F277298C7006BDF61 /* Graduate_R.csv in Resources */,
 				A85092C127497F6F00392240 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

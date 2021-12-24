@@ -35,26 +35,27 @@ func readCSV(inputFile: String, separator: String) -> [String] {
     }
 }
 
-func cleanData(arr: [String]) -> [[Double]] {
-    var data: [[Double]] = [[]]
-    
-    let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    var x = arr.removeAll(where: { nums.contains($0)} )
-    return data
+extension String  {
+    var isNumber: Bool {
+        return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
 }
 
 func importData(arr: [String]) {
     let d = Dataset()
     for i in 0...arr.count {
         for j in 0...arr[0].count {
-            d.addVal(index_X: i, index_Y: j, val: Double(arr[i][j]))
+            if(Character(arr[i]).isNumber) {
+                let value = Double(arr[i]) ?? 0
+                d.addVal(index_X: i, index_Y: j, val: value)
+            }
         }
     }
                 
 }
 
 var myData = readCSV(inputFile: "Awards_R.csv", separator: ",")
-var x = printItems()
+var x: () = printItems()
 
 func printItems() {
     print(myData)

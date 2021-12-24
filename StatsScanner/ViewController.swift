@@ -2,11 +2,11 @@
 //  ViewController.swift
 //  StatsScanner
 //
-//  Created by Kamran on 11/20/21.
+//  Created by Kalb on 9/11/21.
 //
 
 import UIKit
-import AVFoundation
+import AVKit
 
 class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     let alertBox = UIAlertController(title: "Error", message: "Default message", preferredStyle: .alert)
@@ -101,7 +101,11 @@ class ViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation() else {return}
+        let previewImage = UIImage(data: imageData)
         
+//        let photoPreviewContainer = UIImage
+        photoPreviewContainer.photoImageView
     }
     
     private func setupUI() {

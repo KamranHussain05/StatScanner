@@ -82,9 +82,28 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+Stats Scanner is an IOS app designed to process and visualize any numerical data. You can create predictions, get basic stats, and visualize your data by simply scanning a paper, importing a csv file, or manually entering data. Data can be visualized as bar graphs, cloud plot, dot plot, and more in additiont to basic statistical analysis. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Features
+
+* Data Visualization
+  * Dot Plot
+  * Bar Graph
+  * Cloud Plot
+  * Gradient Descent
+  * Interactive Pie Chart
+* Data Trend Prediction
+  * Next Nth Values
+  * Line of Best Fit
+  * Eigen Values
+  * Eigen Vectors
+* Basic Statistics
+  * Average, Median, Mode, Range
+  * Standard Deviation
+  * Standard Error
+
 
 
 
@@ -97,44 +116,36 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 
 
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- USAGE EXAMPLES -->
-## Usage
+## How to Use the App
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Import Data Via Scan
+1. Click the + button in the top right corner and select the camera icon from the menu
+2. Scan you document and click "Add Data"
+3. After you data has been extracted, you will be navigated to a page containing basic calculations on your data
+
+### Import Data Manually
+1. Click the + button in the top right corner and select the list icon from the menu
+2. Add your Data points to the columns in the view and label the columns
+3. Save your project
+
+### Visualizing Data 
+1. Open the project containing your data or import your data
+2. Click the graph icon and select a type of visualization
+3. You can pinch to zoom and click on data points to interact with the graph
+
+### Export Visualizations
+1. Open the project containing your data or import your data
+2. Visualize your data
+3. While in the graph tab, save the visualization as an image
+4. Press the share button and send your graph
+
+### Export Data
+1. Open the project containing your data
+2. Click the "View Raw Data" Tab
+3. Click the export button to export a CSV file of your data
+4. Click the share button to share your CSV data
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -145,12 +156,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+- [] Release 1 built natively for IOS
+- [] Release 2 built natively for Android
+- [] Custom Project Files with ability to share projects via link and allow for embedded interactive graphs in presentations
 
-See the [open issues](https://github.com/KamranHussain05/AStatsScanner/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/KamranHussain05/StatsScanner/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -187,6 +197,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Kamran Hussain - [@kamhn123](https://twitter.com/Kamhn123) - kamran.hssn05@gmail.com
+
 Kaleb Kim - [@twitter_handle](https://twitter.com/) - email@domain.com
 
 Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.com/KamranHussain05/StatsScanner)

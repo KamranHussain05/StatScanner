@@ -17,12 +17,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield][https://github.com/KamranHussain05/StatsScanner/graphs/contributors]]
-[![Forks][forks-shield]][https://github.com/KamranHussain05/StatsScanner/network/members]
-[![Stargazers][stars-shield]][https://github.com/KamranHussain05/StatsScanner/stargazers]
-[![Issues][issues-shield]][https://github.com/KamranHussain05/StatsScanner/issues]
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
 
 
 <!-- PROJECT LOGO -->
@@ -151,7 +150,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [] Feature 3
     - [] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/KamranHussain05/AStatsScanner/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -189,7 +188,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.com/KamranHussain05/StatsScanner)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -208,16 +207,15 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
+[contributors-shield]: https://img.shields.io/github/contributors/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[contributors-url]: https://github.com/KamranHussain05/StatsScanner/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[forks-url]: https://github.com/KamranHussain05/StatsScanner/network/members
+[stars-shield]: https://img.shields.io/github/stars/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[stars-url]: https://github.com/KamranHussain05/StatsScanner/stargazers
+[issues-shield]: https://img.shields.io/github/issues/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[issues-url]: https://github.com/KamranHussain05/StatsScanner/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png

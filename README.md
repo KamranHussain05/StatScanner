@@ -34,7 +34,7 @@
 <h3 align="center">StatsScanner</h3>
 
   <p align="center">
-    project_description
+    An app for processing and visualizing your data anywhere
     <br />
     <a href="https://github.com/KamranHussain05/StatsScanner"><strong>Explore the docs »</strong></a>
     <br />
@@ -186,7 +186,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Kamran Hussain - [@kamhn123](https://twitter.com/Kamhn123) - kamran.hssn05@gmail.com
+Kaleb Kim - [@twitter_handle](https://twitter.com/) - email@domain.com
 
 Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.com/KamranHussain05/StatsScanner)
 

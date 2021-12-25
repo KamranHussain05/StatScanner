@@ -17,12 +17,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Contributors][contributors-shield]][https://github.com/KamranHussain05/StatsScanner/graphs/contributors]
+[![Forks][forks-shield]][https://github.com/KamranHussain05/StatsScanner/network/members]
+[![Stargazers][stars-shield]][https://github.com/KamranHussain05/StatsScanner/stargazers]
+[![Issues][issues-shield]][https://github.com/KamranHussain05/StatsScanner/issues]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -92,14 +91,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Swift 5.5](https://swift.org/)
+* [Swift UI](https://reactjs.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

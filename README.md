@@ -90,7 +90,7 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 
 * Data Visualization
   * Dot Plot
-  * Bar Graph
+  * Bar Graphd
   * Cloud Plot
   * Gradient Descent
   * Interactive Pie Chart

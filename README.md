@@ -147,7 +147,7 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 4. Click the share button to share your CSV data
 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/KamranHussain05/StatsScanner/blob/main/README.md)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -221,14 +221,12 @@ Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.c
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/KamranHussain05/StatsScanner.svg?style=for-the-badge
 [contributors-url]: https://github.com/KamranHussain05/StatsScanner/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[forks-shield]: https://img.shields.io/github/forks/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[forks-url]: https://github.com/KamranHussain05/StatsScanner/network/members
+[stars-shield]: https://img.shields.io/github/stars/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[stars-url]: https://github.com/KamranHussain05/StatsScanner/stargazers
+[issues-shield]: https://img.shields.io/github/issues/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[issues-url]: https://github.com/KamranHussain05/StatsScanner/issues
+[license-shield]: https://img.shields.io/github/license/KamranHussain05/StatsScanner.svg?style=for-the-badge
+[license-url]: https://github.com/KamranHussain05/StatsScanner/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png

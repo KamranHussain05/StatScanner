@@ -20,10 +20,14 @@ extension String {
 func readCSV(inputFile: String, separator: String) -> [String] {
     let fileExtension = inputFile.fileExtension()
     let fileName = inputFile.fileName()
+    print(fileExtension)
+    print(fileName)
     
     let fileURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension)
     
     let inputFile = fileURL?.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
+    
+    print(inputFile ?? "none")
     
     //Get Data
     do {

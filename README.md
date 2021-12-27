@@ -209,7 +209,7 @@ Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.c
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* Images and UI Designed by [Lagumists](https://www.instagram.com/lagumists/)
 * []()
 * []()
 

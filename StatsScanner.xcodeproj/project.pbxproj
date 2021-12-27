@@ -17,6 +17,8 @@
 		A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092D327497F7A00392240 /* StatsScannerTests.swift */; };
 		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
+		A8BD6DEE27794ACC0048912C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; };
+		A8BD6DEF27794ACC0048912C /* CoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
 		A8CA563527729867006BDF61 /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563427729867006BDF61 /* Awards_R.csv */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
@@ -49,6 +51,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A8BD6DF027794ACC0048912C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8BD6DEF27794ACC0048912C /* CoreData.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A85092B627497F6F00392240 /* StatsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092B927497F6F00392240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +81,7 @@
 		A85092DD27497F7B00392240 /* StatsScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITests.swift; sourceTree = "<group>"; };
 		A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8BD6DEC27794A810048912C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		A8CA563427729867006BDF61 /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; };
 		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
@@ -85,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BD6DEE27794ACC0048912C /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +130,7 @@
 				A85092D227497F7A00392240 /* StatsScannerTests */,
 				A85092DC27497F7A00392240 /* StatsScannerUITests */,
 				A85092B727497F6F00392240 /* Products */,
+				A8BD6DEB27794A800048912C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +180,14 @@
 			path = StatsScannerUITests;
 			sourceTree = "<group>";
 		};
+		A8BD6DEB27794A800048912C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD6DEC27794A810048912C /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8CA5633277295BC006BDF61 /* Sample Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +216,7 @@
 				A85092B227497F6F00392240 /* Sources */,
 				A85092B327497F6F00392240 /* Frameworks */,
 				A85092B427497F6F00392240 /* Resources */,
+				A8BD6DF027794ACC0048912C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -504,6 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -535,6 +564,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

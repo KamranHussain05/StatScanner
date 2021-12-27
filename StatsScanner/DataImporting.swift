@@ -18,11 +18,13 @@ extension String {
         return URL(fileURLWithPath: self).pathExtension
     }
 }
+
 func readCSV(inputFile: String, separator: String) -> [String] {
     let fileExtension = inputFile.fileExtension()
     let fileName = inputFile.fileName()
     
-    let fileURL = try! FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    let d = DataBridge()
+    let fileURL = d.getDocumentsDirectory()
     
     let inputFile = fileURL.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
     

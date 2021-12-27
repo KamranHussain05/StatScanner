@@ -15,15 +15,12 @@ extension String {
 
 class DataBridge {
     
-    func writeData(data:String) {
+    func writeData(data:String, fileName: String) {
         let str = data
-        let url = getDocumentsDirectory().appendingPathComponent("message.txt")
+        let url = getDocumentsDirectory().appendingPathComponent(fileName)
         
         do {
             try str.write(to: url, atomically: true, encoding: .utf8)
-            
-            let input = try String(contentsOf: url)
-            print(input)
         } catch {
             print(error.localizedDescription)
         }
@@ -47,7 +44,7 @@ class DataBridge {
                 result.append(columns)
             }
             print("copying cleaned data")
-            result = clean(data: result)
+            result = cleanCSVData(data: result)
             return result
         } catch {
             // Any Errors will go here
@@ -55,7 +52,27 @@ class DataBridge {
         }
     }
     
-    private func clean(data: [[String]]) -> [[String]] {
+    func writeCSV(fileName:String, data:[[String]]){
+        let url = getDocumentsDirectory().appendingPathComponent(fileName)
+        
+        var stringData = ""
+        for i in 0...data.count-1 {
+            for j in 0...data[i].count-1 {
+                stringData += data[i][j]
+                if(j != data[i].count-1) {
+                    stringData += ","
+                }
+            }
+            stringData += "\n"
+        }
+        do {
+            try stringData.write(to: url, atomically: true, encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func cleanCSVData(data: [[String]]) -> [[String]] {
         var result = data
         print("cleaning data")
         for i in 0...data.count-1 {
@@ -63,10 +80,10 @@ class DataBridge {
                 if (data[i][j].contains("\n") || data[i][j].contains("\r")) {
                     result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
                     result[i][j] = data[i][j].replacingOccurrences(of: "\n", with: "")
+                    print("cleaned :", data[i][j])
                 }
             }
         }
-        
         return result
     }
 

@@ -39,10 +39,10 @@ class StatsScannerTests: XCTestCase {
     func testData() throws {
         print("testing")
         
-        b.writeData(data: "test string")
+        b.writeData(data: "test string", fileName: "test.csv")
     }
     
-    func testWriting() throws {
+    func testRegWriting() throws {
         let str =
         """
         id,num_awards,prog,math
@@ -65,7 +65,7 @@ class StatsScannerTests: XCTestCase {
         print(b.readCSV(inputFile: url, lineSeparator: "\n", valSeparator: ","))
     }
     
-    func testDataSet() throws {
+    func testCSVAppending() throws {
         print("=== Test Case 1 ===")
         var url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
         print(b.readCSV(inputFile: url, lineSeparator: "\r", valSeparator: ","))
@@ -77,6 +77,20 @@ class StatsScannerTests: XCTestCase {
         print("=== Test Case 3 ===")
         url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Diet_R.csv")
         print(b.readCSV(inputFile: url, lineSeparator: "\r", valSeparator: ","))
+    }
+    
+    func testCSVWriting() throws {
+        print("Starting to write")
+        let url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
+        let data = b.readCSV(inputFile: url, lineSeparator: "\n", valSeparator: ",")
+        
+        print("writing to csv")
+        print(data)
+        b.writeCSV(fileName: "testingAwards.csv", data: data)
+        
+        print("reading for validation")
+        let url2 = b.getDocumentsDirectory().appendingPathComponent("testingAwards.csv")
+        print(b.readCSV(inputFile: url2, lineSeparator: "\n", valSeparator: ","))
     }
 
 }

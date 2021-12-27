@@ -18,7 +18,7 @@
 		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
 		A8BD6DEE27794ACC0048912C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; };
-		A8BD6DEF27794ACC0048912C /* CoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8BD6DEF27794ACC0048912C /* CoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
 		A8CA563527729867006BDF61 /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563427729867006BDF61 /* Awards_R.csv */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };

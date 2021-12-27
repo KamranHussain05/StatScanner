@@ -36,7 +36,7 @@ class StatsScannerTests: XCTestCase {
         }
     }
     
-    func testData() throws {
+    func testWriting() throws {
         print("testing")
         
         b.writeData(data: "test string", fileName: "test.csv")

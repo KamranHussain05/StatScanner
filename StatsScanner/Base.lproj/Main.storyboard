@@ -16,44 +16,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dababy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmN-vh-6Uc">
-                                <rect key="frame" x="63" y="406" width="288" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FZM-ht-MYJ">
-                                <rect key="frame" x="184" y="478" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="swit:" destination="BYZ-38-t0r" eventType="valueChanged" id="3mB-7z-mFf"/>
-                                </connections>
-                            </switch>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MGe-1n-Uuq">
-                                <rect key="frame" x="159" y="575" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="field:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="i6v-P3-jyK"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcy-PA-UiN">
-                                <rect key="frame" x="117" y="291" width="180" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SSt-9O-ghE">
+                                <rect key="frame" x="20" y="20" width="374" height="790"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcy-PA-UiN">
+                                <rect key="frame" x="30" y="830" width="354" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="0mV-Pg-P0C"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Scan Image"/>
                                 <connections>
                                     <action selector="TakePictureButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IXr-zx-Spn"/>
+                                    <action selector="didTapCameraButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uot-oo-fym"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SSt-9O-ghE" secondAttribute="trailing" constant="20" id="0rT-nl-vtr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kcy-PA-UiN" secondAttribute="trailing" constant="30" id="29U-5c-YAe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SSt-9O-ghE" secondAttribute="trailing" constant="20" id="5dU-ET-ism"/>
+                            <constraint firstItem="kcy-PA-UiN" firstAttribute="top" secondItem="SSt-9O-ghE" secondAttribute="bottom" constant="20" id="7Xh-2F-MdQ"/>
+                            <constraint firstItem="kcy-PA-UiN" firstAttribute="top" secondItem="SSt-9O-ghE" secondAttribute="bottom" constant="20" id="BR9-oL-Ww0"/>
+                            <constraint firstItem="SSt-9O-ghE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="DdP-K7-tSE"/>
+                            <constraint firstItem="kcy-PA-UiN" firstAttribute="top" secondItem="SSt-9O-ghE" secondAttribute="bottom" constant="20" id="GyU-AU-XTH"/>
+                            <constraint firstItem="SSt-9O-ghE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kst-Pp-GZF"/>
+                            <constraint firstItem="kcy-PA-UiN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="20" id="ULK-dd-nxT"/>
+                            <constraint firstItem="SSt-9O-ghE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jG9-bh-XwK"/>
+                            <constraint firstItem="SSt-9O-ghE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="q4N-dA-VYC"/>
+                            <constraint firstItem="kcy-PA-UiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="rlb-88-1v2"/>
+                            <constraint firstItem="kcy-PA-UiN" firstAttribute="top" secondItem="SSt-9O-ghE" secondAttribute="bottom" constant="20" id="zoh-FN-fKu"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="txt" destination="JmN-vh-6Uc" id="Q0o-H9-ECw"/>
+                        <outlet property="cameraButton" destination="kcy-PA-UiN" id="dGA-Q9-Y2U"/>
+                        <outlet property="imageView" destination="SSt-9O-ghE" id="2ga-3d-YuZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

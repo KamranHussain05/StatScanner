@@ -54,5 +54,9 @@ class StatsScannerTests: XCTestCase {
             print(error.localizedDescription)
         }
     }
+    
+    func testDataSet() throws {
+        //test data set here with multiple cases
+    }
 
 }

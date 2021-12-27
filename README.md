@@ -28,13 +28,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/StarsScanner-02.png" alt="Logo" width="80" height="80">
+    <img src="images/StarsScanner-02.png" alt="Logo" width="130" height="130">
   </a>
 
 <h3 align="center">StatsScanner</h3>
 
   <p align="center">
-    An app for processing and visualizing your data anywhere
+    An app for processing and visualizing your data anywhere!
     <br />
     <a href="https://github.com/KamranHussain05/StatsScanner"><strong>Explore the docs »</strong></a>
     <br />

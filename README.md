@@ -28,7 +28,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/StarsScanner-02.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">StatsScanner</h3>

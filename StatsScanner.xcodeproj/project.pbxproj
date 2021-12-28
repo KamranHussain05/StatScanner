@@ -520,9 +520,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZB49DQ62Z9;
+				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StatsScanner;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a picture for scanning";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -535,7 +536,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KalebK.StatsScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = KamKalb.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "StatsScanner/StatsScanner-Bridging-Header.h";
@@ -554,9 +555,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZB49DQ62Z9;
+				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StatsScanner;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a picture for scanning";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -569,7 +571,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KalebK.StatsScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = KamKalb.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "StatsScanner/StatsScanner-Bridging-Header.h";

@@ -121,8 +121,9 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 
 ### Import Data Via Scan
 1. Click the + button in the top right corner and select the camera icon from the menu
-2. Scan you document and click "Add Data"
-3. After you data has been extracted, you will be navigated to a page containing basic calculations on your data
+2. Make sure you data is in a table format in order for it to be added properly
+3. Scan you document and click "Add Data"
+4. After you data has been extracted, you will be navigated to a page containing basic calculations on your data
 
 ### Import Data Manually
 1. Click the + button in the top right corner and select the list icon from the menu

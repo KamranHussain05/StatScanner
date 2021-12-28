@@ -16,20 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StatsScanner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whr-ui-nnU">
-                                <rect key="frame" x="74" y="467" width="267" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatsScanner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whr-ui-nnU">
+                                <rect key="frame" x="92.5" y="467" width="229.5" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="StatsScannerTransparent-02-1" translatesAutoresizingMaskIntoConstraints="NO" id="5SV-UE-XRh">
-                                <rect key="frame" x="93" y="218" width="228" height="232"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StatsScannerTransparent-02-1" translatesAutoresizingMaskIntoConstraints="NO" id="5SV-UE-XRh">
+                                <rect key="frame" x="-18" y="218" width="450" height="232"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="232" id="Yg8-Qq-I9h"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="whr-ui-nnU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="F4M-Sl-ufh"/>
+                            <constraint firstItem="5SV-UE-XRh" firstAttribute="centerX" secondItem="whr-ui-nnU" secondAttribute="centerX" id="KSQ-1i-oYU"/>
+                            <constraint firstItem="5SV-UE-XRh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UAK-TJ-TNn"/>
+                            <constraint firstItem="whr-ui-nnU" firstAttribute="top" secondItem="5SV-UE-XRh" secondAttribute="bottom" constant="17" id="Zym-28-9rf"/>
+                            <constraint firstItem="5SV-UE-XRh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="174" id="ocw-ZS-z3S"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

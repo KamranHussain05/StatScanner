@@ -19,6 +19,7 @@
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
 		A8BD6DF3277960F60048912C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; };
 		A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD6DF62779AE030048912C /* DataBridge.swift */; };
+		A8BD6DF9277AF8870048912C /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD6DF8277AF8870048912C /* CellViewController.swift */; };
 		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
 		A8CA563527729867006BDF61 /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563427729867006BDF61 /* Awards_R.csv */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
@@ -68,6 +69,7 @@
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8BD6DEC27794A810048912C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8BD6DF62779AE030048912C /* DataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBridge.swift; sourceTree = "<group>"; };
+		A8BD6DF8277AF8870048912C /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
 		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
 		A8CA563427729867006BDF61 /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; };
 		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				A85092BD27497F6F00392240 /* ViewController.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
+				A8BD6DF8277AF8870048912C /* CellViewController.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BD6DF9277AF8870048912C /* CellViewController.swift in Sources */,
 				A85092BE27497F6F00392240 /* ViewController.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,

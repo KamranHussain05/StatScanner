@@ -58,25 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3175" y="60"/>
-        </scene>
-        <!--Data View-->
-        <scene sceneID="LnS-1H-0eD">
-            <objects>
-                <viewController id="TwP-tC-CI7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BdX-QV-Ifn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="tgB-aQ-bGq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Data View" image="tablecells.badge.ellipsis" catalog="system" id="Etd-ZN-L0G"/>
-                    <navigationItem key="navigationItem" id="dcY-7H-MNE"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xZr-hC-8ik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1530" y="-664"/>
+            <point key="canvasLocation" x="-2297" y="759"/>
         </scene>
         <!--DataSets-->
         <scene sceneID="at7-J2-gGA">
@@ -101,7 +83,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4Rz-X4-Pn7" customClass="CustomCollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4Rz-X4-Pn7" customClass="CollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="180" height="221"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nvf-Rl-XbR">
@@ -109,7 +91,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </collectionViewCellContentView>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aMt-cf-Jyc" customClass="CustomCollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aMt-cf-Jyc" customClass="CollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
                                                 <rect key="frame" x="194" y="0.0" width="180" height="221"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gEz-Bl-759">
@@ -117,7 +99,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </collectionViewCellContentView>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QOE-jg-LLO" customClass="CustomCollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QOE-jg-LLO" customClass="CollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="231" width="180" height="221"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LhP-GW-fAZ">
@@ -166,7 +148,9 @@
                         <viewLayoutGuide key="safeArea" id="sNT-h9-vpf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="DataSets" image="rectangle.grid.2x2" catalog="system" id="4gl-kA-Kzn"/>
+                    <tabBarItem key="tabBarItem" title="DataSets" image="rectangle.grid.2x2" catalog="system" id="4gl-kA-Kzn">
+                        <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -176,6 +160,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9dh-AC-QbQ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9t-D0-sh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="LhV-Cx-Ohg" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4lx-P5-Dqp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -184,23 +169,51 @@
                     </tabBar>
                     <connections>
                         <segue destination="kjN-nm-ZNR" kind="relationship" relationship="viewControllers" id="X93-g2-DUG"/>
-                        <segue destination="TwP-tC-CI7" kind="relationship" relationship="viewControllers" id="Q3T-5U-4Am"/>
+                        <segue destination="Uct-Nu-0nS" kind="relationship" relationship="viewControllers" id="esD-27-Ifa"/>
                         <segue destination="ZPM-Pj-gqE" kind="relationship" relationship="viewControllers" id="PDb-Fg-IUf"/>
                         <segue destination="L5T-SC-KFO" kind="relationship" relationship="viewControllers" id="Mb2-ns-nqB"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R9t-D0-sh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1165" y="-1428"/>
+        </scene>
+        <!--Data View-->
+        <scene sceneID="jZH-11-btR">
+            <objects>
+                <navigationController id="Uct-Nu-0nS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Data View" image="tablecells.badge.ellipsis" catalog="system" id="P35-En-2ZG"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ghv-2m-KHH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uoL-c0-cBG" kind="relationship" relationship="rootViewController" id="dwS-kB-vet"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ycn-2w-6Xy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1533" y="-664"/>
         </scene>
         <!--Graph-->
         <scene sceneID="kK9-KG-baU">
             <objects>
                 <viewController id="ZPM-Pj-gqE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G9a-yn-bsn">
+                    <view key="view" contentMode="scaleToFill" id="oeQ-Rp-V02">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vUI-q8-oLE"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-j9-9FA">
+                                <rect key="frame" x="151" y="433" width="113" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch graph"/>
+                                <connections>
+                                    <segue destination="mQK-47-5aZ" kind="show" id="Cf4-ao-XaX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
@@ -227,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="29" y="-664"/>
         </scene>
-        <!--View Controller-->
+        <!--Add DataSet-->
         <scene sceneID="KxC-qA-Vn3">
             <objects>
-                <viewController id="GmQ-AO-Y82" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1zC-0M-cyc">
+                <viewController title="Add DataSet" id="GmQ-AO-Y82" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="1zC-0M-cyc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -239,15 +252,17 @@
                                 <rect key="frame" x="79" y="149" width="248" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9mC-0V-Th1"/>
+                                    <constraint firstAttribute="width" constant="248" id="Idm-e6-le4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="mcG-Fj-PvQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-8F-KgN">
-                                <rect key="frame" x="88" y="235" width="239" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-8F-KgN">
+                                <rect key="frame" x="87.5" y="235" width="239" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="B4P-Ie-Xgn"/>
-                                    <constraint firstAttribute="width" constant="239" id="idr-Z5-yHm"/>
+                                    <constraint firstAttribute="width" constant="239" id="68C-ui-glJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="buP-KA-YDa"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="camera.viewfinder" catalog="system">
@@ -263,11 +278,11 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="Nht-mA-5GH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-zj-XNB">
-                                <rect key="frame" x="88" y="303" width="239" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-zj-XNB">
+                                <rect key="frame" x="87.5" y="303" width="239" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="tJx-iE-Ngq"/>
-                                    <constraint firstAttribute="width" constant="239" id="xkH-MN-HYp"/>
+                                    <constraint firstAttribute="width" constant="239" id="SMw-Z5-Z6v"/>
+                                    <constraint firstAttribute="height" constant="40" id="nIf-s5-f00"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="doc.text" catalog="system">
@@ -280,11 +295,11 @@
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKr-3H-TBb">
-                                <rect key="frame" x="88" y="368" width="239" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKr-3H-TBb">
+                                <rect key="frame" x="87.5" y="368" width="239" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="239" id="ASc-jx-rGZ"/>
-                                    <constraint firstAttribute="height" constant="40" id="ThH-4m-Z6b"/>
+                                    <constraint firstAttribute="height" constant="40" id="ngT-rY-6gM"/>
+                                    <constraint firstAttribute="width" constant="239" id="yv4-I9-RuL"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="keyboard" catalog="system">
@@ -297,8 +312,8 @@
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New DataSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-4i-7gI">
-                                <rect key="frame" x="122.5" y="69" width="170" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="New DataSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-4i-7gI">
+                                <rect key="frame" x="122" y="69" width="170" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -307,28 +322,75 @@
                         <viewLayoutGuide key="safeArea" id="U11-Si-9xm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="top" secondItem="jCE-tf-bY5" secondAttribute="bottom" constant="46" id="6B1-xY-wf5"/>
-                            <constraint firstItem="dKr-3H-TBb" firstAttribute="top" secondItem="ce3-zj-XNB" secondAttribute="bottom" constant="25" id="DrK-hX-cqx"/>
+                            <constraint firstItem="ce3-zj-XNB" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="3Fm-6f-Zhp"/>
+                            <constraint firstItem="jCE-tf-bY5" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="3el-8d-fWy"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="top" secondItem="jCE-tf-bY5" secondAttribute="bottom" constant="46" id="5qL-XF-UtE"/>
+                            <constraint firstItem="dKr-3H-TBb" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="Axv-3L-UWZ"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="top" secondItem="mA3-4i-7gI" secondAttribute="bottom" constant="44" id="GRn-oW-zRy"/>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="leading" secondItem="dKr-3H-TBb" secondAttribute="leading" id="RY5-eU-fkS"/>
+                            <constraint firstItem="ce3-zj-XNB" firstAttribute="top" secondItem="gTo-8F-KgN" secondAttribute="bottom" constant="28" id="Hdh-Mh-p8f"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="mA3-4i-7gI" secondAttribute="centerX" id="SRv-00-jYs"/>
                             <constraint firstItem="mA3-4i-7gI" firstAttribute="top" secondItem="U11-Si-9xm" secondAttribute="top" constant="69" id="a7a-ed-N7N"/>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="ce3-zj-XNB" secondAttribute="centerX" id="aq3-Qh-pwV"/>
-                            <constraint firstItem="jCE-tf-bY5" firstAttribute="trailing" secondItem="ce3-zj-XNB" secondAttribute="trailing" id="dK3-vd-Zrb"/>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="leading" secondItem="U11-Si-9xm" secondAttribute="leading" constant="88" id="dc8-lP-T7b"/>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="feP-ZU-ALS"/>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="top" secondItem="gTo-8F-KgN" secondAttribute="bottom" constant="28" id="oIN-yp-YXE"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="id6-sh-8nq"/>
+                            <constraint firstItem="dKr-3H-TBb" firstAttribute="top" secondItem="ce3-zj-XNB" secondAttribute="bottom" constant="25" id="myg-Yr-P2h"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="leading" secondItem="U11-Si-9xm" secondAttribute="leading" constant="79" id="oNH-GE-DVd"/>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="trailing" secondItem="dKr-3H-TBb" secondAttribute="trailing" id="sWj-V4-ift"/>
-                            <constraint firstItem="mA3-4i-7gI" firstAttribute="centerX" secondItem="gTo-8F-KgN" secondAttribute="centerX" id="uxW-AS-6b8"/>
-                            <constraint firstItem="dKr-3H-TBb" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="xlm-nE-doZ"/>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="zJt-oc-AlX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IxC-T6-LCD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edd-bJ-GEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3175.36231884058" y="-664.28571428571422"/>
+            <point key="canvasLocation" x="-2297" y="50"/>
+        </scene>
+        <!--DataSet Name-->
+        <scene sceneID="sTK-Sa-FKm">
+            <objects>
+                <viewController id="uoL-c0-cBG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8iW-q0-Y4O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eSA-GZ-r0k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="DataSet Name" id="kIH-Vx-VDh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1533" y="50"/>
+        </scene>
+        <!--Bar Graph-->
+        <scene sceneID="nuZ-Ej-2wn">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQB-kk-Nu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Bar Graph" id="mQK-47-5aZ" customClass="BarGraphViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f8K-MJ-NqO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar Graph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-MX-0GC">
+                                <rect key="frame" x="32" y="52" width="140.5" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DataSet: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpm-ds-pUI">
+                                <rect key="frame" x="32" y="140" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mBE-Li-kbq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dPF-MX-0GC" firstAttribute="top" secondItem="mBE-Li-kbq" secondAttribute="top" constant="52" id="hst-BN-RwZ"/>
+                            <constraint firstItem="dPF-MX-0GC" firstAttribute="leading" secondItem="mBE-Li-kbq" secondAttribute="leading" constant="32" id="i5q-Z2-zVy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YPe-xT-a0c"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-752" y="50"/>
         </scene>
     </scenes>
     <resources>
@@ -341,6 +403,9 @@
         <image name="tablecells.badge.ellipsis" catalog="system" width="128" height="92"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

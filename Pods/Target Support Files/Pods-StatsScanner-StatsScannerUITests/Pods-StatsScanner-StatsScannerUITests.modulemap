@@ -1,0 +1,6 @@
+framework module Pods_StatsScanner_StatsScannerUITests {
+  umbrella header "Pods-StatsScanner-StatsScannerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

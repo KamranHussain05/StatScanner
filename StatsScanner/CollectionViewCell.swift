@@ -1,14 +1,13 @@
 //
-//  CellViewController.swift
+//  CollectionViewCell.swift
 //  StatsScanner
 //
-//  Created by Kamran on 12/27/21.
+//  Created by Kamran on 12/28/21.
 //
 
-import Foundation
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         // cell rounded section
         self.layer.cornerRadius = 15.0

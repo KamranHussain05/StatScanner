@@ -11,7 +11,7 @@ import Foundation
 class Dataset {
     var data: [[Double]] = [[]]
     var keys: [String] = []
-    var name = ""
+    var name: String
     
     //creates a new dataset and assumes the first row contains the keys
     init(appendable: [[String]], name: String) {
@@ -42,7 +42,7 @@ class Dataset {
         data[indexX][indexY] = val
     }
     
-    //Add another dataset or 2D array
+    //Add another dataset or 2D array that does not contain the key row
     func appendArray(array: [[String]]) {
         let cleanArr = cleanData(array: array)
         for i in 0...cleanArr.count-1 {

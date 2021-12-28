@@ -10,15 +10,17 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var cameraButton: UIButton!
+    @IBOutlet var addDataSet: UIButton!
+    @IBOutlet var cells: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.backgroundColor = .secondarySystemBackground
-        
-        cameraButton.backgroundColor = .systemBlue
-        cameraButton.setTitle("Take Picture", for: .normal)
-        cameraButton.setTitleColor(.white, for: .normal)
+//        imageView.backgroundColor = .secondarySystemBackground
+//
+//        cameraButton.backgroundColor = .systemBlue
+//        cameraButton.setTitle("Take Picture", for: .normal)
+//        cameraButton.setTitleColor(.white, for: .normal)
     }
     
     @IBAction func didTapCameraButton() {
@@ -26,6 +28,12 @@ class ViewController: UIViewController {
         picker.sourceType = .camera
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    @IBAction func onClick(_sender: UIButton!) {
+        if(_sender == addDataSet){
+            
+        }
     }
 }
 

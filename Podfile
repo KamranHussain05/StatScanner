@@ -7,6 +7,7 @@ target 'StatsScanner' do
 
   # Pods for StatsScanner
   pod 'Charts'
+  
 
   target 'StatsScannerTests' do
     inherit! :search_paths

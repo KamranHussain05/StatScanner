@@ -88,7 +88,7 @@
                                             <segue destination="GmQ-AO-Y82" kind="show" id="tA3-ib-6L0"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AppName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatsScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
                                         <rect key="frame" x="20" y="74" width="324" height="39"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="textColor"/>
@@ -214,20 +214,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-j9-9FA">
-                                <rect key="frame" x="150.5" y="432.5" width="113" height="31"/>
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-j9-9FA">
+                                <rect key="frame" x="137" y="432.5" width="150" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Launch graph"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Bar Graph"/>
                                 <connections>
-                                    <segue destination="5Ya-ek-a7B" kind="show" id="vZE-df-tXZ"/>
+                                    <segue destination="5Ya-ek-a7B" kind="show" id="2Hs-4h-4rr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-dy-w0b">
+                                <rect key="frame" x="137" y="489.5" width="150" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Line Graph"/>
+                                <connections>
+                                    <segue destination="U40-Md-pSu" kind="show" id="lby-3d-0b2"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5ra-dy-w0b" firstAttribute="leading" secondItem="EJh-OB-ukR" secondAttribute="leading" constant="137" id="9Rq-ql-A9r"/>
+                            <constraint firstItem="5ra-dy-w0b" firstAttribute="trailing" secondItem="iYL-j9-9FA" secondAttribute="trailing" id="9pA-JR-sGW"/>
                             <constraint firstItem="iYL-j9-9FA" firstAttribute="centerY" secondItem="oeQ-Rp-V02" secondAttribute="centerY" id="XLm-d7-ZYb"/>
-                            <constraint firstItem="iYL-j9-9FA" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="nWY-dM-EjL"/>
+                            <constraint firstItem="5ra-dy-w0b" firstAttribute="leading" secondItem="iYL-j9-9FA" secondAttribute="leading" id="n1p-i6-ZKR"/>
+                            <constraint firstItem="iYL-j9-9FA" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" constant="5" id="nWY-dM-EjL"/>
+                            <constraint firstItem="5ra-dy-w0b" firstAttribute="top" secondItem="iYL-j9-9FA" secondAttribute="bottom" constant="26" id="owz-K8-Crn"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
@@ -235,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwc-ev-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-751" y="-664"/>
+            <point key="canvasLocation" x="-10.144927536231885" y="-664.28571428571422"/>
         </scene>
         <!--More-->
         <scene sceneID="Zjf-sc-lpY">
@@ -252,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmj-pu-42O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="-664"/>
+            <point key="canvasLocation" x="1357" y="-664"/>
         </scene>
         <!--Add DataSet-->
         <scene sceneID="KxC-qA-Vn3">
@@ -272,7 +284,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-8F-KgN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-8F-KgN">
                                 <rect key="frame" x="87.5" y="235" width="239" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="239" id="68C-ui-glJ"/>
@@ -326,7 +338,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="New DataSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-4i-7gI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New DataSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-4i-7gI">
                                 <rect key="frame" x="122" y="69" width="170" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
@@ -339,6 +351,7 @@
                             <constraint firstItem="ce3-zj-XNB" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="3Fm-6f-Zhp"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="3el-8d-fWy"/>
                             <constraint firstItem="gTo-8F-KgN" firstAttribute="top" secondItem="jCE-tf-bY5" secondAttribute="bottom" constant="46" id="5qL-XF-UtE"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="leading" secondItem="U11-Si-9xm" secondAttribute="leading" constant="87.5" id="6NM-Tn-LRl"/>
                             <constraint firstItem="dKr-3H-TBb" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="Axv-3L-UWZ"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="top" secondItem="mA3-4i-7gI" secondAttribute="bottom" constant="44" id="GRn-oW-zRy"/>
                             <constraint firstItem="ce3-zj-XNB" firstAttribute="top" secondItem="gTo-8F-KgN" secondAttribute="bottom" constant="28" id="Hdh-Mh-p8f"/>
@@ -416,7 +429,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CO2-rB-c94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="50"/>
+            <point key="canvasLocation" x="-752" y="60"/>
         </scene>
         <!--Bar Graph-->
         <scene sceneID="zAk-xv-uqB">
@@ -432,7 +445,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKh-am-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46" y="50"/>
+            <point key="canvasLocation" x="-752" y="775"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q4t-0L-G7i">
+            <objects>
+                <navigationController id="U40-Md-pSu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ts7-n1-3cC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="38T-Zl-xcd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2Jf-QV-Xcy" kind="relationship" relationship="rootViewController" id="I55-Ky-dD3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkm-aI-fwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136" y="50"/>
+        </scene>
+        <!--Line Graph-->
+        <scene sceneID="7Zx-NG-4Qt">
+            <objects>
+                <viewController id="2Jf-QV-Xcy" customClass="BarGraphViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h81-vX-nyj" customClass="LineChartView" customModule="StatsScanner">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NZA-sI-YNS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Line Graph" id="25c-8X-pQQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRk-WM-izn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136" y="765"/>
         </scene>
     </scenes>
     <resources>

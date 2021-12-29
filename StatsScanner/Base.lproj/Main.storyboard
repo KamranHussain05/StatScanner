@@ -59,12 +59,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2297" y="759"/>
+            <point key="canvasLocation" x="-2733" y="759"/>
         </scene>
-        <!--DataSets-->
+        <!--Home-->
         <scene sceneID="at7-J2-gGA">
             <objects>
-                <viewController id="kjN-nm-ZNR" sceneMemberID="viewController">
+                <viewController title="Home" id="kjN-nm-ZNR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5j-Nm-Tqd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,8 +176,30 @@
                     <view key="view" contentMode="scaleToFill" id="7sI-eC-76X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERK-dw-oYf">
+                                <rect key="frame" x="354" y="44" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Ei9-VC-GfE"/>
+                                    <constraint firstAttribute="height" constant="40" id="dZh-n8-CXx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="addDataSet:" destination="Ya8-1z-kO7" eventType="touchUpInside" id="9pw-4P-Z55"/>
+                                    <segue destination="GmQ-AO-Y82" kind="show" id="j19-RL-7Kj"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2eH-1e-rmO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ERK-dw-oYf" firstAttribute="top" secondItem="2eH-1e-rmO" secondAttribute="top" id="aNR-4J-01C"/>
+                            <constraint firstItem="ERK-dw-oYf" firstAttribute="trailing" secondItem="7sI-eC-76X" secondAttribute="trailingMargin" id="nFZ-27-qp2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="DataSets" image="rectangle.grid.2x2" catalog="system" id="D28-WE-p4l">
                         <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
@@ -185,8 +207,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-nz-qk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Ya8-1z-kO7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2297" y="-664"/>
+            <point key="canvasLocation" x="-2733" y="-664"/>
         </scene>
         <!--Data View-->
         <scene sceneID="jZH-11-btR">
@@ -204,7 +227,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycn-2w-6Xy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1533" y="-664"/>
+            <point key="canvasLocation" x="-1688" y="-664"/>
         </scene>
         <!--Graph-->
         <scene sceneID="kK9-KG-baU">
@@ -230,16 +253,64 @@
                                     <segue destination="U40-Md-pSu" kind="show" id="lby-3d-0b2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxv-AX-Wf9">
+                                <rect key="frame" x="137" y="544" width="150" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Plot Graph"/>
+                                <connections>
+                                    <segue destination="FOh-VY-esO" kind="show" id="mn4-oI-ohL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4h-FE-Ljp">
+                                <rect key="frame" x="137" y="601" width="150" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Pie Graph"/>
+                                <connections>
+                                    <segue destination="N9K-pK-6IM" kind="show" id="fo0-BU-dkT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-9u-BuS">
+                                <rect key="frame" x="137" y="375" width="150" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Finance Graph"/>
+                                <connections>
+                                    <segue destination="ZG3-yR-hI8" kind="show" id="Gdv-LS-kde"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbZ-Ex-yCP">
+                                <rect key="frame" x="137" y="316" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="lLq-gE-ED8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Candle Graph"/>
+                                <connections>
+                                    <segue destination="5Rw-0f-euu" kind="show" id="9a3-zf-Enr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gxv-AX-Wf9" firstAttribute="trailing" secondItem="5ra-dy-w0b" secondAttribute="trailing" id="52J-VM-wsv"/>
                             <constraint firstItem="5ra-dy-w0b" firstAttribute="leading" secondItem="EJh-OB-ukR" secondAttribute="leading" constant="137" id="9Rq-ql-A9r"/>
                             <constraint firstItem="5ra-dy-w0b" firstAttribute="trailing" secondItem="iYL-j9-9FA" secondAttribute="trailing" id="9pA-JR-sGW"/>
+                            <constraint firstItem="GbZ-Ex-yCP" firstAttribute="leading" secondItem="RFN-9u-BuS" secondAttribute="leading" id="KEk-7d-iZm"/>
+                            <constraint firstItem="RFN-9u-BuS" firstAttribute="leading" secondItem="iYL-j9-9FA" secondAttribute="leading" id="NeL-VU-ylW"/>
+                            <constraint firstItem="iYL-j9-9FA" firstAttribute="top" secondItem="RFN-9u-BuS" secondAttribute="bottom" constant="26.5" id="SOS-15-GyN"/>
                             <constraint firstItem="iYL-j9-9FA" firstAttribute="centerY" secondItem="oeQ-Rp-V02" secondAttribute="centerY" id="XLm-d7-ZYb"/>
+                            <constraint firstItem="GbZ-Ex-yCP" firstAttribute="trailing" secondItem="RFN-9u-BuS" secondAttribute="trailing" id="YTc-ga-7u6"/>
+                            <constraint firstItem="gxv-AX-Wf9" firstAttribute="trailing" secondItem="o4h-FE-Ljp" secondAttribute="trailing" id="bO0-XI-58L"/>
+                            <constraint firstItem="GbZ-Ex-yCP" firstAttribute="top" secondItem="EJh-OB-ukR" secondAttribute="top" constant="272" id="lae-Bw-tJR"/>
+                            <constraint firstItem="RFN-9u-BuS" firstAttribute="trailing" secondItem="iYL-j9-9FA" secondAttribute="trailing" id="mQJ-au-lh1"/>
                             <constraint firstItem="5ra-dy-w0b" firstAttribute="leading" secondItem="iYL-j9-9FA" secondAttribute="leading" id="n1p-i6-ZKR"/>
+                            <constraint firstItem="gxv-AX-Wf9" firstAttribute="leading" secondItem="o4h-FE-Ljp" secondAttribute="leading" id="nCp-1T-zkp"/>
                             <constraint firstItem="iYL-j9-9FA" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" constant="5" id="nWY-dM-EjL"/>
                             <constraint firstItem="5ra-dy-w0b" firstAttribute="top" secondItem="iYL-j9-9FA" secondAttribute="bottom" constant="26" id="owz-K8-Crn"/>
+                            <constraint firstItem="gxv-AX-Wf9" firstAttribute="leading" secondItem="5ra-dy-w0b" secondAttribute="leading" id="pPH-iV-FKl"/>
+                            <constraint firstItem="RFN-9u-BuS" firstAttribute="top" secondItem="GbZ-Ex-yCP" secondAttribute="bottom" constant="28" id="xKE-92-8Lj"/>
+                            <constraint firstItem="o4h-FE-Ljp" firstAttribute="top" secondItem="gxv-AX-Wf9" secondAttribute="bottom" constant="26" id="xt8-u8-WJm"/>
+                            <constraint firstItem="gxv-AX-Wf9" firstAttribute="top" secondItem="5ra-dy-w0b" secondAttribute="bottom" constant="23.5" id="yDp-Dd-uO8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
@@ -247,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwc-ev-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10.144927536231885" y="-664.28571428571422"/>
+            <point key="canvasLocation" x="1107" y="-664"/>
         </scene>
         <!--More-->
         <scene sceneID="Zjf-sc-lpY">
@@ -264,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmj-pu-42O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357" y="-664"/>
+            <point key="canvasLocation" x="255" y="-1428"/>
         </scene>
         <!--Add DataSet-->
         <scene sceneID="KxC-qA-Vn3">
@@ -366,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edd-bJ-GEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2297" y="50"/>
+            <point key="canvasLocation" x="-2733" y="50"/>
         </scene>
         <!--DataSet-->
         <scene sceneID="sTK-Sa-FKm">
@@ -412,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1533.3333333333335" y="49.553571428571423"/>
+            <point key="canvasLocation" x="-1687" y="50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3kW-Um-gKt">
@@ -429,7 +500,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CO2-rB-c94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="60"/>
+            <point key="canvasLocation" x="-752" y="55"/>
         </scene>
         <!--Bar Graph-->
         <scene sceneID="zAk-xv-uqB">
@@ -445,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKh-am-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="775"/>
+            <point key="canvasLocation" x="-752" y="720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q4t-0L-G7i">
@@ -457,30 +528,165 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2Jf-QV-Xcy" kind="relationship" relationship="rootViewController" id="I55-Ky-dD3"/>
+                        <segue destination="g3f-K4-tMw" kind="relationship" relationship="rootViewController" id="2oU-hj-pn0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wkm-aI-fwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="50"/>
+            <point key="canvasLocation" x="-10" y="55"/>
         </scene>
         <!--Line Graph-->
-        <scene sceneID="7Zx-NG-4Qt">
+        <scene sceneID="NOy-zN-soc">
             <objects>
-                <viewController id="2Jf-QV-Xcy" customClass="BarGraphViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h81-vX-nyj" customClass="LineChartView" customModule="StatsScanner">
+                <viewController id="g3f-K4-tMw" customClass="LineChartViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ndp-7f-GA7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="NZA-sI-YNS"/>
+                        <viewLayoutGuide key="safeArea" id="NPv-Md-5mS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Line Graph" id="25c-8X-pQQ"/>
+                    <navigationItem key="navigationItem" title="Line Graph" id="T6H-Kh-ld1"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aRk-WM-izn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwf-Zf-cVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="765"/>
+            <point key="canvasLocation" x="-10" y="725"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UbN-Qc-OEb">
+            <objects>
+                <navigationController id="FOh-VY-esO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8Tb-00-fmC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="1Jc-gP-E37">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="as4-zL-4J7" kind="relationship" relationship="rootViewController" id="Ek7-Wy-47T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-11-c1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="55"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kus-Ce-saj">
+            <objects>
+                <navigationController id="N9K-pK-6IM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MNg-pH-6I1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7pz-GD-c4Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YB9-pF-2jN" kind="relationship" relationship="rootViewController" id="v12-Jj-MU9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQD-NP-gBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1503" y="55"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1S2-LL-rfT">
+            <objects>
+                <navigationController id="ZG3-yR-hI8" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="h4a-l4-hKa"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JbJ-fT-ZM3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GM9-aW-jVy" kind="relationship" relationship="rootViewController" id="y73-Rg-aH4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39W-CP-QFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2326" y="55"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jil-Xc-JXB">
+            <objects>
+                <navigationController id="5Rw-0f-euu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wkD-Oo-JcS"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="yKP-tz-dWU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UcM-vm-lak" kind="relationship" relationship="rootViewController" id="xvH-MK-SA1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1J-tR-9kF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3104" y="50"/>
+        </scene>
+        <!--Plot Graph-->
+        <scene sceneID="chI-35-JXP">
+            <objects>
+                <viewController id="as4-zL-4J7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hIj-PJ-Djb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jJr-ML-IuR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Plot Graph" id="sPO-cV-Wel"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zMC-e9-L4V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="720"/>
+        </scene>
+        <!--Pie Chart-->
+        <scene sceneID="pD6-gr-aQq">
+            <objects>
+                <viewController id="YB9-pF-2jN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I27-bb-KLY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lGe-qS-FEg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pie Chart" id="Eti-uN-WW6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATT-z6-Drr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1503" y="725"/>
+        </scene>
+        <!--Finance Graph-->
+        <scene sceneID="8OR-tW-oWe">
+            <objects>
+                <viewController id="GM9-aW-jVy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6SM-0N-dgO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="q1z-Cf-XRX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Finance Graph" id="H1X-Tm-r32"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bmm-mG-uad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2326" y="720"/>
+        </scene>
+        <!--Candle Graph-->
+        <scene sceneID="PgT-GQ-F24">
+            <objects>
+                <viewController id="UcM-vm-lak" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fcy-4E-E9v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="VfQ-EX-oYJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Candle Graph" id="NNY-F7-xCa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hHc-1j-lsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3104" y="720"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="j19-RL-7Kj"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>

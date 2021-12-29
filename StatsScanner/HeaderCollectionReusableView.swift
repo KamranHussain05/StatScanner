@@ -10,26 +10,24 @@ import UIKit
 class HeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "homeheader"
     
-    private let headerTitle = UILabel()
-    
-    var newDataSet: UIButton = UIButton()
-    
-    @IBAction func newClicked(_ sender: Any) {
-        //performSegue(withIdentifier: "toFeedActivity", sender: nil)
-    }
+    private let headerTitle: UILabel =  UILabel()
+    private let addDataSet: UIButton = UIButton()
+    private let view: UIView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame:frame)
         
-        headerTitle.text = "  StatsScanner"
+        addDataSet.setImage(UIImage(systemName: "plus.app.fill"), for: .normal)
+        
+        headerTitle.text = "StatsScanner"
         headerTitle.font = UIFont.systemFont(ofSize: 32.0, weight: .bold)
         headerTitle.textAlignment = .left
         headerTitle.numberOfLines = 0
         
-        newDataSet.setImage(UIImage(systemName: "plus.app.fill"), for: .normal)
-        addSubview(newDataSet)
+        view.addSubview(headerTitle)
+        view.addSubview(addDataSet)
         
-        addSubview(headerTitle)
+        addSubview(view)
     }
     
     required init?(coder: NSCoder) {
@@ -40,13 +38,11 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         super.layoutSubviews()
         headerTitle.translatesAutoresizingMaskIntoConstraints = false
         
-//        headerTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-//        headerTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        headerTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
-//        headerTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        headerTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
+        headerTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        headerTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+        headerTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        newDataSet.frame = CGRect(x:500, y:0, width:40, height: 40)
-        
-        headerTitle.frame = bounds
+        view.frame = bounds
     }
 }

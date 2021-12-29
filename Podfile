@@ -1,11 +1,12 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform: ios, '13.0'
 
 target 'StatsScanner' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for StatsScanner
+  pod 'Charts'
 
   target 'StatsScannerTests' do
     inherit! :search_paths
@@ -15,7 +16,5 @@ target 'StatsScanner' do
   target 'StatsScannerUITests' do
     # Pods for testing
   end
-
-pod 'Charts'
 
 end

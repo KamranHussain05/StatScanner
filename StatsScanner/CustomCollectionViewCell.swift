@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.swift
+//  CustomCollectionViewCell.swift
 //  StatsScanner
 //
 //  Created by Kamran on 12/28/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class CustomCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         // cell rounded section
         self.layer.cornerRadius = 15.0
@@ -28,4 +28,7 @@ class CollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
     }
+    
+    
+
 }

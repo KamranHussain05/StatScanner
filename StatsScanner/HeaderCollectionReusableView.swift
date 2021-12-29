@@ -11,7 +11,11 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "homeheader"
     
     private let headerTitle = UILabel()
-    private let newDataSet = UIButton()
+    @IBOutlet var newDataSet: UIButton!
+    
+    @IBAction func newClicked(_ sender: Any) {
+        //performSegue(withIdentifier: "toFeedActivity", sender: nil)
+    }
     
     override init(frame: CGRect) {
         super.init(frame:frame)

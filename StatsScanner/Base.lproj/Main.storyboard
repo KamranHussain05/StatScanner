@@ -74,9 +74,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
-                                        <rect key="frame" x="352" y="52" width="42" height="39"/>
+                                        <rect key="frame" x="354" y="52" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="F2f-ho-Wv8" secondAttribute="height" multiplier="14:13" id="6t3-wd-UpE"/>
+                                            <constraint firstAttribute="width" constant="40" id="0HC-P8-iB6"/>
+                                            <constraint firstAttribute="height" constant="40" id="zcJ-jg-4UQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal">
@@ -87,7 +88,7 @@
                                             <segue destination="GmQ-AO-Y82" kind="show" id="tA3-ib-6L0"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatsScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AppName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
                                         <rect key="frame" x="20" y="74" width="324" height="39"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="textColor"/>
@@ -145,64 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2297.1014492753625" y="-664.28571428571422"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="26f-8r-8GJ">
-            <objects>
-                <collectionViewController id="Gaa-pw-0CV" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NOS-Jv-yzk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="15" minimumInteritemSpacing="15" id="H2C-WO-0Cj">
-                            <size key="itemSize" width="149" height="160"/>
-                            <size key="headerReferenceSize" width="60" height="69"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jI8-k3-Hb6" customClass="CustomCollectionViewCell" customModule="StatsScanner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="69" width="149" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zbc-Iq-7Dw">
-                                    <rect key="frame" x="0.0" y="0.0" width="149" height="160"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ald-kS-WFG">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MaC-Vt-clg">
-                                    <rect key="frame" x="354" y="8" width="42" height="39"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                    <state key="normal">
-                                        <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="large"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                    </state>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatsScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qUf-bo-ZXh">
-                                    <rect key="frame" x="20" y="30" width="326" height="39"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="Gaa-pw-0CV" id="TL5-Q1-LTQ"/>
-                            <outlet property="delegate" destination="Gaa-pw-0CV" id="Dnv-we-5Xv"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Item" id="B8N-p6-YTl"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jOY-ki-XvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3123" y="-664"/>
+            <point key="canvasLocation" x="-2732" y="-1361"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9dh-AC-QbQ">
@@ -214,33 +158,35 @@
                         <color key="backgroundColor" systemColor="systemFillColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kjN-nm-ZNR" kind="relationship" relationship="viewControllers" id="X93-g2-DUG"/>
+                        <segue destination="nR7-Vt-3vX" kind="relationship" relationship="viewControllers" id="bMg-7d-cfy"/>
                         <segue destination="Uct-Nu-0nS" kind="relationship" relationship="viewControllers" id="esD-27-Ifa"/>
                         <segue destination="ZPM-Pj-gqE" kind="relationship" relationship="viewControllers" id="PDb-Fg-IUf"/>
                         <segue destination="L5T-SC-KFO" kind="relationship" relationship="viewControllers" id="Mb2-ns-nqB"/>
-                        <segue destination="Gaa-pw-0CV" kind="relationship" relationship="viewControllers" id="bXc-3j-e0D"/>
-                        <segue destination="nR7-Vt-3vX" kind="relationship" relationship="viewControllers" id="bMg-7d-cfy"/>
+                        <segue destination="kjN-nm-ZNR" kind="relationship" relationship="viewControllers" id="X93-g2-DUG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9t-D0-sh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1165" y="-1428"/>
         </scene>
-        <!--Item-->
+        <!--Main DataSet Grid-->
         <scene sceneID="wYn-Qt-fPp">
             <objects>
-                <viewController id="nR7-Vt-3vX" customClass="MainViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main DataSet Grid" id="nR7-Vt-3vX" customClass="MainViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7sI-eC-76X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="2eH-1e-rmO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Dsc-3y-A3W"/>
+                    <tabBarItem key="tabBarItem" title="DataSets" image="rectangle.grid.2x2" catalog="system" id="D28-WE-p4l">
+                        <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-nz-qk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="-1401"/>
+            <point key="canvasLocation" x="-2297" y="-664"/>
         </scene>
         <!--Data View-->
         <scene sceneID="jZH-11-btR">
@@ -268,15 +214,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-j9-9FA">
-                                <rect key="frame" x="151" y="433" width="113" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-j9-9FA">
+                                <rect key="frame" x="150.5" y="432.5" width="113" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Launch graph"/>
+                                <connections>
+                                    <segue destination="5Ya-ek-a7B" kind="show" id="vZE-df-tXZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iYL-j9-9FA" firstAttribute="centerY" secondItem="oeQ-Rp-V02" secondAttribute="centerY" id="XLm-d7-ZYb"/>
+                            <constraint firstItem="iYL-j9-9FA" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="nWY-dM-EjL"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -449,40 +401,38 @@
             </objects>
             <point key="canvasLocation" x="-1533.3333333333335" y="49.553571428571423"/>
         </scene>
-        <!--Bar Graph-->
-        <scene sceneID="nuZ-Ej-2wn">
+        <!--Navigation Controller-->
+        <scene sceneID="3kW-Um-gKt">
             <objects>
-                <viewController title="Bar Graph" id="mQK-47-5aZ" customClass="BarGraphViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="f8K-MJ-NqO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar Graph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-MX-0GC">
-                                <rect key="frame" x="32" y="96" width="140.5" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DataSet: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpm-ds-pUI">
-                                <rect key="frame" x="32" y="140" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="mBE-Li-kbq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="dPF-MX-0GC" firstAttribute="top" secondItem="mBE-Li-kbq" secondAttribute="top" constant="52" id="hst-BN-RwZ"/>
-                            <constraint firstItem="dPF-MX-0GC" firstAttribute="leading" secondItem="mBE-Li-kbq" secondAttribute="leading" constant="32" id="i5q-Z2-zVy"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="YPe-xT-a0c"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QQB-kk-Nu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="5Ya-ek-a7B" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bb1-Zz-qhL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gZq-Wd-aiA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ngb-93-P3X" kind="relationship" relationship="rootViewController" id="l2o-iY-NOm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CO2-rB-c94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-752" y="50"/>
+        </scene>
+        <!--Bar Graph-->
+        <scene sceneID="zAk-xv-uqB">
+            <objects>
+                <viewController id="ngb-93-P3X" customClass="BarGraphViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yoc-BT-FFc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7Bh-dz-F50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bar Graph" id="3gb-FL-iTv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vKh-am-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46" y="50"/>
         </scene>
     </scenes>
     <resources>

@@ -36,6 +36,7 @@
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 		A8D7CA8B277BD49F00499A93 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */; };
 		A8D7CA8F277BECC000499A93 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA8E277BECC000499A93 /* MainViewController.swift */; };
+		A8D7CA91277C1C8200499A93 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */; };
 		CC50D5182E159D8C64FA4DDE /* Pods_StatsScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 		A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D7CA8E277BECC000499A93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,10 +174,11 @@
 				A85092BD27497F6F00392240 /* ViewController.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
+				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A8D7CA8E277BECC000499A93 /* MainViewController.swift */,
+				A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */,
 				A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */,
-				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092CA27497F7A00392240 /* Info.plist */,
@@ -491,6 +494,7 @@
 				A8BD6DFD277BA30D0048912C /* BarGraphViewController.swift in Sources */,
 				A8D7CA8F277BECC000499A93 /* MainViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
+				A8D7CA91277C1C8200499A93 /* HeaderCollectionReusableView.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

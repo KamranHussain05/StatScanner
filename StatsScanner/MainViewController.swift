@@ -10,8 +10,8 @@ import UIKit
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var collectionView: UICollectionView?
-    let cellId = "example"
-    let cellSpacing: CGFloat = 15
+    let regCellId = "tile"
+    let cellSpacing: CGFloat = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +29,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView?.setCollectionViewLayout(collectionViewFlowLayout, animated: true)
         collectionViewFlowLayout.scrollDirection = .vertical
         collectionViewFlowLayout.sectionInset = UIEdgeInsets(top : 0, left: cellSpacing, bottom: 0, right: cellSpacing)
-        collectionViewFlowLayout.minimumInteritemSpacing = 15
-        collectionViewFlowLayout.minimumLineSpacing = 15
+        collectionViewFlowLayout.minimumInteritemSpacing = cellSpacing
+        collectionViewFlowLayout.minimumLineSpacing = cellSpacing
         
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: regCellId)
+        collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         collectionView?.delegate = self
         collectionView?.dataSource = self
     }
@@ -44,12 +45,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     //UICollectionView DataSource functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .cyan
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: regCellId, for: indexPath) as! CustomCollectionViewCell
+
+        
         return cell
     }
     
@@ -60,6 +62,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let height = width
 
         return CGSize(width: width, height:height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width,
+                      height: 120.5)
     }
 
 }

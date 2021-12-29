@@ -10,8 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var cameraButton: UIButton!
-    @IBOutlet var addDataSet: UIButton!
-    @IBOutlet var cells: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +26,6 @@ class ViewController: UIViewController {
         picker.sourceType = .camera
         picker.delegate = self
         present(picker, animated: true)
-    }
-    
-    @IBAction func onClick(_sender: UIButton!) {
-        if(_sender == addDataSet){
-            
-        }
     }
 }
 

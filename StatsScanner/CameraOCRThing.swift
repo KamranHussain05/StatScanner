@@ -7,30 +7,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CameraOCRThing: UIViewController {
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var cameraButton: UIButton!
-    @IBOutlet var newDataSet: UIButton!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        imageView.backgroundColor = .secondarySystemBackground
-//
-//        cameraButton.backgroundColor = .systemBlue
-//        cameraButton.setTitle("Take Picture", for: .normal)
-//        cameraButton.setTitleColor(.white, for: .normal)
+    @IBOutlet var newScanButton: UIButton!
+    @IBOutlet var useImageButton: UIButton!
+    
+    var imgUsing: UIImage!
+    
+    override func loadView() {
+        super.loadView()
     }
     
-    @IBAction func didTapCameraButton() {
+    @IBAction func didTapNewScanButton() {
         let picker = UIImagePickerController()
         picker.sourceType = .camera
         picker.delegate = self
         present(picker, animated: true)
     }
+    
+    func afterCameraClosed() {
+        if(imgUsing != nil) {
+            newScanButton.setTitle("Retake Image", for: .normal)
+        }
+    }
+    
+    func processOCR() {
+        // vision code using imgUsing will go here
+    }
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension CameraOCRThing: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -43,6 +49,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             UIImage else {
             return
         }
-        imageView.image = image
+        
+        imgUsing = image
+        imageView.image = imgUsing
     }
 }

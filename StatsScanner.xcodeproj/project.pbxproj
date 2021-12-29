@@ -11,7 +11,7 @@
 		80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */; };
 		A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092B927497F6F00392240 /* AppDelegate.swift */; };
 		A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BB27497F6F00392240 /* SceneDelegate.swift */; };
-		A85092BE27497F6F00392240 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BD27497F6F00392240 /* ViewController.swift */; };
+		A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BD27497F6F00392240 /* CameraOCRThing.swift */; };
 		A85092C127497F6F00392240 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85092BF27497F6F00392240 /* Main.storyboard */; };
 		A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A85092C227497F7000392240 /* StatsScanner.xcdatamodeld */; };
 		A85092C627497F7A00392240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85092C527497F7A00392240 /* Assets.xcassets */; };
@@ -69,7 +69,7 @@
 		A85092B627497F6F00392240 /* StatsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092B927497F6F00392240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A85092BB27497F6F00392240 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A85092BD27497F6F00392240 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A85092BD27497F6F00392240 /* CameraOCRThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOCRThing.swift; sourceTree = "<group>"; };
 		A85092C027497F6F00392240 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A85092C327497F7000392240 /* StatsScanner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatsScanner.xcdatamodel; sourceTree = "<group>"; };
 		A85092C527497F7A00392240 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			children = (
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
-				A85092BD27497F6F00392240 /* ViewController.swift */,
+				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
@@ -489,7 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A85092BE27497F6F00392240 /* ViewController.swift in Sources */,
+				A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8D7CA8B277BD49F00499A93 /* CustomCollectionViewCell.swift in Sources */,

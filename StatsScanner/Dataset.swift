@@ -130,4 +130,24 @@ class Dataset {
     func getMin(index:Int) -> Double {
         return data[index].min()!
     }
+    
+    //finds the standard deviation of everything in the dataset
+    func getDataStandardDeviation() -> Double {
+        var diffsqrs = 0.0
+        for e in data {
+            for i in e {
+                diffsqrs += pow(i - getSetAverage(), 2)
+            }
+        }
+        return sqrt(diffsqrs - Double(getTotalNumItems()))
+    }
+    
+    //finds the standard deviation of the specified axis
+    func getStandardDeviation(index:Int) -> Double {
+        var diffsqrs = 0.0
+        for e in data[index] {
+            diffsqrs += pow(e-getAverage(axis: index), 2)
+        }
+        return sqrt(diffsqrs - Double(getNumItems(index: index)))
+    }
 }

@@ -63,4 +63,71 @@ class Dataset {
         return result
     }
     
+    
+//Methods for Statistics
+    
+    //returns the number of items in the dataset
+    func getTotalNumItems() -> Int {
+        var count = 0
+        for _ in 0...data.count-1 {
+            for _ in 0...data[0].count-1 {
+                count+=1
+            }
+        }
+        return count
+    }
+    
+    //returns the number of items in the specified variable
+    func getNumItems(index:Int) -> Int {
+        return data[index].count
+    }
+    
+    //returns average of the entire dataset spanning all variables
+    func getSetAverage() -> Double{
+        var result = 0.0
+        for i in 0...data.count-1 {
+            for j in 0...data[0].count-1 {
+                result+=data[i][j]
+            }
+        }
+        return result/Double(getTotalNumItems())
+    }
+    
+    //returns the average of a specified variable
+    func getAverage(axis:Int) -> Double{
+        var result = 0.0
+        for i in 0...data[axis].count-1 {
+            result += data[i][axis]
+        }
+        return result/Double(getNumItems(index: axis))
+    }
+    
+    //returns the maximum value of the data set
+    func getMax() -> Double {
+        var result = [Double]()
+        for i in 0...data.count {
+            result.append(data[i].max()!)
+        }
+        return result.max()!
+    }
+    
+    //returns the highest value in the specified index
+    func getMax(index: Int) -> Double {
+        return data[index].max()!
+        
+    }
+    
+    //returns the minimum value in the data
+    func getMin() -> Double {
+        var result = [Double]()
+        for i in 0...data.count {
+            result.append(data[i].min()!)
+        }
+        return result.min()!
+    }
+    
+    //returns the minimum value in the specified index
+    func getMin(index:Int) -> Double {
+        return data[index].min()!
+    }
 }

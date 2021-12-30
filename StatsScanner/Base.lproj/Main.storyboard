@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LhV-Cx-Ohg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LhV-Cx-Ohg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2732" y="-1361"/>
+            <point key="canvasLocation" x="-3803" y="-664"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9dh-AC-QbQ">
@@ -186,30 +186,8 @@
                     <view key="view" contentMode="scaleToFill" id="7sI-eC-76X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERK-dw-oYf">
-                                <rect key="frame" x="354" y="44" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Ei9-VC-GfE"/>
-                                    <constraint firstAttribute="height" constant="40" id="dZh-n8-CXx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                </state>
-                                <connections>
-                                    <action selector="addDataSet:" destination="Ya8-1z-kO7" eventType="touchUpInside" id="9pw-4P-Z55"/>
-                                    <segue destination="GmQ-AO-Y82" kind="show" id="j19-RL-7Kj"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2eH-1e-rmO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ERK-dw-oYf" firstAttribute="top" secondItem="2eH-1e-rmO" secondAttribute="top" id="aNR-4J-01C"/>
-                            <constraint firstItem="ERK-dw-oYf" firstAttribute="trailing" secondItem="7sI-eC-76X" secondAttribute="trailingMargin" id="nFZ-27-qp2"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="DataSets" image="rectangle.grid.2x2" catalog="system" id="D28-WE-p4l">
                         <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
@@ -217,7 +195,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-nz-qk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Ya8-1z-kO7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2733" y="-664"/>
         </scene>
@@ -249,6 +226,10 @@
                         <subviews>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYL-j9-9FA">
                                 <rect key="frame" x="137" y="432.5" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="M2U-mY-DQy"/>
+                                    <constraint firstAttribute="height" constant="31" id="xpw-cg-Y86"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Launch Bar Graph"/>
                                 <connections>
@@ -257,6 +238,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ra-dy-w0b">
                                 <rect key="frame" x="137" y="489.5" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="4qq-Mh-nSn"/>
+                                    <constraint firstAttribute="width" constant="150" id="ndh-mR-tHy"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Launch Line Graph"/>
                                 <connections>
@@ -265,6 +250,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxv-AX-Wf9">
                                 <rect key="frame" x="137" y="544" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="GPN-52-7Dt"/>
+                                    <constraint firstAttribute="width" constant="150" id="vP0-Yi-wpb"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Launch Plot Graph"/>
                                 <connections>
@@ -273,6 +262,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4h-FE-Ljp">
                                 <rect key="frame" x="137" y="601" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="0pR-Dz-QF8"/>
+                                    <constraint firstAttribute="width" constant="150" id="qKK-mz-az0"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Launch Pie Graph"/>
                                 <connections>
@@ -281,6 +274,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-9u-BuS">
                                 <rect key="frame" x="137" y="375" width="150" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aeB-E1-LJZ"/>
+                                    <constraint firstAttribute="height" constant="31" id="vcS-VN-JfC"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Launch Finance Graph"/>
                                 <connections>
@@ -290,6 +287,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbZ-Ex-yCP">
                                 <rect key="frame" x="137" y="316" width="150" height="31"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="RlP-AP-40p"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="hor-zW-1Dc"/>
                                     <constraint firstAttribute="height" constant="31" id="lLq-gE-ED8"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
@@ -694,9 +693,6 @@
             <point key="canvasLocation" x="3104" y="720"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="j19-RL-7Kj"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.viewfinder" catalog="system" width="128" height="115"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>

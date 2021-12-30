@@ -15,6 +15,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //sets up collection view with constraints
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView!)
@@ -32,8 +34,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionViewFlowLayout.minimumInteritemSpacing = cellSpacing
         collectionViewFlowLayout.minimumLineSpacing = cellSpacing
         
+        //Registers cells
         collectionView?.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: regCellId)
         collectionView?.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        
+        //sets delegates and sources
         collectionView?.delegate = self
         collectionView?.dataSource = self
     }
@@ -51,15 +56,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: regCellId, for: indexPath) as! CustomCollectionViewCell
 
-        
         return cell
     }
     
-    //UICollectionView DelegateFlowLayout fucntions
+    //UICollectionView DelegateFlowLayout functions
+    //manages cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
-        let height = width
+        let height = width*1.5
 
         return CGSize(width: width, height:height)
     }
@@ -69,9 +74,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath)
     }
     
+    //manages header
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.size.width,
-                      height: 120.5)
+                      height: 100)
     }
 
 }

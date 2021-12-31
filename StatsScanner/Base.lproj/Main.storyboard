@@ -74,7 +74,7 @@
         <!--Home-->
         <scene sceneID="at7-J2-gGA">
             <objects>
-                <viewController title="Home" id="kjN-nm-ZNR" sceneMemberID="viewController">
+                <viewController title="Home" id="kjN-nm-ZNR" customClass="HomeViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5j-Nm-Tqd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,10 +165,15 @@
                                                     <outlet property="creationDate" destination="DjR-kc-mgk" id="fs4-wb-vFN"/>
                                                     <outlet property="dataSetName" destination="VdL-pw-zjl" id="0XJ-G2-B8G"/>
                                                     <outlet property="myImageView" destination="I4O-NR-B5J" id="gur-rv-7tp"/>
+                                                    <outlet property="numItems" destination="adE-1s-4AM" id="slz-v7-ADS"/>
                                                     <outlet property="openDataSet" destination="adE-1s-4AM" id="Qwd-W2-C47"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="kjN-nm-ZNR" id="Are-tD-5ij"/>
+                                            <outlet property="delegate" destination="kjN-nm-ZNR" id="zhE-cU-1dg"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="ogi-92-6oJ"/>
@@ -195,6 +200,9 @@
                         <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="myCollectionView" destination="wDI-T2-Ujr" id="Hh0-BO-2UQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

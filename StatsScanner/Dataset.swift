@@ -22,6 +22,11 @@ class Dataset {
         self.data = cleanData(array: a)
     }
     
+    //returns the given name of the dataset
+    func getName() -> String {
+        return self.name
+    }
+    
     //returns the array containing the extracted keys from the dataset
     func getKeys() -> [String] {
         return self.keys

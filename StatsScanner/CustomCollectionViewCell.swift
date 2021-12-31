@@ -47,10 +47,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func autoLayoutCell() {
         //DataSetName setup
-        dataSetName.text = "John's DataSet"
+        dataSetName.text = "Example"
         dataSetName.font = UIFont.systemFont(ofSize: 32.0, weight: .bold)
         dataSetName.textAlignment = .left
-        dataSetName.numberOfLines = 0
         addSubview(dataSetName)
     }
 

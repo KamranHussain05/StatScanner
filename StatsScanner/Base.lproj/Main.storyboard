@@ -360,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwc-ev-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1107" y="-664"/>
+            <point key="canvasLocation" x="1917" y="-688"/>
         </scene>
         <!--More-->
         <scene sceneID="Zjf-sc-lpY">
@@ -481,16 +481,16 @@
             </objects>
             <point key="canvasLocation" x="-2733" y="50"/>
         </scene>
-        <!--DataSet-->
+        <!--DataSet Details-->
         <scene sceneID="sTK-Sa-FKm">
             <objects>
-                <viewController id="uoL-c0-cBG" customClass="ViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uoL-c0-cBG" customClass="DataSetViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8iW-q0-Y4O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-th-Yf8">
-                                <rect key="frame" x="20" y="168" width="80" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created:  12/30/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-th-Yf8">
+                                <rect key="frame" x="20" y="168" width="160" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -503,15 +503,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12/28/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crl-EP-ISs">
-                                <rect key="frame" x="108" y="168" width="75" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Awards R " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1W-VU-QMj">
-                                <rect key="frame" x="105" y="139" width="87" height="24"/>
+                                <rect key="frame" x="108" y="139" width="87" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -521,7 +514,11 @@
                         <viewLayoutGuide key="safeArea" id="eSA-GZ-r0k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="DataSet" id="kIH-Vx-VDh"/>
+                    <navigationItem key="navigationItem" title="DataSet Details" id="kIH-Vx-VDh"/>
+                    <connections>
+                        <outlet property="creationDate" destination="zbc-th-Yf8" id="mUz-dh-fYk"/>
+                        <outlet property="datasetName" destination="R1W-VU-QMj" id="E5J-8h-BlP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -693,7 +690,7 @@
             </objects>
             <point key="canvasLocation" x="1503" y="725"/>
         </scene>
-        <!--Finance Graph-->
+        <!--Cubic Line Graph-->
         <scene sceneID="8OR-tW-oWe">
             <objects>
                 <viewController id="GM9-aW-jVy" sceneMemberID="viewController">
@@ -703,13 +700,13 @@
                         <viewLayoutGuide key="safeArea" id="q1z-Cf-XRX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Finance Graph" id="H1X-Tm-r32"/>
+                    <navigationItem key="navigationItem" title="Cubic Line Graph" id="H1X-Tm-r32"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bmm-mG-uad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2326" y="720"/>
         </scene>
-        <!--Candle Graph-->
+        <!--CandleStick Graph-->
         <scene sceneID="PgT-GQ-F24">
             <objects>
                 <viewController id="UcM-vm-lak" sceneMemberID="viewController">
@@ -719,11 +716,77 @@
                         <viewLayoutGuide key="safeArea" id="VfQ-EX-oYJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Candle Graph" id="NNY-F7-xCa"/>
+                    <navigationItem key="navigationItem" title="CandleStick Graph" id="NNY-F7-xCa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHc-1j-lsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3104" y="720"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oga-WC-rNz">
+            <objects>
+                <navigationController id="S7s-IC-2cm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XAx-lV-nq1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Vhm-gU-dS0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rzi-I6-vuO" kind="relationship" relationship="rootViewController" id="uUh-og-zSn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0S-av-gar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3893" y="50"/>
+        </scene>
+        <!--Gradient Graph-->
+        <scene sceneID="cB6-Xy-rep">
+            <objects>
+                <viewController id="rzi-I6-vuO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mBd-YQ-Rdy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YhM-4b-CYj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Gradient Graph" id="hao-Vu-tMh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekV-MA-m3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3893" y="720"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ni7-ci-AMq">
+            <objects>
+                <navigationController id="T4L-7e-cSy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7y0-ep-Pu0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="UxN-pH-qcL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xpu-pc-v8o" kind="relationship" relationship="rootViewController" id="IkZ-g6-iWC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j5J-AD-Q2R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4680" y="50"/>
+        </scene>
+        <!--Scatter Chart-->
+        <scene sceneID="lkb-pr-Kdz">
+            <objects>
+                <viewController id="Xpu-pc-v8o" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QAs-4h-zWL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lqi-7a-3Sl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scatter Chart" id="hbK-Vp-ffL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MN4-py-DhO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4680" y="720"/>
         </scene>
     </scenes>
     <resources>

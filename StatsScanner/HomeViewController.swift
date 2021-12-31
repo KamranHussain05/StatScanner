@@ -15,8 +15,12 @@ class HomeViewController: UIViewController {
     //let d: DataSet = DataSet()
     var cellSpacing: CGFloat = 10
     
+    var sproduct:tileList!=nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem1)
@@ -26,13 +30,6 @@ class HomeViewController: UIViewController {
         
         let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem3)
-        
-//        let collectionViewFlowLayout = UICollectionViewFlowLayout()
-//        myCollectionView?.setCollectionViewLayout(collectionViewFlowLayout, animated: true)
-//        collectionViewFlowLayout.scrollDirection = .vertical
-//        collectionViewFlowLayout.sectionInset = UIEdgeInsets(top : 0, left: cellSpacing, bottom: 0, right: cellSpacing)
-//        collectionViewFlowLayout.minimumInteritemSpacing = cellSpacing
-//        collectionViewFlowLayout.minimumLineSpacing = cellSpacing
     }
     
 }

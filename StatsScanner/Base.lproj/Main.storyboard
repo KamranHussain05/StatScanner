@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733" y="759"/>
+            <point key="canvasLocation" x="-2733" y="725"/>
         </scene>
         <!--Home-->
         <scene sceneID="at7-J2-gGA">
@@ -217,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733" y="-694"/>
+            <point key="canvasLocation" x="-2733" y="-664"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9dh-AC-QbQ">
@@ -231,33 +231,13 @@
                     <connections>
                         <segue destination="kjN-nm-ZNR" kind="relationship" relationship="viewControllers" id="X93-g2-DUG"/>
                         <segue destination="Uct-Nu-0nS" kind="relationship" relationship="viewControllers" id="esD-27-Ifa"/>
-                        <segue destination="L5T-SC-KFO" kind="relationship" relationship="viewControllers" id="Mb2-ns-nqB"/>
                         <segue destination="ZPM-Pj-gqE" kind="relationship" relationship="viewControllers" id="PDb-Fg-IUf"/>
-                        <segue destination="nR7-Vt-3vX" kind="relationship" relationship="viewControllers" id="bMg-7d-cfy"/>
+                        <segue destination="L5T-SC-KFO" kind="relationship" relationship="viewControllers" id="Mb2-ns-nqB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9t-D0-sh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1165" y="-1428"/>
-        </scene>
-        <!--Main DataSet Grid-->
-        <scene sceneID="wYn-Qt-fPp">
-            <objects>
-                <viewController title="Main DataSet Grid" id="nR7-Vt-3vX" customClass="MainViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7sI-eC-76X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="2eH-1e-rmO"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="DataSets" image="rectangle.grid.2x2" catalog="system" id="D28-WE-p4l">
-                        <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
-                    </tabBarItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-nz-qk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2854" y="-1370"/>
         </scene>
         <!--Data View-->
         <scene sceneID="jZH-11-btR">

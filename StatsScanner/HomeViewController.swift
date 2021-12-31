@@ -12,18 +12,18 @@ class HomeViewController: UIViewController {
     @IBOutlet var myCollectionView: UICollectionView!
     
     var itemList = [tileList]()
-    let d: DataSet = DataSet()
+    //let d: DataSet = DataSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.app")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
+        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem1)
         
-        let elem2 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.app")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
+        let elem2 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem2)
         
-        let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.app")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
+        let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem3)
     }
 
@@ -40,7 +40,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.myImageView.image = itemList[indexPath.row].dataSetImage
         cell.dataSetName.text = itemList[indexPath.row].dataSetName
         cell.creationDate.text = itemList[indexPath.row].creationDate
-        cell.numItems.text = itemList[indexPath.row].numItems
+        cell.numitems.text = itemList[indexPath.row].numItems
+        cell.backgroundColor = .secondarySystemFill
         return cell
     }
     

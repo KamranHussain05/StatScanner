@@ -12,8 +12,9 @@ class HomeTiles: UICollectionViewCell {
     @IBOutlet var myImageView: UIImageView!
     @IBOutlet weak var dataSetName: UILabel!
     @IBOutlet weak var creationDate: UILabel!
-    @IBOutlet weak var openDataSet: UILabel!
-    @IBOutlet weak var numItems: UILabel!
+    @IBOutlet var numitems: UILabel!
+    @IBOutlet var openDataset: UIButton!
+    
     
     override func layoutSubviews() {
         // cell rounded section

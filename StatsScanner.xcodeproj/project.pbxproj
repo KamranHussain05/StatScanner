@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		495ADB1424FEEDC812112065 /* Pods_StatsScannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */; };
 		80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */; };
+		A8088979277EEF8500B8C2FE /* HomeTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTiles.swift */; };
 		A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092B927497F6F00392240 /* AppDelegate.swift */; };
 		A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BB27497F6F00392240 /* SceneDelegate.swift */; };
 		A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BD27497F6F00392240 /* CameraOCRThing.swift */; };
@@ -66,6 +67,7 @@
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1BCA46C3BD6307DD59B2BA8 /* Pods-StatsScanner-StatsScannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A8088978277EEF8500B8C2FE /* HomeTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTiles.swift; sourceTree = "<group>"; };
 		A85092B627497F6F00392240 /* StatsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092B927497F6F00392240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A85092BB27497F6F00392240 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,10 +180,11 @@
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
+				A8088978277EEF8500B8C2FE /* HomeTiles.swift */,
 				A8D7CA8E277BECC000499A93 /* MainViewController.swift */,
 				A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */,
-				A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */,
 				A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */,
+				A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092CA27497F7A00392240 /* Info.plist */,
@@ -489,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8088979277EEF8500B8C2FE /* HomeTiles.swift in Sources */,
 				A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,

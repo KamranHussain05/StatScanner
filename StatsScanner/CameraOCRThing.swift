@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Vision
 
 class CameraOCRThing: UIViewController {
     @IBOutlet var imageView: UIImageView!
@@ -32,12 +33,14 @@ class CameraOCRThing: UIViewController {
     }
     
     func processOCR() {
-        // vision code using imgUsing will go here
+        guard let cgImage = imgUsing.cgImage else { return }
+        let requestHandler = VNImageRequestHandler(cgImage: cgImage)
+        //let request = VNRecognizeTextRequest(completionHandler: yes)
     }
 }
 
 extension CameraOCRThing: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerConvtrollerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     

@@ -38,9 +38,6 @@
 		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
-		A8D7CA8B277BD49F00499A93 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */; };
-		A8D7CA8F277BECC000499A93 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA8E277BECC000499A93 /* MainViewController.swift */; };
-		A8D7CA91277C1C8200499A93 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */; };
 		A8D7CA93277D0E2B00499A93 /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,9 +99,6 @@
 		A8CA564427729918006BDF61 /* Smoker_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Smoker_R.csv; sourceTree = "<group>"; };
 		A8CA56462772991E006BDF61 /* Titanic_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Titanic_R.csv; sourceTree = "<group>"; };
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
-		A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		A8D7CA8E277BECC000499A93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,18 +172,15 @@
 			isa = PBXGroup;
 			children = (
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
+				A808897F277EF1C600B8C2FE /* HomeViewController.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
-				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
-				A808897F277EF1C600B8C2FE /* HomeViewController.swift */,
 				A8088978277EEF8500B8C2FE /* HomeTiles.swift */,
 				A808897A277EF0B100B8C2FE /* HomeTileList.swift */,
-				A8D7CA8E277BECC000499A93 /* MainViewController.swift */,
-				A8D7CA90277C1C8200499A93 /* HeaderCollectionReusableView.swift */,
-				A8D7CA8A277BD49F00499A93 /* CustomCollectionViewCell.swift */,
+				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
 				A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
@@ -502,13 +493,10 @@
 				A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
-				A8D7CA8B277BD49F00499A93 /* CustomCollectionViewCell.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
 				A8BD6DFD277BA30D0048912C /* BarGraphViewController.swift in Sources */,
-				A8D7CA8F277BECC000499A93 /* MainViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
-				A8D7CA91277C1C8200499A93 /* HeaderCollectionReusableView.swift in Sources */,
 				A8D7CA93277D0E2B00499A93 /* LineChartViewController.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,

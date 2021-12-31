@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     var itemList = [tileList]()
     //let d: DataSet = DataSet()
+    var cellSpacing: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,15 @@ class HomeViewController: UIViewController {
         
         let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem3)
+        
+//        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+//        myCollectionView?.setCollectionViewLayout(collectionViewFlowLayout, animated: true)
+//        collectionViewFlowLayout.scrollDirection = .vertical
+//        collectionViewFlowLayout.sectionInset = UIEdgeInsets(top : 0, left: cellSpacing, bottom: 0, right: cellSpacing)
+//        collectionViewFlowLayout.minimumInteritemSpacing = cellSpacing
+//        collectionViewFlowLayout.minimumLineSpacing = cellSpacing
     }
-
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -41,7 +49,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.dataSetName.text = itemList[indexPath.row].dataSetName
         cell.creationDate.text = itemList[indexPath.row].creationDate
         cell.numitems.text = itemList[indexPath.row].numItems
-        cell.backgroundColor = .secondarySystemFill
+        
         return cell
     }
     
@@ -52,5 +60,4 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         return CGSize(width: width, height:height)
     }
-    
 }

@@ -11,11 +11,29 @@ import Foundation
 class Dataset {
     var data: [[Double]] = [[]]
     var keys: [String] = []
-    var name: String
+    var name: String = "Created: "
+    var creationDate: String
+    
+    //creates a new dataset
+    init() {
+        name = "New DataSet"
+        // get the current date and time
+        let currentDateTime = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        creationDate = "Created: " + formatter.string(from: currentDateTime)
+    }
     
     //creates a new dataset and assumes the first row contains the keys
     init(appendable: [[String]], name: String) {
         self.name = name
+        let currentDateTime = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        creationDate = "Created: " + formatter.string(from: currentDateTime)
+        
         keys = appendable[0]
         var a = appendable
         a.remove(at: 0)
@@ -74,10 +92,8 @@ class Dataset {
     //returns the number of items in the dataset
     func getTotalNumItems() -> Int {
         var count = 0
-        for _ in 0...data.count-1 {
-            for _ in 0...data[0].count-1 {
-                count+=1
-            }
+        for i in 0...data.count-1 {
+            count+=data[i].count
         }
         return count
     }

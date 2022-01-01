@@ -141,13 +141,7 @@
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-NR-B5J">
                                                             <rect key="frame" x="0.0" y="0.0" width="170" height="105"/>
-                                                            <imageReference key="image" image="questionmark.folder" catalog="system" symbolScale="small" renderingMode="hierarchical">
-                                                                <hierarchicalColors>
-                                                                    <color systemColor="labelColor"/>
-                                                                    <color systemColor="secondaryLabelColor"/>
-                                                                    <color systemColor="tertiaryLabelColor"/>
-                                                                </hierarchicalColors>
-                                                            </imageReference>
+                                                            <imageReference key="image" image="questionmark.folder" catalog="system" symbolScale="small"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty4-Wk-ZtE">
                                                             <rect key="frame" x="8" y="208" width="154" height="31"/>
@@ -242,7 +236,7 @@
         <!--Data View-->
         <scene sceneID="jZH-11-btR">
             <objects>
-                <navigationController id="Uct-Nu-0nS" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DataSetView" id="Uct-Nu-0nS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Data View" image="tablecells.badge.ellipsis" catalog="system" id="P35-En-2ZG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ghv-2m-KHH">
@@ -383,7 +377,7 @@
         <scene sceneID="KxC-qA-Vn3">
             <objects>
                 <viewController title="Add DataSet" id="GmQ-AO-Y82" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="1zC-0M-cyc">
+                    <view key="view" contentMode="scaleToFill" id="1zC-0M-cyc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -399,10 +393,6 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTo-8F-KgN">
                                 <rect key="frame" x="87.5" y="235" width="239" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="239" id="68C-ui-glJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="buP-KA-YDa"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="camera.viewfinder" catalog="system">
                                     <attributedString key="attributedTitle">
@@ -417,12 +407,8 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="Nht-mA-5GH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-zj-XNB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ce3-zj-XNB">
                                 <rect key="frame" x="87.5" y="303" width="239" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="239" id="SMw-Z5-Z6v"/>
-                                    <constraint firstAttribute="height" constant="40" id="nIf-s5-f00"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="doc.text" catalog="system">
                                     <attributedString key="attributedTitle">
@@ -434,12 +420,8 @@
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKr-3H-TBb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKr-3H-TBb">
                                 <rect key="frame" x="87.5" y="368" width="239" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ngT-rY-6gM"/>
-                                    <constraint firstAttribute="width" constant="239" id="yv4-I9-RuL"/>
-                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="keyboard" catalog="system">
                                     <attributedString key="attributedTitle">
@@ -461,18 +443,20 @@
                         <viewLayoutGuide key="safeArea" id="U11-Si-9xm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="3Fm-6f-Zhp"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="leading" secondItem="ce3-zj-XNB" secondAttribute="leading" id="1f0-hz-KVh"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="3el-8d-fWy"/>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="top" secondItem="jCE-tf-bY5" secondAttribute="bottom" constant="46" id="5qL-XF-UtE"/>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="leading" secondItem="U11-Si-9xm" secondAttribute="leading" constant="87.5" id="6NM-Tn-LRl"/>
-                            <constraint firstItem="dKr-3H-TBb" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="Axv-3L-UWZ"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="trailing" secondItem="ce3-zj-XNB" secondAttribute="trailing" id="6zD-oA-4lv"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="mA3-4i-7gI" secondAttribute="centerX" id="FD2-uL-RlR"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="top" secondItem="jCE-tf-bY5" secondAttribute="bottom" constant="46" id="Fvg-Tm-nat"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="top" secondItem="mA3-4i-7gI" secondAttribute="bottom" constant="44" id="GRn-oW-zRy"/>
-                            <constraint firstItem="ce3-zj-XNB" firstAttribute="top" secondItem="gTo-8F-KgN" secondAttribute="bottom" constant="28" id="Hdh-Mh-p8f"/>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="mA3-4i-7gI" secondAttribute="centerX" id="SRv-00-jYs"/>
+                            <constraint firstItem="ce3-zj-XNB" firstAttribute="top" secondItem="gTo-8F-KgN" secondAttribute="bottom" constant="28" id="Nel-wY-BV7"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="leading" secondItem="U11-Si-9xm" secondAttribute="leading" constant="87.5" id="Ud8-tB-yeh"/>
                             <constraint firstItem="mA3-4i-7gI" firstAttribute="top" secondItem="U11-Si-9xm" secondAttribute="top" constant="69" id="a7a-ed-N7N"/>
-                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="id6-sh-8nq"/>
-                            <constraint firstItem="dKr-3H-TBb" firstAttribute="top" secondItem="ce3-zj-XNB" secondAttribute="bottom" constant="25" id="myg-Yr-P2h"/>
                             <constraint firstItem="jCE-tf-bY5" firstAttribute="leading" secondItem="U11-Si-9xm" secondAttribute="leading" constant="79" id="oNH-GE-DVd"/>
+                            <constraint firstItem="gTo-8F-KgN" firstAttribute="centerX" secondItem="1zC-0M-cyc" secondAttribute="centerX" id="tY3-8a-OXE"/>
+                            <constraint firstItem="dKr-3H-TBb" firstAttribute="top" secondItem="ce3-zj-XNB" secondAttribute="bottom" constant="25" id="uaZ-Bd-SRl"/>
+                            <constraint firstItem="ce3-zj-XNB" firstAttribute="leading" secondItem="dKr-3H-TBb" secondAttribute="leading" id="v83-AU-Qt7"/>
+                            <constraint firstItem="ce3-zj-XNB" firstAttribute="trailing" secondItem="dKr-3H-TBb" secondAttribute="trailing" id="w2x-gw-E7s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IxC-T6-LCD"/>
@@ -485,12 +469,19 @@
         <scene sceneID="sTK-Sa-FKm">
             <objects>
                 <viewController id="uoL-c0-cBG" customClass="DataSetViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8iW-q0-Y4O">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="DataSetView" id="8iW-q0-Y4O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created:  12/30/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-th-Yf8">
                                 <rect key="frame" x="20" y="168" width="160" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30 Items in DataSet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii3-45-oce">
+                                <rect key="frame" x="20" y="200" width="173" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -518,6 +509,7 @@
                     <connections>
                         <outlet property="creationDate" destination="zbc-th-Yf8" id="mUz-dh-fYk"/>
                         <outlet property="datasetName" destination="R1W-VU-QMj" id="E5J-8h-BlP"/>
+                        <outlet property="numitems" destination="Ii3-45-oce" id="BlG-N5-gQi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -798,14 +790,8 @@
         <image name="questionmark.folder" catalog="system" width="128" height="97"/>
         <image name="rectangle.grid.2x2" catalog="system" width="128" height="99"/>
         <image name="tablecells.badge.ellipsis" catalog="system" width="128" height="92"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -818,9 +804,6 @@
         </systemColor>
         <systemColor name="systemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

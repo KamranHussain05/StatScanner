@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var myCollectionView: UICollectionView!
     
     var itemList = [tileList]()
-    //let d: DataSet = DataSet()
+    let d: Dataset = Dataset()
     var cellSpacing: CGFloat = 10
     
     var sproduct:tileList!=nil
@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         
         
 
-        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
+        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: d.getName(), creationDate: d.creationDate, numItems: String(d.getTotalNumItems()) + " Items in DataSet")
         itemList.append(elem1)
         
         let elem2 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
@@ -46,9 +46,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.dataSetName.text = itemList[indexPath.row].dataSetName
         cell.creationDate.text = itemList[indexPath.row].creationDate
         cell.numitems.text = itemList[indexPath.row].numItems
+        cell.openDataset.tag = indexPath.row
+        cell.openDataset.addTarget(self, action: #selector(openDataSet), for: .touchUpInside)
         
         return cell
     }
+    
+    @objc func openDataSet(sender:UIButton) {
+        print("Creating new DataSet")
+        let indexpath1 = IndexPath(row: sender.tag, section: 0)
+        let home = self.storyboard?.instantiateViewController(withIdentifier: "DataSetView") as! DataSetViewController
+        home.sproduct = itemList[indexpath1.row]
+        self.navigationController?.pushViewController(home, animated: true)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSpacing: CGFloat = 10

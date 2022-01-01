@@ -30,6 +30,7 @@
 		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
+		A8D4766B277FF2A200AA6CAA /* DataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4766A277FF2A200AA6CAA /* DataSetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		A8CA564427729918006BDF61 /* Smoker_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Smoker_R.csv; sourceTree = "<group>"; };
 		A8CA56462772991E006BDF61 /* Titanic_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Titanic_R.csv; sourceTree = "<group>"; };
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
+		A8D4766A277FF2A200AA6CAA /* DataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				A85092BD27497F6F00392240 /* ViewController.swift */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
+				A8D4766A277FF2A200AA6CAA /* DataSetViewController.swift */,
 				A8088985277EFD7300B8C2FE /* MyCollectionViewCell.swift */,
 				A8088987277EFE2000B8C2FE /* itemList.swift */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
@@ -324,6 +327,7 @@
 			files = (
 				A8088988277EFE2000B8C2FE /* itemList.swift in Sources */,
 				A85092BE27497F6F00392240 /* ViewController.swift in Sources */,
+				A8D4766B277FF2A200AA6CAA /* DataSetViewController.swift in Sources */,
 				A8088986277EFD7300B8C2FE /* MyCollectionViewCell.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,

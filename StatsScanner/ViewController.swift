@@ -43,8 +43,18 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         cell.myImageView.layer.cornerRadius = 20
         cell.backgroundColor = .secondarySystemFill
+        
+        cell.launchDataset.tag = indexPath.row
+        cell.launchDataset.addTarget(self, action: #selector(launchDataset), for: .touchUpInside)
+        
         return cell
     }
     
+    @objc func launchDataset(sender:UIButton) {
+        let indexpath1 = IndexPath(row:sender.tag, section: 0)
+        let home = self.storyboard?.instantiateViewController(withIdentifier: "datasetview") as! DataSetViewController
+        home.sproduct = list[indexpath1.row]
+        self.tabBarController?.navigationController?.pushViewController(home, animated: true)
+    }
     
 }

@@ -188,7 +188,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU AGPL v3.0 License. See `LICENSE.txt` for more information.
+Distributed under the copyright. Contributions also fall under copyright.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

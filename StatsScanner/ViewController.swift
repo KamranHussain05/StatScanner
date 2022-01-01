@@ -55,6 +55,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let indexpath1 = IndexPath(row: sender.tag, section: 0)
         let home = self.storyboard?.instantiateViewController(withIdentifier: "DataSetView") as! DataSetViewController
         home.sproduct = itemList[indexpath1.row]
+        print(itemList[indexpath1.row])
         self.tabBarController?.selectedIndex = 1
     }
     

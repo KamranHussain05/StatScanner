@@ -11,18 +11,18 @@ import Foundation
 class Dataset {
     var data: [[Double]] = [[]]
     var keys: [String] = []
-    var name: String = "Created: "
+    var name: String
     var creationDate: String
     
     //creates a new dataset
     init() {
-        name = "New DataSet"
+        name = "Unnamed DataSet"
         // get the current date and time
         let currentDateTime = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateStyle = .short
-        creationDate = "Created: " + formatter.string(from: currentDateTime)
+        creationDate = formatter.string(from: currentDateTime)
     }
     
     //creates a new dataset and assumes the first row contains the keys
@@ -32,7 +32,7 @@ class Dataset {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateStyle = .short
-        creationDate = "Created: " + formatter.string(from: currentDateTime)
+        creationDate = formatter.string(from: currentDateTime)
         
         keys = appendable[0]
         var a = appendable

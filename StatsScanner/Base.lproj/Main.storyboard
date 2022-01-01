@@ -359,7 +359,7 @@
         <!--Add DataSet-->
         <scene sceneID="KxC-qA-Vn3">
             <objects>
-                <viewController title="Add DataSet" id="GmQ-AO-Y82" sceneMemberID="viewController">
+                <viewController title="Add DataSet" id="GmQ-AO-Y82" customClass="NewMenuViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1zC-0M-cyc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,6 +402,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="importCSVWith_sender:" destination="GmQ-AO-Y82" eventType="touchUpInside" id="ea1-2b-MQX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKr-3H-TBb">
                                 <rect key="frame" x="87.5" y="368" width="239" height="40"/>
@@ -443,6 +446,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IxC-T6-LCD"/>
+                    <connections>
+                        <outlet property="importCSV" destination="ce3-zj-XNB" id="MDr-eM-fnT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edd-bJ-GEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     var itemList = [tileList]()
     let d: Dataset = Dataset()
+    var indexpath1: IndexPath!
     var cellSpacing: CGFloat = 10
     
     var sproduct:tileList!=nil
@@ -52,11 +53,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     @objc func openDataSet(sender:UIButton) {
         print("Opening DataSet")
-        let indexpath1 = IndexPath(row: sender.tag, section: 0)
-        let home = self.storyboard?.instantiateViewController(withIdentifier: "DataSetView") as! DataSetViewController
-        home.sproduct = itemList[indexpath1.row]
-        print(itemList[indexpath1.row])
+        indexpath1 = IndexPath(row: sender.tag, section: 0)
         self.tabBarController?.selectedIndex = 1
+    }
+    
+    func getData() -> tileList {
+        return itemList[indexpath1.row]
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

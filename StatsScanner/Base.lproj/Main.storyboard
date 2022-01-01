@@ -95,7 +95,7 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
                                         <connections>
-                                            <segue destination="GmQ-AO-Y82" kind="show" id="tA3-ib-6L0"/>
+                                            <segue destination="GmQ-AO-Y82" kind="show" id="hO4-Px-SHu"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatsScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
@@ -217,6 +217,7 @@
         <scene sceneID="9dh-AC-QbQ">
             <objects>
                 <tabBarController id="LhV-Cx-Ohg" sceneMemberID="viewController">
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4lx-P5-Dqp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -224,7 +225,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="kjN-nm-ZNR" kind="relationship" relationship="viewControllers" id="X93-g2-DUG"/>
-                        <segue destination="Uct-Nu-0nS" kind="relationship" relationship="viewControllers" id="esD-27-Ifa"/>
+                        <segue destination="uoL-c0-cBG" kind="relationship" relationship="viewControllers" id="0h2-bC-m6q"/>
                         <segue destination="ZPM-Pj-gqE" kind="relationship" relationship="viewControllers" id="PDb-Fg-IUf"/>
                         <segue destination="L5T-SC-KFO" kind="relationship" relationship="viewControllers" id="Mb2-ns-nqB"/>
                     </connections>
@@ -232,24 +233,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9t-D0-sh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1165" y="-1428"/>
-        </scene>
-        <!--Data View-->
-        <scene sceneID="jZH-11-btR">
-            <objects>
-                <navigationController storyboardIdentifier="DataSetView" id="Uct-Nu-0nS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Data View" image="tablecells.badge.ellipsis" catalog="system" id="P35-En-2ZG"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ghv-2m-KHH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="uoL-c0-cBG" kind="relationship" relationship="rootViewController" id="dwS-kB-vet"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ycn-2w-6Xy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1688" y="-664"/>
         </scene>
         <!--Graph-->
         <scene sceneID="kK9-KG-baU">
@@ -465,10 +448,10 @@
             </objects>
             <point key="canvasLocation" x="-2733" y="50"/>
         </scene>
-        <!--DataSet Details-->
+        <!--Item-->
         <scene sceneID="sTK-Sa-FKm">
             <objects>
-                <viewController id="uoL-c0-cBG" customClass="DataSetViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DataSetView" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uoL-c0-cBG" customClass="DataSetViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="DataSetView" id="8iW-q0-Y4O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,11 +484,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DataSet Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ5-p0-B3q">
+                                <rect key="frame" x="20" y="92" width="232" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eSA-GZ-r0k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="DataSet Details" id="kIH-Vx-VDh"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="tablecells.badge.ellipsis" catalog="system" id="z6U-UU-iH8"/>
                     <connections>
                         <outlet property="creationDate" destination="zbc-th-Yf8" id="mUz-dh-fYk"/>
                         <outlet property="datasetName" destination="R1W-VU-QMj" id="E5J-8h-BlP"/>
@@ -514,7 +504,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1687" y="50"/>
+            <point key="canvasLocation" x="-1712" y="-664"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3kW-Um-gKt">

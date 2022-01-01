@@ -19,8 +19,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
         let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: d.getName(), creationDate: d.creationDate, numItems: String(d.getTotalNumItems()) + " Items in DataSet")
         itemList.append(elem1)
@@ -53,13 +51,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     @objc func openDataSet(sender:UIButton) {
-        print("Creating new DataSet")
+        print("Opening DataSet")
         let indexpath1 = IndexPath(row: sender.tag, section: 0)
         let home = self.storyboard?.instantiateViewController(withIdentifier: "DataSetView") as! DataSetViewController
         home.sproduct = itemList[indexpath1.row]
-        self.navigationController?.pushViewController(home, animated: true)
+        self.tabBarController?.selectedIndex = 1
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSpacing: CGFloat = 10

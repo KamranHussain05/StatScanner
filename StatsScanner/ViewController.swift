@@ -30,7 +30,6 @@ class HomeViewController: UIViewController {
         let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem3)
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {

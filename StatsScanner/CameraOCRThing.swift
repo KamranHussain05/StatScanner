@@ -35,7 +35,29 @@ class CameraOCRThing: UIViewController {
     func processOCR() {
         guard let cgImage = imgUsing.cgImage else { return }
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
-        //let request = VNRecognizeTextRequest(completionHandler: yes)
+        let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
+        
+        do {
+            try requestHandler.perform([request])
+        } catch {
+            print("Unable to process OCR request. Hmn. \(error)")
+        }
+    }
+    
+    func recognizeTextHandler(request: VNRequest, error: Error?) {
+        guard let observations =
+                request.results as? [VNRecognizedTextObservation] else {
+            return
+        }
+        let recognizedStrings = observations.compactMap { observation in
+            return observation.topCandidates(1).first?.string
+        }
+        
+        processResults(strArray: recognizedStrings)
+    }
+    
+    func processResults(strArray: [String]) {
+        print(str)
     }
 }
 

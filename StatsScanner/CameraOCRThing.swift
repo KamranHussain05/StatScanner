@@ -57,7 +57,7 @@ class CameraOCRThing: UIViewController {
     }
     
     func processResults(strArray: [String]) {
-        print(str)
+        print(strArray)
     }
 }
 

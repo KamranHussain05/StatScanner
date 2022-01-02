@@ -11,6 +11,7 @@ import UniformTypeIdentifiers
 class NewMenuViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var importCSV: UIButton!
+    let db = DataBridge()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,12 @@ class NewMenuViewController: UIViewController, UIDocumentPickerDelegate {
     @IBAction func importCSV(_sender: UIButton){
         let supportedFiles: [UTType] = [UTType.data]
         
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
+        
+        controller.delegate = self
+        controller.allowsMultipleSelection = false
+        
+        present(controller, animated: true, completion: nil)
         
     }
 

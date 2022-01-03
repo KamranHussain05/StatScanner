@@ -26,7 +26,7 @@ class Dataset {
     }
     
     //creates a new dataset and assumes the first row contains the keys
-    init(appendable: [[String]], name: String) {
+    init(name: String, appendable: [[String]]) {
         self.name = name
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -38,6 +38,16 @@ class Dataset {
         var a = appendable
         a.remove(at: 0)
         self.data = cleanData(array: a)
+    }
+    
+    //creates a new dataset object with the specified name
+    init(name: String) {
+        self.name = name
+        let currentDateTime = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        creationDate = formatter.string(from: currentDateTime)
     }
     
     //returns the given name of the dataset

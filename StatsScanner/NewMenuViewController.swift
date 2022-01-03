@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 
 class NewMenuViewController: UIViewController, UIDocumentPickerDelegate {
 
+    @IBOutlet var name: UITextField!
     @IBOutlet var importCSV: UIButton!
     let db = DataBridge()
     
@@ -29,5 +30,10 @@ class NewMenuViewController: UIViewController, UIDocumentPickerDelegate {
         
         present(controller, animated: true, completion: nil)
     }
+    
+    @IBAction func create(_ sender: UIButton) {
+        let d = Dataset(name: self.name.text!)
+    }
+    
 
 }

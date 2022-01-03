@@ -76,10 +76,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         present(controller, animated: true, completion: nil)
     }
     
+    //code crashes here, "Failed to set FileProtection Attributes on staging URL"
     private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
+        print("inside document picker function")
         let arr = db.readCSV(inputFile: url)
         print("copying csv to app docs")
-        let filename = "newdoc_" + getDate()
+        let filename = "newdoc_" + getDate() + ".csv"
         db.writeCSV(fileName: filename, data: arr)
     }
     

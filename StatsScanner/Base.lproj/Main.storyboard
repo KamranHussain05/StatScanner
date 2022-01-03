@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733" y="180"/>
+            <point key="canvasLocation" x="-2733" y="50"/>
         </scene>
         <!--Home-->
         <scene sceneID="at7-J2-gGA">
@@ -88,13 +88,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatsScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
-                                        <rect key="frame" x="20" y="74" width="324" height="39"/>
+                                        <rect key="frame" x="20" y="74" width="324" height="40"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDI-T2-Ujr">
-                                        <rect key="frame" x="0.0" y="121" width="414" height="692"/>
+                                        <rect key="frame" x="0.0" y="122" width="414" height="691"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUI-D9-ujO">
                                             <size key="itemSize" width="170" height="250"/>
@@ -169,11 +169,11 @@
                                             <outlet property="delegate" destination="kjN-nm-ZNR" id="zhE-cU-1dg"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
                                         <rect key="frame" x="343" y="74" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="0HC-P8-iB6"/>
-                                            <constraint firstAttribute="height" constant="40" id="zcJ-jg-4UQ"/>
+                                            <constraint firstAttribute="height" constant="40" id="BFt-Zy-8Md"/>
+                                            <constraint firstAttribute="width" constant="40" id="Qly-Nh-imj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal">
@@ -193,6 +193,10 @@
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="leading" secondItem="U12-ad-HSg" secondAttribute="leading" constant="-20" id="4Mt-Dg-sLY"/>
                                     <constraint firstItem="U12-ad-HSg" firstAttribute="leading" secondItem="5pe-kv-U1c" secondAttribute="leading" constant="20" id="Lp2-La-s15"/>
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="top" secondItem="U12-ad-HSg" secondAttribute="bottom" constant="8" symbolic="YES" id="PzZ-cP-I3Y"/>
+                                    <constraint firstItem="F2f-ho-Wv8" firstAttribute="firstBaseline" secondItem="U12-ad-HSg" secondAttribute="firstBaseline" id="RAR-4U-0ZN"/>
+                                    <constraint firstItem="F2f-ho-Wv8" firstAttribute="centerY" secondItem="U12-ad-HSg" secondAttribute="centerY" id="UIM-bp-kkR"/>
+                                    <constraint firstItem="F2f-ho-Wv8" firstAttribute="baseline" secondItem="U12-ad-HSg" secondAttribute="firstBaseline" id="biG-es-JZA"/>
+                                    <constraint firstItem="F2f-ho-Wv8" firstAttribute="leading" secondItem="ogi-92-6oJ" secondAttribute="leading" constant="343" id="jB5-eZ-HOs"/>
                                     <constraint firstItem="U12-ad-HSg" firstAttribute="centerX" secondItem="5pe-kv-U1c" secondAttribute="centerX" constant="-25" id="vg5-d1-bxr"/>
                                     <constraint firstItem="U12-ad-HSg" firstAttribute="centerX" secondItem="5pe-kv-U1c" secondAttribute="centerX" constant="-25" id="xby-A8-Azg"/>
                                 </constraints>

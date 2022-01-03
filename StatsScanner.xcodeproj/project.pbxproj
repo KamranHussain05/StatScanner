@@ -137,6 +137,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AF001582782BE54001BF87E /* GUI Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A808897F277EF1C600B8C2FE /* HomeViewController.swift */,
+				A8088978277EEF8500B8C2FE /* HomeTile.swift */,
+				A808897A277EF0B100B8C2FE /* HomeTileList.swift */,
+				A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */,
+			);
+			path = "GUI Controllers";
+			sourceTree = "<group>";
+		};
+		0AF001592782BE61001BF87E /* Backend Processing */ = {
+			isa = PBXGroup;
+			children = (
+				A8CA563127716205006BDF61 /* Dataset.swift */,
+				A8C941A127811BA300311BAF /* DataSetObjectManager.swift */,
+				A8BD6DF62779AE030048912C /* DataBridge.swift */,
+				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
+			);
+			path = "Backend Processing";
+			sourceTree = "<group>";
+		};
+		0AF0015A2782BEA4001BF87E /* Graph Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
+				A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */,
+			);
+			path = "Graph Controllers";
+			sourceTree = "<group>";
+		};
 		1F291427D55372448DC04E64 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,20 +207,13 @@
 			isa = PBXGroup;
 			children = (
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
-				A808897F277EF1C600B8C2FE /* HomeViewController.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
-				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
-				A8CA563127716205006BDF61 /* Dataset.swift */,
-				A8BD6DF62779AE030048912C /* DataBridge.swift */,
+				0AF001582782BE54001BF87E /* GUI Controllers */,
+				0AF001592782BE61001BF87E /* Backend Processing */,
+				0AF0015A2782BEA4001BF87E /* Graph Controllers */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
-				A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */,
-				A8C941A127811BA300311BAF /* DataSetObjectManager.swift */,
-				A8088978277EEF8500B8C2FE /* HomeTile.swift */,
-				A808897A277EF0B100B8C2FE /* HomeTileList.swift */,
-				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
-				A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */,
-				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
+				A85092C527497F7A00392240 /* Assets.xcassets */,
 				A85092CA27497F7A00392240 /* Info.plist */,
 				A85092C227497F7000392240 /* StatsScanner.xcdatamodeld */,
 				A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */,

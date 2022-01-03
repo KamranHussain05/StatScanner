@@ -16,7 +16,13 @@ class HomeViewController: UIViewController {
     var indexpath1: IndexPath!
     var cellSpacing: CGFloat = 10
     
-    var sproduct:tileList!=nil
+    var sproduct:tileList! = nil
+    
+    let alert = UIAlertController(
+        title: nil,
+        message: nil,
+        preferredStyle: .actionSheet
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,20 @@ class HomeViewController: UIViewController {
         
         let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem3)
+        
+        alert.addAction(
+            .init(title: "Scan New Image", style: .default) { _ in
+                <handler>
+            }
+        )
+
+        alert.addAction(
+            .init(title: "Import Image", style: .default) { _ in
+                <handler>
+            }
+        )
+
+        present(alert, animated: true)
     }
 }
 

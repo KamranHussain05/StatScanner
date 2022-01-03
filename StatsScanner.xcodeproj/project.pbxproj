@@ -11,7 +11,7 @@
 		80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
 		A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897A277EF0B100B8C2FE /* HomeTileList.swift */; };
-		A8088980277EF1C600B8C2FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897F277EF1C600B8C2FE /* ViewController.swift */; };
+		A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897F277EF1C600B8C2FE /* HomeViewController.swift */; };
 		A8088981277EF9DE00B8C2FE /* Pods_StatsScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */; };
 		A8088984277EFA2C00B8C2FE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; };
 		A83F4908277F9A1300C8FB35 /* DataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */; };
@@ -71,7 +71,7 @@
 		A1BCA46C3BD6307DD59B2BA8 /* Pods-StatsScanner-StatsScannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8088978277EEF8500B8C2FE /* HomeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTile.swift; sourceTree = "<group>"; };
 		A808897A277EF0B100B8C2FE /* HomeTileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTileList.swift; sourceTree = "<group>"; };
-		A808897F277EF1C600B8C2FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A808897F277EF1C600B8C2FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSetViewController.swift; sourceTree = "<group>"; };
 		A85092B627497F6F00392240 /* StatsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092B927497F6F00392240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
-				A808897F277EF1C600B8C2FE /* ViewController.swift */,
+				A808897F277EF1C600B8C2FE /* HomeViewController.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
@@ -503,7 +503,7 @@
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8C941A427811C3B00311BAF /* NewMenuViewController.swift in Sources */,
-				A8088980277EF1C600B8C2FE /* ViewController.swift in Sources */,
+				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
 				A8BD6DFD277BA30D0048912C /* BarGraphViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,

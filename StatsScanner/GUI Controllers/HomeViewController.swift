@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
+    @IBOutlet var entireView: UIView!
     
     var itemList = [tileList]()
     let d: Dataset = Dataset()
@@ -59,7 +60,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     // when plus button is pressed
     @IBAction func didTapNewDatasetButton() {
-        present(newDatasetMenu, animated: true, completion: nil)
+        newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
+        self.present(newDatasetMenu, animated: true, completion: nil)
     }
     
     let db = DataBridge()

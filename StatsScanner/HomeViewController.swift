@@ -2,14 +2,16 @@
 //  HomeViewController.swift
 //  StatsScanner
 //
-//  Created by Kamran on 12/31/21.
+//  Created by Kalb on 12/31/21.
 //
 
 import UIKit
+import UniformTypeIdentifiers
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
+    @IBOutlet var newDatasetButton: UIButton!
     
     var itemList = [tileList]()
     let d: Dataset = Dataset()
@@ -18,15 +20,14 @@ class HomeViewController: UIViewController {
     
     var sproduct:tileList! = nil
     
-    let alert = UIAlertController(
-        title: nil,
-        message: nil,
+    let newDatasetMenu = UIAlertController(title: "New Dataset", message: "Select an option on how you'd like to import your data",
         preferredStyle: .actionSheet
     )
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // for dataset tiles
         let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: d.getName(), creationDate: d.creationDate, numItems: String(d.getTotalNumItems()) + " Items in DataSet")
         itemList.append(elem1)
         
@@ -36,19 +37,36 @@ class HomeViewController: UIViewController {
         let elem3 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem3)
         
-        alert.addAction(
-            .init(title: "Scan New Image", style: .default) { _ in
-                <handler>
-            }
-        )
+        // for pop up menu
+        newDatasetMenu.addAction(
+            UIAlertAction(title: "Take image", style: .destructive) { (action) in
+                print("cheese")
+            })
 
-        alert.addAction(
-            .init(title: "Import Image", style: .default) { _ in
-                <handler>
-            }
+        newDatasetMenu.addAction(
+            .init(title: "Import image", style: .default) {_ in }
         )
-
-        present(alert, animated: true)
+        
+        newDatasetMenu.addAction(
+            .init(title: "Import CSV", style: .default) {_ in }
+        )
+    }
+    
+    // when plus button is pressed
+    @IBAction func didTapNewDatasetButton() {
+        present(newDatasetMenu, animated: true, completion: nil)
+    }
+    
+    let db = DataBridge()
+    func importCSV(_sender: UIButton){
+        let supportedFiles: [UTType] = [UTType.data]
+        
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
+        
+        controller.delegate = self
+        controller.allowsMultipleSelection = false
+        
+        present(controller, animated: true, completion: nil)
     }
 }
 

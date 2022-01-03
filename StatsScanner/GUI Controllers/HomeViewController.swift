@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
+    @IBOutlet var entireView: UIView!
     
     var itemList = [tileList]()
     let d: Dataset = Dataset()
@@ -41,24 +42,30 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take image", style: .destructive) { (action) in
                 print("cheese")
-            })
+            }
+        )
 
         newDatasetMenu.addAction(
-            .init(title: "Import image", style: .default) {_ in }
+            UIAlertAction(title: "Import image", style: .destructive) { (action) in
+                print("beans")
+            }
         )
         
         newDatasetMenu.addAction(
-            .init(title: "Import CSV", style: .default) {_ in }
+            UIAlertAction(title: "Import CSV", style: .destructive) { (action) in
+                self.importCSV()
+            }
         )
     }
     
     // when plus button is pressed
     @IBAction func didTapNewDatasetButton() {
-        present(newDatasetMenu, animated: true, completion: nil)
+        newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
+        self.present(newDatasetMenu, animated: true, completion: nil)
     }
     
     let db = DataBridge()
-    func importCSV(_sender: UIButton){
+    func importCSV() {
         let supportedFiles: [UTType] = [UTType.data]
         
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)

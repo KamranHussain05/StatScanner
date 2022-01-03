@@ -75,6 +75,21 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         
         present(controller, animated: true, completion: nil)
     }
+    
+    private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
+        let arr = db.readCSV(inputFile: url)
+        print("copying csv to app docs")
+        let filename = "newdoc_" + getDate()
+        db.writeCSV(fileName: filename, data: arr)
+    }
+    
+    private func getDate() -> String {
+        let currentDateTime = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        return formatter.string(from: currentDateTime)
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {

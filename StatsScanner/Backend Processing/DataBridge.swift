@@ -32,7 +32,7 @@ class DataBridge {
     }
     
 
-    func readCSV(inputFile: URL, lineSeparator: String, valSeparator: String) -> [[String]] {
+    func readCSV(inputFile: URL, lineSeparator: String = "/n", valSeparator: String = ",") -> [[String]] {
         //Get Data
         print("reading csv")
         var result: [[String]] = []

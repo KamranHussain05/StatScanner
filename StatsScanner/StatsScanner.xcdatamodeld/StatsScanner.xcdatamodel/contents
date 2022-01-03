@@ -2,11 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DataSetProject" representedClassName="DataSetProject" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="creationdate" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="datasetobject" attributeType="Transformable" customClassName="Dataset"/>
         <attribute name="name" attributeType="String" defaultValueString="Unnamed Dataset"/>
         <attribute name="numitems" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="DataSetProject" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="DataSetProject" positionX="-63" positionY="-18" width="128" height="74"/>
     </elements>
 </model>

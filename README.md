@@ -1,12 +1,4 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
 
 
 <!-- PROJECT SHIELDS -->
@@ -89,17 +81,17 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 ## Features
 
 * Data Visualization
-  * Dot Plot
-  * Bar Graphd
-  * Cloud Plot
-  * Gradient Descent
-  * Interactive Pie Chart
+  * Dot Plots
+  * Bar Graphs
+  * Cloud Plots
+  * Gradient Descents
+  * Interactive Pie Charts
 * Data Trend Prediction
   * Next Nth Values
   * Line of Best Fit
   * Eigen Values
   * Eigen Vectors
-* Basic Statistics
+* Statistics Calculation
   * Average, Median, Mode, Range
   * Standard Deviation
   * Standard Error

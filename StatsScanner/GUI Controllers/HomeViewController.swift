@@ -41,14 +41,19 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take image", style: .destructive) { (action) in
                 print("cheese")
-            })
+            }
+        )
 
         newDatasetMenu.addAction(
-            .init(title: "Import image", style: .default) {_ in }
+            UIAlertAction(title: "Import image", style: .destructive) { (action) in
+                print("beans")
+            }
         )
         
         newDatasetMenu.addAction(
-            .init(title: "Import CSV", style: .default) {_ in }
+            UIAlertAction(title: "Import CSV", style: .destructive) { (action) in
+                self.importCSV()
+            }
         )
     }
     
@@ -58,7 +63,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     let db = DataBridge()
-    func importCSV(_sender: UIButton){
+    func importCSV() {
         let supportedFiles: [UTType] = [UTType.data]
         
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)

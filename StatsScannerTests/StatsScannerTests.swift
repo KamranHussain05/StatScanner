@@ -11,7 +11,7 @@ import CoreData
 
 class StatsScannerTests: XCTestCase {
     
-    let d = DataSet()
+    let d = Dataset()
     let b = DataBridge()
     
     

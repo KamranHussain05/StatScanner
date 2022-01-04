@@ -40,13 +40,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         
         // for pop up menu
         newDatasetMenu.addAction(
-            UIAlertAction(title: "Take image", style: .destructive) { (action) in
+            UIAlertAction(title: "Take Image", style: .destructive) { (action) in
                 print("cheese")
             }
         )
 
         newDatasetMenu.addAction(
-            UIAlertAction(title: "Import image", style: .destructive) { (action) in
+            UIAlertAction(title: "Import Image", style: .destructive) { (action) in
                 print("beans")
             }
         )

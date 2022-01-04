@@ -66,14 +66,17 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     let db = DataBridge()
     func importCSV() {
-        let supportedFiles: [UTType] = [UTType.data]
-        
-        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
-        
-        controller.delegate = self
-        controller.allowsMultipleSelection = false
-        
-        present(controller, animated: true, completion: nil)
+        if #available(iOS 14.0, *) {
+            let supportedFiles: [UTType] = [UTType.data]
+            let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
+            
+            controller.delegate = self
+            controller.allowsMultipleSelection = false
+            
+            present(controller, animated: true, completion: nil)
+        } else {
+            print("iOS 13 and below detected")
+        }
     }
     
     //code crashes here, "Failed to set FileProtection Attributes on staging URL"

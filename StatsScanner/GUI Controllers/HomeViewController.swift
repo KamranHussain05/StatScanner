@@ -12,7 +12,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
-    @IBOutlet var entireView: UIView!
+    //@IBOutlet var entireView: UIView!
     
     var itemList = [tileList]()
     let d: Dataset = Dataset()
@@ -40,22 +40,27 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         
         // for pop up menu
         newDatasetMenu.addAction(
-            UIAlertAction(title: "Take Image", style: .destructive) { (action) in
+            UIAlertAction(title: "Take Image", style: .default) { (action) in
                 print("cheese")
             }
         )
 
         newDatasetMenu.addAction(
-            UIAlertAction(title: "Import Image", style: .destructive) { (action) in
+            UIAlertAction(title: "Import Image", style: .default) { (action) in
                 print("beans")
             }
         )
         
         newDatasetMenu.addAction(
-            UIAlertAction(title: "Import CSV", style: .destructive) { (action) in
+            UIAlertAction(title: "Import CSV", style: .default) { (action) in
                 self.importCSV()
             }
         )
+        
+        newDatasetMenu.addAction(
+            UIAlertAction(title:"Cancel", style: .destructive) { (action) in
+                print("cancelled addition")
+            })
     }
     
     // when plus button is pressed
@@ -66,17 +71,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     let db = DataBridge()
     func importCSV() {
-        if #available(iOS 14.0, *) {
-            let supportedFiles: [UTType] = [UTType.data]
-            let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
-            
-            controller.delegate = self
-            controller.allowsMultipleSelection = false
-            
-            present(controller, animated: true, completion: nil)
-        } else {
-            print("iOS 13 and below detected")
-        }
+        let supportedFiles: [UTType] = [UTType.data]
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
+        
+        controller.delegate = self
+        controller.allowsMultipleSelection = false
+        
+        present(controller, animated: true, completion: nil)
     }
     
     //code crashes here, "Failed to set FileProtection Attributes on staging URL"

@@ -578,7 +578,7 @@
         <!--Plot Graph-->
         <scene sceneID="chI-35-JXP">
             <objects>
-                <viewController id="as4-zL-4J7" sceneMemberID="viewController">
+                <viewController id="as4-zL-4J7" customClass="LinePlotViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hIj-PJ-Djb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

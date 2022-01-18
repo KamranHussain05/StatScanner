@@ -11,6 +11,7 @@ import AAInfographics
 class LinePlotViewController: UIViewController, AAChartViewDelegate {
 
     var aaChartView = AAChartView()
+    let aaChartModel = AAChartModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
     }
     
     override func viewDidLayoutSubviews() {
-        let aaChartModel = AAChartModel()
+        aaChartModel
             .chartType(.scatter)//Can be any of the chart types listed under `AAChartType`.
             .animationType(.bounce)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
@@ -34,6 +35,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .backgroundColor("#ffffff")
             .series([
                 AASeriesElement()
                     .name("Tokyo")
@@ -50,6 +52,14 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
                     ])
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
+    }
+    
+    func changeGraphType(type: AAChartType){
+        self.aaChartModel.chartType(type)
+    }
+    
+    func addDataCategories(cat:[String]){
+        self.aaChartModel.categories(cat)
     }
     
 

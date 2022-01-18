@@ -51,6 +51,11 @@ class Dataset {
         creationDate = formatter.string(from: currentDateTime)
     }
     
+    //returns the data 2d array containg the double values of the data
+    func getData() -> [[Double]] {
+        return self.data
+    }
+    
     //returns the given name of the dataset
     func getName() -> String {
         return self.name

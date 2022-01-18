@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     var sproduct:tileList! = nil
     
-    let newDatasetMenu = UIAlertController(title: "New Dataset", message: "Select an option on how you'd like to import your data",
+    let newDatasetMenu = UIAlertController(title: "New Dataset", message: "Select how you would like to import your data",
         preferredStyle: .actionSheet
     )
     
@@ -29,7 +29,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         super.viewDidLoad()
 
         // for dataset tiles
-        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: d.getName(), creationDate: d.creationDate, numItems: String(d.getTotalNumItems()) + " Items in DataSet")
+//        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: d.getName(), creationDate: d.creationDate, numItems: String(d.getTotalNumItems()) + " Items in DataSet")
+//        itemList.append(elem1)
+        
+        let elem1 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
         itemList.append(elem1)
         
         let elem2 : tileList = tileList(dataSetImage: UIImage(systemName: "questionmark.folder")!, dataSetName: "name", creationDate: "Created: 12/30/21", numItems: "30" + " Items in DataSet")
@@ -41,7 +44,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         // for pop up menu
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take Image", style: .default) { (action) in
-                print("cheese")
+                print("Scanning image")
+                    //self.scanningImage()
+                
             }
         )
 
@@ -67,6 +72,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     @IBAction func didTapNewDatasetButton() {
         newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(newDatasetMenu, animated: true, completion: nil)
+    }
+    
+    func scanningImage() {
+        let scanview = self.storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
+        scanview.modalPresentationStyle = .popover
+        self.present(scanview, animated: true)
     }
     
     let db = DataBridge()
@@ -127,7 +138,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSpacing: CGFloat = 10
         let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
         let height = width*1.5
 

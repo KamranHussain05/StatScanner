@@ -193,8 +193,10 @@
                                     <constraint firstAttribute="trailing" secondItem="F2f-ho-Wv8" secondAttribute="trailing" constant="20" id="PHY-zG-alR"/>
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="centerX" secondItem="5pe-kv-U1c" secondAttribute="centerX" id="bvJ-hw-mvk"/>
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="leading" secondItem="ogi-92-6oJ" secondAttribute="leading" id="fXT-B8-Hqz"/>
+                                    <constraint firstItem="U12-ad-HSg" firstAttribute="leading" secondItem="ogi-92-6oJ" secondAttribute="leading" constant="20" id="fXa-My-j8n"/>
                                     <constraint firstItem="U12-ad-HSg" firstAttribute="leading" secondItem="5pe-kv-U1c" secondAttribute="leading" constant="20" id="hbI-Ki-TDu"/>
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="top" secondItem="U12-ad-HSg" secondAttribute="bottom" constant="8" id="hpx-w9-9wm"/>
+                                    <constraint firstItem="U12-ad-HSg" firstAttribute="top" secondItem="ogi-92-6oJ" secondAttribute="top" constant="30" id="pB8-fT-tyX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -239,91 +241,121 @@
         <!--Graph-->
         <scene sceneID="kK9-KG-baU">
             <objects>
-                <viewController id="ZPM-Pj-gqE" sceneMemberID="viewController">
+                <viewController id="ZPM-Pj-gqE" customClass="GraphDirectorViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oeQ-Rp-V02">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58a-K6-sE0">
-                                <rect key="frame" x="30" y="134" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="147" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OEs-AZ-Wle"/>
+                                    <constraint firstAttribute="height" constant="40" id="7pr-CS-bPh"/>
+                                    <constraint firstAttribute="width" constant="355" id="elq-Ix-yTb"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Scatter Plot"/>
                                 <connections>
-                                    <segue destination="FOh-VY-esO" kind="show" id="UhQ-wy-ZFX"/>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="3rF-h6-Lnf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR9-sR-i8H">
-                                <rect key="frame" x="30" y="193" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="202" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="RMH-UV-aRR"/>
+                                    <constraint firstAttribute="height" constant="40" id="8O2-dS-0hs"/>
+                                    <constraint firstAttribute="width" constant="355" id="KzP-rf-IJw"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Line Graph"/>
                                 <connections>
-                                    <segue destination="U40-Md-pSu" kind="show" id="Giz-BZ-I27"/>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="Vqp-Y8-TSq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbU-LY-WxL">
-                                <rect key="frame" x="30" y="250" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="255" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Ca7-jN-40z"/>
+                                    <constraint firstAttribute="height" constant="40" id="klU-FH-7Ze"/>
+                                    <constraint firstAttribute="width" constant="355" id="xzL-Ft-mas"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Bar Chart"/>
                                 <connections>
-                                    <segue destination="5Ya-ek-a7B" kind="show" id="0Rs-QS-gmB"/>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="MeY-9a-FhI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8od-Jx-igv">
-                                <rect key="frame" x="30" y="307" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="308" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ZoJ-X7-FHG"/>
+                                    <constraint firstAttribute="height" constant="40" id="81B-bD-RQo"/>
+                                    <constraint firstAttribute="width" constant="355" id="UAR-jj-mnb"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Pie Chart"/>
+                                <connections>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="RS4-Qm-CAU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gO9-wK-8Ol">
-                                <rect key="frame" x="30" y="364" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="361" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="vhi-OJ-A1q"/>
+                                    <constraint firstAttribute="height" constant="40" id="nPb-Ef-bCg"/>
+                                    <constraint firstAttribute="width" constant="355" id="ukn-UZ-5iP"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Area Chart"/>
+                                <connections>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="Zyf-Cu-Sa5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnE-ZG-qCp">
-                                <rect key="frame" x="30" y="421" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="414" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2Ie-Aw-nVQ"/>
+                                    <constraint firstAttribute="width" constant="355" id="Mf9-c4-kI6"/>
+                                    <constraint firstAttribute="height" constant="40" id="Wmm-xc-NfQ"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Box Plot"/>
+                                <connections>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="gk3-hw-fmu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jv0-N1-350">
-                                <rect key="frame" x="30" y="478" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="467" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="xbN-7v-hzg"/>
+                                    <constraint firstAttribute="height" constant="40" id="7mJ-1H-S7F"/>
+                                    <constraint firstAttribute="width" constant="355" id="inh-yl-Sp0"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Bubble Chart"/>
+                                <connections>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="JHX-5v-3p9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRw-Ei-MPY">
-                                <rect key="frame" x="30" y="535" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="520" width="355" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="lBE-mZ-1kW"/>
+                                    <constraint firstAttribute="height" constant="40" id="bUD-G1-7FP"/>
+                                    <constraint firstAttribute="width" constant="355" id="hkK-RJ-uyR"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Waterfall Plot"/>
+                                <connections>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="9hr-Kc-duF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOV-iC-HOu">
-                                <rect key="frame" x="30" y="592" width="354" height="44"/>
+                                <rect key="frame" x="29.5" y="573" width="355" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mOx-zu-nWL"/>
+                                    <constraint firstAttribute="width" constant="355" id="vsN-pJ-qPD"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Polygon Chart"/>
+                                <connections>
+                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="CDS-mF-ffS"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrW-QI-M2F">
-                                <rect key="frame" x="40" y="73" width="169" height="39"/>
+                                <rect key="frame" x="20" y="74" width="169" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -332,45 +364,46 @@
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="leading" secondItem="fR9-sR-i8H" secondAttribute="leading" id="2P9-WK-Nyb"/>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="top" secondItem="wrW-QI-M2F" secondAttribute="bottom" constant="22" id="4P3-3t-iOd"/>
-                            <constraint firstItem="8od-Jx-igv" firstAttribute="trailing" secondItem="gO9-wK-8Ol" secondAttribute="trailing" id="95m-AX-U6D"/>
-                            <constraint firstItem="wrW-QI-M2F" firstAttribute="leading" secondItem="oeQ-Rp-V02" secondAttribute="leadingMargin" constant="20" id="D60-26-OTO"/>
-                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="trailing" secondItem="mnE-ZG-qCp" secondAttribute="trailing" id="DFR-Uq-isF"/>
-                            <constraint firstItem="gbU-LY-WxL" firstAttribute="trailing" secondItem="8od-Jx-igv" secondAttribute="trailing" id="Dll-Kx-lN9"/>
-                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="leading" secondItem="mOV-iC-HOu" secondAttribute="leading" id="Iaj-qN-W8k"/>
-                            <constraint firstItem="Jv0-N1-350" firstAttribute="leading" secondItem="YRw-Ei-MPY" secondAttribute="leading" id="MuX-38-gOq"/>
-                            <constraint firstItem="gbU-LY-WxL" firstAttribute="leading" secondItem="8od-Jx-igv" secondAttribute="leading" id="OTt-89-Uhd"/>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="leading" secondItem="EJh-OB-ukR" secondAttribute="leading" constant="30" id="Qhp-hd-aOc"/>
-                            <constraint firstItem="Jv0-N1-350" firstAttribute="trailing" secondItem="YRw-Ei-MPY" secondAttribute="trailing" id="SWS-Kd-09A"/>
-                            <constraint firstItem="Jv0-N1-350" firstAttribute="top" secondItem="mnE-ZG-qCp" secondAttribute="bottom" constant="13" id="Ve1-k1-3xg"/>
-                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="top" secondItem="8od-Jx-igv" secondAttribute="bottom" constant="13" id="WcE-rY-OVd"/>
-                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="trailing" secondItem="Jv0-N1-350" secondAttribute="trailing" id="Wt6-Vy-6mk"/>
-                            <constraint firstItem="wrW-QI-M2F" firstAttribute="top" secondItem="oeQ-Rp-V02" secondAttribute="topMargin" constant="29" id="XJY-dL-gn0"/>
-                            <constraint firstItem="mOV-iC-HOu" firstAttribute="top" secondItem="YRw-Ei-MPY" secondAttribute="bottom" constant="13" id="XNy-bC-zpa"/>
-                            <constraint firstItem="fR9-sR-i8H" firstAttribute="top" secondItem="58a-K6-sE0" secondAttribute="bottom" constant="15" id="XbA-Vw-rpF"/>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="aCh-Nm-FQn"/>
-                            <constraint firstItem="wrW-QI-M2F" firstAttribute="top" secondItem="EJh-OB-ukR" secondAttribute="top" constant="29" id="b72-WJ-vua"/>
-                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="top" secondItem="gO9-wK-8Ol" secondAttribute="bottom" constant="13" id="eWn-P2-dHs"/>
-                            <constraint firstItem="fR9-sR-i8H" firstAttribute="leading" secondItem="gbU-LY-WxL" secondAttribute="leading" id="gwG-TA-fiT"/>
-                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="leading" secondItem="Jv0-N1-350" secondAttribute="leading" id="hEo-Nm-DUJ"/>
-                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="leading" secondItem="mnE-ZG-qCp" secondAttribute="leading" id="hjs-nz-C8V"/>
-                            <constraint firstItem="8od-Jx-igv" firstAttribute="leading" secondItem="gO9-wK-8Ol" secondAttribute="leading" id="ikc-SG-h3z"/>
-                            <constraint firstItem="8od-Jx-igv" firstAttribute="top" secondItem="gbU-LY-WxL" secondAttribute="bottom" constant="13" id="kzE-Qv-sbe"/>
-                            <constraint firstItem="EJh-OB-ukR" firstAttribute="bottom" secondItem="mOV-iC-HOu" secondAttribute="bottom" constant="177" id="lR8-Te-0O3"/>
-                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="trailing" secondItem="mOV-iC-HOu" secondAttribute="trailing" id="lua-Wr-qJP"/>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="trailing" secondItem="fR9-sR-i8H" secondAttribute="trailing" id="pHn-ar-dCg"/>
-                            <constraint firstItem="gbU-LY-WxL" firstAttribute="top" secondItem="fR9-sR-i8H" secondAttribute="bottom" constant="13" id="tEC-fD-T7t"/>
-                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="top" secondItem="Jv0-N1-350" secondAttribute="bottom" constant="13" id="wbL-uD-U01"/>
-                            <constraint firstItem="fR9-sR-i8H" firstAttribute="trailing" secondItem="gbU-LY-WxL" secondAttribute="trailing" id="xRP-eW-dTN"/>
+                            <constraint firstItem="fR9-sR-i8H" firstAttribute="top" secondItem="58a-K6-sE0" secondAttribute="bottom" constant="15" id="0hK-Eb-DNr"/>
+                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="FbD-BK-Ntu"/>
+                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="top" secondItem="gO9-wK-8Ol" secondAttribute="bottom" constant="13" id="Kt6-75-qnt"/>
+                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="top" secondItem="8od-Jx-igv" secondAttribute="bottom" constant="13" id="Lfb-Q5-d6b"/>
+                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="MKE-fS-oFT"/>
+                            <constraint firstItem="58a-K6-sE0" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="Nyt-RE-4Ae"/>
+                            <constraint firstItem="mOV-iC-HOu" firstAttribute="top" secondItem="YRw-Ei-MPY" secondAttribute="bottom" constant="13" id="PXh-zz-kAb"/>
+                            <constraint firstItem="mOV-iC-HOu" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="QLx-RA-1pK"/>
+                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="Rqm-Ct-U4g"/>
+                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="top" secondItem="Jv0-N1-350" secondAttribute="bottom" constant="13" id="ajE-fU-bSH"/>
+                            <constraint firstItem="Jv0-N1-350" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="av0-hN-yzc"/>
+                            <constraint firstItem="8od-Jx-igv" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="d9S-ed-Afk"/>
+                            <constraint firstItem="wrW-QI-M2F" firstAttribute="top" secondItem="EJh-OB-ukR" secondAttribute="top" constant="30" id="fuL-wi-9sG"/>
+                            <constraint firstItem="fR9-sR-i8H" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="k8Y-5x-n7D"/>
+                            <constraint firstItem="wrW-QI-M2F" firstAttribute="leading" secondItem="EJh-OB-ukR" secondAttribute="leading" constant="20" id="kS2-v4-PQk"/>
+                            <constraint firstItem="gbU-LY-WxL" firstAttribute="top" secondItem="fR9-sR-i8H" secondAttribute="bottom" constant="13" id="kyW-9U-aL2"/>
+                            <constraint firstItem="58a-K6-sE0" firstAttribute="top" secondItem="wrW-QI-M2F" secondAttribute="bottom" constant="34" id="lPW-LU-C2L"/>
+                            <constraint firstItem="gbU-LY-WxL" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="pwM-gJ-avi"/>
+                            <constraint firstItem="Jv0-N1-350" firstAttribute="top" secondItem="mnE-ZG-qCp" secondAttribute="bottom" constant="13" id="xEW-WN-RLk"/>
+                            <constraint firstItem="8od-Jx-igv" firstAttribute="top" secondItem="gbU-LY-WxL" secondAttribute="bottom" constant="13" id="yL0-Hk-mov"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="areaChart" destination="gO9-wK-8Ol" id="48T-0X-5KE"/>
+                        <outlet property="barChart" destination="gbU-LY-WxL" id="7z2-7R-tcG"/>
+                        <outlet property="boxPlot" destination="mnE-ZG-qCp" id="kE1-RF-eat"/>
+                        <outlet property="bubbleChart" destination="Jv0-N1-350" id="Bmb-z1-EfA"/>
+                        <outlet property="lineGraph" destination="fR9-sR-i8H" id="ka0-xK-JL3"/>
+                        <outlet property="pieChart" destination="8od-Jx-igv" id="M2F-Af-KU4"/>
+                        <outlet property="polygonChart" destination="mOV-iC-HOu" id="Khy-DI-rcN"/>
+                        <outlet property="scatterPlot" destination="58a-K6-sE0" id="321-Xm-P2f"/>
+                        <outlet property="waterfallPlot" destination="YRw-Ei-MPY" id="FS8-az-TWU"/>
+                        <segue destination="as4-zL-4J7" kind="show" id="z0T-SS-31n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwc-ev-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1917" y="-688"/>
+            <point key="canvasLocation" x="-800" y="-664"/>
         </scene>
         <!--More-->
         <scene sceneID="Zjf-sc-lpY">
@@ -379,15 +412,28 @@
                     <view key="view" contentMode="scaleToFill" id="Cl5-OJ-SLX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sj-mQ-vBG">
+                                <rect key="frame" x="20" y="74" width="126" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Jpl-LX-mXW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1Sj-mQ-vBG" firstAttribute="top" secondItem="Jpl-LX-mXW" secondAttribute="top" constant="30" id="4qU-DP-dtx"/>
+                            <constraint firstItem="1Sj-mQ-vBG" firstAttribute="leading" secondItem="Jpl-LX-mXW" secondAttribute="leading" constant="20" id="IBZ-Ik-haD"/>
+                            <constraint firstItem="1Sj-mQ-vBG" firstAttribute="top" secondItem="Jpl-LX-mXW" secondAttribute="top" constant="30" id="nwe-r7-De7"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="Dh0-du-SYI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmj-pu-42O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="255" y="-1428"/>
+            <point key="canvasLocation" x="236" y="-664"/>
         </scene>
         <!--DataSetDetails-->
         <scene sceneID="sTK-Sa-FKm">
@@ -472,144 +518,10 @@
             </objects>
             <point key="canvasLocation" x="-1712" y="-664"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3kW-Um-gKt">
-            <objects>
-                <navigationController id="5Ya-ek-a7B" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="bb1-Zz-qhL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gZq-Wd-aiA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ngb-93-P3X" kind="relationship" relationship="rootViewController" id="l2o-iY-NOm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CO2-rB-c94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-752" y="55"/>
-        </scene>
-        <!--Bar Graph-->
-        <scene sceneID="zAk-xv-uqB">
-            <objects>
-                <viewController id="ngb-93-P3X" customClass="BarGraphViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Yoc-BT-FFc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="7Bh-dz-F50"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Bar Graph" id="3gb-FL-iTv"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vKh-am-dVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-752" y="720"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="q4t-0L-G7i">
-            <objects>
-                <navigationController id="U40-Md-pSu" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ts7-n1-3cC"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="38T-Zl-xcd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="g3f-K4-tMw" kind="relationship" relationship="rootViewController" id="2oU-hj-pn0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkm-aI-fwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-10" y="55"/>
-        </scene>
-        <!--Line Graph-->
-        <scene sceneID="NOy-zN-soc">
-            <objects>
-                <viewController id="g3f-K4-tMw" customClass="LineChartViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ndp-7f-GA7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="NPv-Md-5mS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Line Graph" id="T6H-Kh-ld1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwf-Zf-cVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-10" y="725"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UbN-Qc-OEb">
-            <objects>
-                <navigationController id="FOh-VY-esO" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8Tb-00-fmC"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="1Jc-gP-E37">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="as4-zL-4J7" kind="relationship" relationship="rootViewController" id="Ek7-Wy-47T"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-11-c1R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="745" y="55"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Kus-Ce-saj">
-            <objects>
-                <navigationController id="N9K-pK-6IM" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="MNg-pH-6I1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="7pz-GD-c4Z">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="YB9-pF-2jN" kind="relationship" relationship="rootViewController" id="v12-Jj-MU9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQD-NP-gBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1503" y="55"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1S2-LL-rfT">
-            <objects>
-                <navigationController id="ZG3-yR-hI8" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="h4a-l4-hKa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JbJ-fT-ZM3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="GM9-aW-jVy" kind="relationship" relationship="rootViewController" id="y73-Rg-aH4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="39W-CP-QFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2326" y="55"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Jil-Xc-JXB">
-            <objects>
-                <navigationController id="5Rw-0f-euu" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="wkD-Oo-JcS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="yKP-tz-dWU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="UcM-vm-lak" kind="relationship" relationship="rootViewController" id="xvH-MK-SA1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N1J-tR-9kF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3104" y="50"/>
-        </scene>
         <!--Plot Graph-->
         <scene sceneID="chI-35-JXP">
             <objects>
-                <viewController id="as4-zL-4J7" customClass="LinePlotViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="graphvisualization" useStoryboardIdentifierAsRestorationIdentifier="YES" id="as4-zL-4J7" customClass="LinePlotViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hIj-PJ-Djb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -620,121 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMC-e9-L4V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="720"/>
-        </scene>
-        <!--Pie Chart-->
-        <scene sceneID="pD6-gr-aQq">
-            <objects>
-                <viewController id="YB9-pF-2jN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="I27-bb-KLY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lGe-qS-FEg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Pie Chart" id="Eti-uN-WW6"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ATT-z6-Drr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1503" y="725"/>
-        </scene>
-        <!--Cubic Line Graph-->
-        <scene sceneID="8OR-tW-oWe">
-            <objects>
-                <viewController id="GM9-aW-jVy" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6SM-0N-dgO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="q1z-Cf-XRX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Cubic Line Graph" id="H1X-Tm-r32"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bmm-mG-uad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2326" y="720"/>
-        </scene>
-        <!--CandleStick Graph-->
-        <scene sceneID="PgT-GQ-F24">
-            <objects>
-                <viewController id="UcM-vm-lak" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fcy-4E-E9v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="VfQ-EX-oYJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="CandleStick Graph" id="NNY-F7-xCa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hHc-1j-lsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3104" y="720"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="oga-WC-rNz">
-            <objects>
-                <navigationController id="S7s-IC-2cm" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="XAx-lV-nq1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Vhm-gU-dS0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="rzi-I6-vuO" kind="relationship" relationship="rootViewController" id="uUh-og-zSn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v0S-av-gar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3893" y="50"/>
-        </scene>
-        <!--Gradient Graph-->
-        <scene sceneID="cB6-Xy-rep">
-            <objects>
-                <viewController id="rzi-I6-vuO" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mBd-YQ-Rdy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="YhM-4b-CYj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Gradient Graph" id="hao-Vu-tMh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ekV-MA-m3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3893" y="720"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ni7-ci-AMq">
-            <objects>
-                <navigationController id="T4L-7e-cSy" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="7y0-ep-Pu0"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="UxN-pH-qcL">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Xpu-pc-v8o" kind="relationship" relationship="rootViewController" id="IkZ-g6-iWC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j5J-AD-Q2R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4680" y="50"/>
-        </scene>
-        <!--Scatter Chart-->
-        <scene sceneID="lkb-pr-Kdz">
-            <objects>
-                <viewController id="Xpu-pc-v8o" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QAs-4h-zWL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lqi-7a-3Sl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Scatter Chart" id="hbK-Vp-ffL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MN4-py-DhO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4680" y="720"/>
+            <point key="canvasLocation" x="-800" y="23"/>
         </scene>
     </scenes>
     <resources>

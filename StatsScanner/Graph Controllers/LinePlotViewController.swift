@@ -22,14 +22,21 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         let chartViewWidth  = self.view.frame.size.width
         let chartViewHeight = self.view.frame.size.height
         aaChartView.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
-        self.view.backgroundColor = .systemBackground
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("charttype"), object: nil)
         
         self.view.addSubview(aaChartView)
     }
     
+    @objc func didGetNotification(_ notification: Notification) {
+        let type = notification.object as! AAChartType?
+        self.aaChartModel.chartType = type
+        print("got type")
+    }
+    
     override func viewDidLayoutSubviews() {
         aaChartModel
-            .chartType(.scatter)//Can be any of the chart types listed under `AAChartType`.
+            //.chartType(.scatter)//Can be any of the chart types listed under `AAChartType`.
             .animationType(.bounce)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
             .tooltipValueSuffix("USD")//the value suffix of the chart tooltip
@@ -56,7 +63,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
     }
     
     func changeGraphType(type: AAChartType){
-        self.aaChartModel.chartType(type)
+        self.aaChartModel.chartType = type
     }
     
     func addDataCategories(cat:[String]){

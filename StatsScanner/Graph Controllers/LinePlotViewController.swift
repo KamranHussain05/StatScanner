@@ -13,36 +13,41 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
     var aaChartView = AAChartView()
     let aaChartModel = AAChartModel()
     let data = Dataset()
+    var type: AAChartType = AAChartType.scatter
+    var text = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         aaChartView.delegate = self
-        
         let chartViewWidth  = self.view.frame.size.width
         let chartViewHeight = self.view.frame.size.height
         aaChartView.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("charttype"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("type"), object: nil)
         
         self.view.addSubview(aaChartView)
     }
     
     @objc func didGetNotification(_ notification: Notification) {
-        let type = notification.object as! AAChartType?
-        self.aaChartModel.chartType = type
-        print("got type")
+        type = notification.object as! AAChartType
+//        self.type = type
+//        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
+        
+        //text = notification.object as! String
+        //self.aaChartModel.title(text)
     }
     
     override func viewDidLayoutSubviews() {
         aaChartModel
-            //.chartType(.scatter)//Can be any of the chart types listed under `AAChartType`.
-            .animationType(.bounce)
+            .chartType(type) //Can be any of the chart types listed under `AAChartType`.
+            .animationType(.easeInSine)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
-            .tooltipValueSuffix("USD")//the value suffix of the chart tooltip
+            //.tooltipValueSuffix("USD") //the value suffix of the chart tooltip
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .title(text)
             .backgroundColor("#ffffff")
             .series([
 //                AASeriesElement()
@@ -63,7 +68,9 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
     }
     
     func changeGraphType(type: AAChartType){
-        self.aaChartModel.chartType = type
+        self.type = type
+        //Refresh the chart after the AAChartModel whole content is updated
+        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
     func addDataCategories(cat:[String]){

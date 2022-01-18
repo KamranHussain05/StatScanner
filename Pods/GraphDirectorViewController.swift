@@ -41,21 +41,25 @@ class GraphDirectorViewController: UIViewController {
             focused = AAChartType.pie
             print("pie")
         } else if (_sender == areaChart) {
+            print("area")
             focused = AAChartType.arearange
         } else if (_sender == bubbleChart) {
+            print("bubble")
             focused = AAChartType.bubble
         } else if (_sender == waterfallPlot) {
+            print("waterfall")
             focused = AAChartType.waterfall
         } else if (_sender == polygonChart) {
+            print("polygon")
             focused = AAChartType.polygon
         }
         
         let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
         vc.modalPresentationStyle = .popover
-        
-        NotificationCenter.default.post(name: Notification.Name("charttype"), object: self.focused)
-        
         present(vc, animated: true)
+        
+        NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
+        print("sent to graph")
         
     }
     

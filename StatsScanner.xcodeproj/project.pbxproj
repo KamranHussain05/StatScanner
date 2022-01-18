@@ -42,7 +42,6 @@
 		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
-		A8D7CA93277D0E2B00499A93 /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +106,6 @@
 		A8CA564427729918006BDF61 /* Smoker_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Smoker_R.csv; sourceTree = "<group>"; };
 		A8CA56462772991E006BDF61 /* Titanic_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Titanic_R.csv; sourceTree = "<group>"; };
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
-		A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +166,6 @@
 			children = (
 				4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */,
 				A8BD6DFC277BA30D0048912C /* BarGraphViewController.swift */,
-				A8D7CA92277D0E2B00499A93 /* LineChartViewController.swift */,
 				4D7713182786195700BD7DC8 /* LinePlotViewController.swift */,
 			);
 			path = "Graph Controllers";
@@ -534,7 +531,6 @@
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				A8BD6DFD277BA30D0048912C /* BarGraphViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
-				A8D7CA93277D0E2B00499A93 /* LineChartViewController.swift in Sources */,
 				A8C941A227811BA300311BAF /* DataSetObjectManager.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				4D7713192786195700BD7DC8 /* LinePlotViewController.swift in Sources */,

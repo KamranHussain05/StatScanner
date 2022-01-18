@@ -22,7 +22,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         aaChartView.delegate = self
         let chartViewWidth  = self.view.frame.size.width
         let chartViewHeight = self.view.frame.size.height
-        aaChartView.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
+        aaChartView.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight-20)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("type"), object: nil)
         

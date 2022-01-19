@@ -21,10 +21,16 @@ class GraphDirectorViewController: UIViewController {
     @IBOutlet var polygonChart: UIButton!
     
     private var focused = AAChartType(rawValue: "scatter")
+    private var dataset = Dataset()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobject"), object: nil)
+    }
+    
+    @objc func initDataSet(_ notification: Notification) {
+        self.dataset = notification.object as! Dataset
     }
     
     @IBAction func graphSelected(_sender : UIButton) {
@@ -60,6 +66,9 @@ class GraphDirectorViewController: UIViewController {
         
         NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
         print("sent to graph")
+        
+        title = dataset.getName()
+        NotificationCenter.default.post(name: Notification.Name("title"), object: title)
         
     }
     

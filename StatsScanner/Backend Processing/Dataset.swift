@@ -56,6 +56,14 @@ class Dataset {
         return self.data
     }
     
+    func getData(axis:Int) -> [Double] {
+        var result = [Double]()
+        for i in 0...data[0].count-1 {
+            result.append(data[axis][i])
+        }
+        return result
+    }
+    
     //returns the given name of the dataset
     func getName() -> String {
         return self.name
@@ -102,8 +110,10 @@ class Dataset {
         return result
     }
     
-    
-//Methods for Statistics
+//===================================
+//==    Methods for Statistics     ==
+//==                               ==
+//===================================
     
     //returns the number of items in the dataset
     func getTotalNumItems() -> Int {

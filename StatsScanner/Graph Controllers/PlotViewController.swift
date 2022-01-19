@@ -12,9 +12,9 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
 
     var aaChartView = AAChartView()
     let aaChartModel = AAChartModel()
-    let data = Dataset()
+    var data = Dataset()
     var type: AAChartType = AAChartType.scatter
-    var text = ""
+    var text = "Data Visualization"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +26,17 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("type"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didgetData(_:)), name: Notification.Name("data"), object: nil)
+        
         self.view.addSubview(aaChartView)
     }
     
     @objc func didGetNotification(_ notification: Notification) {
-        type = notification.object as! AAChartType
-//        self.type = type
-//        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
-        
-        //text = notification.object as! String
-        //self.aaChartModel.title(text)
+        self.type = notification.object as! AAChartType
+    }
+    
+    @objc func didgetData(_ notification : Notification) {
+        self.data = notification.object as! Dataset
     }
     
     override func viewDidLayoutSubviews() {
@@ -47,7 +48,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-            .title(text)
+            .title(data.getName())
             .backgroundColor("#ffffff")
             .series([
 //                AASeriesElement()
@@ -63,6 +64,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
                     .name("London")
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
                     ])
+            //.series(formatData())
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
@@ -77,6 +79,18 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         self.aaChartModel.categories(cat)
     }
     
+    private func formatData() -> [AASeriesElement] {
+        var arr = [AASeriesElement]()
+        let d = data.getData()
+        
+        for i in 0...d.count-1 {
+            arr.append(AASeriesElement()
+                        .name(self.data.getKeys()[i])
+                        .data(data.getData(axis:i))
+            )
+        }
+        return arr
+    }
 
     /*
     // MARK: - Navigation

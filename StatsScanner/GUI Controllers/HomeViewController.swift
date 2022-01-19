@@ -130,6 +130,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     @objc func openDataSet(sender:UIButton) {
         print("Opening DataSet")
         indexpath1 = IndexPath(row: sender.tag, section: 0)
+        d.name = "Test Dataset"
+        NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: self.d)
         self.tabBarController?.selectedIndex = 1
     }
     

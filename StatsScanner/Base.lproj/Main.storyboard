@@ -501,6 +501,7 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="JhM-O7-CLX"/>
+                                    <action selector="onEditClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="hWi-h2-IxR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -531,6 +532,7 @@
                     <connections>
                         <outlet property="creationDate" destination="RhP-uQ-GFi" id="GzU-ez-ioT"/>
                         <outlet property="datasetName" destination="R1W-VU-QMj" id="E5J-8h-BlP"/>
+                        <outlet property="edit" destination="Rkv-m2-qZ1" id="TZV-an-LYu"/>
                         <outlet property="numitems" destination="uaC-HN-qHb" id="Qtu-Gg-NTv"/>
                     </connections>
                 </viewController>

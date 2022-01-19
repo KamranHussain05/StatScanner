@@ -13,20 +13,24 @@ class DataSetViewController: UIViewController {
     @IBOutlet var creationDate: UILabel!
     @IBOutlet var numitems: UILabel!
     
-    var sproduct:tileList!
-    let h = HomeViewController()
+    private var datasetobj = Dataset()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("inside DataViewController")
-        sproduct = h.getData()
-        loadContent()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
     }
     
-    func loadContent() {
-        datasetName.text = sproduct.dataSetName
-        creationDate.text = sproduct.creationDate
-        numitems.text = sproduct.numItems
+    @objc func setDataSetObject(_ notification: Notification) {
+        self.datasetobj = notification.object as! Dataset
     }
+    
+    override func viewDidLayoutSubviews() {
+        datasetName.text = datasetobj.getName()
+        creationDate.text = datasetobj.creationDate
+        numitems.text = String(datasetobj.getTotalNumItems())
+    }
+
 
 }

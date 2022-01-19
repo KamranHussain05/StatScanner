@@ -215,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2733" y="-664"/>
+            <point key="canvasLocation" x="-2733.3333333333335" y="-664.28571428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9dh-AC-QbQ">
@@ -462,7 +462,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bruh meme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1W-VU-QMj">
-                                <rect key="frame" x="108" y="139" width="100" height="24"/>
+                                <rect key="frame" x="108" y="139" width="286" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="R1W-VU-QMj" secondAttribute="height" multiplier="143:12" id="WVO-wj-Y8N"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -473,8 +476,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaC-HN-qHb">
-                                <rect key="frame" x="217" y="200" width="45" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="528" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaC-HN-qHb">
+                                <rect key="frame" x="217" y="200" width="35.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -485,16 +488,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkv-m2-qZ1">
+                                <rect key="frame" x="349" y="65" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="cze-oB-Le0"/>
+                                    <constraint firstAttribute="height" constant="45" id="iFC-A5-AXa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="pencil.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="JhM-O7-CLX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eSA-GZ-r0k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eSA-GZ-r0k" firstAttribute="trailing" secondItem="Rkv-m2-qZ1" secondAttribute="trailing" constant="20" id="2ea-rH-rfp"/>
                             <constraint firstItem="LJ5-p0-B3q" firstAttribute="leading" secondItem="8iW-q0-Y4O" secondAttribute="leadingMargin" id="4Fq-dh-y6r"/>
                             <constraint firstItem="LJ5-p0-B3q" firstAttribute="top" secondItem="eSA-GZ-r0k" secondAttribute="top" constant="30" id="AcL-K7-7nC"/>
                             <constraint firstItem="ZZ9-UK-Jdk" firstAttribute="top" secondItem="LJ5-p0-B3q" secondAttribute="bottom" constant="26" id="D4w-8E-J8I"/>
                             <constraint firstItem="RhP-uQ-GFi" firstAttribute="leading" secondItem="zbc-th-Yf8" secondAttribute="trailing" constant="3" id="DIV-Ws-BPq"/>
                             <constraint firstItem="LJ5-p0-B3q" firstAttribute="leading" secondItem="ZZ9-UK-Jdk" secondAttribute="leading" id="QGw-Ga-XDZ"/>
                             <constraint firstItem="uaC-HN-qHb" firstAttribute="baseline" secondItem="Ii3-45-oce" secondAttribute="baseline" id="Rb4-cb-XBi"/>
+                            <constraint firstItem="Rkv-m2-qZ1" firstAttribute="top" secondItem="eSA-GZ-r0k" secondAttribute="top" constant="21" id="S0J-nF-Mge"/>
                             <constraint firstItem="ZZ9-UK-Jdk" firstAttribute="baseline" secondItem="R1W-VU-QMj" secondAttribute="baseline" id="SRM-C0-rNY"/>
                             <constraint firstItem="Ii3-45-oce" firstAttribute="top" secondItem="zbc-th-Yf8" secondAttribute="bottom" constant="8" symbolic="YES" id="SqA-15-mWF"/>
                             <constraint firstItem="R1W-VU-QMj" firstAttribute="leading" secondItem="RhP-uQ-GFi" secondAttribute="leading" id="ajS-Ia-hvw"/>
@@ -516,7 +536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1712" y="-664"/>
+            <point key="canvasLocation" x="-1713.0434782608697" y="-664.28571428571422"/>
         </scene>
         <!--Plot Graph-->
         <scene sceneID="chI-35-JXP">
@@ -537,6 +557,7 @@
     </scenes>
     <resources>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="questionmark.folder" catalog="system" width="128" height="97"/>
         <image name="rectangle.grid.2x2" catalog="system" width="128" height="99"/>

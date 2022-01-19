@@ -15,6 +15,9 @@ class HomeTiles: UICollectionViewCell {
     @IBOutlet var numitems: UILabel!
     @IBOutlet var openDataset: UIButton!
     
+    private var dataset = Dataset()
+    private let objmanager = DataSetObjectManager()
+    
     override func layoutSubviews() {
         contentView.backgroundColor = .secondarySystemFill
         // cell rounded section
@@ -22,7 +25,12 @@ class HomeTiles: UICollectionViewCell {
         self.layer.borderWidth = 5.0
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
-        
+    }
+    
+    @IBAction func onOpenClick(_sender: UIButton) {
+        print("opening dataset")
+        dataset.name = "New DataSet"
+        NotificationCenter.default.post(name: Notification.Name("datasetobj"), object: self.dataset)
     }
     
 }

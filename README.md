@@ -203,7 +203,7 @@ Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.c
 ## Acknowledgments
 
 * Images and UI Designed by [Lagumists](https://www.instagram.com/lagumists/)
-* []()
+* Graphing Utilities Powered by [AAChartKit](https://github.com/AAChartModel/AAChartKit-Swift)
 * []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>

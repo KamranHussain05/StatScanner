@@ -78,6 +78,8 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Compatible with iOS 14.0+
+
 ## Features
 
 * Data Visualization
@@ -95,8 +97,6 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
   * Average, Median, Mode, Range
   * Standard Deviation
   * Standard Error
-
-
 
 
 ### Built With

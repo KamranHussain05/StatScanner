@@ -26,11 +26,5 @@ class HomeTiles: UICollectionViewCell {
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
     }
-//
-//    @IBAction func onOpenClick(_sender: UIButton) {
-//        print("opening dataset")
-//        dataset.name = "New DataSet"
-//        NotificationCenter.default.post(name: Notification.Name("datasetobj"), object: self.dataset)
-//    }
     
 }

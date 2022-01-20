@@ -9,6 +9,7 @@ import UIKit
 import Vision
 
 class CameraOCRThing: UIViewController {
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var newScanButton: UIButton!
     @IBOutlet var useImageButton: UIButton!

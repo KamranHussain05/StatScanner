@@ -12,7 +12,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
-    //@IBOutlet var entireView: UIView!
     
     var itemList = [tileList]()
     let d: Dataset = Dataset()
@@ -21,7 +20,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     var sproduct:tileList! = nil
     
-    let newDatasetMenu = UIAlertController(title: "New Dataset", message: "Select how you would like to import your data",
+    let newDatasetMenu = UIAlertController(title: "New Dataset",
+        message: "Select how you would like to import your data",
         preferredStyle: .actionSheet
     )
     
@@ -45,8 +45,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take Image", style: .default) { (action) in
                 print("Scanning image")
-                    //self.scanningImage()
-                
+                self.scanningImage()
             }
         )
 
@@ -75,9 +74,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     func scanningImage() {
-        let scanview = self.storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
+        let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
-        self.present(scanview, animated: true)
+        self.present(scanview, animated: true, completion: nil)
     }
     
     let db = DataBridge()
@@ -109,6 +108,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
 }
 
+// ===========================================
+// ||   UICollectionView Cells and Config   ||
+// ===========================================
+
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,14 +132,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     @objc func openDataSet(sender:UIButton) {
         print("Opening DataSet")
-        indexpath1 = IndexPath(row: sender.tag, section: 0)
         d.name = "Test Dataset"
         NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: self.d)
         self.tabBarController?.selectedIndex = 1
-    }
-    
-    func getData() -> tileList {
-        return itemList[indexpath1.row]
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

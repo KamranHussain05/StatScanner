@@ -14,7 +14,7 @@
         <!--Scan Data-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CameraOCRThing" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CameraOCRThing" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,22 +41,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0MZ-6e-bkx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KYb-si-RuA" secondAttribute="trailing" constant="20" id="3EA-sN-53N"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="eR6-gd-bwt" secondAttribute="leading" id="IaF-yT-jTf"/>
-                            <constraint firstItem="eR6-gd-bwt" firstAttribute="top" secondItem="oiz-mt-t3S" secondAttribute="bottom" constant="25" id="KUV-jX-uL4"/>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="leading" secondItem="oiz-mt-t3S" secondAttribute="leading" id="Ogo-Bg-F4H"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eR6-gd-bwt" secondAttribute="trailing" constant="20" id="R5u-Uw-Ahi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oiz-mt-t3S" secondAttribute="trailing" constant="20" id="RRk-pp-fQU"/>
-                            <constraint firstItem="eR6-gd-bwt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RYH-bq-bdC"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="eR6-gd-bwt" secondAttribute="trailing" id="YcS-iY-4IQ"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="top" secondItem="KYb-si-RuA" secondAttribute="bottom" constant="37" id="bgB-gt-Dk8"/>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bwz-k2-zeF"/>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="gKd-cF-Ljw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eR6-gd-bwt" secondAttribute="bottom" constant="173" id="lUi-P6-z45"/>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="tHl-ny-wmL"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="u6y-Er-JRN"/>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="trailing" secondItem="oiz-mt-t3S" secondAttribute="trailing" id="wNS-Bd-SiI"/>
+                            <constraint firstItem="KYb-si-RuA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="6iP-uC-c6N"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="top" secondItem="KYb-si-RuA" secondAttribute="bottom" constant="37" id="NmB-xr-ERT"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="eR6-gd-bwt" secondAttribute="leading" id="QSO-AL-fXG"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="eR6-gd-bwt" secondAttribute="trailing" id="Vfk-Hl-fmq"/>
+                            <constraint firstAttribute="bottom" secondItem="oiz-mt-t3S" secondAttribute="bottom" constant="263" id="aDs-6G-JMb"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="KYb-si-RuA" secondAttribute="trailing" id="at9-Ws-l5t"/>
+                            <constraint firstItem="eR6-gd-bwt" firstAttribute="top" secondItem="oiz-mt-t3S" secondAttribute="bottom" constant="25" id="nxq-1E-tBB"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="KYb-si-RuA" secondAttribute="leading" id="tjJ-Vj-1Sf"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zBh-QW-2C2"/>
+                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="zzi-hf-Pf8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wqU-v7-zUB"/>
@@ -181,6 +175,7 @@
                                         </state>
                                         <connections>
                                             <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="e41-9U-RVW"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="sN8-Md-Ec6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -210,7 +205,6 @@
                     <connections>
                         <outlet property="myCollectionView" destination="wDI-T2-Ujr" id="Hh0-BO-2UQ"/>
                         <outlet property="newDatasetButton" destination="F2f-ho-Wv8" id="nJC-Yp-Kkt"/>
-                        <segue destination="BYZ-38-t0r" kind="show" id="g92-j5-HyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

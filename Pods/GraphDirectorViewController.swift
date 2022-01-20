@@ -62,7 +62,6 @@ class GraphDirectorViewController: UIViewController {
         
         let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
         vc.modalPresentationStyle = .popover
-        //present(vc, animated: true)
         present(vc, animated: true, completion: nil)
         
         NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)

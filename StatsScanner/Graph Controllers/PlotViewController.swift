@@ -25,7 +25,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         aaChartView.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight-20)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("type"), object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(didgetData(_:)), name: Notification.Name("data"), object: nil)
         
         self.view.addSubview(aaChartView)
@@ -40,6 +40,10 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
     }
     
     override func viewDidLayoutSubviews() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("type"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didgetData(_:)), name: Notification.Name("data"), object: nil)
+        
         aaChartModel
             .chartType(type) //Can be any of the chart types listed under `AAChartType`.
             .animationType(.easeInSine)

@@ -6,7 +6,6 @@ target 'StatsScanner' do
   use_frameworks!
 
   # Pods for StatsScanner
-  pod 'Charts'
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   
 

@@ -37,7 +37,6 @@ class DataSetViewController: UIViewController {
     }
     
     @IBAction func onEditClick(_sender:UIButton) {
-        
         if (_sender == edit){
             print("editing data")
         }

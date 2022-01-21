@@ -23,9 +23,14 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
         
-        spreadsheetView.frame = CGRect(x: 0, y: 130, width: view.frame.size.width, height: view.frame.size.height)
+        spreadsheetView.translatesAutoresizingMaskIntoConstraints = false
+        spreadsheetView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
+        spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -75).isActive = true
+        spreadsheetView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        spreadsheetView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
     @objc func initDataset(_ notification: Notification) {
@@ -33,19 +38,21 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
     }
     
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        return 200
+        //return self.dataset.getKeys().count
+        return 6
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return 400
+        //return self.dataset.getData(axis: 0).count
+        return 40
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-      return 80
+      return 70
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
-      return 40
+      return 50
     }
 
     /*

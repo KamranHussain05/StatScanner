@@ -14,35 +14,36 @@ class DataSetViewController: UIViewController {
     @IBOutlet var numitems: UILabel!
     @IBOutlet var back: UIButton!
     
-    @IBOutlet var average: UILabel!
-    @IBOutlet var mode: UILabel!
-    @IBOutlet var range: UILabel!
-    @IBOutlet var max: UILabel!
-    @IBOutlet var min: UILabel!
-    @IBOutlet var standardDev: UILabel!
-    @IBOutlet var standardError: UILabel!
-    @IBOutlet var median: UILabel!
+//    @IBOutlet var average: UILabel!
+//    @IBOutlet var mode: UILabel!
+//    @IBOutlet var range: UILabel!
+//    @IBOutlet var max: UILabel!
+//    @IBOutlet var min: UILabel!
+//    @IBOutlet var standardDev: UILabel!
+//    @IBOutlet var standardError: UILabel!
+//    @IBOutlet var median: UILabel!
     
-    private var datasetobj = Dataset()
+    private var datasetobj: Dataset = Dataset()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("inside DataViewController")
         
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        
         loadData()
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        self.datasetobj = notification.object as! Dataset
+        datasetobj = notification.object as! Dataset
         print("recieved dataset object")
-        loadData()
     }
     
     func loadData() {
         datasetName.text = datasetobj.getName()
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
+        
 //        average.text = String(datasetobj.getSetAverage())
 //        mode.text = String(datasetobj.getMode())
 //        range.text = String(datasetobj.getMax() - datasetobj.getMin())

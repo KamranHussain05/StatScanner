@@ -133,13 +133,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     @objc func openDataSet(sender:UIButton) {
         print("Opening DataSet")
-        d.name = "Test Dataset"
         
-        let scanview = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
-        scanview.modalPresentationStyle = .fullScreen
-        self.present(scanview, animated: true, completion: nil)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
+        vc.modalPresentationStyle = .fullScreen
         
+        //send the dataset object to the detailed view controllers
+        self.d.name = "Test Dataset"
         NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: self.d)
+        NotificationCenter.default.post(name:Notification.Name("datasetobjpoints"), object: self.d)
+        NotificationCenter.default.post(name:Notification.Name("data"), object: self.d)
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

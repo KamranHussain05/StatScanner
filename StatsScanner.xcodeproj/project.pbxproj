@@ -10,6 +10,9 @@
 		495ADB1424FEEDC812112065 /* Pods_StatsScannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */; };
 		4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */; };
 		4D2F16802799CE2F0096F9DA /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F167F2799CE2F0096F9DA /* DataPointViewController.swift */; };
+		4D2F1687279AACF70096F9DA /* DataSetProject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1685279AACF70096F9DA /* DataSetProject+CoreDataClass.swift */; };
+		4D2F1688279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1686279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift */; };
+		4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */; };
 		4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7713182786195700BD7DC8 /* PlotViewController.swift */; };
 		80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
@@ -68,6 +71,9 @@
 		3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphDirectorViewController.swift; path = Pods/GraphDirectorViewController.swift; sourceTree = SOURCE_ROOT; };
 		4D2F167F2799CE2F0096F9DA /* DataPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataPointViewController.swift; path = StatsScanner/DataPointViewController.swift; sourceTree = SOURCE_ROOT; };
+		4D2F1685279AACF70096F9DA /* DataSetProject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSetProject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4D2F1686279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSetProject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4D7713182786195700BD7DC8 /* PlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,10 +160,13 @@
 		0AF001592782BE61001BF87E /* Backend Processing */ = {
 			isa = PBXGroup;
 			children = (
+				4D2F1685279AACF70096F9DA /* DataSetProject+CoreDataClass.swift */,
+				4D2F1686279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A8C941A127811BA300311BAF /* DataSetObjectManager.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
+				4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */,
 			);
 			path = "Backend Processing";
 			sourceTree = "<group>";
@@ -525,12 +534,15 @@
 				A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */,
 				A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
+				4D2F1687279AACF70096F9DA /* DataSetProject+CoreDataClass.swift in Sources */,
+				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				4D2F16802799CE2F0096F9DA /* DataPointViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
+				4D2F1688279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift in Sources */,
 				A8C941A227811BA300311BAF /* DataSetObjectManager.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */,

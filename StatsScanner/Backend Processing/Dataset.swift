@@ -9,14 +9,15 @@
 import Foundation
 import CoreData
 
-class Dataset {
+@objc(Dataset)
+public class Dataset: NSObject {
     var data: [[Double]] = [[]]
     var keys: [String] = []
-    var name: String
-    var creationDate: String
+    var name: String = "Unnamed Dataset"
+    var creationDate: String!
     
     //creates a new dataset
-    init() {
+    override init() {
         name = "Unnamed DataSet"
         // get the current date and time
         let currentDateTime = Date()
@@ -28,6 +29,7 @@ class Dataset {
     
     //creates a new dataset and assumes the first row contains the keys
     init(name: String, appendable: [[String]]) {
+        super.init()
         self.name = name
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -38,7 +40,7 @@ class Dataset {
         keys = appendable[0]
         var a = appendable
         a.remove(at: 0)
-        self.data = cleanData(array: a)
+        self.data = self.cleanData(array: a)
     }
     
     //creates a new dataset object with the specified name

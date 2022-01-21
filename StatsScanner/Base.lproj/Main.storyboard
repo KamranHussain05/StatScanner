@@ -175,7 +175,7 @@
                                         </state>
                                         <connections>
                                             <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="e41-9U-RVW"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="sN8-Md-Ec6"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="scansegue" id="sN8-Md-Ec6"/>
                                         </connections>
                                     </button>
                                 </subviews>

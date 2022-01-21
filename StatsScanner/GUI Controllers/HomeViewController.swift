@@ -17,8 +17,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     let d: Dataset = Dataset()
     var indexpath1: IndexPath!
     var cellSpacing: CGFloat = 10
-    
     var sproduct:tileList! = nil
+    private var models = [DataSetProject]()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let newDatasetMenu = UIAlertController(title: "New Dataset",
         message: "Select how you would like to import your data",
@@ -107,6 +109,55 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         formatter.dateStyle = .short
         return formatter.string(from: currentDateTime)
     }
+    
+// ===========================================
+// ||        CORE DATA CONFIGURATION        ||
+// ===========================================
+    //Fetches all the datasetprojects from Core Data
+    func getAllItems() {
+        do {
+            models = try context.fetch(DataSetProject.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.myCollectionView.reloadData()
+            }
+        } catch {
+            fatalError("CORE DATA FETCH FAILED")
+        }
+    }
+    
+    //Writes a datasetproject to Core Data
+    func createItem(item: DataSetProject) {
+        let newItem = DataSetProject(context: context)
+        newItem.datasetobject = Dataset()
+        do {
+            try context.save()
+        } catch {
+            fatalError("CORE DATA WRITE FAILED")
+        }
+    }
+    
+    //Deletes a datasetproject from Core Data
+    func deleteItem(item: DataSetProject) {
+        context.delete(item)
+        
+        do {
+            try context.save()
+        } catch {
+            fatalError("CORE DATA DELETION FAILED")
+        }
+    }
+    
+    //Updates the dataset project in Core Data
+    func updateItem(item: DataSetProject, dataset: Dataset) {
+        item.datasetobject = dataset
+        
+        do {
+            try context.save()
+        } catch {
+            fatalError("CORE DATA DELETION FAILED")
+        }
+    }
 }
 
 // ===========================================
@@ -116,15 +167,16 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemList.count
+        return models.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let model = models[indexPath.row]
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "hometile", for: indexPath) as! HomeTiles
-        cell.myImageView.image = itemList[indexPath.row].dataSetImage
-        cell.dataSetName.text = itemList[indexPath.row].dataSetName
-        cell.creationDate.text = itemList[indexPath.row].creationDate
-        cell.numitems.text = itemList[indexPath.row].numItems
+        
+        cell.dataSetName.text = model.datasetobject?.getName()
+        cell.numitems.text = String(model.datasetobject!.getTotalNumItems())
+        cell.creationDate.text = model.datasetobject?.creationDate
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet), for: .touchUpInside)
         

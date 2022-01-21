@@ -65,6 +65,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             UIAlertAction(title:"Cancel", style: .destructive) { (action) in
                 print("cancelled addition")
             })
+        
     }
     
     // when plus button is pressed
@@ -133,8 +134,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     @objc func openDataSet(sender:UIButton) {
         print("Opening DataSet")
         d.name = "Test Dataset"
+        
+        let scanview = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
+        scanview.modalPresentationStyle = .fullScreen
+        self.present(scanview, animated: true, completion: nil)
+        
         NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: self.d)
-        self.tabBarController?.selectedIndex = 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

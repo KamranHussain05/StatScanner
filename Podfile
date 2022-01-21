@@ -7,6 +7,7 @@ target 'StatsScanner' do
 
   # Pods for StatsScanner
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
+  pod 'SpreadsheetView'
   
 
   target 'StatsScannerTests' do

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		495ADB1424FEEDC812112065 /* Pods_StatsScannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */; };
 		4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */; };
+		4D2F16802799CE2F0096F9DA /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F167F2799CE2F0096F9DA /* DataPointViewController.swift */; };
 		4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7713182786195700BD7DC8 /* PlotViewController.swift */; };
 		80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
@@ -66,6 +67,7 @@
 		2FA0734D6996A5217388FD8E /* Pods-StatsScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.release.xcconfig"; sourceTree = "<group>"; };
 		3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphDirectorViewController.swift; path = Pods/GraphDirectorViewController.swift; sourceTree = SOURCE_ROOT; };
+		4D2F167F2799CE2F0096F9DA /* DataPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataPointViewController.swift; path = StatsScanner/DataPointViewController.swift; sourceTree = SOURCE_ROOT; };
 		4D7713182786195700BD7DC8 /* PlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		0AF001582782BE54001BF87E /* GUI Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D2F167F2799CE2F0096F9DA /* DataPointViewController.swift */,
 				A808897F277EF1C600B8C2FE /* HomeViewController.swift */,
 				A8088978277EEF8500B8C2FE /* HomeTile.swift */,
 				A808897A277EF0B100B8C2FE /* HomeTileList.swift */,
@@ -526,6 +529,7 @@
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
+				4D2F16802799CE2F0096F9DA /* DataPointViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				A8C941A227811BA300311BAF /* DataSetObjectManager.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,

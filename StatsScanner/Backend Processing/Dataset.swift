@@ -197,4 +197,30 @@ class Dataset {
         }
         return sqrt(diffsqrs - Double(getNumItems(index: index)))
     }
+    
+    //returns the standard deviation of the entire dataset
+    func getStandardDeviation() -> Double {
+        var diffsqrs = 0.0
+        for e in data {
+            for i in 0...e.count-1{
+                diffsqrs += pow(e[i]-getSetAverage(), 2)
+            }
+        }
+        return sqrt(diffsqrs - Double(getTotalNumItems()))
+    }
+    
+    //returns the mode of the entire dataset
+    func getMode() -> Double {
+        return 0
+    }
+    
+    //returns the median of the entire dataset
+    func getMedian() -> Double {
+        return 0
+    }
+    
+    //returns the standard error of the entire dataset
+    func getStandardError() -> Double {
+        return 0
+    }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B721F801-2669-46D7-8047-2B2A1AEB2B81"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StatsScanner/GUI Controllers/DataSetViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "DataSetViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE - c9c5e8fe57629805"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StatsScanner.DataSetViewController.back.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "StatsScanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/GUI%20Controllers/DataSetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE - 46d304aa5bdfa811"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StatsScanner.DataSetViewController.back.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "StatsScanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/GUI%20Controllers/DataSetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE - c243f38160fac629"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StatsScanner.DataSetViewController.back.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "StatsScanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/GUI%20Controllers/DataSetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE - e197648930a24dbc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StatsScanner.DataSetViewController.back.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "StatsScanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/GUI%20Controllers/DataSetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE - 539268333c1edfc2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StatsScanner.DataSetViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; StatsScanner.DataSetViewController"
+                  moduleName = "StatsScanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/GUI%20Controllers/DataSetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "888EC178-ED81-4250-8CF6-FE642646F1EE - fc215a6b1ca73004"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StatsScanner.DataSetViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;StatsScanner.DataSetViewController&gt;"
+                  moduleName = "StatsScanner"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/GUI%20Controllers/DataSetViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "228">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

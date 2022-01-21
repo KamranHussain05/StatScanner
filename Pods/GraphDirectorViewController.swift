@@ -31,6 +31,7 @@ class GraphDirectorViewController: UIViewController {
     
     @objc func initDataSet(_ notification: Notification) {
         self.dataset = notification.object as! Dataset
+        print("got dataset from dataview")
     }
     
     @IBAction func graphSelected(_sender : UIButton) {

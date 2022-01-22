@@ -72,7 +72,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 Stats Scanner is an IOS app designed to process and visualize any numerical data. You can create predictions, get basic stats, and visualize your data by simply scanning a paper, importing a csv file, or manually entering data. Data can be visualized as bar graphs, cloud plot, dot plot, and more in additiont to basic statistical analysis. 
 
@@ -83,16 +83,9 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 ## Features
 
 * Data Visualization
-  * Dot Plots
+  * Scatter Plots
   * Bar Graphs
-  * Cloud Plots
-  * Gradient Descents
   * Interactive Pie Charts
-* Data Trend Prediction
-  * Next Nth Values
-  * Line of Best Fit
-  * Eigen Values
-  * Eigen Vectors
 * Statistics Calculation
   * Average, Median, Mode, Range
   * Standard Deviation
@@ -102,7 +95,10 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 ### Built With
 
 * [Swift 5.5](https://swift.org/)
-* [Swift UI](https://reactjs.org/)
+* [Swift UI](https://developer.apple.com/xcode/swiftui/)
+* [Vision](https://developer.apple.com/documentation/vision)
+* [AAChartKit](https://github.com/AAChartModel/AAChartKit-Swift)
+* [SpreadsheetView](https://github.com/bannzai/SpreadsheetView)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -149,7 +145,7 @@ _For more examples, please refer to the [Documentation](https://github.com/Kamra
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Release 1 built natively for IOS
+- [x] Release 1 built natively for IOS
 - [] Release 2 built natively for Android
 - [] Custom Project Files with ability to share projects via link and allow for embedded interactive graphs in presentations
 
@@ -202,9 +198,9 @@ Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.c
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Images and UI Designed by [Lagumists](https://www.instagram.com/lagumists/)
+* Logo Designed by [Lagumists](https://www.instagram.com/lagumists/)
 * Graphing Utilities Powered by [AAChartKit](https://github.com/AAChartModel/AAChartKit-Swift)
-* []()
+* Data Point View Powered by [SpreadsheetView](https://github.com/bannzai/SpreadsheetView)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

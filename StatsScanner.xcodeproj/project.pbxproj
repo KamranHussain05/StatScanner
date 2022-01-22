@@ -74,6 +74,7 @@
 		4D2F1685279AACF70096F9DA /* DataSetProject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSetProject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4D2F1686279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataSetProject+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4D2F168B279B51F50096F9DA /* StatsScanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatsScanner.entitlements; sourceTree = "<group>"; };
 		4D7713182786195700BD7DC8 /* PlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 		A85092B827497F6F00392240 /* StatsScanner */ = {
 			isa = PBXGroup;
 			children = (
+				4D2F168B279B51F50096F9DA /* StatsScanner.entitlements */,
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				0AF001582782BE54001BF87E /* GUI Controllers */,
@@ -728,14 +730,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = StatsScanner/StatsScanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatsScanner;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a picture for scanning";
-				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "To Import CSV Datasets to the app, we need to be able to access the files you select";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -766,14 +769,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = StatsScanner/StatsScanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatsScanner;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a picture for scanning";
-				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "To Import CSV Datasets to the app, we need to be able to access the files you select";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

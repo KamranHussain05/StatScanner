@@ -15,9 +15,6 @@ class HomeTiles: UICollectionViewCell {
     @IBOutlet var numitems: UILabel!
     @IBOutlet var openDataset: UIButton!
     
-    private var dataset = Dataset()
-    private let objmanager = DataSetObjectManager()
-    
     override func layoutSubviews() {
         contentView.backgroundColor = .secondarySystemFill
         // cell rounded section

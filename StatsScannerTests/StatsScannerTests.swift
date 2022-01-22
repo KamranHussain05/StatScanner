@@ -67,21 +67,21 @@ class StatsScannerTests: XCTestCase {
     
     func testCSVAppending() throws {
         print("=== Test Case 1 ===")
-        var url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
+        var url = URL(fileURLWithPath: "/Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
         print(b.readCSV(inputFile: url, lineSeparator: "\r", valSeparator: ","))
         
         print("=== Test Case 2 ===")
-        url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Video_R.csv")
+        url = URL(fileURLWithPath: "/Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
         print(b.readCSV(inputFile: url, lineSeparator: "\r", valSeparator: ","))
         
         print("=== Test Case 3 ===")
-        url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Diet_R.csv")
+        url = URL(fileURLWithPath: "/Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
         print(b.readCSV(inputFile: url, lineSeparator: "\r", valSeparator: ","))
     }
     
     func testCSVWriting() throws {
         print("Starting to write")
-        let url = URL(fileURLWithPath: "/Users/kamran/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
+        let url = URL(fileURLWithPath: "/Users/kamranhussain/Desktop/Programming/StatsScanner/StatsScanner/Resources/Awards_R.csv")
         let data = b.readCSV(inputFile: url, lineSeparator: "\n", valSeparator: ",")
         
         print("writing to csv")

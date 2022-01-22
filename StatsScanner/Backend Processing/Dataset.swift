@@ -11,10 +11,13 @@ import CoreData
 
 @objc(Dataset)
 public class Dataset: NSObject {
+    
     var data: [[Double]] = [[]]
     var keys: [String] = []
+    var xvals: [String] = []
     var name: String = "Unnamed Dataset"
     var creationDate: String!
+    let db = DataBridge()
     
     //creates a new dataset
     override init() {
@@ -31,11 +34,16 @@ public class Dataset: NSObject {
     init(name: String, appendable: [[String]]) {
         super.init()
         self.name = name
+        
         let currentDateTime = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateStyle = .short
         creationDate = formatter.string(from: currentDateTime)
+        
+        for i in 1...data.count {
+            self.xvals.append(appendable[0][i])
+        }
         
         keys = appendable[0]
         var a = appendable
@@ -58,6 +66,19 @@ public class Dataset: NSObject {
         return self.data
     }
     
+    //writes the csv files and imports it
+    func writeData(file:URL) {
+        var result = [[String]]()
+        result[0] = self.keys
+        for i in 0...data.count-1{
+            for j in 0...data[i].count-1 {
+                result[i-1][j] = String(data[i][j])
+            }
+        }
+        db.writeCSV(fileName: self.name, data: result)
+    }
+    
+    //returns the array containing the data in the specified index
     func getData(axis:Int) -> [Double] {
         var result = [Double]()
         for i in 0...data[0].count-1 {
@@ -104,7 +125,7 @@ public class Dataset: NSObject {
         var result: [[Double]] = []
         for i in 0...array.count{
             for j in 0...array[i].count {
-                if(array[i][j].isNumber){
+                if(array[i][j].isNumber) {
                     result[i][j] = Double(array[i][j])!
                 }
             }

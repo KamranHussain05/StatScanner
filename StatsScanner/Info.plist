@@ -8,7 +8,7 @@
 			<key>CFBundleTypeName</key>
 			<string>csv</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>csv</string>
@@ -39,5 +39,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

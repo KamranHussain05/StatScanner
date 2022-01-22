@@ -33,9 +33,11 @@ class DataBridge {
     
 
     func readCSV(inputFile: URL, lineSeparator: String = "/n", valSeparator: String = ",") -> [[String]] {
+        
         //Get Data
         print("reading csv")
         var result: [[String]] = []
+        
         do {
             let data = try String(contentsOf: inputFile)
             let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
@@ -48,7 +50,8 @@ class DataBridge {
             return result
         } catch {
             // Any Errors will go here
-            return [["ERROR: File Could Not be Found"]]
+            print(error)
+            return [[]]
         }
     }
     
@@ -85,7 +88,7 @@ class DataBridge {
             for j in 0...data[i].count-1 {
                 result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
                 result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
-                if (data[i][j] == ""){
+                if (data[i][j] == "") {
                     result[i].remove(at: j)
                 }
             }

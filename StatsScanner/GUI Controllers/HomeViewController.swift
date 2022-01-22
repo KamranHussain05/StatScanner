@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedDataset: Dataset!
     private var cellSpacing: CGFloat = 10
     private var models = [DataSetProject]()
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let newDatasetMenu = UIAlertController(title: "New Dataset",
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAllItems()
         // for pop up menu
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take Image", style: .default) { (action) in
@@ -114,6 +116,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         newItem.datasetobject = item
         do {
             try context.save()
+            getAllItems()
         } catch {
             fatalError("CORE DATA WRITE FAILED")
         }
@@ -156,7 +159,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let model = models[indexPath.row]
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "hometile", for: indexPath) as! HomeTiles
         
-        cell.dataSetName.text = model.datasetobject?.getName()
+        cell.dataSetName.text = model.datasetobject?.name
         cell.numitems.text = String(model.datasetobject!.getTotalNumItems())
         cell.creationDate.text = model.datasetobject?.creationDate
         selectedDataset = model.datasetobject!

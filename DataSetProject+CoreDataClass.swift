@@ -11,5 +11,5 @@ import CoreData
 
 @objc(DataSetProject)
 public class DataSetProject: NSManagedObject {
-
+    
 }

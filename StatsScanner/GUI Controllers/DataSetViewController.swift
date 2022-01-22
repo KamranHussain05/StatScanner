@@ -40,7 +40,7 @@ class DataSetViewController: UIViewController {
     }
     
     func loadData() {
-        datasetName.text = datasetobj.getName()
+        datasetName.text = datasetobj.name
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
         

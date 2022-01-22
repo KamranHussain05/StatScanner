@@ -52,7 +52,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-            .title(data.getName())
+            .title(data.name)
             .backgroundColor("#ffffff")
             .series([
 //                AASeriesElement()

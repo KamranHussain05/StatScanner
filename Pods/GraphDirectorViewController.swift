@@ -68,7 +68,7 @@ class GraphDirectorViewController: UIViewController {
         NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
         print("sent to graph")
         
-        title = dataset.getName()
+        title = dataset.name
         NotificationCenter.default.post(name: Notification.Name("title"), object: title)
         
     }

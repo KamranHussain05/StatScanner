@@ -9,10 +9,14 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
+    
     let persistentContainer: NSPersistentContainer
     static let shared = CoreDataManager()
     
     private init() {
+        
+        ValueTransformer.setValueTransformer(NSDatasetTransformer(), forName: NSValueTransformerName("NSDatasetTransformer"))
+        
         persistentContainer = NSPersistentContainer(name: "DataSetProject")
         persistentContainer.loadPersistentStores { descriptionn, error in
             if let error = error {

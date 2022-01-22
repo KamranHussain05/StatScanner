@@ -13,12 +13,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
     
     private let spreadsheetView = SpreadsheetView()
     private var dataset = Dataset()
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         spreadsheetView.dataSource = self
         view.addSubview(spreadsheetView)
-        
+		
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,13 +38,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
     }
     
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        //return self.dataset.getKeys().count
-        return 6
+        return self.dataset.getKeys().count
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
         //return self.dataset.getData(axis: 0).count
-        return 40
+		return dataset.getData().count
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {

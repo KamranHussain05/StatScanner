@@ -122,10 +122,11 @@ public class Dataset: NSObject {
     
     //cleans the data and inputs it to an array of Doubles
     private func cleanData(array: [[String]]) -> [[Double]] {
-        var result: [[Double]] = []
-        for i in 0...array.count{
-            for j in 0...array[i].count {
+        var result = [[Double]]()
+        for i in 0...array[0].count-1 {
+            for j in 0...array[0][i].count-1 {
                 if(array[i][j].isNumber) {
+                    print(result)
                     result[i][j] = Double(array[i][j])!
                 }
             }

@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import StatsScanner
-import CoreData
 
 class StatsScannerTests: XCTestCase {
     
@@ -91,6 +90,18 @@ class StatsScannerTests: XCTestCase {
         print("reading for validation")
         let url2 = b.getDocumentsDirectory().appendingPathComponent("testingAwards.csv")
         print(b.readCSV(inputFile: url2, lineSeparator: "\n", valSeparator: ","))
+    }
+    
+    func testDatasetPathway() throws {
+       // let h = HomeViewController()
+        let arr = [["val 1", "val 2", "val 3"],
+                   ["13", "12", "15"],
+                   ["15", "18", "32"],
+                   ["23", "20", "32"]]
+        print(arr.count)
+        print(arr[0].count)
+        let d = Dataset(name: "Testing Set", appendable: arr)
+        //h.createItem(item: d)
     }
 
 }

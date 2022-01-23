@@ -21,12 +21,12 @@ class GraphDirectorViewController: UIViewController {
     @IBOutlet var polygonChart: UIButton!
     
     private var focused = AAChartType(rawValue: "scatter")
-    private var dataset = Dataset()
+    private var dataset: Dataset!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobject"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
     }
     
     override func viewDidLoad() {
@@ -34,8 +34,8 @@ class GraphDirectorViewController: UIViewController {
     }
     
     @objc func initDataSet(_ notification: Notification) {
-        self.dataset = notification.object as! Dataset
-        print("got dataset from home")
+        print("graph director got dataset")
+        self.dataset = (notification.object as! Dataset)
     }
     
     @IBAction func graphSelected(_sender : UIButton) {
@@ -67,25 +67,12 @@ class GraphDirectorViewController: UIViewController {
         
         let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
         vc.modalPresentationStyle = .popover
-        present(vc, animated: true, completion: nil)
         
         NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
+        NotificationCenter.default.post(name: Notification.Name("data"), object: self.dataset)
         print("sent to graph")
         
-        title = dataset.name
-        NotificationCenter.default.post(name: Notification.Name("title"), object: title)
-        
+        present(vc, animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

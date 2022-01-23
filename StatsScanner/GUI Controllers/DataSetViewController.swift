@@ -33,21 +33,17 @@ class DataSetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("inside DataViewController")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
-        
+
         loadData()
     }
     
     override func viewDidLayoutSubviews() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
         loadData()
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
+        print("dataset view recieved dataset")
         datasetobj = (notification.object as! Dataset)
-        print("recieved dataset object")
     }
     
     func loadData() {
@@ -65,7 +61,7 @@ class DataSetViewController: UIViewController {
 //        median.text = String(datasetobj.getMedian())
     }
     
-    @IBAction func onEditClick(_sender:UIButton) {
+    @IBAction func onBackClick(_sender:UIButton) {
         if (_sender == self.back){
             print("got here")
             let scanview = storyboard?.instantiateViewController(withIdentifier: "home") as! HomeViewController
@@ -73,7 +69,4 @@ class DataSetViewController: UIViewController {
             self.present(scanview, animated: true, completion: nil)
         }
     }
-    
-
-
 }

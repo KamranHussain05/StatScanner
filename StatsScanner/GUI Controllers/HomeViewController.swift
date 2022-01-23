@@ -189,6 +189,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: selectedDataset)
         NotificationCenter.default.post(name:Notification.Name("datasetobjpoints"), object: selectedDataset)
         NotificationCenter.default.post(name:Notification.Name("data"), object: selectedDataset)
+        NotificationCenter.default.post(name:Notification.Name("datasetobjectgraph"), object: selectedDataset)
         
         self.present(vc, animated: true, completion: nil)
     }

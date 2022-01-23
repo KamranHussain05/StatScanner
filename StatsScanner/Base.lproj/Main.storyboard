@@ -420,7 +420,6 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="Bgd-Ml-4mn"/>
-                                    <action selector="onEditClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="uVx-DC-rcl"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DataSet Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BGk-0v-X6f">
@@ -511,7 +510,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="rectangle.portrait.and.arrow.right" catalog="system" title=" "/>
                                 <connections>
-                                    <action selector="onEditClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="xX9-gH-8u7"/>
+                                    <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="DHG-qV-8sb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-1v-271">

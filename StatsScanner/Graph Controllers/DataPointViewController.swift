@@ -14,6 +14,17 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
     private let spreadsheetView = SpreadsheetView()
     private var dataset = Dataset()
 	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
+	}
+	
+	@objc func initDataset(_ notification: Notification) {
+		print("table view recieved data")
+		self.dataset = notification.object as! Dataset
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         spreadsheetView.dataSource = self
@@ -24,8 +35,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
-        
         spreadsheetView.translatesAutoresizingMaskIntoConstraints = false
         spreadsheetView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
         spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -75).isActive = true
@@ -33,11 +42,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
         spreadsheetView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
-    @objc func initDataset(_ notification: Notification) {
-        self.dataset = notification.object as! Dataset
-    }
-    
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
+		if(self.dataset.getKeys().count < 5) {
+			return 5
+		}
         return self.dataset.getKeys().count
     }
 

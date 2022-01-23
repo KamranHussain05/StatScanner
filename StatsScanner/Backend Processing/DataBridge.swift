@@ -56,6 +56,29 @@ class DataBridge {
         }
     }
     
+    func readCSV(inputFile: URL, lineSeparator: String = "\n", valSeparator: String = ",") -> [[String]] {
+        
+        //Get Data
+        print("reading csv")
+        var result: [[String]] = []
+        
+        do {
+            let data = try String(contentsOf: inputFile)
+            let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
+            for row in rows {
+                let columns = row.components(separatedBy: valSeparator)
+                result.append(columns)
+            }
+            print("copying cleaned data")
+            result = cleanCSVData(data: result)
+            return result
+        } catch {
+            // Any Errors will go here
+            print(error)
+            return [[]]
+        }
+    }
+    
     func writeCSV(fileName:String, data:[[String]]) {
         let url = getDocumentsDirectory().appendingPathComponent(fileName)
         

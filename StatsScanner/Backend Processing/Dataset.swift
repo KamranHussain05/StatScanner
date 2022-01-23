@@ -19,6 +19,8 @@ public class Dataset: NSObject, NSCoding {
     var name: String = "Unnamed Dataset"
     var creationDate: String!
     let db = DataBridge()
+	
+	// MARK: INIT'S
     
     public func encode(with coder: NSCoder) {
 		coder.encode(data, forKey:"data")
@@ -76,6 +78,8 @@ public class Dataset: NSObject, NSCoding {
         formatter.dateStyle = .short
         creationDate = formatter.string(from: currentDateTime)
     }
+	
+	// MARK: MODIFIERS AND GETTERS
     
     /// Returns the data 2d array containg the double values of the data
     func getData() -> [[Double]] {
@@ -146,9 +150,7 @@ public class Dataset: NSObject, NSCoding {
         return result
     }
     
-//===================================
-//==    Methods for Statistics     ==
-//===================================
+// MARK: STATISTICS METHODS
     
     /// Returns the number of items in the dataset
     func getTotalNumItems() -> Int {
@@ -293,6 +295,8 @@ public class Dataset: NSObject, NSCoding {
         return getStandardDeviation(index: axis)/sqrt(Double(getData(axis: axis).count))
     }
 }
+
+//MARK: EXTENSIONS
 
 extension String {
     var isNumeric : Bool {

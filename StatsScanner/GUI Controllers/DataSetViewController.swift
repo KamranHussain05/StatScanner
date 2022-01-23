@@ -8,6 +8,8 @@
 import UIKit
 
 class DataSetViewController: UIViewController {
+    
+    private var datasetobj: Dataset!
 
     @IBOutlet var datasetName: UILabel!
     @IBOutlet var creationDate: UILabel!
@@ -23,7 +25,11 @@ class DataSetViewController: UIViewController {
 //    @IBOutlet var standardError: UILabel!
 //    @IBOutlet var median: UILabel!
     
-    private var datasetobj: Dataset = Dataset()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +40,13 @@ class DataSetViewController: UIViewController {
         loadData()
     }
     
+    override func viewDidLayoutSubviews() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        loadData()
+    }
+    
     @objc func setDataSetObject(_ notification: Notification) {
-        datasetobj = notification.object as! Dataset
+        datasetobj = (notification.object as! Dataset)
         print("recieved dataset object")
     }
     

@@ -23,15 +23,19 @@ class GraphDirectorViewController: UIViewController {
     private var focused = AAChartType(rawValue: "scatter")
     private var dataset = Dataset()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         
         NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobject"), object: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     @objc func initDataSet(_ notification: Notification) {
         self.dataset = notification.object as! Dataset
-        print("got dataset from dataview")
+        print("got dataset from home")
     }
     
     @IBAction func graphSelected(_sender : UIButton) {

@@ -54,6 +54,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         
     }
     
+    // MARK: Data Import Handling
+    
     // when plus button is pressed
     @IBAction func didTapNewDatasetButton() {
         newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
@@ -80,10 +82,18 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     //code crashes here, "Failed to set FileProtection Attributes on staging URL"
     private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
         print("inside document picker function")
-        //let arr = db.readCSV(inputFile: url)
+        do {
+            let arr = try String(contentsOf: url)
+            print(arr)
+        } catch {
+            print("FAILED")
+        }
+        
+        let arr = db.readCSV(inputFile: url)
+        print(arr)
         print("copying csv to app docs")
         let filename = "newdoc_" + getDate() + ".csv"
-        //db.writeCSV(fileName: filename, data: arr)
+        db.writeCSV(fileName: filename, data: arr)
     }
     
     private func getDate() -> String {
@@ -94,9 +104,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         return formatter.string(from: currentDateTime)
     }
     
-// ===========================================
-// ||        CORE DATA CONFIGURATION        ||
-// ===========================================
+
+// MARK: CORE DATA CONFIGURATION
+
     //Fetches all the datasetprojects from Core Data
     func getAllItems() {
         do {
@@ -145,9 +155,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
 }
 
-// ===========================================
-// ||   UICollectionView Cells and Config   ||
-// ===========================================
+
+// MARK: COLLECTION VIEW CONFIGURATION
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -163,15 +172,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
         cell.creationDate.text = "Created: " + (model.datasetobject?.creationDate)!
         selectedDataset = model.datasetobject!
-        
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         
         return cell
     }
     
+    //MARK: OPEN DATASET HANDLE
     @objc func openDataSet(_ sender:UIButton) {
         print("Opening DataSet")
+        print(selectedDataset.name)
         let vc = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
         vc.modalPresentationStyle = .fullScreen
         

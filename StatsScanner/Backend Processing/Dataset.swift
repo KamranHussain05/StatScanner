@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// A DataSet Object which stores the array, name, creationdate, and more data
 @objc(Dataset)
 public class Dataset: NSObject, NSCoding {
     
@@ -20,7 +21,6 @@ public class Dataset: NSObject, NSCoding {
         
     }
     
-    
     var data: [[Double]] = [[]]
     var keys: [String] = []
     var xvals: [String] = []
@@ -28,7 +28,7 @@ public class Dataset: NSObject, NSCoding {
     var creationDate: String!
     let db = DataBridge()
     
-    //creates a new dataset
+    /// Creates a new dataset
     override init() {
         name = "Unnamed DataSet"
         // get the current date and time
@@ -39,7 +39,7 @@ public class Dataset: NSObject, NSCoding {
         creationDate = formatter.string(from: currentDateTime)
     }
     
-    //creates a new dataset and assumes the first row contains the keys
+    /// Creates a new dataset and assumes the first row contains the keys
     init(name: String, appendable: [[String]]) {
         super.init()
         self.name = name
@@ -50,17 +50,13 @@ public class Dataset: NSObject, NSCoding {
         formatter.dateStyle = .short
         creationDate = formatter.string(from: currentDateTime)
         
-//        for i in 1...data.count {
-//            self.xvals.append(appendable[0][i])
-//        }
-        
         keys = appendable[0]
         var a = appendable
         a.remove(at: 0)
         self.data = self.cleanData(array: a)
     }
     
-    //creates a new dataset object with the specified name
+    /// Creates a new dataset object with the specified name
     init(name: String) {
         self.name = name
         let currentDateTime = Date()
@@ -70,12 +66,12 @@ public class Dataset: NSObject, NSCoding {
         creationDate = formatter.string(from: currentDateTime)
     }
     
-    //returns the data 2d array containg the double values of the data
+    /// Returns the data 2d array containg the double values of the data
     func getData() -> [[Double]] {
         return self.data
     }
     
-    //returns the array containing the data in the specified index
+    /// Returns the array containing the data in the specified index
     func getData(axis:Int) -> [Double] {
         var result = [Double]()
         for i in 0...data[0].count-1 {
@@ -84,56 +80,55 @@ public class Dataset: NSObject, NSCoding {
         return result
     }
     
-    //writes the csv files and imports it
-    func toCSV(file:URL) {
-        var result = [[String]]()
-        result[0] = self.keys
-        for i in 0...data.count-1{
-            for j in 0...data[i].count-1 {
-                result[i-1][j] = String(data[i][j])
+    /// Writes the csv files and imports it
+    func toCSV() {
+        var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count+1)
+        result.insert(keys, at: 0)
+        for x in 1...result.count-2 {
+            for y in 0...result[x].count-1 {
+                result[x][y] = String(data[x-1][y])
             }
         }
         
-        let fileName = self.name.replacingOccurrences(of: " ", with: "")
+        let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
         db.writeCSV(fileName: fileName, data: result)
     }
     
-    //returns the array containing the extracted keys from the dataset
+    /// Returns the array containing the extracted keys from the dataset
     func getKeys() -> [String] {
         return self.keys
     }
     
-    //returns the specified dataset key
+    /// Returns the specified dataset key
     func getKey(index: Int) -> String {
         return self.keys[index]
     }
     
-    //adds a value to the end of the dataset
+    /// Adds a value to the end of the dataset
     func addVal(val:Double) {
         data[data[0].count-1].append(val)
     }
     
-    //changes a specific value
+    /// Changes a specific value
     func changeVal(indexX: Int, indexY: Int, val: Double) {
         data[indexX][indexY] = val
     }
     
-    //Adds another dataset or 2D array that does not contain the key row
+    /// Adds another dataset or 2D array that does not contain the key row
     func appendArray(array: [[String]]) {
         let cleanArr = cleanData(array: array)
-        for i in 0...cleanArr.count-1 {
-            data[data.count-1 + i].append(contentsOf: cleanArr[i])
-        }
+        data.append(contentsOf: cleanArr)
     }
     
-    //cleans the data and inputs it to an array of Doubles
+    /// Cleans the data and inputs it to an array of Doubles
     private func cleanData(array: [[String]]) -> [[Double]] {
-        var result = [[Double]]()
-        for x in 0...array[0].count-1 {
-            for y in 0...array.count-1 {
-                if(array[x][y].isNumber) {
-                    print(result)
+        var result = [[Double]](repeating: [Double](repeating: Double.nan, count: array[0].count), count: array.count)
+        for x in 0...array.count-1 {
+            for y in 0...array[x].count-1 {
+                if(array[x][y].isNumeric) {
                     result[x][y] = Double(array[x][y])!
+                } else if(array[x][y].isEmpty){
+                    result[x][y] = Double.nan
                 }
             }
         }
@@ -144,7 +139,7 @@ public class Dataset: NSObject, NSCoding {
 //==    Methods for Statistics     ==
 //===================================
     
-    //returns the number of items in the dataset
+    /// Returns the number of items in the dataset
     func getTotalNumItems() -> Int {
         var count = 0
         for i in 0...data.count-1 {
@@ -153,12 +148,12 @@ public class Dataset: NSObject, NSCoding {
         return count
     }
     
-    //returns the number of items in the specified variable
+    /// Returns the number of items in the specified variable
     func getNumItems(index:Int) -> Int {
         return data[index].count
     }
     
-    //returns average of the entire dataset spanning all variables
+    /// Returns average of the entire dataset spanning all variables
     func getSetAverage() -> Double{
         var result = 0.0
         for i in 0...data.count-1 {
@@ -169,7 +164,7 @@ public class Dataset: NSObject, NSCoding {
         return result/Double(getTotalNumItems())
     }
     
-    //returns the average of a specified variable
+    /// Returns the average of a specified variable
     func getAverage(axis:Int) -> Double{
         var result = 0.0
         for i in 0...data[axis].count-1 {
@@ -178,7 +173,7 @@ public class Dataset: NSObject, NSCoding {
         return result/Double(getNumItems(index: axis))
     }
     
-    //returns the maximum value of the data set
+    /// Returns the maximum value of the data set
     func getMax() -> Double {
         var result = [Double]()
         for i in 0...data.count {
@@ -187,13 +182,13 @@ public class Dataset: NSObject, NSCoding {
         return result.max()!
     }
     
-    //returns the highest value in the specified index
+    /// Returns the highest value in the specified index
     func getMax(index: Int) -> Double {
         return data[index].max()!
         
     }
     
-    //returns the minimum value in the data
+    /// Returns the minimum value in the data
     func getMin() -> Double {
         var result = [Double]()
         for i in 0...data.count {
@@ -202,12 +197,12 @@ public class Dataset: NSObject, NSCoding {
         return result.min()!
     }
     
-    //returns the minimum value in the specified index
+    /// Returns the minimum value in the specified index
     func getMin(index:Int) -> Double {
         return data[index].min()!
     }
     
-    //finds the standard deviation of everything in the dataset
+    /// Finds the standard deviation of everything in the dataset
     func getStandardDeviation() -> Double {
         var diffsqrs = 0.0
         for e in data {
@@ -218,7 +213,7 @@ public class Dataset: NSObject, NSCoding {
         return sqrt(diffsqrs - Double(getTotalNumItems()))
     }
     
-    //finds the standard deviation of the specified axis
+    /// Finds the standard deviation of the specified axis
     func getStandardDeviation(index:Int) -> Double {
         var diffsqrs = 0.0
         for e in data[index] {
@@ -227,7 +222,7 @@ public class Dataset: NSObject, NSCoding {
         return sqrt(diffsqrs - Double(getNumItems(index: index)))
     }
     
-    //returns the mode(s) of the entire dataset
+    /// Returns the mode(s) of the entire dataset
     func getModes() -> [Double] {
         var res = [Double]()
         for i in 0...data.count{
@@ -236,7 +231,7 @@ public class Dataset: NSObject, NSCoding {
         return getModes(arr: res)
     }
     
-    //returns the mode(s) of the specified axis
+    /// Returns the mode(s) of the specified axis
     func getModes(arr: [Double]) -> [Double] {
         var counts: [Double: Double] = [:]
             
@@ -247,7 +242,7 @@ public class Dataset: NSObject, NSCoding {
         return []
     }
     
-    //returns the median of the entire datasete
+    /// Returns the median of the entire datasete
     func getMedian() -> Double {
         var copy = data
         for i in 0...copy.count-1 {
@@ -265,7 +260,7 @@ public class Dataset: NSObject, NSCoding {
         return copy[x][y]
     }
     
-    //returns the median of the specified axis
+    /// Returns the median of the specified axis
     func getMedian(axis: Int) -> Double {
         var copy = data[axis]
         copy.sort()
@@ -277,13 +272,19 @@ public class Dataset: NSObject, NSCoding {
         return copy[i]
     }
     
-    //returns the standard error of the entire dataset
+    /// Returns the standard error of the entire dataset
     func getStandardError() -> Double {
         return getStandardDeviation()/sqrt(Double(data.count))
     }
     
-    //returns the standard error of the specified axis
+    /// Returns the standard error of the specified axis
     func getStandardError(axis: Int) -> Double {
         return getStandardDeviation(index: axis)/sqrt(Double(getData(axis: axis).count))
+    }
+}
+
+extension String {
+    var isNumeric : Bool {
+        return Double(self) != nil
     }
 }

@@ -17,7 +17,7 @@ class DataBridge {
     
     func writeData(data:String, fileName: String) {
         let str = data
-        let url = getDocumentsDirectory().appendingPathComponent(fileName)
+        let url = getDocumentsDirectory().appendingPathComponent(fileName + ".csv")
         
         do {
             try str.write(to: url, atomically: true, encoding: .utf8)
@@ -32,14 +32,15 @@ class DataBridge {
     }
     
 
-    func readCSV(inputFile: URL, lineSeparator: String = "/n", valSeparator: String = ",") -> [[String]] {
+    func readCSV(fileName: String, lineSeparator: String = "\n", valSeparator: String = ",") -> [[String]] {
+        let url = getDocumentsDirectory().appendingPathComponent(fileName)
         
         //Get Data
         print("reading csv")
         var result: [[String]] = []
         
         do {
-            let data = try String(contentsOf: inputFile)
+            let data = try String(contentsOf: url)
             let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
             for row in rows {
                 let columns = row.components(separatedBy: valSeparator)
@@ -55,7 +56,7 @@ class DataBridge {
         }
     }
     
-    func writeCSV(fileName:String, data:[[String]]){
+    func writeCSV(fileName:String, data:[[String]]) {
         let url = getDocumentsDirectory().appendingPathComponent(fileName)
         
         var stringData = ""
@@ -79,18 +80,11 @@ class DataBridge {
     }
     
     private func cleanCSVData(data: [[String]]) -> [[String]] {
-        var result = data
+        var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count)
         print("cleaning data")
         for i in 0...data.count-1 {
-            if( data[i].count == 0){
-                result.remove(at: i)
-            }
             for j in 0...data[i].count-1 {
                 result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
-                result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
-                if (data[i][j] == "") {
-                    result[i].remove(at: j)
-                }
             }
         }
         return result

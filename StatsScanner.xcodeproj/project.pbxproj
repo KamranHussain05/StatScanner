@@ -78,7 +78,7 @@
 		4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4D2F168B279B51F50096F9DA /* StatsScanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatsScanner.entitlements; sourceTree = "<group>"; };
 		4D2F168C279BE1580096F9DA /* DatasetTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetTester.swift; sourceTree = "<group>"; };
-		4D2F168E279BE9C60096F9DA /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; };
+		4D2F168E279BE9C60096F9DA /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; usesTabs = 0; };
 		4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTransformer.swift; sourceTree = "<group>"; };
 		4D7713182786195700BD7DC8 /* PlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };

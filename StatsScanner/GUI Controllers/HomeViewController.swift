@@ -121,9 +121,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     //Writes a datasetproject to Core Data
-    func createItem(item: Dataset) {
+    func createItem(item: Dataset, name: String) {
         let newItem = DataSetProject(context: context)
         newItem.datasetobject = item
+        newItem.name = name
+        
         do {
             try context.save()
             getAllItems()

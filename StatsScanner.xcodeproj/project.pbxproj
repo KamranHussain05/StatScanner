@@ -35,7 +35,6 @@
 		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
 		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
 		A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD6DF62779AE030048912C /* DataBridge.swift */; };
-		A8C941A227811BA300311BAF /* DataSetObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C941A127811BA300311BAF /* DataSetObjectManager.swift */; };
 		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
 		A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56382772989D006BDF61 /* Cholesterol_R.csv */; };
@@ -105,7 +104,6 @@
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8BD6DEC27794A810048912C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8BD6DF62779AE030048912C /* DataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBridge.swift; sourceTree = "<group>"; };
-		A8C941A127811BA300311BAF /* DataSetObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSetObjectManager.swift; sourceTree = "<group>"; };
 		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; usesTabs = 1; };
 		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
 		A8CA56382772989D006BDF61 /* Cholesterol_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cholesterol_R.csv; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				4D2F1685279AACF70096F9DA /* DataSetProject+CoreDataClass.swift */,
 				4D2F1686279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift */,
 				A8CA563127716205006BDF61 /* Dataset.swift */,
-				A8C941A127811BA300311BAF /* DataSetObjectManager.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
 				4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */,
@@ -551,7 +548,6 @@
 				4D2F16802799CE2F0096F9DA /* DataPointViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				4D2F1688279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift in Sources */,
-				A8C941A227811BA300311BAF /* DataSetObjectManager.swift in Sources */,
 				4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */,

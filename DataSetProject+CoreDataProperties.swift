@@ -16,6 +16,7 @@ extension DataSetProject {
     }
 
     @NSManaged public var datasetobject: Dataset?
+    @NSManaged public var name: String?
 
 }
 

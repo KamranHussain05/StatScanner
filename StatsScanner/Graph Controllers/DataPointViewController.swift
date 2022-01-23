@@ -8,18 +8,18 @@
 import UIKit
 import SpreadsheetView
 
-class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
-    
+class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     private let spreadsheetView = SpreadsheetView()
     private var dataset = Dataset()
+	@IBOutlet var edit: UIButton!
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
-		
+
 		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
 	}
-	
+
 	@objc func initDataset(_ notification: Notification) {
 		print("table view recieved data")
 		self.dataset = notification.object as! Dataset
@@ -27,9 +27,13 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        spreadsheetView.dataSource = self
-        view.addSubview(spreadsheetView)
 		
+		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
+		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)
+        spreadsheetView.dataSource = self
+		spreadsheetView.delegate = self
+		
+        view.addSubview(spreadsheetView)
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,34 +46,66 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource {
         spreadsheetView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
-    func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-		if(self.dataset.getKeys().count < 5) {
-			return 5
+	//MARK: TABLE INIT
+	
+	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
+		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
+		if(indexPath.row == 0){
+			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
+			cell.backgroundColor = .lightGray
+			return cell
 		}
+		cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]))
+		return cell
+	}
+	
+    func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         return self.dataset.getKeys().count
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        //return self.dataset.getData(axis: 0).count
 		return dataset.getData().count
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-      return 70
+		//return spreadsheetView.frame.width/CGFloat(self.dataset.getKeys().count)
+		return 100
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
       return 50
     }
+	
+	func spreadsheetView(_ spreadsheetView: SpreadsheetView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	@IBAction func onEditClick() {
+		edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
+		print("edit pressed")
+	}
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+class DataPointCell: Cell {
+	
+	static let identifier = "datapoint"
+	
+	private let label = UILabel()
+	private let field = UITextField()
+	
+	public func setup(with text: String) {
+		label.text = text
+		label.textColor = .black
+		label.textAlignment = .center
+		contentView.addSubview(label)
+	}
+	
+	public func edit(with text: String) {
+		field.placeholder = text
+	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		label.frame = contentView.bounds
+	}
 }

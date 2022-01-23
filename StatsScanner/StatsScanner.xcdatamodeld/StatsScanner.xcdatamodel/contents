@@ -2,8 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DataSetProject" representedClassName="DataSetProject" isAbstract="YES" syncable="YES">
         <attribute name="datasetobject" attributeType="Transformable" valueTransformerName="NSDatasetTransformer" customClassName=".Dataset"/>
+        <attribute name="name" attributeType="String"/>
     </entity>
     <elements>
-        <element name="DataSetProject" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="DataSetProject" positionX="-63" positionY="-18" width="128" height="59"/>
     </elements>
 </model>

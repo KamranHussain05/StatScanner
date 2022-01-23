@@ -13,20 +13,31 @@ import CoreData
 @objc(Dataset)
 public class Dataset: NSObject, NSCoding {
     
-    public func encode(with coder: NSCoder) {
-        
-    }
-    
-    public required init?(coder: NSCoder) {
-        
-    }
-    
     var data: [[Double]] = [[]]
     var keys: [String] = []
     var xvals: [String] = []
     var name: String = "Unnamed Dataset"
     var creationDate: String!
     let db = DataBridge()
+    
+    public func encode(with coder: NSCoder) {
+		coder.encode(data, forKey:"data")
+		coder.encode(keys, forKey:"keys")
+        coder.encode(xvals, forKey: "xvals")
+        coder.encode(name, forKey: "name")
+        coder.encode(creationDate, forKey: "creationDate")
+    }
+    
+    public required convenience init?(coder decoder: NSCoder) {
+        self.init()
+        
+        data = decoder.decodeObject(forKey: "data") as? [[Double]] ?? [[]]
+        name = decoder.decodeObject(forKey: "name") as? String ?? "Unnamed Dataset"
+        creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
+        keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
+        xvals = decoder.decodeObject(forKey: "xvals") as? [String] ?? []
+		
+    }
     
     /// Creates a new dataset
     override init() {

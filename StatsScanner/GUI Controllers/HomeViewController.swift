@@ -160,8 +160,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "hometile", for: indexPath) as! HomeTiles
         
         cell.dataSetName.text = model.datasetobject?.name
-        cell.numitems.text = String(model.datasetobject!.getTotalNumItems())
-        cell.creationDate.text = model.datasetobject?.creationDate
+        cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
+        cell.creationDate.text = "Created: " + (model.datasetobject?.creationDate)!
         selectedDataset = model.datasetobject!
         
         cell.openDataset.tag = indexPath.row

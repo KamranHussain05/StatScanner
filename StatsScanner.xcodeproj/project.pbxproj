@@ -106,7 +106,7 @@
 		A8BD6DEC27794A810048912C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8BD6DF62779AE030048912C /* DataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBridge.swift; sourceTree = "<group>"; };
 		A8C941A127811BA300311BAF /* DataSetObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSetObjectManager.swift; sourceTree = "<group>"; };
-		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
+		A8CA563127716205006BDF61 /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; usesTabs = 1; };
 		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
 		A8CA56382772989D006BDF61 /* Cholesterol_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cholesterol_R.csv; sourceTree = "<group>"; };
 		A8CA563A277298AD006BDF61 /* Crime_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Crime_R.csv; sourceTree = "<group>"; };

@@ -31,6 +31,8 @@ class GraphDirectorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
     }
     
     @objc func initDataSet(_ notification: Notification) {

@@ -34,6 +34,7 @@ class DataSetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
         loadData()
     }
     

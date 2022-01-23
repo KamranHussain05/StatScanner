@@ -28,6 +28,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
+		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)
         spreadsheetView.dataSource = self

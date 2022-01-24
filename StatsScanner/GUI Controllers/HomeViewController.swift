@@ -51,7 +51,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             UIAlertAction(title:"Cancel", style: .destructive) { (action) in
                 print("cancelled addition")
             })
-        
     }
     
     // MARK: Data Import Handling
@@ -173,7 +172,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.dataSetName.text = model.datasetobject?.name
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
         cell.creationDate.text = "Created: " + (model.datasetobject?.creationDate)!
-        selectedDataset = model.datasetobject!
+        self.selectedDataset = model.datasetobject!
+        print(model.datasetobject!.name)
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         
@@ -183,6 +183,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     //MARK: OPEN DATASET HANDLE
     @objc func openDataSet(_ sender:UIButton) {
         print("Opening DataSet")
+        self.selectedDataset = models[sender.tag].datasetobject!
         print(selectedDataset.name)
         let vc = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
         vc.modalPresentationStyle = .fullScreen

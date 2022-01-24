@@ -90,6 +90,7 @@ class DatasetTester: XCTestCase {
         h.createItem(item: d, name: d.name)
         let d2 = Dataset(name: "Test Set 2", appendable: arr2)
         h.createItem(item: d2, name: d2.name)
+        h.getAllItems()
     }
 
 }

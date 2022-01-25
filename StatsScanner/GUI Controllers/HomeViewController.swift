@@ -78,6 +78,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         controller.allowsMultipleSelection = false
         
         present(controller, animated: true, completion: nil)
+        
+        let new = Dataset()
+        createItem(item: new, name: new.name)
     }
     
     //code crashes here, "Failed to set FileProtection Attributes on staging URL"

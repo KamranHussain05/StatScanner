@@ -8,6 +8,8 @@
 import UIKit
 import UniformTypeIdentifiers
 
+// MARK: Home View Controller
+
 class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
@@ -106,7 +108,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
 // MARK: CORE DATA CONFIGURATION
 
-    //Fetches all the datasetprojects from Core Data
+    ///Fetches all the datasetprojects from Core Data
     func getAllItems() {
         do {
             models = try context.fetch(DataSetProject.fetchRequest())
@@ -119,7 +121,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         }
     }
     
-    //Writes a datasetproject to Core Data
+    ///Writes a datasetproject to Core Data
     func createItem(item: Dataset, name: String) {
         let newItem = DataSetProject(context: context)
         newItem.datasetobject = item
@@ -133,7 +135,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         }
     }
     
-    //Deletes a datasetproject from Core Data
+    ///Deletes a datasetproject from Core Data
     func deleteItem(item: DataSetProject) {
         context.delete(item)
         
@@ -144,7 +146,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         }
     }
     
-    //Updates the dataset project in Core Data
+    ///Updates the dataset project in Core Data
     func updateItem(item: DataSetProject, dataset: Dataset) {
         item.datasetobject = dataset
         
@@ -180,7 +182,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    //MARK: OPEN DATASET HANDLE
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
+        let height = width*1.5
+
+        return CGSize(width: width, height:height)
+    }
+    
+// MARK: OPEN DATASET HANDLE
+    
     @objc func openDataSet(_ sender:UIButton) {
         print("Opening DataSet")
         self.selectedDataset = models[sender.tag].datasetobject!
@@ -195,12 +205,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         NotificationCenter.default.post(name:Notification.Name("datasetobjectgraph"), object: selectedDataset)
         
         self.present(vc, animated: true, completion: nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
-        let height = width*1.5
-
-        return CGSize(width: width, height:height)
     }
 }

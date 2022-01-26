@@ -67,7 +67,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     func createWithName() {
         let new = Dataset()
-        let alert = UIAlertController(title: "New DataSet",
+        let alert = UIAlertController(title: "New DataSet Name",
                                       message: nil,
                                       preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
@@ -79,7 +79,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             self?.importCSV()
             self?.createItem(item: new, name: new.name)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }

@@ -29,6 +29,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllItems()
+        
         // for pop up menu
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take Image", style: .default) { (action) in
@@ -40,12 +41,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import Image", style: .default) { (action) in
                 print("beans")
+                self.createWithName()
             }
         )
         
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import CSV", style: .default) { (action) in
-                self.importCSV()
+                self.createWithName()
             }
         )
         
@@ -63,6 +65,33 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         self.present(newDatasetMenu, animated: true, completion: nil)
     }
     
+    func createWithName() {
+        let new = Dataset()
+        let alert = UIAlertController(title: "New DataSet",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Create", style: .cancel, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+            new.name = text
+            self?.importCSV()
+            self?.createItem(item: new, name: new.name)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+        }))
+        
+        present(alert, animated: true, completion: nil)
+        
+        if(alert.isBeingDismissed) {
+            self.importCSV()
+        }
+    }
+    
     func scanningImage() {
         let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
@@ -78,14 +107,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         controller.allowsMultipleSelection = false
         
         present(controller, animated: true, completion: nil)
-        
-        let new = Dataset()
-        createItem(item: new, name: new.name)
+        print("got here")
     }
     
     //code crashes here, "Failed to set FileProtection Attributes on staging URL"
     private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
-        print("inside document picker function")
         do {
             let arr = try String(contentsOf: url)
             print(arr)

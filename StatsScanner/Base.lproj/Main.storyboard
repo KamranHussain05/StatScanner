@@ -57,7 +57,7 @@
                     <connections>
                         <outlet property="imageView" destination="KYb-si-RuA" id="KFJ-72-GhG"/>
                         <outlet property="newScanButton" destination="oiz-mt-t3S" id="cE0-jF-Nsx"/>
-                        <outlet property="useScanButton" destination="eR6-gd-bwt" id="Stx-Oa-Zwb"/>
+                        <outlet property="useImageButton" destination="eR6-gd-bwt" id="x6R-uY-tEP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

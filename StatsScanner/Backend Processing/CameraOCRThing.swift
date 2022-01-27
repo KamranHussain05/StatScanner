@@ -16,10 +16,6 @@ class CameraOCRThing: UIViewController {
     
     var imgUsing: UIImage!
     
-    override func loadView() {
-        super.loadView()
-    }
-    
     @IBAction func didTapNewScanButton() {
         let picker = UIImagePickerController()
         picker.sourceType = .camera

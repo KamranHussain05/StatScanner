@@ -95,6 +95,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     func scanningImage() {
         let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
+        print("Got here")
         self.present(scanview, animated: true, completion: nil)
     }
     

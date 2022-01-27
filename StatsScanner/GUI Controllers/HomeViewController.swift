@@ -30,9 +30,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         super.viewDidLoad()
         getAllItems()
         
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
-                myCollectionView.addGestureRecognizer(longPressGesture)
-        
         // for pop up menu
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take Image", style: .default) { (action) in
@@ -211,6 +208,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(model.datasetobject!.name)
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
+        cell.addGestureRecognizer(longPressGesture)
         
         return cell
     }
@@ -240,25 +239,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         self.present(vc, animated: true, completion: nil)
     }
     
-    @objc func longTap(_ gesture: UIGestureRecognizer){
+    @objc func longTap(_ gesture: UIGestureRecognizer) {
         if(gesture.state == .began) {
-            let alert = UIAlertController(title: "Delete Dataset",
-                                          message: "This is Irreversible!",
-                                          preferredStyle: .alert)
+            let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible!", preferredStyle: .alert)
+            
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-                print("got here")
-                guard let selectedIndexPath = self!.myCollectionView.indexPathForItem(at: gesture.location(in: self!.myCollectionView)) else {
-                                return
-                }
-                print("deleting: ", self!.models[selectedIndexPath.row].datasetobject?.name as Any)
-                self?.deleteItem(item: self!.models[selectedIndexPath.row])
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-                guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                    return
-                }
+                print("deleting ", self!.models[gesture.view!.tag].name!)
+                self?.deleteItem(item: self!.models[gesture.view!.tag])
+                self!.getAllItems()
             }))
             
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else { return } }))
             present(alert, animated: true, completion: nil)
         }
     }

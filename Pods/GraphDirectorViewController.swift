@@ -55,7 +55,7 @@ class GraphDirectorViewController: UIViewController {
             print("pie")
         } else if (_sender == areaChart) {
             print("area")
-            focused = AAChartType.arearange
+            focused = AAChartType.areasplinerange
         } else if (_sender == bubbleChart) {
             print("bubble")
             focused = AAChartType.bubble

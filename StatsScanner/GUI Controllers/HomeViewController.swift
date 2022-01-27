@@ -30,24 +30,27 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         super.viewDidLoad()
         getAllItems()
         
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
+                myCollectionView.addGestureRecognizer(longPressGesture)
+        
         // for pop up menu
         newDatasetMenu.addAction(
             UIAlertAction(title: "Take Image", style: .default) { (action) in
                 print("Scanning image")
-                self.scanningImage()
+                self.createWithName(method: 0)
             }
         )
 
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import Image", style: .default) { (action) in
                 print("beans")
-                self.createWithName()
+                self.createWithName(method: 1)
             }
         )
         
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import CSV", style: .default) { (action) in
-                self.createWithName()
+                self.createWithName(method: 2)
             }
         )
         
@@ -65,31 +68,39 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         self.present(newDatasetMenu, animated: true, completion: nil)
     }
     
-    func createWithName() {
+    func createWithName(method: Int) {
         let new = Dataset()
         let alert = UIAlertController(title: "New DataSet Name",
                                       message: nil,
                                       preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Create", style: .cancel, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
             new.name = text
-            self?.importCSV()
-            self?.createItem(item: new, name: new.name)
+            
+            switch(method) {
+            case 0:
+                self?.scanningImage()
+            case 1:
+                //import image method call
+                print("importing image")
+            case 2:
+                self?.importCSV()
+            default:
+                return
+            }
+            
+            self?.createItem(item: new, name: new.name) //remove this after pipelines are implemented
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
         }))
         
         present(alert, animated: true, completion: nil)
-        
-        if(alert.isBeingDismissed) {
-            self.importCSV()
-        }
     }
     
     func scanningImage() {
@@ -123,16 +134,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         let arr = db.readCSV(inputFile: url)
         print(arr)
         print("copying csv to app docs")
-        let filename = "newdoc_" + getDate() + ".csv"
+        let filename = "newdoc_" + ".csv"
         db.writeCSV(fileName: filename, data: arr)
-    }
-    
-    private func getDate() -> String {
-        let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .short
-        return formatter.string(from: currentDateTime)
     }
     
 
@@ -235,5 +238,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         NotificationCenter.default.post(name:Notification.Name("datasetobjectgraph"), object: selectedDataset)
         
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func longTap(_ gesture: UIGestureRecognizer){
+        if(gesture.state == .began) {
+            let alert = UIAlertController(title: "Delete Dataset",
+                                          message: "This is Irreversible!",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+                print("got here")
+                guard let selectedIndexPath = self!.myCollectionView.indexPathForItem(at: gesture.location(in: self!.myCollectionView)) else {
+                                return
+                }
+                print("deleting: ", self!.models[selectedIndexPath.row].datasetobject?.name as Any)
+                self?.deleteItem(item: self!.models[selectedIndexPath.row])
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                    return
+                }
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
     }
 }

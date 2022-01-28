@@ -125,7 +125,7 @@ public class Dataset: NSObject, NSCoding {
     }
     
     /// Changes a specific value
-    func changeVal(indexX: Int, indexY: Int, val: Double) {
+    func updateVal(indexX: Int, indexY: Int, val: Double) {
         data[indexX][indexY] = val
     }
     

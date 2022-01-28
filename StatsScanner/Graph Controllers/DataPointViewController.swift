@@ -55,6 +55,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		if(indexPath.row == 0){
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
 			cell.backgroundColor = .lightGray
+			cell.dataset = self.dataset
 			return cell
 		}
 		cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]))
@@ -82,7 +83,13 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		return true
 	}
 	
+	//MARK: ON EDIT CLICK
+	
 	@IBAction func onEditClick() {
+		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
+			print("saving")
+			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
+		}
 		edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 		print("edit pressed")
 	}
@@ -94,16 +101,22 @@ class DataPointCell: Cell {
 	
 	private let label = UILabel()
 	private let field = UITextField()
+	var dataset: Dataset!
 	
 	public func setup(with text: String) {
-		label.text = text
-		label.textColor = .black
-		label.textAlignment = .center
-		contentView.addSubview(label)
+		field.text = text
+		field.textColor = .black
+		field.textAlignment = .center
+		field.isEnabled = false
+		contentView.addSubview(field)
 	}
 	
-	public func edit(with text: String) {
-		field.placeholder = text
+	public func edit() {
+		field.isEnabled = true
+	}
+	
+	public func save() {
+		field.isEnabled = false
 	}
 	
 	override func layoutSubviews() {

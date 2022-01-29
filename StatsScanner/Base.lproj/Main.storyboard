@@ -14,16 +14,19 @@
         <!--Scan Data-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CameraOCRThing" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-si-RuA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-si-RuA">
                                 <rect key="frame" x="20" y="64" width="374" height="447"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiz-mt-t3S">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiz-mt-t3S">
                                 <rect key="frame" x="20" y="548" width="374" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Take Scan"/>
@@ -31,8 +34,9 @@
                                     <action selector="didTapNewScanButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="bfx-eS-7ZG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-gd-bwt">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-gd-bwt">
                                 <rect key="frame" x="20" y="604" width="374" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Use Image"/>
@@ -40,18 +44,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="KYb-si-RuA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="6iP-uC-c6N"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="top" secondItem="KYb-si-RuA" secondAttribute="bottom" constant="37" id="NmB-xr-ERT"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="eR6-gd-bwt" secondAttribute="leading" id="QSO-AL-fXG"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="eR6-gd-bwt" secondAttribute="trailing" id="Vfk-Hl-fmq"/>
-                            <constraint firstAttribute="bottom" secondItem="oiz-mt-t3S" secondAttribute="bottom" constant="263" id="aDs-6G-JMb"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="KYb-si-RuA" secondAttribute="trailing" id="at9-Ws-l5t"/>
-                            <constraint firstItem="eR6-gd-bwt" firstAttribute="top" secondItem="oiz-mt-t3S" secondAttribute="bottom" constant="25" id="nxq-1E-tBB"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="KYb-si-RuA" secondAttribute="leading" id="tjJ-Vj-1Sf"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zBh-QW-2C2"/>
-                            <constraint firstItem="oiz-mt-t3S" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="zzi-hf-Pf8"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wqU-v7-zUB"/>
                     <connections>
@@ -60,7 +52,6 @@
                         <outlet property="useImageButton" destination="eR6-gd-bwt" id="x6R-uY-tEP"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2688" y="-664"/>
         </scene>

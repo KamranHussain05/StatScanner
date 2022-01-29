@@ -31,13 +31,16 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         getAllItems()
         
         // for pop up menu
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Take Image", style: .default) { (action) in
-                print("Scanning image")
-                self.createWithName(method: 0)
-            }
-        )
-
+        if(UIDevice.current.userInterfaceIdiom != .mac) {
+            // don't allow user to take a photo if it's a mac (impractical)
+            newDatasetMenu.addAction(
+                UIAlertAction(title: "Take Image", style: .default) { (action) in
+                    print("Scanning image")
+                    self.scanningImage()
+                }
+            )
+        }
+        
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import Image", style: .default) { (action) in
                 print("beans")
@@ -59,9 +62,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     // MARK: Data Import Handling
     
-    // when plus button is pressed
+    // when plus button is pressed (creates new menu)
     @IBAction func didTapNewDatasetButton() {
         newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
+        if(UIDevice.current.userInterfaceIdiom == .pad) {
+            newDatasetMenu.popoverPresentationController?.sourceRect = CGRect.init(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        }
         self.present(newDatasetMenu, animated: true, completion: nil)
     }
     
@@ -80,11 +86,15 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             switch(method) {
             case 0:
                 self?.scanningImage()
+                print("scanning image")
+            break
             case 1:
                 //import image method call
                 print("importing image")
+            break
             case 2:
                 self?.importCSV()
+            break
             default:
                 return
             }
@@ -96,14 +106,17 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
                 return
             }
         }))
+        alert.popoverPresentationController?.sourceView = self.view
         
+        print("let's a go")
         present(alert, animated: true, completion: nil)
+        print("let's a go")
     }
     
     func scanningImage() {
         let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
-        print("Got here")
+        scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)
     }
     

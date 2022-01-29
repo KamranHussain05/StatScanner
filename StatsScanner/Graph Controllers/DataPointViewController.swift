@@ -11,7 +11,7 @@ import SpreadsheetView
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     private let spreadsheetView = SpreadsheetView()
-    private var dataset = Dataset()
+	var dataset = Dataset()
 	@IBOutlet var edit: UIButton!
 	
 	required init?(coder: NSCoder) {
@@ -56,6 +56,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
 			cell.backgroundColor = .lightGray
 			cell.dataset = self.dataset
+			cell.x = indexPath.column
+			cell.y = indexPath.row
 			return cell
 		}
 		cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]))
@@ -89,27 +91,33 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
+		} else if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
+			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
 		}
 		edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 		print("edit pressed")
 	}
 }
 
-class DataPointCell: Cell {
+class DataPointCell: Cell, UITextFieldDelegate {
 	
 	static let identifier = "datapoint"
 	
-	private let label = UILabel()
 	private let field = UITextField()
+	var x = 0
+	var y = 0
 	var dataset: Dataset!
 	
 	public func setup(with text: String) {
 		field.text = text
 		field.textColor = .black
+		field.keyboardType = .numbersAndPunctuation
 		field.textAlignment = .center
-		field.isEnabled = false
+		field.returnKeyType = .done
 		contentView.addSubview(field)
 	}
+	
+	
 	
 	public func edit() {
 		field.isEnabled = true
@@ -121,6 +129,16 @@ class DataPointCell: Cell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		label.frame = contentView.bounds
+		field.delegate = self
+		field.frame = contentView.bounds
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool
+	{
+		textField.resignFirstResponder()
+		let val = Double(self.field.text!)!
+		print(val)
+		self.dataset.updateVal(indexX: x, indexY: y, val: val)
+		return true
 	}
 }

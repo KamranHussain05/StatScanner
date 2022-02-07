@@ -44,6 +44,7 @@ public class Dataset: NSObject, NSCoding {
     /// Creates a new dataset
     override init() {
         name = "Unnamed DataSet"
+		data = [[1]]
         // get the current date and time
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -72,6 +73,7 @@ public class Dataset: NSObject, NSCoding {
     /// Creates a new dataset object with the specified name
     init(name: String) {
         self.name = name
+		data = [[1]]
         let currentDateTime = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .none
@@ -95,7 +97,7 @@ public class Dataset: NSObject, NSCoding {
         return result
     }
     
-    /// Writes the csv files and imports it
+    /// Writes the data to a csv file
     func toCSV() {
         var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count+1)
         result.insert(keys, at: 0)

@@ -97,6 +97,11 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         var arr = [AASeriesElement]()
         let d = data.getData()
         
+        if(data.getData().count == 0){
+            arr.append(AASeriesElement().data([0]))
+            return arr
+        }
+        
         for i in 0...d[0].count-1 {
             arr.append(AASeriesElement()
                         .name(self.data.getKeys()[i])

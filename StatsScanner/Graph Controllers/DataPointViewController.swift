@@ -117,8 +117,6 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		contentView.addSubview(field)
 	}
 	
-	
-	
 	public func edit() {
 		field.isEnabled = true
 	}

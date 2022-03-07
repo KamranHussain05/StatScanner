@@ -181,7 +181,7 @@
 		93F8405164D6605B938C3A453F1958E7 /* SpreadsheetView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpreadsheetView-prefix.pch"; sourceTree = "<group>"; };
 		94D47499464752E3FC32BC7F90FDA616 /* Pods-StatsScanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StatsScanner-dummy.m"; sourceTree = "<group>"; };
 		9AE0BE7ED0AAF438B70FAB6136DDE499 /* IndexPath+Column.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IndexPath+Column.swift"; path = "Framework/Sources/IndexPath+Column.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F778C8F50E68DEDD96A8CE0143313F5 /* Pods-StatsScannerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StatsScannerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A5E45EDB500358F94F6C9B2FA2BE3B87 /* ScrollPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollPosition.swift; path = Framework/Sources/ScrollPosition.swift; sourceTree = "<group>"; };
 		A6B6F927A973546DEA9769A34CAF172A /* AALegend.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AALegend.swift; path = AAInfographics/AAOptionsModel/AALegend.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		CB86C8B30A048A242C87C39E3BCAD938 /* AAStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAStyle.swift; path = AAInfographics/AAOptionsModel/AAStyle.swift; sourceTree = "<group>"; };
 		CC0E9BEE354E931C1D5CEB9428F2F851 /* SpreadsheetView+Layout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SpreadsheetView+Layout.swift"; path = "Framework/Sources/SpreadsheetView+Layout.swift"; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AAInfographics; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94F74014CB91D739BB27F53286C2096 /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAPlotBandsElement.swift; path = AAInfographics/AAOptionsModel/AAPlotBandsElement.swift; sourceTree = "<group>"; };
 		DA0D9E3B38085117A943AFC10707DE5B /* SpreadsheetView+UIViewHierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SpreadsheetView+UIViewHierarchy.swift"; path = "Framework/Sources/SpreadsheetView+UIViewHierarchy.swift"; sourceTree = "<group>"; };
 		DC9939023E096D62451F436E7EA3B68A /* Pods-StatsScannerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StatsScannerTests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -343,7 +343,6 @@
 				D9E7DBE690C087D26B517E4531BF207B /* Resources */,
 				95BDBEF2204835D573394B145070333A /* Support Files */,
 			);
-			name = AAInfographics;
 			path = AAInfographics;
 			sourceTree = "<group>";
 		};
@@ -399,7 +398,6 @@
 				2FA3694825C33D699BAD3AC0E939386A /* SpreadsheetViewDelegate.swift */,
 				7DC5412D8B1E679B0E3F0F11329DB58B /* Support Files */,
 			);
-			name = SpreadsheetView;
 			path = SpreadsheetView;
 			sourceTree = "<group>";
 		};
@@ -483,7 +481,7 @@
 		DA9ACBE940ED0F42A2ADEF63C2AF5313 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics */,
+				D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics.framework */,
 				15D4D0764133087D95C462B3A3F30D9E /* Pods-StatsScanner */,
 				EFA3F89115834438B452DA9366DE05BE /* Pods-StatsScanner-StatsScannerUITests */,
 				F7CCC465E8F926D332F4467AC8013578 /* Pods-StatsScannerTests */,
@@ -610,7 +608,7 @@
 			);
 			name = AAInfographics;
 			productName = AAInfographics;
-			productReference = D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics */;
+			productReference = D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9DF674EAB66222B5C3A1A61959D71964 /* Pods-StatsScanner-StatsScannerUITests */ = {
@@ -877,11 +875,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD9EA4FAE87204EFFB47BD0CA24943DA /* AAInfographics.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1017,11 +1018,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9274FC4101858CF3C97487874B788B92 /* AAInfographics.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

@@ -146,8 +146,8 @@ _For more examples, please refer to the [Documentation](https://github.com/Kamra
 ## Roadmap
 
 - [x] Release 1 built natively for IOS
-- [] Release 2 built natively for Android
-- [] Custom Project Files with ability to share projects via link and allow for embedded interactive graphs in presentations
+- [ ] Release 2 built natively for Android
+- [ ] Custom Project Files with ability to share projects via link and allow for embedded interactive graphs in presentations
 
 See the [open issues](https://github.com/KamranHussain05/StatsScanner/issues) for a full list of proposed features (and known issues).
 

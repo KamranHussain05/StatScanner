@@ -110,5 +110,4 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         }
         return arr
     }
-
 }

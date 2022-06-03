@@ -71,7 +71,7 @@ class StatsScannerTests: XCTestCase {
                    ["23", "20", "32"]]
         print(arr.count)
         print(arr[0].count)
-        let d = Dataset(name: "Testing Set", appendable: arr)
+        let _ = Dataset(name: "Testing Set", appendable: arr)
     }
 
 }

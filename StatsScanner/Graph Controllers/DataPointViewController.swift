@@ -52,7 +52,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-		if(indexPath.row == 0){
+		if(indexPath.row == 0){ //why is this an if
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
 			cell.backgroundColor = .lightGray
 			cell.dataset = self.dataset
@@ -91,10 +91,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
-		} else if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
-			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
+		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
+			print("cancelling")
+			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 		}
-		edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
+		//edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 		print("edit pressed")
 	}
 }

@@ -1,6 +1,9 @@
 .DS_Store
-
+*.DS_Store
 *.xcuserstate
 StatsScanner.xcworkspace/xcuserdata/kaleb.xcuserdatad/UserInterfaceState.xcuserstate
 
 *.pbxproj
+.DS_Store
+StatsScanner.xcworkspace/xcuserdata/kaleb.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate

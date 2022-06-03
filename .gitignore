@@ -1,1 +1,6 @@
 .DS_Store
+
+*.xcuserstate
+StatsScanner.xcworkspace/xcuserdata/kaleb.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.pbxproj

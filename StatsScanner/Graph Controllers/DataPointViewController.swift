@@ -88,15 +88,28 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
+		boolean edible
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
+			edible = true
+			// code to update csv file and allow editing
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("cancelling")
 			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
+			edible = false
+			// code to disable editing or cancel updating csv file
 		}
-		//edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
-		print("edit pressed")
+		if (edible) { // just put something in here so it would run
+			print("clicked a cell")
+			if (edible) {
+				print("able to edit this cell")
+				// code to edit clicked cell
+			} else {
+				print("cannot edit this cell")
+				// maybe popup message saying this cell cannot be edited
+			}
+		}
 	}
 }
 

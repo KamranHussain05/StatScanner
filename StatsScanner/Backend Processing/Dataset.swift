@@ -191,7 +191,7 @@ public class Dataset: NSObject, NSCoding {
     /// Returns the maximum value of the data set
     func getMax() -> Double {
         var result = [Double]()
-        for i in 0...data.count {
+        for i in 1...data.count-1 {
             result.append(data[i].max()!)
         }
         return result.max()!
@@ -206,7 +206,7 @@ public class Dataset: NSObject, NSCoding {
     /// Returns the minimum value in the data
     func getMin() -> Double {
         var result = [Double]()
-        for i in 0...data.count {
+        for i in 0...data.count-1 {
             result.append(data[i].min()!)
         }
         return result.min()!
@@ -240,7 +240,7 @@ public class Dataset: NSObject, NSCoding {
     /// Returns the mode(s) of the entire dataset
     func getModes() -> [Double] {
         var res = [Double]()
-        for i in 0...data.count{
+        for i in 0...data.count-1 {
             res.append(contentsOf: getModes(arr: data[i]))
         }
         return getModes(arr: res)

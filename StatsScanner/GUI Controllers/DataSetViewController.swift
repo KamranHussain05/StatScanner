@@ -16,14 +16,14 @@ class DataSetViewController: UIViewController {
     @IBOutlet var numitems: UILabel!
     @IBOutlet var back: UIButton!
     
-//    @IBOutlet var average: UILabel!
-//    @IBOutlet var mode: UILabel!
-//    @IBOutlet var range: UILabel!
-//    @IBOutlet var max: UILabel!
-//    @IBOutlet var min: UILabel!
-//    @IBOutlet var standardDev: UILabel!
-//    @IBOutlet var standardError: UILabel!
-//    @IBOutlet var median: UILabel!
+    @IBOutlet var average: UILabel!
+    @IBOutlet var mode: UILabel!
+    @IBOutlet var range: UILabel!
+    @IBOutlet var max: UILabel!
+    @IBOutlet var min: UILabel!
+    @IBOutlet var standardDev: UILabel!
+    @IBOutlet var standardError: UILabel!
+    @IBOutlet var median: UILabel!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -52,14 +52,14 @@ class DataSetViewController: UIViewController {
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
         
-//        average.text = String(datasetobj.getSetAverage())
-//        mode.text = String(datasetobj.getMode())
-//        range.text = String(datasetobj.getMax() - datasetobj.getMin())
-//        max.text = String(datasetobj.getMax())
-//        min.text = String(datasetobj.getMin())
-//        standardDev.text = String(datasetobj.getStandardDeviation())
-//        standardError.text = String(datasetobj.getStandardError())
-//        median.text = String(datasetobj.getMedian())
+        average.text = String(datasetobj.getSetAverage())
+        mode.text = String(datasetobj.getMode())
+        range.text = String(datasetobj.getMax() - datasetobj.getMin())
+        max.text = String(datasetobj.getMax())
+        min.text = String(datasetobj.getMin())
+        standardDev.text = String(datasetobj.getStandardDeviation())
+        standardError.text = String(datasetobj.getStandardError())
+        median.text = String(datasetobj.getMedian())
     }
     
     @IBAction func onBackClick(_sender:UIButton) {

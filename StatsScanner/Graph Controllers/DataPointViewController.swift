@@ -113,6 +113,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 }
 
+	//MARK: Cell Handling
+	// convert edible to a field
+
 class DataPointCell: Cell, UITextFieldDelegate {
 	
 	static let identifier = "datapoint"
@@ -128,6 +131,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		field.keyboardType = .numbersAndPunctuation
 		field.textAlignment = .center
 		field.returnKeyType = .done
+		field.delegate = self
 		contentView.addSubview(field)
 	}
 	
@@ -151,6 +155,10 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		let val = Double(self.field.text!)!
 		print(val)
 		self.dataset.updateVal(indexX: x, indexY: y, val: val)
+		return true
+	}
+	
+	override func becomeFirstResponder() -> Bool {
 		return true
 	}
 }

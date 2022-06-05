@@ -434,7 +434,7 @@
                     <tabBarItem key="tabBarItem" title="Data Points" image="table" catalog="system" id="Dh0-du-SYI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="edit" destination="LQt-vn-g5R" id="W3Q-0y-N9u"/>
+                        <outlet property="edit" destination="LQt-vn-g5R" id="INB-XD-8Wo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmj-pu-42O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

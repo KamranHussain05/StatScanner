@@ -44,7 +44,7 @@ public class Dataset: NSObject, NSCoding {
     /// Creates a new dataset
     override init() {
         name = "Unnamed DataSet"
-		data = [[1]]
+		data = [[0]]
         // get the current date and time
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -245,6 +245,10 @@ public class Dataset: NSObject, NSCoding {
         }
         return getModes(arr: res)
     }
+	
+	func getMode() -> Double {
+		return getModes()[0]
+	}
     
     /// Returns the mode(s) of the specified axis
     func getModes(arr: [Double]) -> [Double] {

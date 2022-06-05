@@ -76,11 +76,11 @@ class DatasetTester: XCTestCase {
     func testCSVRead() throws {
         let data = Dataset(name: "Test", appendable: arr)
         data.toCSV()
-        print(db.readCSV(fileName: "Test1-22-22.csv"))
+        print(db.readCSV(fileName: "Test6-4-22.csv"))
     }
     
     func testCSVReadAppend() throws {
-        let data = Dataset(name:"Test", appendable: db.readCSV(fileName: "Test1-22-22.csv"))
+        let data = Dataset(name:"Test", appendable: db.readCSV(fileName: "Test6-4-22.csv"))
         print(data.data)
     }
     

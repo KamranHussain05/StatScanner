@@ -88,7 +88,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
-		boolean edible
+		var edible : Bool! = false
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
@@ -100,7 +100,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			edible = false
 			// code to disable editing or cancel updating csv file
 		}
-		if (edible) { // just put something in here so it would run
+		if(edible) { // just put something in here so it would run
 			print("clicked a cell")
 			if (edible) {
 				print("able to edit this cell")

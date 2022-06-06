@@ -99,14 +99,14 @@ public class Dataset: NSObject, NSCoding {
     
     /// Writes the data to a csv file
     func toCSV() {
-        var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count+1)
-        result.insert(keys, at: 0)
-        for x in 1...result.count-2 {
+        var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count)
+        for x in 0...result.count-1 {
             for y in 0...result[x].count-1 {
-                result[x][y] = String(data[x-1][y])
+                result[x][y] = String(data[x][y])
             }
         }
-        
+		result.insert(keys, at: 0)
+		
         let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
         db.writeCSV(fileName: fileName, data: result)
     }
@@ -141,14 +141,15 @@ public class Dataset: NSObject, NSCoding {
     private func cleanData(array: [[String]]) -> [[Double]] {
         var result = [[Double]](repeating: [Double](repeating: Double.nan, count: array[0].count), count: array.count)
         for x in 0...array.count-1 {
-            for y in 0...array[0].count-1 {
+			var row : [Double] = []
+            for y in 0...array[x].count-1 {
                 if(array[x][y].isNumeric) {
-                    result[x][y] = Double(array[x][y])!
-                } else if(array[x][y].isEmpty){
-					result[x][y] = Double.nan
-					
+					row.append(Double(array[x][y])!)
+                } else if(array[x][y].isEmpty) {
+					row.append(Double.nan)
 				}
             }
+			result.insert(row, at: x)
         }
         return result
     }

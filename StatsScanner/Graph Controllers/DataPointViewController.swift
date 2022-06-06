@@ -8,6 +8,8 @@
 import UIKit
 import SpreadsheetView
 
+var edible : Bool! = false
+
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     private let spreadsheetView = SpreadsheetView()
@@ -88,7 +90,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
-		var edible : Bool! = false
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
@@ -99,16 +100,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 			edible = false
 			// code to disable editing or cancel updating csv file
-		}
-		if(edible) { // just put something in here so it would run
-			print("clicked a cell")
-			if (edible) {
-				print("able to edit this cell")
-				// code to edit clicked cell
-			} else {
-				print("cannot edit this cell")
-				// maybe popup message saying this cell cannot be edited
-			}
 		}
 	}
 }
@@ -126,6 +117,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	var dataset: Dataset!
 	
 	public func setup(with text: String) {
+		field.isEnabled = edible
 		field.text = text
 		field.textColor = .black
 		field.keyboardType = .numberPad
@@ -135,26 +127,28 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		contentView.addSubview(field)
 	}
 	
-	public func edit() {
-		field.isEnabled = true
-	}
-	
-	public func save() {
-		field.isEnabled = false
-	}
-	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		field.delegate = self
 		field.frame = contentView.bounds
 	}
 	
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool
-	{
-		textField.resignFirstResponder()
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		if(edible) { // just put something in here so it would run
+			print("clicked a cell")
+			if (edible) {
+				print("able to edit this cell")
+				// code to edit clicked cell
+			} else {
+				print("cannot edit this cell")
+				// maybe popup message saying this cell cannot be edited
+			}
+		}
 		let val = Double(self.field.text!)!
 		print(val)
 		self.dataset.updateVal(indexX: x, indexY: y, val: val)
+		textField.resignFirstResponder()
 		return true
 	}
+	
 }

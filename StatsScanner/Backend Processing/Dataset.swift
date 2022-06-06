@@ -139,14 +139,15 @@ public class Dataset: NSObject, NSCoding {
     
     /// Cleans the data and inputs it to an array of Doubles
     private func cleanData(array: [[String]]) -> [[Double]] {
-        var result = [[Double]](repeating: [Double](repeating: Double.nan, count: array[0].count-1), count: array.count)
+        var result = [[Double]](repeating: [Double](repeating: Double.nan, count: array[0].count), count: array.count)
         for x in 0...array.count-1 {
             for y in 0...array[0].count-1 {
                 if(array[x][y].isNumeric) {
                     result[x][y] = Double(array[x][y])!
                 } else if(array[x][y].isEmpty){
-                    result[x][y] = Double.nan
-                }
+					result[x][y] = Double.nan
+					
+				}
             }
         }
         return result

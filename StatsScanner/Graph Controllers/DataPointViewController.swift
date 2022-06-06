@@ -157,8 +157,4 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		self.dataset.updateVal(indexX: x, indexY: y, val: val)
 		return true
 	}
-	
-	override func becomeFirstResponder() -> Bool {
-		return true
-	}
 }

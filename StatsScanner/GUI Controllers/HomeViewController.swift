@@ -71,6 +71,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         self.present(newDatasetMenu, animated: true, completion: nil)
     }
     
+    ///Creates a new dataset
     func createWithName(method: Int) {
         let new = Dataset()
         let alert = UIAlertController(title: "New DataSet Name",
@@ -94,6 +95,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             break
             case 2:
                 self?.importCSV()
+                print("importing csv")
             break
             default:
                 return
@@ -108,11 +110,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         }))
         alert.popoverPresentationController?.sourceView = self.view
         
-        print("let's a go")
         present(alert, animated: true, completion: nil)
-        print("let's a go")
     }
     
+    ///Presents the image scanning window and starts that pipeline
     func scanningImage() {
         let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
@@ -120,6 +121,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         self.present(scanview, animated: true, completion: nil)
     }
     
+    ///Starts the CSV importing pipeline and reading into dataframe
     let db = DataBridge()
     func importCSV() {
         let supportedFiles: [UTType] = [UTType.data]
@@ -132,7 +134,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         print("got here")
     }
     
-    //code crashes here, "Failed to set FileProtection Attributes on staging URL"
+    ///code crashes here, "Failed to set FileProtection Attributes on staging URL"
     private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
         do {
             let arr = try String(contentsOf: url)
@@ -206,13 +208,16 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    ///Specifies the number of cells to add to the collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models.count
     }
     
+    ///Creates the collection view on the home screen and loads all necessary formats and data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = models[indexPath.row]
         let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "hometile", for: indexPath) as! HomeTiles
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
         
         cell.dataSetName.text = model.datasetobject?.name
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
@@ -221,12 +226,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(model.datasetobject!.name)
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
         cell.addGestureRecognizer(longPressGesture)
         
         return cell
     }
     
+    ///Handles the collection view formatting
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
         let height = width*1.5
@@ -234,8 +239,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: width, height:height)
     }
     
-// MARK: OPEN DATASET HANDLE
+// MARK: OPEN DATASET HANDLING
     
+    ///Opens the dataset and loads it from coredata
     @objc func openDataSet(_ sender:UIButton) {
         print("Opening DataSet")
         self.selectedDataset = models[sender.tag].datasetobject!
@@ -252,13 +258,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         self.present(vc, animated: true, completion: nil)
     }
     
+    // MARK: LONG PRESS HANDLING
+    
+    ///Handles the long tap gesture and deletes the selected dataset
     @objc func longTap(_ gesture: UIGestureRecognizer) {
+        let deletionIndex = gesture.view!.tag
+        print("Selected: ", self.models[deletionIndex].name!)
         if(gesture.state == .began) {
             let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible!", preferredStyle: .alert)
-            
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-                print("deleting ", self!.models[gesture.view!.tag].name!)
-                self?.deleteItem(item: self!.models[gesture.view!.tag])
+                print("deleting ", self!.models[deletionIndex].name!)
+                self?.deleteItem(item: self!.models[deletionIndex])
                 self!.getAllItems()
             }))
             

@@ -128,7 +128,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	public func setup(with text: String) {
 		field.text = text
 		field.textColor = .black
-		field.keyboardType = .numbersAndPunctuation
+		field.keyboardType = .numberPad
 		field.textAlignment = .center
 		field.returnKeyType = .done
 		field.delegate = self

@@ -56,15 +56,14 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
 		if(indexPath.row == 0){ //why is this an if
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
-			if(!cell.getText().isNumeric) {
-				cell.backgroundColor = .lightGray
-			}
+			cell.backgroundColor = .lightGray
 			cell.dataset = self.dataset
 			cell.x = indexPath.column
 			cell.y = indexPath.row
 			return cell
+		} else {
+			cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]))
 		}
-		cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]))
 		return cell
 	}
 	

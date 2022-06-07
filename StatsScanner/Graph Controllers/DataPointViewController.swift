@@ -54,6 +54,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
+		if (indexPath.isEmpty) {
+			print("Array is empty")
+		}
 		if(indexPath.row == 0){ //why is this an if
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
 			cell.backgroundColor = .lightGray

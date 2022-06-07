@@ -56,7 +56,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
 		if(indexPath.row == 0){ //why is this an if
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
-			cell.backgroundColor = .lightGray
+			if(!cell.getText().isNumeric) {
+				cell.backgroundColor = .lightGray
+			}
 			cell.dataset = self.dataset
 			cell.x = indexPath.column
 			cell.y = indexPath.row
@@ -149,6 +151,10 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		self.dataset.updateVal(indexX: x, indexY: y, val: val)
 		textField.resignFirstResponder()
 		return true
+	}
+	
+	func getText() -> String {
+		return field.text!
 	}
 	
 }

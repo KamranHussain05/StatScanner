@@ -15,7 +15,6 @@ public class Dataset: NSObject, NSCoding {
     
     var data: [[Double]] = [[]]
     var keys: [String] = []
-    var xvals: [String] = []
     var name: String = "Unnamed Dataset"
     var creationDate: String!
     let db = DataBridge()
@@ -25,7 +24,6 @@ public class Dataset: NSObject, NSCoding {
     public func encode(with coder: NSCoder) {
 		coder.encode(data, forKey:"data")
 		coder.encode(keys, forKey:"keys")
-        coder.encode(xvals, forKey: "xvals")
         coder.encode(name, forKey: "name")
         coder.encode(creationDate, forKey: "creationDate")
     }
@@ -37,7 +35,6 @@ public class Dataset: NSObject, NSCoding {
         name = decoder.decodeObject(forKey: "name") as? String ?? "Unnamed Dataset"
         creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
-        xvals = decoder.decodeObject(forKey: "xvals") as? [String] ?? []
 		
     }
     
@@ -95,21 +92,7 @@ public class Dataset: NSObject, NSCoding {
             result.append(data[axis][i])
         }
         return result
-    }
-    
-    /// Writes the data to a csv file
-    func toCSV() {
-        var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count)
-        for x in 0...result.count-1 {
-            for y in 0...result[x].count-1 {
-                result[x][y] = String(data[x][y])
-            }
-        }
-		result.insert(keys, at: 0)
-		
-        let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
-        db.writeCSV(fileName: fileName, data: result)
-    }
+	}
     
     /// Returns the array containing the extracted keys from the dataset
     func getKeys() -> [String] {
@@ -136,21 +119,30 @@ public class Dataset: NSObject, NSCoding {
         let cleanArr = cleanData(array: array)
         data.append(contentsOf: cleanArr)
     }
+	
+	//MARK: DATA CLEANING AND PREPROCESSING
+		
+		/// Writes the data to a csv file and converts the dataset to a CSV string
+		func toCSV() {
+			var result : Array<Array<String>> = [[]]
+			
+			for e in data {
+				result.append(e.stringArray)
+			}
+			result.insert(keys, at: 0)
+			
+			let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
+			db.writeCSV(fileName: fileName, data: result)
+		}
     
     /// Cleans the data and inputs it to an array of Doubles
     private func cleanData(array: [[String]]) -> [[Double]] {
-        var result = [[Double]](repeating: [Double](repeating: Double.nan, count: array[0].count), count: array.count)
-        for x in 0...array.count-1 {
-			var row : [Double] = []
-            for y in 0...array[x].count-1 {
-                if(array[x][y].isNumeric) {
-					row.append(Double(array[x][y])!)
-                } else if(array[x][y].isEmpty) {
-					row.append(Double.nan)
-				}
-            }
-			result.insert(row, at: x)
-        }
+		var result : Array<Array<Double>> = [[]]
+		
+		for e in array {
+			result.append(e.doubleArray)
+		}
+		
         return result
     }
     
@@ -310,4 +302,16 @@ extension String {
     var isNumeric : Bool {
         return Double(self) != nil
     }
+}
+
+extension Collection where Iterator.Element == Double {
+	var stringArray : [String] {
+		return compactMap{ String($0) }
+	}
+}
+
+extension Collection where Iterator.Element == String {
+	var doubleArray: [Double] {
+		return compactMap{ Double($0) }
+	}
 }

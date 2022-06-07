@@ -33,7 +33,6 @@ class DatasetTester: XCTestCase {
         print("Creation Date: " + data.creationDate)
         print("Num Items: " + String(data.getTotalNumItems()))
         print("Keys: ", data.keys)
-        print("X-Axis: ", data.xvals)
         print("Data Stored: ",  data.getData())
     }
     
@@ -43,7 +42,6 @@ class DatasetTester: XCTestCase {
         print("Creation Date: " + data.creationDate)
         print("Num Items: " + String(data.getTotalNumItems()))
         print("Keys: ", data.keys)
-        print("X-Axis: ", data.xvals)
         print("Data Stored: ",  data.getData())
     }
     
@@ -53,7 +51,6 @@ class DatasetTester: XCTestCase {
         print("Creation Date: " + data.creationDate)
         print("Num Items: " + String(data.getTotalNumItems()))
         print("Keys: ", data.keys)
-        print("X-Axis: ", data.xvals)
         print("Data Stored: ",  data.getData())
     }
     

@@ -125,6 +125,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		field.textAlignment = .center
 		field.returnKeyType = .done
 		field.delegate = self
+		self.backgroundColor = .white
 		contentView.addSubview(field)
 	}
 	

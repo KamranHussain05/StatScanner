@@ -57,9 +57,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		if (indexPath.isEmpty) {
 			print("Array is empty")
 		}
-		if(indexPath.row == 0){ //why is this an if
+		if (indexPath.row == 0) {
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
-			cell.backgroundColor = .lightGray
+            if (!cell.getText().isNumeric) {
+                cell.backgroundColor = .lightGray
+            }
 			cell.dataset = self.dataset
 			cell.x = indexPath.column
 			cell.y = indexPath.row

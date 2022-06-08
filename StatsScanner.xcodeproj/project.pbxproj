@@ -18,7 +18,6 @@
 		4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7713182786195700BD7DC8 /* PlotViewController.swift */; };
 		4DE04DF62850260600C5D5BC /* CalculationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF52850260500C5D5BC /* CalculationStruct.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
-		80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
 		A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897A277EF0B100B8C2FE /* HomeTileList.swift */; };
 		A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897F277EF1C600B8C2FE /* HomeViewController.swift */; };
@@ -33,8 +32,6 @@
 		A85092C627497F7A00392240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85092C527497F7A00392240 /* Assets.xcassets */; };
 		A85092C927497F7A00392240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85092C727497F7A00392240 /* LaunchScreen.storyboard */; };
 		A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092D327497F7A00392240 /* StatsScannerTests.swift */; };
-		A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DD27497F7B00392240 /* StatsScannerUITests.swift */; };
-		A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */; };
 		A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD6DF62779AE030048912C /* DataBridge.swift */; };
 		A8CA563227716205006BDF61 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* Dataset.swift */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
@@ -51,13 +48,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		A85092D027497F7A00392240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A85092AE27497F6F00392240 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A85092B527497F6F00392240;
-			remoteInfo = StatsScanner;
-		};
-		A85092DA27497F7A00392240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A85092AE27497F6F00392240 /* Project object */;
 			proxyType = 1;
@@ -100,7 +90,6 @@
 		A85092CA27497F7A00392240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A85092CF27497F7A00392240 /* StatsScannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StatsScannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092D327497F7A00392240 /* StatsScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerTests.swift; sourceTree = "<group>"; };
-		A85092D927497F7A00392240 /* StatsScannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StatsScannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092DD27497F7B00392240 /* StatsScannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITests.swift; sourceTree = "<group>"; };
 		A85092DF27497F7B00392240 /* StatsScannerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScannerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -136,14 +125,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				495ADB1424FEEDC812112065 /* Pods_StatsScannerTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A85092D627497F7A00392240 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				80F164F75F44B62020591320 /* Pods_StatsScanner_StatsScannerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +204,6 @@
 			children = (
 				A85092B627497F6F00392240 /* StatsScanner.app */,
 				A85092CF27497F7A00392240 /* StatsScannerTests.xctest */,
-				A85092D927497F7A00392240 /* StatsScannerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,26 +317,6 @@
 			productReference = A85092CF27497F7A00392240 /* StatsScannerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A85092D827497F7A00392240 /* StatsScannerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A85092E927497F7B00392240 /* Build configuration list for PBXNativeTarget "StatsScannerUITests" */;
-			buildPhases = (
-				398A8014E365990B860B7E67 /* [CP] Check Pods Manifest.lock */,
-				A85092D527497F7A00392240 /* Sources */,
-				A85092D627497F7A00392240 /* Frameworks */,
-				A85092D727497F7A00392240 /* Resources */,
-				09C02765C89D8B9D96B4FE8D /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A85092DB27497F7A00392240 /* PBXTargetDependency */,
-			);
-			name = StatsScannerUITests;
-			productName = StatsScannerUITests;
-			productReference = A85092D927497F7A00392240 /* StatsScannerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -372,10 +332,6 @@
 						LastSwiftMigration = 1310;
 					};
 					A85092CE27497F7A00392240 = {
-						CreatedOnToolsVersion = 13.1;
-						TestTargetID = A85092B527497F6F00392240;
-					};
-					A85092D827497F7A00392240 = {
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = A85092B527497F6F00392240;
 					};
@@ -396,7 +352,6 @@
 			targets = (
 				A85092B527497F6F00392240 /* StatsScanner */,
 				A85092CE27497F7A00392240 /* StatsScannerTests */,
-				A85092D827497F7A00392240 /* StatsScannerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -430,33 +385,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A85092D727497F7A00392240 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09C02765C89D8B9D96B4FE8D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3707289ED1456ABE017D1501 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,28 +404,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-StatsScanner-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		398A8014E365990B860B7E67 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StatsScanner-StatsScannerUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -577,15 +486,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A85092D527497F7A00392240 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A85092DE27497F7B00392240 /* StatsScannerUITests.swift in Sources */,
-				A85092E027497F7B00392240 /* StatsScannerUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -593,11 +493,6 @@
 			isa = PBXTargetDependency;
 			target = A85092B527497F6F00392240 /* StatsScanner */;
 			targetProxy = A85092D027497F7A00392240 /* PBXContainerItemProxy */;
-		};
-		A85092DB27497F7A00392240 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A85092B527497F6F00392240 /* StatsScanner */;
-			targetProxy = A85092DA27497F7A00392240 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -751,7 +646,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6H8K5S7FRP;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatsScanner;
@@ -770,7 +665,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = InternalTesting.StatsScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = Team417ExpectationFailed.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -796,7 +691,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6H8K5S7FRP;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatsScanner;
@@ -815,7 +710,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = InternalTesting.StatsScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = Team417ExpectationFailed.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -836,7 +731,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6H8K5S7FRP;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -863,7 +758,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6H8K5S7FRP;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -878,62 +773,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatsScanner.app/StatsScanner";
-			};
-			name = Release;
-		};
-		A85092EA27497F7B00392240 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1BCA46C3BD6307DD59B2BA8 /* Pods-StatsScanner-StatsScannerUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6H8K5S7FRP;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Team417ExpectationFailed.StatsScannerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = StatsScanner;
-			};
-			name = Debug;
-		};
-		A85092EB27497F7B00392240 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6H8K5S7FRP;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Team417ExpectationFailed.StatsScannerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = StatsScanner;
 			};
 			name = Release;
 		};
@@ -963,15 +802,6 @@
 			buildConfigurations = (
 				A85092E727497F7B00392240 /* Debug */,
 				A85092E827497F7B00392240 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A85092E927497F7B00392240 /* Build configuration list for PBXNativeTarget "StatsScannerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A85092EA27497F7B00392240 /* Debug */,
-				A85092EB27497F7B00392240 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -65,11 +65,6 @@ class DatasetTester: XCTestCase {
         print("FINISHED WRITING TO CSV SUCCESSFULLY")
     }
     
-    func testModesCalc() throws {
-        let data = Dataset()
-        print(data.getModes(arr: [2, 2, 2, 3, 4, 4, 4, 5, 6]))
-    }
-    
     func testCSVRead() throws {
         let data = Dataset(name: "Test", appendable: arr)
         data.toCSV()

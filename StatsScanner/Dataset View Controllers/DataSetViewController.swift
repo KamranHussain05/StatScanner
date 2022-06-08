@@ -52,14 +52,14 @@ class DataSetViewController: UIViewController {
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
         
-        average.text = String(datasetobj.getSetAverage())
-        mode.text = String(datasetobj.getMode())
-        range.text = String(datasetobj.getMax() - datasetobj.getMin())
-        max.text = String(datasetobj.getMax())
-        min.text = String(datasetobj.getMin())
-        standardDev.text = String(datasetobj.getStandardDeviation())
-        standardError.text = String(datasetobj.getStandardError())
-        median.text = String(datasetobj.getMedian())
+        average.text = String(datasetobj.calculations.mean)
+        mode.text = String(datasetobj.calculations.mode)
+        range.text = String(datasetobj.calculations.range)
+        max.text = String(datasetobj.calculations.max)
+        min.text = String(datasetobj.calculations.min)
+        standardDev.text = String(datasetobj.calculations.standardDeviation)
+        standardError.text = String(datasetobj.calculations.standardError)
+        median.text = String(datasetobj.calculations.median)
     }
     
     @IBAction func onBackClick(_sender:UIButton) {

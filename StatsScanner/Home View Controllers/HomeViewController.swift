@@ -262,7 +262,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     ///Handles the long tap gesture and deletes the selected dataset
     @objc func longTap(_ gesture: UIGestureRecognizer) {
-        let deletionIndex = gesture.view!.tag
+		let deletionIndex = gesture.view!.tag
         print("Selected: ", self.models[deletionIndex].name!)
         if(gesture.state == .began) {
             let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible!", preferredStyle: .alert)

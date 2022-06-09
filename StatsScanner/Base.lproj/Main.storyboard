@@ -225,158 +225,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58a-K6-sE0">
-                                <rect key="frame" x="29.5" y="147" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7pr-CS-bPh"/>
-                                    <constraint firstAttribute="width" constant="355" id="elq-Ix-yTb"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Scatter Plot"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="3rF-h6-Lnf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR9-sR-i8H">
-                                <rect key="frame" x="29.5" y="202" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="8O2-dS-0hs"/>
-                                    <constraint firstAttribute="width" constant="355" id="KzP-rf-IJw"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Line Graph"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="Vqp-Y8-TSq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbU-LY-WxL">
-                                <rect key="frame" x="29.5" y="255" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="klU-FH-7Ze"/>
-                                    <constraint firstAttribute="width" constant="355" id="xzL-Ft-mas"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Bar Chart"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="MeY-9a-FhI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8od-Jx-igv">
-                                <rect key="frame" x="29.5" y="308" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="81B-bD-RQo"/>
-                                    <constraint firstAttribute="width" constant="355" id="UAR-jj-mnb"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Pie Chart"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="RS4-Qm-CAU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gO9-wK-8Ol">
-                                <rect key="frame" x="29.5" y="361" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="nPb-Ef-bCg"/>
-                                    <constraint firstAttribute="width" constant="355" id="ukn-UZ-5iP"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Area Chart"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="Zyf-Cu-Sa5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnE-ZG-qCp">
-                                <rect key="frame" x="29.5" y="414" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="355" id="Mf9-c4-kI6"/>
-                                    <constraint firstAttribute="height" constant="40" id="Wmm-xc-NfQ"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Box Plot"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="gk3-hw-fmu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jv0-N1-350">
-                                <rect key="frame" x="29.5" y="467" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7mJ-1H-S7F"/>
-                                    <constraint firstAttribute="width" constant="355" id="inh-yl-Sp0"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Bubble Chart"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="JHX-5v-3p9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRw-Ei-MPY">
-                                <rect key="frame" x="29.5" y="520" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="bUD-G1-7FP"/>
-                                    <constraint firstAttribute="width" constant="355" id="hkK-RJ-uyR"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Waterfall Plot"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="9hr-Kc-duF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOV-iC-HOu">
-                                <rect key="frame" x="29.5" y="573" width="355" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="mOx-zu-nWL"/>
-                                    <constraint firstAttribute="width" constant="355" id="vsN-pJ-qPD"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Polygon Chart"/>
-                                <connections>
-                                    <action selector="graphSelectedWith_sender:" destination="ZPM-Pj-gqE" eventType="touchUpInside" id="CDS-mF-ffS"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrW-QI-M2F">
                                 <rect key="frame" x="20" y="74" width="169" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dej-wz-j7F">
+                                <rect key="frame" x="0.0" y="411" width="414" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fR9-sR-i8H" firstAttribute="top" secondItem="58a-K6-sE0" secondAttribute="bottom" constant="15" id="0hK-Eb-DNr"/>
-                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="FbD-BK-Ntu"/>
-                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="top" secondItem="gO9-wK-8Ol" secondAttribute="bottom" constant="13" id="Kt6-75-qnt"/>
-                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="top" secondItem="8od-Jx-igv" secondAttribute="bottom" constant="13" id="Lfb-Q5-d6b"/>
-                            <constraint firstItem="mnE-ZG-qCp" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="MKE-fS-oFT"/>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="Nyt-RE-4Ae"/>
-                            <constraint firstItem="mOV-iC-HOu" firstAttribute="top" secondItem="YRw-Ei-MPY" secondAttribute="bottom" constant="13" id="PXh-zz-kAb"/>
-                            <constraint firstItem="mOV-iC-HOu" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="QLx-RA-1pK"/>
-                            <constraint firstItem="gO9-wK-8Ol" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="Rqm-Ct-U4g"/>
-                            <constraint firstItem="YRw-Ei-MPY" firstAttribute="top" secondItem="Jv0-N1-350" secondAttribute="bottom" constant="13" id="ajE-fU-bSH"/>
-                            <constraint firstItem="Jv0-N1-350" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="av0-hN-yzc"/>
-                            <constraint firstItem="8od-Jx-igv" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="d9S-ed-Afk"/>
                             <constraint firstItem="wrW-QI-M2F" firstAttribute="top" secondItem="EJh-OB-ukR" secondAttribute="top" constant="30" id="fuL-wi-9sG"/>
-                            <constraint firstItem="fR9-sR-i8H" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="k8Y-5x-n7D"/>
                             <constraint firstItem="wrW-QI-M2F" firstAttribute="leading" secondItem="EJh-OB-ukR" secondAttribute="leading" constant="20" id="kS2-v4-PQk"/>
-                            <constraint firstItem="gbU-LY-WxL" firstAttribute="top" secondItem="fR9-sR-i8H" secondAttribute="bottom" constant="13" id="kyW-9U-aL2"/>
-                            <constraint firstItem="58a-K6-sE0" firstAttribute="top" secondItem="wrW-QI-M2F" secondAttribute="bottom" constant="34" id="lPW-LU-C2L"/>
-                            <constraint firstItem="gbU-LY-WxL" firstAttribute="centerX" secondItem="oeQ-Rp-V02" secondAttribute="centerX" id="pwM-gJ-avi"/>
-                            <constraint firstItem="Jv0-N1-350" firstAttribute="top" secondItem="mnE-ZG-qCp" secondAttribute="bottom" constant="13" id="xEW-WN-RLk"/>
-                            <constraint firstItem="8od-Jx-igv" firstAttribute="top" secondItem="gbU-LY-WxL" secondAttribute="bottom" constant="13" id="yL0-Hk-mov"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="areaChart" destination="gO9-wK-8Ol" id="48T-0X-5KE"/>
-                        <outlet property="barChart" destination="gbU-LY-WxL" id="7z2-7R-tcG"/>
-                        <outlet property="boxPlot" destination="mnE-ZG-qCp" id="kE1-RF-eat"/>
-                        <outlet property="bubbleChart" destination="Jv0-N1-350" id="Bmb-z1-EfA"/>
-                        <outlet property="lineGraph" destination="fR9-sR-i8H" id="ka0-xK-JL3"/>
-                        <outlet property="pieChart" destination="8od-Jx-igv" id="M2F-Af-KU4"/>
-                        <outlet property="polygonChart" destination="mOV-iC-HOu" id="Khy-DI-rcN"/>
-                        <outlet property="scatterPlot" destination="58a-K6-sE0" id="321-Xm-P2f"/>
-                        <outlet property="waterfallPlot" destination="YRw-Ei-MPY" id="FS8-az-TWU"/>
+                        <outlet property="chartScroller" destination="dej-wz-j7F" id="vU0-oz-TjM"/>
                         <segue destination="as4-zL-4J7" kind="show" id="z0T-SS-31n"/>
                     </connections>
                 </viewController>

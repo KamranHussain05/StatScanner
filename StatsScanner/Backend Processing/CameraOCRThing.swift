@@ -59,7 +59,7 @@ class CameraOCRThing: UIViewController {
 }
 
 extension CameraOCRThing: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerConvtrollerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     

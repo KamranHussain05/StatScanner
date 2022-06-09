@@ -70,7 +70,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         }
         self.present(newDatasetMenu, animated: true, completion: nil)
     }
-    
+	
     ///Creates a new dataset
     func createWithName(method: Int) {
         let new = Dataset()

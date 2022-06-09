@@ -8,73 +8,74 @@
 import UIKit
 import AAInfographics
 
-class GraphDirectorViewController: UIViewController {
+class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
 
-    @IBOutlet var scatterPlot: UIButton!
-    @IBOutlet var lineGraph: UIButton!
-    @IBOutlet var barChart: UIButton!
-    @IBOutlet var pieChart: UIButton!
-    @IBOutlet var areaChart: UIButton!
-    @IBOutlet var boxPlot: UIButton!
-    @IBOutlet var bubbleChart: UIButton!
-    @IBOutlet var waterfallPlot: UIButton!
-    @IBOutlet var polygonChart: UIButton!
     
-    private var focused = AAChartType(rawValue: "scatter")
-    private var dataset: Dataset!
+    @IBOutlet var chartScroller: UIPickerView!
+    let chartTypes = ["Scatter Plot", "Line Graph", "Bar Chart", "Pie Chart", "Area Chart", "Box Plot", "Bubble Chart", "Waterfall Plot", "Polygon Chart"]
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
-    }
+//    private var focused = AAChartType(rawValue: "scatter")
+//    private var dataset: Dataset!
+//
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
+        chartScroller = UIPickerView()
+        chartScroller.delegate = self
+        chartScroller.dataSource = self
+        self.view.addSubview(chartScroller)
+//        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
+        let rotationAngle: CGFloat! = -90 * (.pi/180)
+        chartScroller.transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
-    @objc func initDataSet(_ notification: Notification) {
-        print("graph director got dataset")
-        self.dataset = (notification.object as! Dataset)
-    }
-    
-    @IBAction func graphSelected(_sender : UIButton) {
-        if(_sender == scatterPlot) {
-            focused = AAChartType.scatter
-            print("scatter")
-        } else if (_sender == lineGraph) {
-            focused = AAChartType.line
-            print("line")
-        } else if (_sender == barChart) {
-            focused = AAChartType.bar
-            print("bar")
-        } else if (_sender == pieChart) {
-            focused = AAChartType.pie
-            print("pie")
-        } else if (_sender == areaChart) {
-            print("area")
-            focused = AAChartType.areasplinerange
-        } else if (_sender == bubbleChart) {
-            print("bubble")
-            focused = AAChartType.bubble
-        } else if (_sender == waterfallPlot) {
-            print("waterfall")
-            focused = AAChartType.waterfall
-        } else if (_sender == polygonChart) {
-            print("polygon")
-            focused = AAChartType.polygon
-        }
-        
-        let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
-        vc.modalPresentationStyle = .popover
-        
-        NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
-        NotificationCenter.default.post(name: Notification.Name("data"), object: self.dataset)
-        print("sent to graph")
-        
-        present(vc, animated: true, completion: nil)
-    }
+//    @objc func initDataSet(_ notification: Notification) {
+//        print("graph director got dataset")
+//        self.dataset = (notification.object as! Dataset)
+//    }
+//
+//    @IBAction func graphSelected(_sender : Int) {
+//
+//
+//        let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
+//        vc.modalPresentationStyle = .popover
+//
+//        NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
+//        NotificationCenter.default.post(name: Notification.Name("data"), object: self.dataset)
+//        print("sent to graph")
+//
+//        present(vc, animated: true, completion: nil)
+//    }
 
+}
+
+extension GraphDirectorViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+       return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return chartTypes.count
+    }
+    
+//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        let modeView = UIView()
+//        modeView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        let modeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//        modeLabel.textColor = .yellow
+//        modeLabel.text = chartTypes[row]
+//        modeLabel.textAlignment = .center
+//        modeView.addSubview(modeLabel)
+//        return modeView
+//    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 100
+    }
 }

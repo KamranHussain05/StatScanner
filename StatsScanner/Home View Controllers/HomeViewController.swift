@@ -204,7 +204,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 }
 
 
-// MARK: COLLECTION VIEW CONFIGURATION
+// MARK: VIEW CONFIG
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -226,7 +226,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(model.datasetobject!.name)
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
-        cell.addGestureRecognizer(longPressGesture)
+        myCollectionView.addGestureRecognizer(longPressGesture)
         
         return cell
     }
@@ -262,18 +262,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     ///Handles the long tap gesture and deletes the selected dataset
     @objc func longTap(_ gesture: UIGestureRecognizer) {
-		let deletionIndex = gesture.view!.tag
-        print("Selected: ", self.models[deletionIndex].name!)
+		let generator = UINotificationFeedbackGenerator()
+		generator.notificationOccurred(.error)
+		
+		guard let deletionIndex = myCollectionView.indexPathForItem(at: gesture.location(in: myCollectionView)) else { return }
+		
         if(gesture.state == .began) {
             let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-                print("deleting ", self!.models[deletionIndex].name!)
-                self?.deleteItem(item: self!.models[deletionIndex])
+				print("deleting ", self!.models[deletionIndex.row].name!)
+				self?.deleteItem(item: self!.models[deletionIndex.row])
                 self!.getAllItems()
             }))
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
                 guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else { return } }))
+			
             present(alert, animated: true, completion: nil)
         }
     }

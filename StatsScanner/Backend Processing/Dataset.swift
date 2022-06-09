@@ -28,7 +28,7 @@ public class Dataset: NSObject, NSCoding {
 		coder.encode(keys, forKey:"keys")
         coder.encode(name, forKey: "name")
         coder.encode(creationDate, forKey: "creationDate")
-		coder.encode(calculations, forKey: "calculations")
+		//coder.encode(calculations, forKey: "calculations")
     }
     
     public required convenience init?(coder decoder: NSCoder) {
@@ -173,7 +173,7 @@ public class Dataset: NSObject, NSCoding {
 		for e in array {
 			result.append(e.doubleArray)
 		}
-		
+		result.removeLast()
         return result
     }
     
@@ -202,8 +202,8 @@ public class Dataset: NSObject, NSCoding {
     /// Returns the maximum value of the data set
     private func getMax() -> Double {
         var result = [Double]()
-        for i in 1...data.count-1 {
-            result.append(data[i].max()!)
+        for i in 0...data.count-1 {
+			result.append(data[i].max() ?? 0)
         }
         return result.max()!
     }
@@ -218,7 +218,7 @@ public class Dataset: NSObject, NSCoding {
     private func getMin() -> Double {
         var result = [Double]()
         for i in 0...data.count-1 {
-            result.append(data[i].min()!)
+			result.append(data[i].min() ?? 0)
         }
         return result.min()!
     }

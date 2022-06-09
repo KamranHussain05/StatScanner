@@ -57,8 +57,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		if (indexPath.isEmpty) {
 			print("Array is empty")
             spreadsheetView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
-		}
-		if (indexPath.row == 0) {
+		} else if (indexPath.row == 0) {
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
             if (!cell.getText().isNumeric) {
                 cell.backgroundColor = .lightGray

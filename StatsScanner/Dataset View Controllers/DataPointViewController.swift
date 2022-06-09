@@ -100,12 +100,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
-			edible = true
+			edible = false
 			// code to update csv file and allow editing
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("cancelling")
 			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
-			edible = false
+			edible = true
 			// code to disable editing or cancel updating csv file
 		}
 	}

@@ -45,7 +45,7 @@ public class Dataset: NSObject, NSCoding {
     /// Creates a new dataset
     override init() {
         name = "Unnamed DataSet"
-		data = [[0]]
+		data = [[]]
         // get the current date and time
         let currentDateTime = Date()
         let formatter = DateFormatter()

@@ -121,21 +121,24 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         self.present(scanview, animated: true, completion: nil)
     }
     
+	let db = DataBridge()
+	
     ///Starts the CSV importing pipeline and reading into dataframe
-    let db = DataBridge()
     func importCSV() {
         let supportedFiles: [UTType] = [UTType.data]
         let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
         
         controller.delegate = self
         controller.allowsMultipleSelection = false
+		controller.shouldShowFileExtensions = true
         
-        present(controller, animated: true, completion: nil)
+		present(controller, animated: true, completion: nil)
         print("got here")
     }
     
     ///code crashes here, "Failed to set FileProtection Attributes on staging URL"
-    private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
+	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
+		print("====called the document picker method====")
         do {
             let arr = try String(contentsOf: url)
             print(arr)

@@ -58,7 +58,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			print("Array is empty")
             spreadsheetView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
 		} else if (indexPath.row == 0) {
-			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
+            cell.setup(with: String(dataset.getKeys()[indexPath.section]), dataset: self.dataset)
             if (!cell.getText().isNumeric) {
                 cell.backgroundColor = .lightGray
             }
@@ -67,7 +67,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			cell.y = indexPath.row
 			return cell
 		} else {
-			cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]))
+            cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset:dataset)
 		}
 		return cell
 	}
@@ -119,11 +119,11 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	static let identifier = "datapoint"
 	
 	private let field = UITextField()
-    var x : Int!
-    var y : Int!
+    var x : Int! = 0
+    var y : Int! = 0
 	var dataset: Dataset!
 	
-	public func setup(with text: String) {
+    public func setup(with text: String, dataset : Dataset) {
 		field.isEnabled = edible
 		field.text = text
 		field.textColor = .black
@@ -132,6 +132,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		field.returnKeyType = .done
 		field.delegate = self
 		self.backgroundColor = .white
+        self.dataset = dataset
 		contentView.addSubview(field)
 	}
 	

@@ -88,15 +88,15 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             case 0:
 				self?.scanningImage()
                 print("scanning image")
-            break
+				break
             case 1:
                 //import image method call
                 print("importing image")
-            break
+				break
             case 2:
                 self?.importCSV()
                 print("importing csv")
-            break
+				break
             default:
                 return
             }
@@ -121,7 +121,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         self.present(scanview, animated: true, completion: nil)
     }
 	
-	
+	///Launches the controller for CSV importing
 	func importCSV() {
 		let supportedFiles : [UTType] = [UTType.data]
 		

@@ -119,15 +119,15 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	static let identifier = "datapoint"
 	
 	private let field = UITextField()
-	var x = 0
-	var y = 0
+    var x : Int!
+    var y : Int!
 	var dataset: Dataset!
 	
 	public func setup(with text: String) {
 		field.isEnabled = edible
 		field.text = text
 		field.textColor = .black
-		field.keyboardType = .numberPad
+        field.keyboardType = .numbersAndPunctuation
 		field.textAlignment = .center
 		field.returnKeyType = .done
 		field.delegate = self
@@ -140,6 +140,10 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		field.delegate = self
 		field.frame = contentView.bounds
 	}
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return edible
+    }
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(String(edible))
@@ -148,7 +152,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
             field.becomeFirstResponder()
             let val = Double(self.field.text!)!
             print(val)
-            self.dataset.updateVal(indexX: x, indexY: y, val: val)
+            self.dataset.updateVal(indexX: self.x, indexY: self.y, val: val)
             field.resignFirstResponder()
             return true
         } else {

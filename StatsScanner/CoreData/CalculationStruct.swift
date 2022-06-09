@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct DatasetCalculations {
+@objc(DatasetCalculations)
+class DatasetCalculations : NSObject {
     var mean : Double = 0.0
     var mode : Double = 0.0
     var median : Double = 0.0

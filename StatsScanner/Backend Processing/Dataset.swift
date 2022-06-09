@@ -21,6 +21,8 @@ public class Dataset: NSObject, NSCoding {
     let db = DataBridge()
 	var calculations = DatasetCalculations()
 	
+	var str : String = "Test"
+	
 	// MARK: INIT'S
     
     public func encode(with coder: NSCoder) {
@@ -28,7 +30,7 @@ public class Dataset: NSObject, NSCoding {
 		coder.encode(keys, forKey:"keys")
         coder.encode(name, forKey: "name")
         coder.encode(creationDate, forKey: "creationDate")
-		//coder.encode(calculations, forKey: "calculations")
+		coder.encode(str, forKey: "calculations")
     }
     
     public required convenience init?(coder decoder: NSCoder) {
@@ -82,6 +84,7 @@ public class Dataset: NSObject, NSCoding {
         creationDate = formatter.string(from: currentDateTime)
     }
 	
+	///Runs all dataset calculations and stores them in the calculation structure for faster loading
 	func calculate() {
 		calculations.max = self.getMax()
 		calculations.min = self.getMin()
@@ -173,6 +176,7 @@ public class Dataset: NSObject, NSCoding {
 		for e in array {
 			result.append(e.doubleArray)
 		}
+		result.removeFirst()
 		result.removeLast()
         return result
     }
@@ -332,3 +336,5 @@ extension Collection where Iterator.Element == String {
 		return compactMap{ Double($0) }
 	}
 }
+
+

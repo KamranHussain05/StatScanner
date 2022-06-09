@@ -56,8 +56,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
 		if (indexPath.isEmpty) {
 			print("Array is empty")
-		}
-		if (indexPath.row == 0) {
+            spreadsheetView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
+		} else if (indexPath.row == 0) {
 			cell.setup(with: String(dataset.getKeys()[indexPath.section]))
             if (!cell.getText().isNumeric) {
                 cell.backgroundColor = .lightGray
@@ -96,6 +96,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
+        print(String(edible!))
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
@@ -141,22 +142,27 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		if(edible) { // just put something in here so it would run
-			print("clicked a cell")
-			if (edible) {
-				print("able to edit this cell")
-				// code to edit clicked cell
-			} else {
-				print("cannot edit this cell")
-				// maybe popup message saying this cell cannot be edited
-			}
-		}
-		let val = Double(self.field.text!)!
-		print(val)
-		self.dataset.updateVal(indexX: x, indexY: y, val: val)
-		textField.resignFirstResponder()
-		return true
+        print(String(edible))
+        if (edible) {
+            print("able to edit this cell")
+            field.becomeFirstResponder()
+            let val = Double(self.field.text!)!
+            print(val)
+            self.dataset.updateVal(indexX: x, indexY: y, val: val)
+            field.resignFirstResponder()
+            return true
+        } else {
+            print("cannot edit this cell")
+            field.resignFirstResponder()
+            // maybe popup message saying this cell cannot be edited
+            return false
+        }
 	}
+    
+    func textField(
+        _ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            return true;
+        }
 	
 	func getText() -> String {
 		return field.text!

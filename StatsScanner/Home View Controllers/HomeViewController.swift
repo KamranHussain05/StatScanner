@@ -18,14 +18,21 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedDataset: Dataset!
     private var cellSpacing: CGFloat = 10
     private var models = [DataSetProject]()
-    
+	
+	var documentBrowser: UIDocumentPickerViewController = {
+		let documentsPath = NSSearchPathForDirectoriesInDomains(.userDirectory, .allDomainsMask, true)[0]
+		print("-===",documentsPath, "=====")
+		let browser = UIDocumentPickerViewController(documentTypes: [documentsPath], in: .import)
+		  browser.allowsMultipleSelection = false
+		  return browser
+	}()
+	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     let newDatasetMenu = UIAlertController(title: "New Dataset",
         message: "Select how you would like to import your data",
         preferredStyle: .actionSheet
     )
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllItems()
@@ -138,7 +145,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     ///code crashes here, "Failed to set FileProtection Attributes on staging URL"
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
-		print("====called the document picker method====")
         do {
             let arr = try String(contentsOf: url)
             print(arr)

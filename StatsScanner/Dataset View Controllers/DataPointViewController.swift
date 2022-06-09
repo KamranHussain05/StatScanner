@@ -96,6 +96,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
+        print(String(edible!))
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
@@ -141,6 +142,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(String(edible))
         if (edible) {
             print("able to edit this cell")
             field.becomeFirstResponder()
@@ -156,6 +158,11 @@ class DataPointCell: Cell, UITextFieldDelegate {
             return false
         }
 	}
+    
+    func textField(
+        _ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            return true;
+        }
 	
 	func getText() -> String {
 		return field.text!

@@ -18,14 +18,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedDataset: Dataset!
     private var cellSpacing: CGFloat = 10
     private var models = [DataSetProject]()
-	
-	var documentBrowser: UIDocumentPickerViewController = {
-		let documentsPath = NSSearchPathForDirectoriesInDomains(.userDirectory, .allDomainsMask, true)[0]
-		print("-===",documentsPath, "=====")
-		let browser = UIDocumentPickerViewController(documentTypes: [documentsPath], in: .import)
-		  browser.allowsMultipleSelection = false
-		  return browser
-	}()
+	private let db = DataBridge()
 	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let newDatasetMenu = UIAlertController(title: "New Dataset",
@@ -93,7 +86,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             
             switch(method) {
             case 0:
-                self?.scanningImage()
+				self?.scanningImage()
                 print("scanning image")
             break
             case 1:
@@ -127,37 +120,28 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)
     }
-    
-	let db = DataBridge()
 	
-    ///Starts the CSV importing pipeline and reading into dataframe
-    func importCSV() {
-        let supportedFiles: [UTType] = [UTType.data]
-        let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
-        
-        controller.delegate = self
-        controller.allowsMultipleSelection = false
-		controller.shouldShowFileExtensions = true
-        
-		present(controller, animated: true, completion: nil)
-        print("got here")
-    }
-    
-    ///code crashes here, "Failed to set FileProtection Attributes on staging URL"
-	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt url: URL) {
-        do {
-            let arr = try String(contentsOf: url)
-            print(arr)
-        } catch {
-            print("FAILED")
-        }
-        
-        let arr = db.readCSV(inputFile: url)
-        print(arr)
-        print("copying csv to app docs")
-        let filename = "newdoc_" + ".csv"
-        db.writeCSV(fileName: filename, data: arr)
-    }
+	
+	func importCSV() {
+		let supportedFiles : [UTType] = [UTType.data]
+		
+		let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
+		
+		controller.delegate = self
+		controller.allowsMultipleSelection = false
+		
+		present(controller, animated:true, completion:nil)
+	}
+	
+	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+		let readFile = db.readCSV(inputFile: url)
+		
+		print(readFile)
+	}
+	
+	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+		controller.dismiss(animated: true)
+	}
     
 
 // MARK: CORE DATA CONFIGURATION

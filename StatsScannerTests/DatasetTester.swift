@@ -84,4 +84,13 @@ class DatasetTester: XCTestCase {
         h.createItem(item: d2, name: d2.name)
         h.getAllItems()
     }
+    
+    func testEmptyDataset() throws {
+        let h = HomeViewController()
+        let d = Dataset(name:"Empty Test", appendable: [[]])
+        h.createItem(item: d, name: d.name)
+        if (d.isEmpty()) {
+            print("EMPTY!!")
+        }
+    }
 }

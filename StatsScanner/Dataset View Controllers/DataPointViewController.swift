@@ -126,12 +126,12 @@ class DataPointCell: Cell, UITextFieldDelegate {
     public func setup(with text: String, dataset : Dataset) {
 		field.isEnabled = edible
 		field.text = text
-		field.textColor = .black
+		field.textColor = .label
         field.keyboardType = .numbersAndPunctuation
 		field.textAlignment = .center
 		field.returnKeyType = .done
 		field.delegate = self
-		self.backgroundColor = .white
+        self.backgroundColor = .systemGroupedBackground
         self.dataset = dataset
 		contentView.addSubview(field)
 	}

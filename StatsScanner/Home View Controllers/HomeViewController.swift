@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  StatsScanner
 //
-//  Created by Kalb on 12/31/21.
+//  Created by Kaleb Kim and Kamran Hussain on 12/31/21.
 //
 
 import UIKit
@@ -18,7 +18,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var selectedDataset: Dataset!
     private var cellSpacing: CGFloat = 10
     private var models = [DataSetProject]()
-	private let db = DataBridge()
+	private let db : DataBridge! = DataBridge()
+	private var dbuilder = DatasetBuilder()
 	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let newDatasetMenu = UIAlertController(title: "New Dataset",
@@ -36,14 +37,14 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
                     print("Scanning image")
-                    self.scanningImage()
+                    _ = self.scanningImage()
                 }
             )
         }
         
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import Image", style: .default) { (action) in
-                print("beans")
+                print("Importing Image")
                 self.createWithName(method: 1)
             }
         )
@@ -81,27 +82,28 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
-            }
-            new.name = text
+		}
+		new.name = text
             
-            switch(method) {
-            case 0:
-				self?.scanningImage()
-                print("scanning image")
-				break
-            case 1:
-                //import image method call
-                print("importing image")
-				break
-            case 2:
-                self?.importCSV()
-                print("importing csv")
-				break
-            default:
-                return
-            }
+		switch(method) {
+		case 0:
+			_ = self?.scanningImage()
+			print("scanning image")
+			break
+		case 1:
+			//import image method call
+			print("importing image")
+			self?.createItem(item: new, name: new.name) //remove this after pipelines are implemented
+			break
+		case 2:
+			self?.dbuilder.name = new.name
+			self?.importCSV()
+			print("importing csv")
+			break
+		default:
+			return
+		}
             
-            self?.createItem(item: new, name: new.name) //remove this after pipelines are implemented
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
@@ -114,11 +116,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     ///Presents the image scanning window and starts that pipeline
-    func scanningImage() {
+	func scanningImage() -> Bool {
         let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
         scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)
+		return true
     }
 	
 	///Launches the controller for CSV importing
@@ -133,10 +136,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 		present(controller, animated:true, completion:nil)
 	}
 	
+	///Reads the CSV file and loads it into an array of stirngs
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-		let readFile = db.readCSV(inputFile: url)
-		
-		print(readFile)
+		let rawFile = db.readCSV(inputFile: url)
+		print(rawFile)
+		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
+		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		controller.dismiss(animated: true)
 	}
 	
 	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

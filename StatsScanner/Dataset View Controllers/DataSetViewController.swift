@@ -65,9 +65,9 @@ class DataSetViewController: UIViewController {
     @IBAction func onBackClick(_sender:UIButton) {
         if (_sender == self.back){
             print("got here")
-            let scanview = storyboard?.instantiateViewController(withIdentifier: "home") as! HomeViewController
-            scanview.modalPresentationStyle = .fullScreen
-            self.present(scanview, animated: true, completion: nil)
+            let homeview = storyboard?.instantiateViewController(withIdentifier: "home") as! HomeViewController
+            homeview.modalPresentationStyle = .fullScreen
+            self.dismiss(animated:true)
         }
     }
 }

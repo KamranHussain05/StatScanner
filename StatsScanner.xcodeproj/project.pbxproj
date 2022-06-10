@@ -18,6 +18,7 @@
 		4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7713182786195700BD7DC8 /* PlotViewController.swift */; };
 		4DE04DF62850260600C5D5BC /* CalculationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF52850260500C5D5BC /* CalculationStruct.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
+		4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
 		A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897A277EF0B100B8C2FE /* HomeTileList.swift */; };
 		A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897F277EF1C600B8C2FE /* HomeViewController.swift */; };
@@ -72,6 +73,7 @@
 		4D7713182786195700BD7DC8 /* PlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
 		4DE04DF52850260500C5D5BC /* CalculationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationStruct.swift; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
+		4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1BCA46C3BD6307DD59B2BA8 /* Pods-StatsScanner-StatsScannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				A8CA563127716205006BDF61 /* Dataset.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
+				4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */,
 			);
 			path = "Backend Processing";
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */,
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,
 				A83F4908277F9A1300C8FB35 /* DataSetViewController.swift in Sources */,
+				4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

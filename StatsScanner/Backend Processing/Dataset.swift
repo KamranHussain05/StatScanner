@@ -18,10 +18,8 @@ public class Dataset: NSObject, NSCoding {
     var keys: [String] = []
     var name: String = "Unnamed Dataset"
     var creationDate: String!
-    let db = DataBridge()
-	var calculations = DatasetCalculations()
-	
-	var str : String = "Test"
+	var calculations : [Double]! = Array<Double>(repeating: 0.0, count:8)
+	let db = DataBridge()
 	
 	// MARK: INIT'S
     
@@ -30,7 +28,7 @@ public class Dataset: NSObject, NSCoding {
 		coder.encode(keys, forKey:"keys")
         coder.encode(name, forKey: "name")
         coder.encode(creationDate, forKey: "creationDate")
-		coder.encode(str, forKey: "calculations")
+		coder.encode(calculations, forKey: "calculations")
     }
     
     public required convenience init?(coder decoder: NSCoder) {
@@ -85,59 +83,61 @@ public class Dataset: NSObject, NSCoding {
     }
 	
 	///Runs all dataset calculations and stores them in the calculation structure for faster loading
-	func calculate() {
-		calculations.max = self.getMax()
-		calculations.min = self.getMin()
-		calculations.median = self.getMedian()
-		calculations.mode = self.getMode()
-		calculations.range = self.getMax() - self.getMin()
-		calculations.standardDeviation = self.getStandardDeviation()
-		calculations.standardError = self.getStandardError()
+	private func calculate() {
+		calculations[0] = (self.getMax())
+		calculations[1] = (self.getMin())
+		calculations[2] = (self.getMedian())
+		calculations[3] = (self.getMode())
+		calculations[4] = (self.getMax() - self.getMin())
+		calculations[5] = (self.getStandardDeviation())
+		calculations[6] = (self.getStandardError())
+		calculations[7] = (self.getSetAverage())
+		print("calculations")
 	}
 	
 	// MARK: GETTERS AND MODIFIERS
-    
-    /// Returns the data 2d array containg the double values of the data
-    func getData() -> [[Double]] {
-        return self.data
-    }
-    
-    /// Returns the array containing the data in the specified index
-    func getData(axis:Int) -> [Double] {
-        var result = [Double]()
-        for i in 0...data[0].count-1 {
-            result.append(data[axis][i])
-        }
-        return result
+	
+	///Returns the dataset array without keys
+	public func getData() -> [[Double]] {
+		return self.data
 	}
-    
-    /// Returns the array containing the extracted keys from the dataset
-    func getKeys() -> [String] {
-        return self.keys
-    }
-    
-    /// Returns the specified dataset key
-    func getKey(index: Int) -> String {
-        return self.keys[index]
-    }
+	
+	/// Returns the array containing the data in the specified index
+   func getData(axis:Int) -> [Double] {
+	   var result = [Double]()
+	   for i in 0...data[0].count-1 {
+		   result.append(data[axis][i])
+	   }
+	   return result
+   }
+	
+	///Returns the Dataset keys/x-axis
+	public func getKeys() -> [String]{
+		return self.keys
+	}
+	
+	/// Returns the specified dataset key
+	func getKey(index: Int) -> String {
+		return self.keys[index]
+	}
     
     /// Adds a value to the end of the dataset
     func addVal(val:Double) {
         data[data[0].count-1].append(val)
-		calculate()
+		self.calculate()
     }
     
     /// Changes a specific value
     func updateVal(indexX: Int, indexY: Int, val: Double) {
         data[indexX][indexY] = val
-		calculate()
+		self.calculate()
     }
     
     /// Adds another dataset or 2D array that does not contain the key row
     func appendArray(array: [[String]]) {
         let cleanArr = cleanData(array: array)
         data.append(contentsOf: cleanArr)
-		calculate()
+		self.calculate()
     }
 	
 	/// Returns the number of items in the dataset
@@ -313,7 +313,7 @@ public class Dataset: NSObject, NSCoding {
     
     /// Returns the standard error of the specified axis
     private func getStandardError(axis: Int) -> Double {
-        return getStandardDeviation(index: axis)/sqrt(Double(getData(axis: axis).count))
+        return getStandardDeviation(index: axis)/sqrt(Double(data[axis].count))
     }
 }
 

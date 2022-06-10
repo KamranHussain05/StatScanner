@@ -52,21 +52,18 @@ class DataSetViewController: UIViewController {
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
         
-        average.text = String(datasetobj.calculations.mean)
-        mode.text = String(datasetobj.calculations.mode)
-        range.text = String(datasetobj.calculations.range)
-        max.text = String(datasetobj.calculations.max)
-        min.text = String(datasetobj.calculations.min)
-        standardDev.text = String(datasetobj.calculations.standardDeviation)
-        standardError.text = String(datasetobj.calculations.standardError)
-        median.text = String(datasetobj.calculations.median)
+        average.text = String(datasetobj.calculations[7])
+        mode.text = String(datasetobj.calculations[2])
+        range.text = String(datasetobj.calculations[4])
+        max.text = String(datasetobj.calculations[0])
+        min.text = String(datasetobj.calculations[1])
+        standardDev.text = String(datasetobj.calculations[5])
+        standardError.text = String(datasetobj.calculations[6])
+        median.text = String(datasetobj.calculations[3])
     }
     
     @IBAction func onBackClick(_sender:UIButton) {
         if (_sender == self.back){
-            print("got here")
-            let homeview = storyboard?.instantiateViewController(withIdentifier: "home") as! HomeViewController
-            homeview.modalPresentationStyle = .fullScreen
             self.dismiss(animated:true)
         }
     }

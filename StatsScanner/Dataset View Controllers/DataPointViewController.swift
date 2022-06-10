@@ -54,7 +54,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-		if (indexPath.isEmpty) {
+        if (dataset.isEmpty()) {
 			print("Array is empty")
             spreadsheetView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
 		} else if (indexPath.row == 0) {

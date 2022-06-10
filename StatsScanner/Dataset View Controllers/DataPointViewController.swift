@@ -60,7 +60,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		} else if (indexPath.row == 0) {
             cell.setup(with: String(dataset.getKeys()[indexPath.section]), dataset: self.dataset)
             if (!cell.getText().isNumeric) {
-                cell.backgroundColor = .lightGray
+                cell.backgroundColor = .systemFill
             }
 			cell.dataset = self.dataset
 			cell.x = indexPath.column

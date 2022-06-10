@@ -16,7 +16,6 @@
 		4D2F168F279BE9C70096F9DA /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4D2F168E279BE9C60096F9DA /* Awards_R.csv */; };
 		4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */; };
 		4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7713182786195700BD7DC8 /* PlotViewController.swift */; };
-		4DE04DF62850260600C5D5BC /* CalculationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF52850260500C5D5BC /* CalculationStruct.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
 		4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
@@ -71,7 +70,6 @@
 		4D2F168E279BE9C60096F9DA /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; usesTabs = 0; };
 		4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTransformer.swift; sourceTree = "<group>"; };
 		4D7713182786195700BD7DC8 /* PlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlotViewController.swift; sourceTree = "<group>"; };
-		4DE04DF52850260500C5D5BC /* CalculationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationStruct.swift; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
 		4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 				4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */,
 				4D2F1686279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift */,
 				4D2F1685279AACF70096F9DA /* DataSetProject+CoreDataClass.swift */,
-				4DE04DF52850260500C5D5BC /* CalculationStruct.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -468,7 +465,6 @@
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				A8CA563227716205006BDF61 /* Dataset.swift in Sources */,
-				4DE04DF62850260600C5D5BC /* CalculationStruct.swift in Sources */,
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				4D2F1688279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift in Sources */,

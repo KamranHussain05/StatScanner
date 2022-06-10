@@ -18,10 +18,10 @@ public class Dataset: NSObject, NSCoding {
     var keys: [String] = []
     var name: String = "Unnamed Dataset"
     var creationDate: String!
-	var calculations : [Double]! = Array<Double>(repeating: 0.0, count:8)
+	var calculations : [Double] = Array<Double>(repeating: 0.0, count:8)
 	let db = DataBridge()
 	
-	// MARK: INIT'S
+// MARK: INIT'S
     
     public func encode(with coder: NSCoder) {
 		coder.encode(data, forKey:"data")
@@ -103,7 +103,7 @@ public class Dataset: NSObject, NSCoding {
 	}
 	
 	/// Returns the array containing the data in the specified index
-   func getData(axis:Int) -> [Double] {
+   public func getData(axis:Int) -> [Double] {
 	   var result = [Double]()
 	   for i in 0...data[0].count-1 {
 		   result.append(data[axis][i])
@@ -180,6 +180,11 @@ public class Dataset: NSObject, NSCoding {
 		result.removeLast()
         return result
     }
+	
+	///Checks if the dataset is empty
+	public func isEmpty() -> Bool {
+		return data.isEmpty || keys.isEmpty
+	}
     
 // MARK: STATISTICS METHODS
     

@@ -43,7 +43,7 @@ class DataSetViewController: UIViewController {
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        print("dataset view recieved dataset")
+        print("statistics view recieved dataset")
         datasetobj = (notification.object as! Dataset)
     }
     

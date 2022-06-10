@@ -23,7 +23,7 @@
 		A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897F277EF1C600B8C2FE /* HomeViewController.swift */; };
 		A8088981277EF9DE00B8C2FE /* Pods_StatsScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */; };
 		A8088984277EFA2C00B8C2FE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; };
-		A83F4908277F9A1300C8FB35 /* DataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */; };
+		A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F4907277F9A1300C8FB35 /* StatsViewController.swift */; };
 		A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092B927497F6F00392240 /* AppDelegate.swift */; };
 		A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BB27497F6F00392240 /* SceneDelegate.swift */; };
 		A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BD27497F6F00392240 /* CameraOCRThing.swift */; };
@@ -78,7 +78,7 @@
 		A8088978277EEF8500B8C2FE /* HomeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTile.swift; sourceTree = "<group>"; };
 		A808897A277EF0B100B8C2FE /* HomeTileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTileList.swift; sourceTree = "<group>"; };
 		A808897F277EF1C600B8C2FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSetViewController.swift; sourceTree = "<group>"; };
+		A83F4907277F9A1300C8FB35 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		A85092B627497F6F00392240 /* StatsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092B927497F6F00392240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A85092BB27497F6F00392240 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE04DF82850357300C5D5BC /* DataPointViewController.swift */,
-				A83F4907277F9A1300C8FB35 /* DataSetViewController.swift */,
+				A83F4907277F9A1300C8FB35 /* StatsViewController.swift */,
 				4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */,
 				4D7713182786195700BD7DC8 /* PlotViewController.swift */,
 			);
@@ -472,7 +472,7 @@
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				4D7713192786195700BD7DC8 /* PlotViewController.swift in Sources */,
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,
-				A83F4908277F9A1300C8FB35 /* DataSetViewController.swift in Sources */,
+				A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */,
 				4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -55,9 +55,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         if (dataset.isEmpty()) {
-			print("Array is empty")
-            spreadsheetView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height)
-		} else if (indexPath.row == 0) {
+            cell.setup(with: "", dataset: self.dataset)
+            return cell
+        } else if (indexPath.row == 0) {
             cell.setup(with: String(dataset.getKeys()[indexPath.section]), dataset: self.dataset)
             if (!cell.getText().isNumeric) {
                 cell.backgroundColor = .systemFill
@@ -73,11 +73,19 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        return self.dataset.getKeys().count
+        if (dataset.isEmpty()) {
+            return Int(view.frame.size.width/100)
+        } else {
+            return self.dataset.getKeys().count
+        }
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-		return dataset.getData().count
+        if (dataset.isEmpty()) {
+            return Int(view.frame.size.height/50)
+        } else {
+            return self.dataset.getData().count
+        }
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {

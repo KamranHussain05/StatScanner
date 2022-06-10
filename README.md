@@ -23,7 +23,7 @@
     <img src="images/StarsScanner-02.png" alt="Logo" width="130" height="130">
   </a>
 
-<h3 align="center">StatsScanner</h3>
+<h3 align="center">StatScanner</h3>
 
   <p align="center">
     An app for processing and visualizing your data anywhere!
@@ -74,11 +74,12 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-Stats Scanner is an IOS app designed to process and visualize any numerical data. You can create predictions, get basic stats, and visualize your data by simply scanning a paper, importing a csv file, or manually entering data. Data can be visualized as bar graphs, cloud plot, dot plot, and more in additiont to basic statistical analysis. 
+StatScanner is an IOS app designed to process and visualize any numerical data. You can create predictions, get basic stats, and visualize your data by simply scanning a paper, importing a csv file, or manually entering data. Data can be visualized as bar graphs, pie charts, dot plots, and more in addition to basic statistics. 
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Compatible with iOS 14.0+
+## Compatible with iOS 14.0.1+
 
 ## Features
 
@@ -96,6 +97,7 @@ Stats Scanner is an IOS app designed to process and visualize any numerical data
 
 * [Swift 5.5](https://swift.org/)
 * [Swift UI](https://developer.apple.com/xcode/swiftui/)
+* [UI Kit](https://developer.apple.com/documentation/uikit)
 * [Vision](https://developer.apple.com/documentation/vision)
 * [AAChartKit](https://github.com/AAChartModel/AAChartKit-Swift)
 * [SpreadsheetView](https://github.com/bannzai/SpreadsheetView)
@@ -145,9 +147,11 @@ _For more examples, please refer to the [Documentation](https://github.com/Kamra
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Release 1 built natively for IOS
-- [ ] Release 2 built natively for Android
-- [ ] Custom Project Files with ability to share projects via link and allow for embedded interactive graphs in presentations
+- [x] Release 1 - Built natively for iOS with local datasets synced across your devices through iCloud
+- [ ] Release 2 - New machine learning models that can be trained on imported data with the ability to make inferences
+- [ ] Release 3 - Dataset sharing ability and collaboration features
+- [ ] Release 4 - Native Android App featuring the same functionality as version 1.0
+- [ ] Release 5 - Cross platform sharing between iOS and Android devices
 
 See the [open issues](https://github.com/KamranHussain05/StatsScanner/issues) for a full list of proposed features (and known issues).
 
@@ -191,7 +195,7 @@ Kaleb Kim - [@kaleonthekalb](https://instagram.com/kaleonthekalb) - kalebkim1940
 
 Caden Pun - [@cadenpun](https://instagram.com//cadenpun) - cadenpun@gmail.com
 
-Project Link: [https://github.com/KamranHussain05/StatsScanner](https://github.com/KamranHussain05/StatsScanner)
+Project Link: [https://github.com/KamranHussain05/StatScanner](https://github.com/KamranHussain05/StatsScanner)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

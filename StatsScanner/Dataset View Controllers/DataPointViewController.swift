@@ -45,7 +45,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         
         spreadsheetView.translatesAutoresizingMaskIntoConstraints = false
         spreadsheetView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
-        spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -75).isActive = true
+        spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)).isActive = true
         spreadsheetView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         spreadsheetView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }

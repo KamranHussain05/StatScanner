@@ -52,13 +52,13 @@ class DataSetViewController: UIViewController {
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
         
-        average.text = String(datasetobj.calculations[7])
+        average.text = String(round(1000 * datasetobj.calculations[7]) / 1000)
         mode.text = String(datasetobj.calculations[2])
         range.text = String(datasetobj.calculations[4])
         max.text = String(datasetobj.calculations[0])
         min.text = String(datasetobj.calculations[1])
-        standardDev.text = String(datasetobj.calculations[5])
-        standardError.text = String(datasetobj.calculations[6])
+        standardDev.text = String(round(1000 * datasetobj.calculations[5]) / 1000)
+        standardError.text = String(round(1000 * datasetobj.calculations[6]) / 1000)
         median.text = String(datasetobj.calculations[3])
     }
     

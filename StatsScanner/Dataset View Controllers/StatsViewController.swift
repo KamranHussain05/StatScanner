@@ -16,7 +16,7 @@ class DataSetViewController: UIViewController {
     @IBOutlet var numitems: UILabel!
     @IBOutlet var back: UIButton!
     
-    @IBOutlet var average: UILabel!
+    @IBOutlet var mean: UILabel!
     @IBOutlet var mode: UILabel!
     @IBOutlet var range: UILabel!
     @IBOutlet var max: UILabel!
@@ -52,7 +52,7 @@ class DataSetViewController: UIViewController {
         creationDate.text = datasetobj.creationDate
         numitems.text = String(datasetobj.getTotalNumItems())
         
-        average.text = String(round(1000 * datasetobj.calculations[7]) / 1000)
+        mean.text = String(round(1000 * datasetobj.calculations[7]) / 1000)
         mode.text = String(datasetobj.calculations[2])
         range.text = String(datasetobj.calculations[4])
         max.text = String(datasetobj.calculations[0])

@@ -378,8 +378,8 @@
                                     <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="DHG-qV-8sb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-1v-271">
-                                <rect key="frame" x="20" y="264" width="77" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mean:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpH-1v-271">
+                                <rect key="frame" x="20" y="264" width="54" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -516,11 +516,11 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="average" destination="h1E-SW-d2e" id="ZPP-3m-U05"/>
                         <outlet property="back" destination="G7b-zC-iyH" id="Tkr-1Q-KpB"/>
                         <outlet property="creationDate" destination="RhP-uQ-GFi" id="GzU-ez-ioT"/>
                         <outlet property="datasetName" destination="R1W-VU-QMj" id="E5J-8h-BlP"/>
                         <outlet property="max" destination="9T3-86-eAh" id="OSq-iB-lRr"/>
+                        <outlet property="mean" destination="h1E-SW-d2e" id="ZPP-3m-U05"/>
                         <outlet property="median" destination="5Fk-Dm-ats" id="0kq-2N-Og4"/>
                         <outlet property="min" destination="7aw-KH-ACe" id="MiQ-V0-bml"/>
                         <outlet property="mode" destination="od9-uT-c03" id="Sl5-W1-aLZ"/>

@@ -4,7 +4,11 @@
         <attribute name="datasetobject" attributeType="Transformable" valueTransformerName="NSDatasetTransformer" customClassName=".Dataset"/>
         <attribute name="name" attributeType="String"/>
     </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
+    <entity name="Entity1" representedClassName="Entity1" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="DataSetProject" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="Entity" positionX="-63" positionY="0" width="128" height="29"/>
+        <element name="Entity1" positionX="-54" positionY="9" width="128" height="29"/>
     </elements>
 </model>

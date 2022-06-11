@@ -14,12 +14,13 @@ import CoreData
 @objc(Dataset)
 public class Dataset: NSObject, NSCoding {
     
-    var data: [[Double]] = [[]]
-    var keys: [String] = []
-    var name: String = "Unnamed Dataset"
-    var creationDate: String!
+	var data : [[Double]] = [[]]
+    private var keys: [String] = []
+	var name: String = "Unnamed Dataset"
+	var creationDate: String!
 	var calculations : [Double] = Array<Double>(repeating: 0.0, count:8)
-	let db = DataBridge()
+	private let db = DataBridge()
+	private let h = HomeViewController()
 	
 // MARK: INIT'S
     
@@ -38,6 +39,7 @@ public class Dataset: NSObject, NSCoding {
         name = decoder.decodeObject(forKey: "name") as? String ?? "Unnamed Dataset"
         creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
+		calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
     }
     
     /// Creates a new dataset
@@ -92,7 +94,12 @@ public class Dataset: NSObject, NSCoding {
 		calculations[5] = (self.getStandardDeviation())
 		calculations[6] = (self.getStandardError())
 		calculations[7] = (self.getSetAverage())
-		print("calculations")
+		print("Re-Did Calculations")
+		do {
+			try h.context.save()
+		} catch {
+			fatalError("Core Data Save Failed")
+		}
 	}
 	
 	// MARK: GETTERS AND MODIFIERS

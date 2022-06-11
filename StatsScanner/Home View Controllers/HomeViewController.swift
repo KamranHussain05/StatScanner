@@ -193,7 +193,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     ///Updates the dataset project in Core Data
     func updateItem(item: DataSetProject, dataset: Dataset) {
         item.datasetobject = dataset
-        
         do {
             try context.save()
         } catch {

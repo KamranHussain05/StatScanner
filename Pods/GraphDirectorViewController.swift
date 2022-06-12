@@ -15,13 +15,6 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chartScroller = UIPickerView()
-        chartScroller.delegate = self
-        chartScroller.dataSource = self
-        self.view.addSubview(chartScroller)
-//        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
-        let rotationAngle: CGFloat! = -90 * (.pi/180)
-        chartScroller.transform = CGAffineTransform(rotationAngle: rotationAngle)
         // horizontal scroller initialization
         chartScrollerView = UIPickerView()
         chartScrollerView.delegate = self
@@ -74,6 +67,7 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        view.backgroundColor = .white
         
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 0, width: width, height: height)

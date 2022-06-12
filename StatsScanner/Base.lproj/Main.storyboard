@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -231,10 +231,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dej-wz-j7F">
-                                <rect key="frame" x="0.0" y="411" width="414" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -246,7 +242,6 @@
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="chartScroller" destination="dej-wz-j7F" id="vU0-oz-TjM"/>
                         <segue destination="as4-zL-4J7" kind="show" id="z0T-SS-31n"/>
                     </connections>
                 </viewController>

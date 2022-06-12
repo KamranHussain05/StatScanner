@@ -9,3 +9,4 @@ StatsScanner.xcworkspace/xcuserdata/kaleb.xcuserdatad/UserInterfaceState.xcusers
 *.xcuserstate
 StatsScanner.xcodeproj/project.pbxproj
 *.pbxproj
+.DS_Store

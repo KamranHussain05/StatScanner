@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -535,6 +535,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="back" destination="G7b-zC-iyH" id="w0h-Va-kq4"/>
                         <outlet property="creationDate" destination="RhP-uQ-GFi" id="GzU-ez-ioT"/>
                         <outlet property="datasetName" destination="R1W-VU-QMj" id="E5J-8h-BlP"/>
                         <outlet property="max" destination="9T3-86-eAh" id="OSq-iB-lRr"/>

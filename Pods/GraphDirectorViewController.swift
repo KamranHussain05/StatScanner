@@ -25,7 +25,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         // create the view
         print(screenSize.height)
         chartScrollerView.frame = CGRect(x: 0 - 150, y: screenSize.height - 200, width: view.frame.width + 300, height: height)
-        chartScrollerView.backgroundColor = .white
+        chartScrollerView.backgroundColor = .systemBackground
         
         // dataset importing (with obj c)
 //                NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
@@ -63,9 +63,9 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 0, width: width, height: height)
         label.text = chartTypes[row]
-        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .center
-        label.backgroundColor = .white
+        label.backgroundColor = .systemBackground
         view.addSubview(label)
         
         // rotate!

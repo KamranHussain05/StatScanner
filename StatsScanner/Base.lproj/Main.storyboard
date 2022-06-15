@@ -241,9 +241,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="as4-zL-4J7" kind="show" id="z0T-SS-31n"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwc-ev-BJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -528,22 +525,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1939.1304347826087" y="-664.28571428571422"/>
-        </scene>
-        <!--Plot Graph-->
-        <scene sceneID="chI-35-JXP">
-            <objects>
-                <viewController storyboardIdentifier="graphvisualization" useStoryboardIdentifierAsRestorationIdentifier="YES" id="as4-zL-4J7" customClass="LinePlotViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hIj-PJ-Djb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="jJr-ML-IuR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Plot Graph" id="sPO-cV-Wel"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zMC-e9-L4V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1165" y="50"/>
         </scene>
     </scenes>
     <resources>

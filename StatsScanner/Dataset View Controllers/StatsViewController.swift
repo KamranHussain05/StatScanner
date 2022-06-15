@@ -25,6 +25,10 @@ class DataSetViewController: UIViewController {
     @IBOutlet var standardError: UILabel!
     @IBOutlet var median: UILabel!
     
+    @IBOutlet var ml1: UIButton!
+    @IBOutlet var ml2: UIButton!
+    @IBOutlet var ml3: UIButton!
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         

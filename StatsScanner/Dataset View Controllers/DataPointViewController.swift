@@ -8,7 +8,7 @@
 import UIKit
 import SpreadsheetView
 
-var edible : Bool! = false
+var edible : Bool!
 
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
@@ -19,7 +19,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 
-		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
 	}
 
 	@objc func initDataset(_ notification: Notification) {
@@ -30,6 +30,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+        edible = false
 		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
 		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
@@ -67,7 +68,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			cell.y = indexPath.row
 			return cell
 		} else {
-            cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset:dataset)
+            cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
 		}
 		return cell
 	}
@@ -104,7 +105,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
-        print(String(edible!))
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
@@ -132,7 +132,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	var dataset: Dataset!
 	
     public func setup(with text: String, dataset : Dataset) {
-		field.isEnabled = edible
+		//field.isEnabled = edible
 		field.text = text
 		field.textColor = .label
         field.keyboardType = .numbersAndPunctuation
@@ -149,33 +149,27 @@ class DataPointCell: Cell, UITextFieldDelegate {
 		field.delegate = self
 		field.frame = contentView.bounds
 	}
-    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return edible
     }
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(String(edible))
+        field.becomeFirstResponder()
         if (edible) {
-            print("able to edit this cell")
-            field.becomeFirstResponder()
-            let val = Double(self.field.text!)!
-            print(val)
-            self.dataset.updateVal(indexX: self.x, indexY: self.y, val: val)
-            field.resignFirstResponder()
-            return true
-        } else {
-            print("cannot edit this cell")
-            field.resignFirstResponder()
-            // maybe popup message saying this cell cannot be edited
-            return false
+            if (self.field.text!.isNumeric) { // is a number
+                let val = Double(self.field.text!)!
+                self.dataset.updateVal(indexX: self.x, indexY: self.y, val: val)
+                print(self.dataset.getData())
+                field.resignFirstResponder()
+            } else if (self.backgroundColor == .systemFill) { // is a header
+                let val = String(self.field.text!)
+                self.dataset.updateHeader()
+                print(self.dataset.getData())
+                field.resignFirstResponder()
+            }
         }
+        return edible
 	}
-    
-    func textField(
-        _ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return true;
-        }
 	
 	func getText() -> String {
 		return field.text!

@@ -649,7 +649,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
@@ -695,7 +695,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;

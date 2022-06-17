@@ -163,7 +163,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
                 field.resignFirstResponder()
             } else if (self.backgroundColor == .systemFill) { // is a header
                 let val = String(self.field.text!)
-                self.dataset.updateHeader()
+                self.dataset.updateHeader(index: self.x, val: val)
                 print(self.dataset.getData())
                 field.resignFirstResponder()
             }

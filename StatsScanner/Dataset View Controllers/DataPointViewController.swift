@@ -13,18 +13,18 @@ var edible : Bool!
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     private let spreadsheetView = SpreadsheetView()
-	var dataset = Dataset()
+    var dataset : Dataset!
 	@IBOutlet var edit: UIButton!
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: dataset)
 	}
 
 	@objc func initDataset(_ notification: Notification) {
 		print("table view recieved data")
-		self.dataset = notification.object as! Dataset
+		self.dataset = notification.object as? Dataset
 	}
 	
     override func viewDidLoad() {

@@ -1,20 +1,27 @@
+// Created by
+
 import UIKit
 import AAInfographics
 
 class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
-    let screenSize: CGRect = UIScreen.main.bounds
+    let screenSize: CGRect = UIScreen.main.bounds // THIS INCLUDES THE NAVIGATION BAR
     
-    var chartScroller: UIPickerView!
     var chartScrollerView: UIPickerView!
     var currentGraph:String = "Scatter Plot" // default view begins on scatter plot
     let chartTypes = ["Scatter Plot", "Line Graph", "Bar Chart", "Pie Chart", "Area Chart", "Box Plot", "Bubble Chart", "Waterfall Plot", "Polygon Chart"]
-    let width:CGFloat = 1000
-    let height:CGFloat = 100
+    let width:CGFloat = 200
+    let height:CGFloat = 50
     
     // for displaying the dataset
     var focused = AAChartType(rawValue: "scatter")
     var dataset = Dataset() // the current dataset which the user is on
     var graphView: UIView!
+    
+    var aaChartView = AAChartView()
+    let aaChartModel = AAChartModel()
+    var data: Dataset!
+    var type: AAChartType = AAChartType.scatter
+    var xvals = [String]()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -40,18 +47,13 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         self.view.addSubview(chartScrollerView)
         chartScrollerView.transform = CGAffineTransform(rotationAngle:  -90 * (.pi/180))
         // create the view
-        print(screenSize.height)
-        chartScrollerView.frame = CGRect(x: 0 - width/2, y: screenSize.height - 200, width: view.frame.width + width, height: height)
+        chartScrollerView.frame = CGRect(x: 0, y: screenSize.height - height - screenSize.height/15 - 50, width: screenSize.width, height: height) // making the frame larger than the chartscroller
         chartScrollerView.backgroundColor = .systemBackground
         
         // graph view initialization
         graphView = UIView()
-        if graphView.frame.isEmpty {
-            graphView.frame = CGRect(x: 10, y: 10, width: screenSize.width - 20, height: screenSize.height - 200)
-        }
+        graphView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height/2)
         self.view.addSubview(graphView)
-        
-        print("view did load")
     }
     
     
@@ -83,30 +85,135 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
         return chartTypes[row]
     }
     
+    ///Adjusts width of the carousel
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return width
     }
     
+    ///Adjusts height of the carousel
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return height
     }
     
+    // responsible for the text
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        view.backgroundColor = .white
         
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: width + 300, height: height)
+        label.frame = CGRect(x: 0, y: 0, width: width, height: height)
         label.text = chartTypes[row]
         label.textColor = .label
         label.textAlignment = .center
-        label.backgroundColor = .systemBackground
         view.addSubview(label)
         
         // rotate!
         view.transform = CGAffineTransform(rotationAngle: 90 * (.pi/180))
         
         return view
+    }
+}
+
+class PlotViewController: UIViewController, AAChartViewDelegate {
+
+    var aaChartView = AAChartView()
+    let aaChartModel = AAChartModel()
+    var data: Dataset!
+    var type: AAChartType = AAChartType.scatter
+    var xvals = [String]()
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("type"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didgetData(_:)), name: Notification.Name("data"), object: nil)
+    }
+    
+    @objc func didGetNotification(_ notification: Notification) {
+        self.type = notification.object as! AAChartType
+    }
+    
+    @objc func didgetData(_ notification : Notification) {
+        print("graph received data")
+        self.data = (notification.object as! Dataset)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        aaChartView.delegate = self
+        let chartViewWidth  = self.view.frame.size.width
+        let chartViewHeight = self.view.frame.size.height
+        aaChartView.frame = CGRect(x:0, y:0, width: chartViewWidth, height: chartViewHeight - 20)
+        
+        self.view.addSubview(aaChartView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        aaChartModel
+            .chartType(type) //Can be any of the chart types listed under `AAChartType`.
+            .animationType(.easeInSine)
+            .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
+//            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+//                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .categories(xvalsFormatted())
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .title(self.data.name)
+            .backgroundColor("#ffffff")
+//            .series([
+//                AASeriesElement()
+//                    .name("Tokyo")
+//                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
+//                AASeriesElement()
+//                    .name("New York")
+//                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
+//                AASeriesElement()
+//                    .name("Berlin")
+//                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
+//                AASeriesElement()
+//                    .name("London")
+//                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
+//                    ])
+            .series(formattedData())
+        //The chart view object calls the instance object of AAChartModel and draws the final graphic
+        aaChartView.aa_drawChartWithChartModel(aaChartModel)
+    }
+    
+    func changeGraphType(type: AAChartType){
+        self.type = type
+        //Refresh the chart after the AAChartModel whole content is updated
+        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
+    }
+    
+    func addDataCategories(cat:[String]){
+        self.aaChartModel.categories(cat)
+    }
+    
+    private func xvalsFormatted() -> [String] {
+        var result = [String]()
+        let ds = data.getData(axis: 0)
+        for i in 0...ds.count-1 {
+            result.append(String(ds[i]))
+        }
+        return result
+    }
+    
+    private func formattedData() -> [AASeriesElement] {
+        var arr = [AASeriesElement]()
+        let d = data.getData()
+        
+        if(data.getData().count == 0){
+            arr.append(AASeriesElement().data([0]))
+            return arr
+        }
+        
+        for i in 0...d[0].count-1 {
+            arr.append(AASeriesElement()
+                        .name(self.data.getKeys()[i])
+                        .data(data.getData(axis:i))
+            )
+        }
+        return arr
     }
 }

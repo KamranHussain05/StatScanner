@@ -139,6 +139,11 @@ public class Dataset: NSObject, NSCoding {
         data[indexX][indexY] = val
 		self.calculate()
     }
+	
+	func updateHeader(index: Int, val: String) {
+		keys[index] = val
+		self.calculate()
+	}
     
     /// Adds another dataset or 2D array that does not contain the key row
     func appendArray(array: [[String]]) {

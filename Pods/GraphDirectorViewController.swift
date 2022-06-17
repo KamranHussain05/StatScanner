@@ -83,7 +83,7 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
         view.backgroundColor = .white
         
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        label.frame = CGRect(x: 0, y: 0, width: width + 300, height: height)
         label.text = chartTypes[row]
         label.textColor = .label
         label.textAlignment = .center

@@ -6,14 +6,16 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     
     var chartScroller: UIPickerView!
     var chartScrollerView: UIPickerView!
+    var currentGraph:String = "Scatter Plot" // default view begins on scatter plot
     let chartTypes = ["Scatter Plot", "Line Graph", "Bar Chart", "Pie Chart", "Area Chart", "Box Plot", "Bubble Chart", "Waterfall Plot", "Polygon Chart"]
     let width:CGFloat = 1000
     let height:CGFloat = 100
     
     // for displaying the dataset
-    private var focused = AAChartType(rawValue: "scatter")
-    private var dataset: Dataset!
-    @IBOutlet var graphView: UIView!
+    var focused = AAChartType(rawValue: "scatter")
+    var dataset = Dataset() // the current dataset which the user is on
+    var graphView: UIView!
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
@@ -21,24 +23,14 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func initDataSet(_ notification: Notification) {
-        print("graph director got dataset")
-        self.dataset = (notification.object as! Dataset)
-    }
-        
-    func graphSelected(_sender : Int) {
-
-        let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
-        vc.modalPresentationStyle = .popover
-
-        NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
-        NotificationCenter.default.post(name: Notification.Name("data"), object: self.dataset)
-        print("sent to graph")
-
-        present(vc, animated: true, completion: nil)
+        dataset = (notification.object as! Dataset)
+        print("graph director successfully got dataset")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
         
         // horizontal scroller initialization
         chartScrollerView = UIPickerView()
@@ -51,6 +43,27 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         print(screenSize.height)
         chartScrollerView.frame = CGRect(x: 0 - width/2, y: screenSize.height - 200, width: view.frame.width + width, height: height)
         chartScrollerView.backgroundColor = .systemBackground
+        
+        // graph view initialization
+        graphView = UIView()
+        if graphView.frame.isEmpty {
+            graphView.frame = CGRect(x: 10, y: 10, width: screenSize.width - 20, height: screenSize.height - 200)
+        }
+        self.view.addSubview(graphView)
+        
+        print("view did load")
+    }
+    
+    
+    // called when a graph is selected on the carousel
+    func graphSelected(_sender : Int) {
+
+//        let vc  = storyboard?.instantiateViewController(withIdentifier: "graphvisualization") as! LinePlotViewController
+//        vc.modalPresentationStyle = .popover
+
+        NotificationCenter.default.post(name: Notification.Name("type"), object: self.focused)
+        NotificationCenter.default.post(name: Notification.Name("data"), object: self.dataset)
+        print("sent to graph")
     }
 }
     
@@ -66,15 +79,16 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
     
     ///Returns current element in the scroller
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
         return chartTypes[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 100
+        return width
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 100
+        return height
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

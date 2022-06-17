@@ -1,14 +1,15 @@
 //
-//  LinePlotViewController.swift
-//  StatsScanner
+//  PlotViewController.swift
+//  StatScanner
 //
 //  Created by Kamran Hussain on 1/5/22.
+//  Modified by Kaleb Kim on 6/12/22.
 //
 
 import UIKit
 import AAInfographics
 
-class LinePlotViewController: UIViewController, AAChartViewDelegate {
+class PlotViewController: UIViewController, AAChartViewDelegate {
 
     var aaChartView = AAChartView()
     let aaChartModel = AAChartModel()
@@ -29,7 +30,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
     }
     
     @objc func didgetData(_ notification : Notification) {
-        print("graph recieved data")
+        print("graph received data")
         self.data = (notification.object as! Dataset)
     }
     
@@ -39,7 +40,7 @@ class LinePlotViewController: UIViewController, AAChartViewDelegate {
         aaChartView.delegate = self
         let chartViewWidth  = self.view.frame.size.width
         let chartViewHeight = self.view.frame.size.height
-        aaChartView.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight-20)
+        aaChartView.frame = CGRect(x:0, y:0, width: chartViewWidth, height: chartViewHeight - 20)
         
         self.view.addSubview(aaChartView)
     }

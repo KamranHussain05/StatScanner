@@ -90,7 +90,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
 		//return spreadsheetView.frame.width/CGFloat(self.dataset.getKeys().count)
-		return 100
+		return 99
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {

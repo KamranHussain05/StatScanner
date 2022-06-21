@@ -9,7 +9,7 @@ import UIKit
 import SpreadsheetView
 
 var edible : Bool!
-//var sa : Bool!
+var sa : Bool!
 
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
@@ -32,7 +32,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
 		
         edible = false
-        //sa = true
+        sa = true
 		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
 		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
@@ -111,7 +111,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			print("saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
 			edible = false
-            showAlert()
+            if (sa) {
+                showAlert()
+            }
 			// code to update csv file and allow editing
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("cancelling")
@@ -122,19 +124,15 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
     
     func showAlert() {
-        //if (sa) {
-            let dialog = UIAlertController(title:"Cells Uneditable", message:"Cancel saving to resume editing.", preferredStyle: .alert)
-            //let option = UISwitch(frame:CGRect(x: 110, y: 50, width: 0, height: 0))
-            //option.isOn = false
-            // "Do not show me this again"
-            let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
-           // dialog.view.addSubview(option)
-            dialog.addAction(okAction)
-            //if (option.isOn) {
-                //sa = false
-            //}
-            present(dialog, animated:true)
-        //}
+        let dialog = UIAlertController(title:"Cells Uneditable", message:"Cancel saving to resume editing.", preferredStyle: .alert)
+        let one = UIAlertAction(title:"Do not show me this again", style: .default, handler: {(alert:UIAlertAction!)-> Void in sa = false})
+        // maybe style destructive if red text is better
+        let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
+        
+        dialog.addAction(one)
+        dialog.addAction(okAction)
+        dialog.preferredAction = okAction
+        present(dialog, animated:true)
     }
 }
 

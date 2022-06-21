@@ -646,7 +646,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -666,7 +666,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cadenpun.StatScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -692,7 +692,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -712,7 +712,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cadenpun.StatScanner;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.kamranhussain.StatScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -734,7 +734,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZB49DQ62Z9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -761,7 +761,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZB49DQ62Z9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

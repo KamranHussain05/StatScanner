@@ -1,6 +1,6 @@
 //
 //  DataSetViewController.swift
-//  StatsScanner
+//  StatScanner
 //
 //  Created by Kamran on 12/31/21
 //
@@ -70,5 +70,95 @@ class DataSetViewController: UIViewController {
         if (_sender == self.back){
             self.dismiss(animated:true)
         }
+    }
+}
+
+// Created by Caden 6/22/22
+
+class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var hey: UIButton!
+    
+    @IBAction func onBackClick(_sender:UIButton) {
+        print("hi")
+    }
+    
+    private let tableView : UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        table.register(UITableViewCell.self, forCellReuseIdentifier: StatsCell.identifier)
+        return table
+    }()
+    
+    var models = [format]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+        title = "Stats"
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = view.bounds
+        view.addSubview(tableView)
+    }
+    
+    func configure() {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return models.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = models[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StatsCell.identifier, for: indexPath) as? StatsCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: model)
+        cell.textLabel?.text = model.title
+        return cell
+    }
+}
+
+struct format {
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    var handler: (()-> Void)
+}
+
+class StatsCell: UITableViewCell {
+    static let identifier = "StatsCell"
+    
+    private let label : UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(label)
+        contentView.clipsToBounds = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let size: CGFloat = contentView.frame.size.height - 12
+        label.frame = CGRect(x: 5, y: 0, width: contentView.frame.size.width - 5, height: contentView.frame.size.height)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        label.text = nil
+    }
+    
+    public func configure(with model: format) {
+        label.text = model.title
+        
     }
 }

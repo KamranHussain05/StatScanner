@@ -211,6 +211,7 @@
                         <segue destination="uoL-c0-cBG" kind="relationship" relationship="viewControllers" id="0h2-bC-m6q"/>
                         <segue destination="ZPM-Pj-gqE" kind="relationship" relationship="viewControllers" id="PDb-Fg-IUf"/>
                         <segue destination="L5T-SC-KFO" kind="relationship" relationship="viewControllers" id="Mb2-ns-nqB"/>
+                        <segue destination="Y0Z-dZ-eFM" kind="relationship" relationship="viewControllers" id="409-Uu-NGm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9t-D0-sh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -552,6 +553,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cr1-JR-W8y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1939.1304347826087" y="-664.28571428571422"/>
+        </scene>
+        <!--Bigger n Better-->
+        <scene sceneID="aLk-E0-kei">
+            <objects>
+                <viewController id="Y0Z-dZ-eFM" customClass="StatsViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f5J-zA-gRc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2d-kI-9vc">
+                                <rect key="frame" x="182" y="432.5" width="50" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Hey"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIGGER N BETTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALX-7c-0xf">
+                                <rect key="frame" x="50" y="94" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lf9-Bh-g8U"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="L2d-kI-9vc" firstAttribute="centerX" secondItem="f5J-zA-gRc" secondAttribute="centerX" id="2La-mb-cx2"/>
+                            <constraint firstItem="L2d-kI-9vc" firstAttribute="centerY" secondItem="f5J-zA-gRc" secondAttribute="centerY" id="94g-JL-ibb"/>
+                            <constraint firstItem="ALX-7c-0xf" firstAttribute="top" secondItem="lf9-Bh-g8U" secondAttribute="top" constant="50" id="YFA-jg-hwX"/>
+                            <constraint firstItem="ALX-7c-0xf" firstAttribute="leading" secondItem="lf9-Bh-g8U" secondAttribute="leading" constant="50" id="u9t-hE-NRu"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Bigger n Better" id="GyP-xA-Qo9"/>
+                    <connections>
+                        <outlet property="hey" destination="L2d-kI-9vc" id="6Oi-bE-rke"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HbF-7h-BgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1939.1304347826087" y="-1377.4553571428571"/>
         </scene>
     </scenes>
     <resources>

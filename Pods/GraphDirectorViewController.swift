@@ -8,17 +8,18 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     
     var chartScrollerView: UIPickerView!
     var currentGraph:String = "Scatter Plot" // default view begins on scatter plot
-    let chartTypes = ["Scatter Plot", "Line Graph", "Bar Chart", "Pie Chart", "Area Chart", "Box Plot", "Bubble Chart", "Waterfall Plot", "Polygon Chart"]
+    let chartTypeLabels = ["Scatter Plot", "Line Graph", "Bar Chart", "Pie Chart", "Area Chart", "Box Plot", "Bubble Chart", "Waterfall Plot", "Polygon Chart"]
+    let chartTypes = [AAChartType.scatter, AAChartType.line, AAChartType.bar, AAChartType.pie, AAChartType.area, AAChartType.boxplot, AAChartType.bubble, AAChartType.waterfall, AAChartType.polygon]
     let width:CGFloat = 200
     let height:CGFloat = 50
     
     // for displaying the dataset
-    var focused = AAChartType(rawValue: "scatter")
     var dataset = Dataset() // the current dataset which the user is on
     
     var aaChartView: AAChartView!
+    var switchingGraph = false
     let aaChartModel = AAChartModel()
-    var type: AAChartType = AAChartType.scatter
+    var currentGraphType: AAChartType = AAChartType.scatter
     var xvals = [String]()
     
     required init?(coder: NSCoder) {
@@ -52,7 +53,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         aaChartView = AAChartView()
         aaChartView.delegate = self
         
-        aaChartView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height/2)
+        aaChartView.frame = CGRect(x: 0, y: 20, width: screenSize.width, height: 3*screenSize.height/4)
         self.view.addSubview(aaChartView)
     }
 }
@@ -60,7 +61,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
 extension GraphDirectorViewController: AAChartViewDelegate {
     override func viewDidLayoutSubviews() {
         aaChartModel
-            .chartType(type) // Can be any of the chart types listed under `AAChartType`.
+            .chartType(currentGraphType)
             .animationType(.easeInSine)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
 //            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -88,9 +89,10 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
     
+    
     func changeGraphType(type: AAChartType){
-        self.type = type
-        //Refresh the chart after the AAChartModel whole content is updated
+        currentGraphType = type
+        viewDidLayoutSubviews()
         aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
@@ -133,13 +135,21 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return chartTypes.count
+       return chartTypeLabels.count
+    }
+    
+    /// Changes graph when element changes
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(chartTypes[row] != currentGraphType) { // ensures graph is not the same
+            changeGraphType(type: chartTypes[row])
+            print("graph changed to " + currentGraphType.rawValue)
+        }
     }
     
     ///Returns current element in the scroller
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return chartTypes[row]
+        print("bruh bruh")
+        return chartTypeLabels[row]
     }
     
     ///Adjusts width of the carousel
@@ -159,7 +169,7 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
         
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        label.text = chartTypes[row]
+        label.text = chartTypeLabels[row]
         label.textColor = .label
         label.textAlignment = .center
         view.addSubview(label)

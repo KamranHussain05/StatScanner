@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -355,14 +355,14 @@
                                 <buttonConfiguration key="configuration" style="filled" title=" ">
                                     <imageReference key="image" image="arrowshape.turn.up.backward.fill" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="DHG-qV-8sb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7Y-89-67D">
                                 <rect key="frame" x="109" y="573" width="196" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ml1"/>
+                                <connections>
+                                    <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="nK3-Xh-EUn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ1-ox-4do">
                                 <rect key="frame" x="109" y="641" width="196" height="31"/>
@@ -567,10 +567,46 @@
                     <view key="view" contentMode="scaleToFill" id="f5J-zA-gRc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxJ-XI-dAb">
+                                <rect key="frame" x="349" y="74" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Geq-Zu-sDe"/>
+                                    <constraint firstAttribute="width" constant="45" id="un6-UK-2z2"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title=" ">
+                                    <imageReference key="image" image="arrowshape.turn.up.backward.fill" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="g8w-f5-2LX"/>
+                                    <action selector="onBackClickWith_sender:" destination="Y0Z-dZ-eFM" eventType="touchUpInside" id="wJB-sI-IAf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XH-0T-hAn">
+                                <rect key="frame" x="20" y="74" width="142" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="ktQ-WO-yNR"/>
+                                    <constraint firstAttribute="width" constant="142" id="ppz-OR-2fY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="lf9-Bh-g8U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3XH-0T-hAn" firstAttribute="top" secondItem="lf9-Bh-g8U" secondAttribute="top" constant="30" id="UwJ-p5-Ths"/>
+                            <constraint firstItem="3XH-0T-hAn" firstAttribute="leading" secondItem="lf9-Bh-g8U" secondAttribute="leading" constant="20" id="bNp-Vg-h5l"/>
+                            <constraint firstItem="CxJ-XI-dAb" firstAttribute="top" secondItem="lf9-Bh-g8U" secondAttribute="top" constant="30" id="c7q-uU-I1h"/>
+                            <constraint firstItem="lf9-Bh-g8U" firstAttribute="trailing" secondItem="CxJ-XI-dAb" secondAttribute="trailing" constant="20" id="gUe-IJ-8ZQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Bigger n Better" id="GyP-xA-Qo9"/>
+                    <connections>
+                        <outlet property="back" destination="CxJ-XI-dAb" id="1yJ-Vx-H1G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbF-7h-BgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

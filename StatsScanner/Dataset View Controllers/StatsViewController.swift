@@ -78,6 +78,7 @@ class DataSetViewController: UIViewController {
 
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet var back: UIButton!
     private var datasetobj: Dataset!
     
     private var titles = [String]()
@@ -105,12 +106,17 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         title = "Stats"
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.bounds
+        //tableView.frame = view.bounds
         view.addSubview(tableView)
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         loadData()
     }
     
@@ -120,7 +126,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func loadData() {
-        titles.append("Info")
+        titles.append("Information")
         titles.append("Averages")
         titles.append("Scope")
         titles.append("Error")
@@ -149,10 +155,16 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func configure() {
-        models.append(section(title: titles[0], options: [format(title: names[0], calc: calcs[0]) {}, format(title: names[1], calc: calcs[1]) {}, format(title: names[2], calc: calcs[2]) {}]))
-        models.append(section(title: titles[1], options: [format(title: names[3], calc: calcs[3]) {}, format(title: names[4], calc: calcs[4]) {}, format(title: names[5], calc: calcs[5]) {}]))
-        models.append(section(title: titles[2], options: [format(title: names[6], calc: calcs[6]) {}, format(title: names[7], calc: calcs[7]) {}, format(title: names[8], calc: calcs[8]) {}]))
-        models.append(section(title: titles[3], options: [format(title: names[9], calc: calcs[9]) {}, format(title: names[10], calc: calcs[10]) {}]))
+        models.append(section(title: titles[0], cells: [cellStruc(title: names[0], calc: calcs[0]) {}, cellStruc(title: names[1], calc: calcs[1]) {}, cellStruc(title: names[2], calc: calcs[2]) {}]))
+        models.append(section(title: titles[1], cells: [cellStruc(title: names[3], calc: calcs[3]) {}, cellStruc(title: names[4], calc: calcs[4]) {}, cellStruc(title: names[5], calc: calcs[5]) {}]))
+        models.append(section(title: titles[2], cells: [cellStruc(title: names[6], calc: calcs[6]) {}, cellStruc(title: names[7], calc: calcs[7]) {}, cellStruc(title: names[8], calc: calcs[8]) {}]))
+        models.append(section(title: titles[3], cells: [cellStruc(title: names[9], calc: calcs[9]) {}, cellStruc(title: names[10], calc: calcs[10]) {}]))
+        /*for i in 0...3 {
+            models.append(section(title: titles[i], cells: []))
+            for z in models {
+                models[i].add(cell: )
+            }
+        }*/
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -160,7 +172,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models[section].options.count
+        return models[section].cells.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -169,7 +181,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.section].options[indexPath.row]
+        let model = models[indexPath.section].cells[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StatsCell.identifier, for: indexPath) as? StatsCell else {
             return UITableViewCell()
         }
@@ -179,14 +191,20 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let model = models[indexPath.section].options[indexPath.row]
+        let model = models[indexPath.section].cells[indexPath.row]
         model.handler()
+    }
+    
+    @IBAction func onBackClick(_sender:UIButton) {
+        if (_sender == self.back){
+            self.dismiss(animated:true)
+        }
     }
 }
 
 //MARK: Structs
 
-struct format {
+struct cellStruc {
     let title: String
     let calc: String
     var handler: (()-> Void)
@@ -194,7 +212,11 @@ struct format {
 
 struct section {
     let title: String
-    let options: [format]
+    var cells: [cellStruc]
+    
+    /*mutating func add(_ cell: cellStruc) {
+        cells.append(cell)
+    }*/
 }
 
 //MARK: Stats Cells
@@ -210,7 +232,7 @@ class StatsCell: UITableViewCell {
     
     private let numbers : UILabel = {
         let numbers = UILabel()
-        numbers.text = "cocoa puffs"
+        //numbers.text = "cocoa puffs"
         numbers.numberOfLines = 1
         return numbers
     }()
@@ -218,6 +240,7 @@ class StatsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
+        numbers.textAlignment = .justified
         numbers.sizeToFit()
         accessoryView = numbers
         contentView.clipsToBounds = true
@@ -238,9 +261,9 @@ class StatsCell: UITableViewCell {
         numbers.text = nil
     }
     
-    public func configure(with model: format) {
+    public func configure(with model: cellStruc) {
         label.text = model.title
         numbers.text = model.calc
-        print(model.calc)
+        print("L" + numbers.text! + "L")
     }
 }

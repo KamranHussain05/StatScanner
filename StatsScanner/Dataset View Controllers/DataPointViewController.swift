@@ -103,6 +103,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
 		return true
 	}
+    
+    func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
+        return 1
+    }
 	
 	//MARK: ON EDIT CLICK
 	

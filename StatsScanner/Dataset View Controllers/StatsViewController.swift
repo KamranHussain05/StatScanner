@@ -80,17 +80,9 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     private var datasetobj: Dataset!
     
-    private var name: String!
-    private var date: String!
-    private var items: String!
-    private var mean: String!
-    private var median: String!
-    private var mode: String!
-    private var min: String!
-    private var max: String!
-    private var range: String!
-    private var dev: String!
-    private var error: String!
+    private var titles = [String]()
+    private var names = [String]()
+    private var calcs = [String]()
     
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -108,6 +100,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         configure()
         title = "Stats"
         tableView.delegate = self
@@ -115,7 +108,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.frame = view.bounds
         view.addSubview(tableView)
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
-        loadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -128,28 +120,39 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func loadData() {
-        name = datasetobj.name
-        date = datasetobj.creationDate
-        items = String(datasetobj.getTotalNumItems())
-        mean = String(round(1000 * datasetobj.calculations[7]) / 1000)
-        median = String(datasetobj.calculations[3])
-        mode = String(datasetobj.calculations[2])
-        min = String(datasetobj.calculations[1])
-        max = String(datasetobj.calculations[0])
-        range = String(datasetobj.calculations[4])
-        dev = String(round(1000 * datasetobj.calculations[5]) / 1000)
-        error = String(round(1000 * datasetobj.calculations[6]) / 1000)
+        titles.append("Info")
+        titles.append("Averages")
+        titles.append("Scope")
+        titles.append("Error")
+        names.append("Name")
+        names.append("Creation Date")
+        names.append("Data Points")
+        names.append("Mean")
+        names.append("Median")
+        names.append("Mode")
+        names.append("Max")
+        names.append("Min")
+        names.append("Range")
+        names.append("Standard Deviation")
+        names.append("Standard Error")
+        calcs.append(datasetobj.name)
+        calcs.append(datasetobj.creationDate)
+        calcs.append(String(datasetobj.getTotalNumItems()))
+        calcs.append(String(round(1000 * datasetobj.calculations[7]) / 1000))
+        calcs.append(String(datasetobj.calculations[3]))
+        calcs.append(String(datasetobj.calculations[2]))
+        calcs.append(String(datasetobj.calculations[1]))
+        calcs.append(String(datasetobj.calculations[0]))
+        calcs.append(String(datasetobj.calculations[4]))
+        calcs.append(String(round(1000 * datasetobj.calculations[5]) / 1000))
+        calcs.append(String(round(1000 * datasetobj.calculations[6]) / 1000))
     }
     
     func configure() {
-        models.append(section(title: "Info", options: [format(title: "Name") {}, format(title: "Creation Date") {}, format(title: "Data Points") {}]))
-        models.append(section(title: "Averages", options: [format(title: "Mean") {}, format(title: "Median") {}, format(title: "Mode") {}]))
-        models.append(section(title: "Scope", options: [format(title: "Min") {}, format(title: "Max") {}, format(title: "Range") {}]))
-        models.append(section(title: "Errors", options: [format(title: "Standard Deviation") {}, format(title: "Standard Error") {}]))
-    }
-    
-    func calculate() {
-        
+        models.append(section(title: titles[0], options: [format(title: names[0], calc: calcs[0]) {}, format(title: names[1], calc: calcs[1]) {}, format(title: names[2], calc: calcs[2]) {}]))
+        models.append(section(title: titles[1], options: [format(title: names[3], calc: calcs[3]) {}, format(title: names[4], calc: calcs[4]) {}, format(title: names[5], calc: calcs[5]) {}]))
+        models.append(section(title: titles[2], options: [format(title: names[6], calc: calcs[6]) {}, format(title: names[7], calc: calcs[7]) {}, format(title: names[8], calc: calcs[8]) {}]))
+        models.append(section(title: titles[3], options: [format(title: names[9], calc: calcs[9]) {}, format(title: names[10], calc: calcs[10]) {}]))
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -185,6 +188,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 struct format {
     let title: String
+    let calc: String
     var handler: (()-> Void)
 }
 
@@ -206,16 +210,17 @@ class StatsCell: UITableViewCell {
     
     private let numbers : UILabel = {
         let numbers = UILabel()
-        numbers.text = "123"
+        numbers.text = "cocoa puffs"
+        numbers.numberOfLines = 1
         return numbers
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
-        contentView.clipsToBounds = true
         numbers.sizeToFit()
         accessoryView = numbers
+        contentView.clipsToBounds = true
     }
     
     required init?(coder: NSCoder) {
@@ -230,9 +235,12 @@ class StatsCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = nil
+        numbers.text = nil
     }
     
     public func configure(with model: format) {
         label.text = model.title
+        numbers.text = model.calc
+        print(model.calc)
     }
 }

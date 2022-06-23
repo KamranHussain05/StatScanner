@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -359,24 +359,21 @@
                                     <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="DHG-qV-8sb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7Y-89-67D">
-                                <rect key="frame" x="109" y="515" width="196" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7Y-89-67D">
+                                <rect key="frame" x="109" y="573" width="196" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ml1"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ1-ox-4do">
-                                <rect key="frame" x="109" y="605" width="196" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ1-ox-4do">
+                                <rect key="frame" x="109" y="641" width="196" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ml2"/>
                                 <connections>
                                     <action selector="onBackClickWith_sender:" destination="uoL-c0-cBG" eventType="touchUpInside" id="DXD-eo-AQo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ1-WC-sBW">
-                                <rect key="frame" x="109" y="696" width="196" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ1-WC-sBW">
+                                <rect key="frame" x="109" y="709" width="196" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ml3"/>
                                 <connections>
@@ -512,6 +509,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="LJ5-p0-B3q" firstAttribute="leading" secondItem="8iW-q0-Y4O" secondAttribute="leadingMargin" id="4Fq-dh-y6r"/>
+                            <constraint firstItem="d7Y-89-67D" firstAttribute="leading" secondItem="eSA-GZ-r0k" secondAttribute="leading" constant="109" id="9eE-9g-4PU"/>
                             <constraint firstItem="G7b-zC-iyH" firstAttribute="top" secondItem="eSA-GZ-r0k" secondAttribute="top" constant="30" id="9iI-fs-NJA"/>
                             <constraint firstItem="LJ5-p0-B3q" firstAttribute="top" secondItem="eSA-GZ-r0k" secondAttribute="top" constant="30" id="AcL-K7-7nC"/>
                             <constraint firstItem="ZZ9-UK-Jdk" firstAttribute="top" secondItem="LJ5-p0-B3q" secondAttribute="bottom" constant="26" id="D4w-8E-J8I"/>
@@ -519,14 +517,22 @@
                             <constraint firstItem="LJ5-p0-B3q" firstAttribute="leading" secondItem="ZZ9-UK-Jdk" secondAttribute="leading" id="QGw-Ga-XDZ"/>
                             <constraint firstItem="uaC-HN-qHb" firstAttribute="baseline" secondItem="Ii3-45-oce" secondAttribute="baseline" id="Rb4-cb-XBi"/>
                             <constraint firstItem="ZZ9-UK-Jdk" firstAttribute="baseline" secondItem="R1W-VU-QMj" secondAttribute="baseline" id="SRM-C0-rNY"/>
+                            <constraint firstItem="IJ1-ox-4do" firstAttribute="leading" secondItem="eSA-GZ-r0k" secondAttribute="leading" constant="109" id="Son-rt-AFg"/>
                             <constraint firstItem="Ii3-45-oce" firstAttribute="top" secondItem="zbc-th-Yf8" secondAttribute="bottom" constant="8" symbolic="YES" id="SqA-15-mWF"/>
                             <constraint firstItem="eSA-GZ-r0k" firstAttribute="trailing" secondItem="G7b-zC-iyH" secondAttribute="trailing" constant="20" id="ZTM-Vt-moA"/>
+                            <constraint firstItem="TJ1-WC-sBW" firstAttribute="leading" secondItem="eSA-GZ-r0k" secondAttribute="leading" constant="109" id="aha-2s-sn0"/>
                             <constraint firstItem="R1W-VU-QMj" firstAttribute="leading" secondItem="RhP-uQ-GFi" secondAttribute="leading" id="ajS-Ia-hvw"/>
+                            <constraint firstItem="eSA-GZ-r0k" firstAttribute="trailing" secondItem="TJ1-WC-sBW" secondAttribute="trailing" constant="109" id="c1f-gN-342"/>
+                            <constraint firstItem="IJ1-ox-4do" firstAttribute="top" secondItem="d7Y-89-67D" secondAttribute="bottom" constant="37" id="cxt-up-hxE"/>
                             <constraint firstItem="zbc-th-Yf8" firstAttribute="leading" secondItem="Ii3-45-oce" secondAttribute="leading" id="cyQ-zH-9tm"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="TJ1-WC-sBW" secondAttribute="bottom" constant="24" id="e4J-jK-KuH"/>
                             <constraint firstItem="zbc-th-Yf8" firstAttribute="baseline" secondItem="RhP-uQ-GFi" secondAttribute="baseline" id="eOW-Th-NxO"/>
+                            <constraint firstItem="eSA-GZ-r0k" firstAttribute="trailing" secondItem="d7Y-89-67D" secondAttribute="trailing" constant="109" id="gEJ-hP-0Yk"/>
                             <constraint firstItem="zbc-th-Yf8" firstAttribute="leading" secondItem="ZZ9-UK-Jdk" secondAttribute="leading" id="gaG-IZ-Vjm"/>
+                            <constraint firstItem="eSA-GZ-r0k" firstAttribute="trailing" secondItem="IJ1-ox-4do" secondAttribute="trailing" constant="109" id="ovc-gZ-JIf"/>
                             <constraint firstItem="uaC-HN-qHb" firstAttribute="leading" secondItem="Ii3-45-oce" secondAttribute="trailing" constant="8" symbolic="YES" id="qzF-U7-qpo"/>
                             <constraint firstItem="zbc-th-Yf8" firstAttribute="top" secondItem="ZZ9-UK-Jdk" secondAttribute="bottom" constant="5" id="vVX-VJ-c6T"/>
+                            <constraint firstItem="TJ1-WC-sBW" firstAttribute="top" secondItem="IJ1-ox-4do" secondAttribute="bottom" constant="37" id="w9g-gJ-j6c"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Stats" image="plus.forwardslash.minus" catalog="system" id="z6U-UU-iH8"/>

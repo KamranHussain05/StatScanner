@@ -20,7 +20,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: dataset)
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobj"), object: dataset)
 	}
 
 	@objc func initDataset(_ notification: Notification) {
@@ -33,7 +33,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		
         edible = false
         sa = true
-		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobjpoints"), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobj"), object: nil)
 		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)

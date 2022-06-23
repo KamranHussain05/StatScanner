@@ -25,7 +25,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobj"), object: nil)
     }
     
     @objc func initDataSet(_ notification: Notification) {

@@ -84,6 +84,17 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var titles = [String]()
     private var names = [String]()
     private var calcs = [String]()
+    private var name: String!
+    private var date: String!
+    private var items: String!
+    private var mean: String!
+    private var median: String!
+    private var mode: String!
+    private var min: String!
+    private var max: String!
+    private var range: String!
+    private var dev: String!
+    private var error: String!
     
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -96,19 +107,19 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: datasetobj)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        configure()
         title = "Stats"
         tableView.delegate = self
         tableView.dataSource = self
         //tableView.frame = view.bounds
         view.addSubview(tableView)
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        loadData()
+        configure()
     }
     
     override func viewDidLayoutSubviews() {
@@ -121,12 +132,12 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        print("statistics view recieved dataset")
+        print("StatViewController recieved dataset")
         datasetobj = (notification.object as! Dataset)
     }
     
     func loadData() {
-        titles.append("Information")
+        /*titles.append("Information")
         titles.append("Averages")
         titles.append("Scope")
         titles.append("Error")
@@ -136,35 +147,44 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         names.append("Mean")
         names.append("Median")
         names.append("Mode")
-        names.append("Max")
         names.append("Min")
+        names.append("Max")
         names.append("Range")
         names.append("Standard Deviation")
         names.append("Standard Error")
         calcs.append(datasetobj.name)
         calcs.append(datasetobj.creationDate)
         calcs.append(String(datasetobj.getTotalNumItems()))
-        calcs.append(String(round(1000 * datasetobj.calculations[7]) / 1000))
-        calcs.append(String(datasetobj.calculations[3]))
-        calcs.append(String(datasetobj.calculations[2]))
-        calcs.append(String(datasetobj.calculations[1]))
-        calcs.append(String(datasetobj.calculations[0]))
-        calcs.append(String(datasetobj.calculations[4]))
-        calcs.append(String(round(1000 * datasetobj.calculations[5]) / 1000))
-        calcs.append(String(round(1000 * datasetobj.calculations[6]) / 1000))
+        calcs.append(String(round(1000 * datasetobj.calculations[7]) / 1000)) //mean
+        calcs.append(String(datasetobj.calculations[3])) //median
+        calcs.append(String(datasetobj.calculations[2])) //mode
+        calcs.append(String(datasetobj.calculations[1])) //min
+        calcs.append(String(datasetobj.calculations[0])) //max
+        calcs.append(String(datasetobj.calculations[4])) //range
+        calcs.append(String(round(1000 * datasetobj.calculations[5]) / 1000)) //dev
+        calcs.append(String(round(1000 * datasetobj.calculations[6]) / 1000)) //error*/
+        name = datasetobj.name
+        date = datasetobj.creationDate
+        items = String(datasetobj.getTotalNumItems())
+        mean = String(round(1000 * datasetobj.calculations[7]) / 1000)
+        median = String(datasetobj.calculations[3])
+        mode = String(datasetobj.calculations[2])
+        min = String(datasetobj.calculations[1])
+        max = String(datasetobj.calculations[0])
+        range = String(datasetobj.calculations[4])
+        dev = String(round(1000 * datasetobj.calculations[5]) / 1000)
+        error = String(round(1000 * datasetobj.calculations[6]) / 1000)
     }
     
     func configure() {
-        models.append(section(title: titles[0], cells: [cellStruc(title: names[0], calc: calcs[0]) {}, cellStruc(title: names[1], calc: calcs[1]) {}, cellStruc(title: names[2], calc: calcs[2]) {}]))
+        models.append(section(title: "Info", cells: [cellStruc(title: "Name", calc: name) {}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
+        models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
+        models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
+        models.append(section(title: "Errors", cells: [cellStruc(title: "Standard Deviation", calc: dev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
+        /*models.append(section(title: titles[0], cells: [cellStruc(title: names[0], calc: calcs[0]) {}, cellStruc(title: names[1], calc: calcs[1]) {}, cellStruc(title: names[2], calc: calcs[2]) {}]))
         models.append(section(title: titles[1], cells: [cellStruc(title: names[3], calc: calcs[3]) {}, cellStruc(title: names[4], calc: calcs[4]) {}, cellStruc(title: names[5], calc: calcs[5]) {}]))
         models.append(section(title: titles[2], cells: [cellStruc(title: names[6], calc: calcs[6]) {}, cellStruc(title: names[7], calc: calcs[7]) {}, cellStruc(title: names[8], calc: calcs[8]) {}]))
-        models.append(section(title: titles[3], cells: [cellStruc(title: names[9], calc: calcs[9]) {}, cellStruc(title: names[10], calc: calcs[10]) {}]))
-        /*for i in 0...3 {
-            models.append(section(title: titles[i], cells: []))
-            for z in models {
-                models[i].add(cell: )
-            }
-        }*/
+        models.append(section(title: titles[3], cells: [cellStruc(title: names[9], calc: calcs[9]) {}, cellStruc(title: names[10], calc: calcs[10]) {}]))*/
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -213,10 +233,6 @@ struct cellStruc {
 struct section {
     let title: String
     var cells: [cellStruc]
-    
-    /*mutating func add(_ cell: cellStruc) {
-        cells.append(cell)
-    }*/
 }
 
 //MARK: Stats Cells
@@ -232,17 +248,15 @@ class StatsCell: UITableViewCell {
     
     private let numbers : UILabel = {
         let numbers = UILabel()
-        //numbers.text = "cocoa puffs"
         numbers.numberOfLines = 1
+        numbers.text = " "
         return numbers
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
-        numbers.textAlignment = .justified
-        numbers.sizeToFit()
-        accessoryView = numbers
+        contentView.addSubview(numbers)
         contentView.clipsToBounds = true
     }
     
@@ -252,6 +266,9 @@ class StatsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        //numbers.textAlignment = .right
+        numbers.sizeToFit()
+        numbers.frame = CGRect(x: (contentView.frame.size.width - numbers.frame.size.width) - 20, y: (contentView.frame.size.height - numbers.frame.size.height)/2, width: numbers.frame.size.width, height: numbers.frame.size.height)
         label.frame = CGRect(x: 20, y: 0, width: contentView.frame.size.width - 5, height: contentView.frame.size.height)
     }
     
@@ -264,6 +281,6 @@ class StatsCell: UITableViewCell {
     public func configure(with model: cellStruc) {
         label.text = model.title
         numbers.text = model.calc
-        print("L" + numbers.text! + "L")
+        print(numbers.text!.count)
     }
 }

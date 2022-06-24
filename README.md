@@ -84,13 +84,19 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 ## Features
 
 * Data Visualization
-  * Scatter Plots
-  * Bar Graphs
-  * Interactive Pie Charts
+  * Scatter Plot
+  * Line Graph
+  * Bar Chart
+  * Pie Chart
+  * Area Chart
+  * Box Plot
+  * Bubble Chart
+  * Waterfall Plot
+  * Polygon Chart
 * Statistics Calculation
-  * Average, Median, Mode, Range
-  * Standard Deviation
-  * Standard Error
+  * Mean, Median, Mode
+  * Min, Max, Range
+  * Standard Deviation, Standard Error
 
 
 ### Built With

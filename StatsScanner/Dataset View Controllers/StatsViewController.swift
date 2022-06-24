@@ -81,9 +81,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var back: UIButton!
     private var datasetobj: Dataset!
     
-    private var titles = [String]()
-    private var names = [String]()
-    private var calcs = [String]()
     private var name: String!
     private var date: String!
     private var items: String!
@@ -107,62 +104,37 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: datasetobj)
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        configure()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        loadData()
         title = "Stats"
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.frame = view.bounds
+        //tableView.frame = view.bounds *this stretches the frame to the entire screen
         view.addSubview(tableView)
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
-        loadData()
-        configure()
     }
     
     override func viewDidLayoutSubviews() {
+        loadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        loadData()
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        print("StatViewController recieved dataset")
+        print("StatVIew recieved dataset")
         datasetobj = (notification.object as! Dataset)
     }
     
     func loadData() {
-        /*titles.append("Information")
-        titles.append("Averages")
-        titles.append("Scope")
-        titles.append("Error")
-        names.append("Name")
-        names.append("Creation Date")
-        names.append("Data Points")
-        names.append("Mean")
-        names.append("Median")
-        names.append("Mode")
-        names.append("Min")
-        names.append("Max")
-        names.append("Range")
-        names.append("Standard Deviation")
-        names.append("Standard Error")
-        calcs.append(datasetobj.name)
-        calcs.append(datasetobj.creationDate)
-        calcs.append(String(datasetobj.getTotalNumItems()))
-        calcs.append(String(round(1000 * datasetobj.calculations[7]) / 1000)) //mean
-        calcs.append(String(datasetobj.calculations[3])) //median
-        calcs.append(String(datasetobj.calculations[2])) //mode
-        calcs.append(String(datasetobj.calculations[1])) //min
-        calcs.append(String(datasetobj.calculations[0])) //max
-        calcs.append(String(datasetobj.calculations[4])) //range
-        calcs.append(String(round(1000 * datasetobj.calculations[5]) / 1000)) //dev
-        calcs.append(String(round(1000 * datasetobj.calculations[6]) / 1000)) //error*/
         name = datasetobj.name
         date = datasetobj.creationDate
         items = String(datasetobj.getTotalNumItems())
@@ -174,17 +146,27 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         range = String(datasetobj.calculations[4])
         dev = String(round(1000 * datasetobj.calculations[5]) / 1000)
         error = String(round(1000 * datasetobj.calculations[6]) / 1000)
+        
+        models[0].cells[0].calc = name
+        models[0].cells[1].calc = date
+        models[0].cells[2].calc = items
+        models[1].cells[0].calc = mean
+        models[1].cells[1].calc = median
+        models[1].cells[2].calc = mode
+        models[2].cells[0].calc = min
+        models[2].cells[1].calc = max
+        models[2].cells[2].calc = range
+        models[3].cells[0].calc = dev
+        models[3].cells[1].calc = error
+        
+        self.tableView.reloadData()
     }
     
     func configure() {
-        models.append(section(title: "Info", cells: [cellStruc(title: "Name", calc: name) {}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
+        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
         models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
-        models.append(section(title: "Errors", cells: [cellStruc(title: "Standard Deviation", calc: dev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
-        /*models.append(section(title: titles[0], cells: [cellStruc(title: names[0], calc: calcs[0]) {}, cellStruc(title: names[1], calc: calcs[1]) {}, cellStruc(title: names[2], calc: calcs[2]) {}]))
-        models.append(section(title: titles[1], cells: [cellStruc(title: names[3], calc: calcs[3]) {}, cellStruc(title: names[4], calc: calcs[4]) {}, cellStruc(title: names[5], calc: calcs[5]) {}]))
-        models.append(section(title: titles[2], cells: [cellStruc(title: names[6], calc: calcs[6]) {}, cellStruc(title: names[7], calc: calcs[7]) {}, cellStruc(title: names[8], calc: calcs[8]) {}]))
-        models.append(section(title: titles[3], cells: [cellStruc(title: names[9], calc: calcs[9]) {}, cellStruc(title: names[10], calc: calcs[10]) {}]))*/
+        models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: dev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -226,7 +208,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 struct cellStruc {
     let title: String
-    let calc: String
+    var calc: String!
     var handler: (()-> Void)
 }
 
@@ -249,7 +231,6 @@ class StatsCell: UITableViewCell {
     private let numbers : UILabel = {
         let numbers = UILabel()
         numbers.numberOfLines = 1
-        numbers.text = " "
         return numbers
     }()
     
@@ -281,6 +262,5 @@ class StatsCell: UITableViewCell {
     public func configure(with model: cellStruc) {
         label.text = model.title
         numbers.text = model.calc
-        print(numbers.text!.count)
     }
 }

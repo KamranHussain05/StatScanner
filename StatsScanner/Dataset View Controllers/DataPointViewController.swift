@@ -24,7 +24,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 
 	@objc func initDataset(_ notification: Notification) {
-		print("table view recieved data")
+		print("DataPoint recieved data")
 		self.dataset = notification.object as? Dataset
 	}
 	
@@ -112,18 +112,16 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
-			print("saving")
+			print("Saving")
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
 			edible = false
             if (sa) {
                 showAlert()
             }
-			// code to update csv file and allow editing
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
-			print("cancelling")
+			print("Editing")
 			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 			edible = true
-			// code to disable editing or cancel updating csv file
 		}
 	}
     
@@ -141,7 +139,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 }
 
 	//MARK: Cell Handling
-	// convert edible to a field
 
 class DataPointCell: Cell, UITextFieldDelegate {
 	
@@ -153,7 +150,6 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	var dataset: Dataset!
 	
     public func setup(with text: String, dataset : Dataset) {
-		//field.isEnabled = edible
 		field.text = text
 		field.textColor = .label
         field.keyboardType = .numbersAndPunctuation

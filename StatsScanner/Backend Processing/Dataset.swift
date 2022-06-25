@@ -169,7 +169,6 @@ public class Dataset: NSObject, NSCoding {
 	func getNumItems(index:Int) -> Int {
 		return data[index].count
 	}
-	
 //MARK: DATA CLEANING AND PREPROCESSING
 		
 	/// Writes the data to a csv file and converts the dataset to a CSV string
@@ -314,8 +313,10 @@ public class Dataset: NSObject, NSCoding {
         for i in 0...copy.count-1 {
             copy[i].sort()
         }
-        let y = copy.count/2
+        let y = copy.count/2 - 1
         let x = copy[y].count/2
+		print(x)
+		print(y)
         if(y%2 == 0) {
             return (copy[y][copy[x].count-1] + copy[y+1][0]) / 2
         }

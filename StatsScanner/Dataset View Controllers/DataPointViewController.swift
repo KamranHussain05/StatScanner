@@ -3,7 +3,7 @@
 //  StatsScanner
 //
 //  Created by Kamran Hussain on 1/20/22.
-//
+//  This class is lowkey Caden's since 6/4/22
 
 import UIKit
 import SpreadsheetView

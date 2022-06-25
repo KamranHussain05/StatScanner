@@ -18,7 +18,7 @@ public class Dataset: NSObject, NSCoding {
     private var keys: [String] = []
 	var name: String = "Unnamed Dataset"
 	var creationDate: String!
-	var calculations : [Double] = Array<Double>(repeating: 0.0, count:8)
+	var calculations : [Double] = Array<Double>(repeating: 0.0, count:50)
 	private let db = DataBridge()
 	private let h = HomeViewController()
 	
@@ -34,16 +34,18 @@ public class Dataset: NSObject, NSCoding {
     
     public required convenience init?(coder decoder: NSCoder) {
         self.init()
-        
+		print(calculations)
         data = decoder.decodeObject(forKey: "data") as? [[Double]] ?? [[]]
         name = decoder.decodeObject(forKey: "name") as? String ?? "Unnamed Dataset"
         creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
 		calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
+		print(calculations)
     }
     
     /// Creates a new dataset
     override init() {
+		//print(calculations.count)
         name = "Unnamed DataSet"
 		data = [[]]
         // get the current date and time
@@ -86,6 +88,7 @@ public class Dataset: NSObject, NSCoding {
 	
 	///Runs all dataset calculations and stores them in the calculation structure for faster loading
 	private func calculate() {
+		print(calculations.count)
 		calculations[0] = (self.getMax())
 		calculations[1] = (self.getMin())
 		calculations[2] = (self.getMedian())
@@ -94,6 +97,7 @@ public class Dataset: NSObject, NSCoding {
 		calculations[5] = (self.getStandardDeviation())
 		calculations[6] = (self.getStandardError())
 		calculations[7] = (self.getSetAverage())
+		calculations[8] = (self.getMAD())
 		print("Re-Did Calculations")
 		do {
 			try h.context.save()
@@ -268,6 +272,17 @@ public class Dataset: NSObject, NSCoding {
         }
         return sqrt(diffsqrs - Double(getNumItems(index: index)))
     }
+	
+	/// Finds the mean absolute deviation of  everything in the dataset
+	private func getMAD() -> Double {
+		var stuff = 0.0
+		for i in data {
+			for z in i {
+				stuff += abs(z - getSetAverage())
+			}
+		}
+		return stuff / Double(data.count)
+	}
     
     /// Returns the mode(s) of the entire dataset
     private func getModes() -> [Double] {

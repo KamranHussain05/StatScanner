@@ -1,80 +1,6 @@
-//
-//  DataSetViewController.swift
-//  StatScanner
-//
-//  Created by Kamran on 12/31/21
-//
-
-import UIKit
-
-class DataSetViewController: UIViewController {
-    
-    private var datasetobj: Dataset!
-
-    @IBOutlet var datasetName: UILabel!
-    @IBOutlet var creationDate: UILabel!
-    @IBOutlet var numitems: UILabel!
-    @IBOutlet var back: UIButton!
-    
-    @IBOutlet var mean: UILabel!
-    @IBOutlet var mode: UILabel!
-    @IBOutlet var range: UILabel!
-    @IBOutlet var max: UILabel!
-    @IBOutlet var min: UILabel!
-    @IBOutlet var standardDev: UILabel!
-    @IBOutlet var standardError: UILabel!
-    @IBOutlet var median: UILabel!
-    
-    @IBOutlet var ml1: UIButton!
-    @IBOutlet var ml2: UIButton!
-    @IBOutlet var ml3: UIButton!
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
-        loadData()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        loadData()
-    }
-    
-    @objc func setDataSetObject(_ notification: Notification) {
-        print("statistics view recieved dataset")
-        datasetobj = (notification.object as! Dataset)
-    }
-    
-    func loadData() {
-        datasetName.text = datasetobj.name
-        creationDate.text = datasetobj.creationDate
-        numitems.text = String(datasetobj.getTotalNumItems())
-        
-        mean.text = String(round(1000 * datasetobj.calculations[7]) / 1000)
-        mode.text = String(datasetobj.calculations[2])
-        range.text = String(datasetobj.calculations[4])
-        max.text = String(datasetobj.calculations[0])
-        min.text = String(datasetobj.calculations[1])
-        standardDev.text = String(round(1000 * datasetobj.calculations[5]) / 1000)
-        standardError.text = String(round(1000 * datasetobj.calculations[6]) / 1000)
-        median.text = String(datasetobj.calculations[3])
-    }
-    
-    @IBAction func onBackClick(_sender:UIButton) {
-        if (_sender == self.back){
-            self.dismiss(animated:true)
-        }
-    }
-}
-
 // Created by Caden 6/22/22
 //MARK: New Stat View Controller
+import UIKit
 
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -90,7 +16,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var min: String!
     private var max: String!
     private var range: String!
-    private var dev: String!
+    private var stddev: String!
+    private var abdev: String!
     private var error: String!
     
     private let tableView : UITableView = {
@@ -144,7 +71,9 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         min = String(datasetobj.calculations[1])
         max = String(datasetobj.calculations[0])
         range = String(datasetobj.calculations[4])
-        dev = String(round(1000 * datasetobj.calculations[5]) / 1000)
+        stddev = String(round(1000 * datasetobj.calculations[5]) / 1000)
+        //abdev = "PP"
+        abdev = String(round(1000 * datasetobj.calculations[8]) / 1000)
         error = String(round(1000 * datasetobj.calculations[6]) / 1000)
         
         models[0].cells[0].calc = name
@@ -156,8 +85,9 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         models[2].cells[0].calc = min
         models[2].cells[1].calc = max
         models[2].cells[2].calc = range
-        models[3].cells[0].calc = dev
-        models[3].cells[1].calc = error
+        models[3].cells[0].calc = stddev
+        models[3].cells[1].calc = abdev
+        models[3].cells[2].calc = error
         
         self.tableView.reloadData()
     }
@@ -166,7 +96,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
         models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
-        models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: dev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
+        models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: stddev) {}, cellStruc(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

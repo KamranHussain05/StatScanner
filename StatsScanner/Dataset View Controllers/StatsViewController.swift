@@ -125,6 +125,25 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         let model = models[indexPath.section].cells[indexPath.row]
         model.handler()
+        let alert = UIAlertController(title: "New DataSet Name",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Rename", style: .default, handler: { _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+            self.datasetobj.name = text
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+        }))
+        
+        alert.popoverPresentationController?.sourceView = self.view
+        present(alert, animated: true, completion: nil)
+        self.tableView.reloadData()
     }
     
     @IBAction func onBackClick(_sender:UIButton) {

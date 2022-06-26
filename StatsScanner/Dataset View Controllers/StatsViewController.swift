@@ -93,7 +93,25 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func configure() {
-        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
+        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name, handler: {
+            let alert = UIAlertController(title: "New DataSet Name",
+                                          message: nil,
+                                          preferredStyle: .alert)
+            alert.addTextField(configurationHandler: nil)
+            alert.addAction(UIAlertAction(title: "Rename", style: .default, handler: { _ in
+                guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                    return
+                }
+                self.datasetobj.name = text
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                    return
+                }
+            }))
+            alert.popoverPresentationController?.sourceView = self.view
+            self.present(alert, animated:true)
+        }), cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
         models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
         models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: stddev) {}, cellStruc(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
@@ -125,24 +143,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
         let model = models[indexPath.section].cells[indexPath.row]
         model.handler()
-        let alert = UIAlertController(title: "New DataSet Name",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Rename", style: .default, handler: { _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-            }
-            self.datasetobj.name = text
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-            }
-        }))
-        
-        alert.popoverPresentationController?.sourceView = self.view
-        present(alert, animated: true, completion: nil)
         self.tableView.reloadData()
     }
     

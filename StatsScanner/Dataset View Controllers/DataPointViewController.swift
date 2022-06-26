@@ -93,7 +93,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
         let headerCount = dataset.getKeys().count
-        if (headerCount < 8) {
+        if (headerCount < 4) {
             return (view.frame.size.width - 5.0) / CGFloat(headerCount)
         } else {
             return 200

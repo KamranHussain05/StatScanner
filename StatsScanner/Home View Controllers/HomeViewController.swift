@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     @IBOutlet var newDatasetButton: UIButton!
     
     private var selectedDataset: Dataset!
-    private var cellSpacing: CGFloat = 20
+	private var sc: CGFloat = 0.05
     private var models = [DataSetProject]()
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
@@ -29,12 +29,14 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		print(view.frame.size.width)
 		let layout = UICollectionViewFlowLayout()
-		let width = (view.frame.size.width-cellSpacing)/2
-		let height = (view.frame.size.width*1.25-cellSpacing)/2
+		let width = (view.frame.size.width*(1-3*sc))/2
+		let height = (view.frame.size.width*(1.25-sc))/2
 		layout.itemSize = CGSize(width: width, height: height)
-		layout.minimumLineSpacing = cellSpacing
-		layout.minimumInteritemSpacing = cellSpacing
+		layout.minimumLineSpacing = sc*view.frame.size.width
+		layout.minimumInteritemSpacing = sc*view.frame.size.width
+		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*view.frame.size.width, bottom: 0, right: sc*view.frame.size.width)
 		myCollectionView.collectionViewLayout = layout
         getAllItems()
         

@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     @IBOutlet var newDatasetButton: UIButton!
     
     private var selectedDataset: Dataset!
-    private var cellSpacing: CGFloat = 10
+    private var cellSpacing: CGFloat = 20
     private var models = [DataSetProject]()
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
@@ -29,6 +29,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		let layout = UICollectionViewFlowLayout()
+		let width = (view.frame.size.width-cellSpacing)/2
+		let height = (view.frame.size.width*1.25-cellSpacing)/2
+		layout.itemSize = CGSize(width: width, height: height)
+		layout.minimumLineSpacing = cellSpacing
+		layout.minimumInteritemSpacing = cellSpacing
+		myCollectionView.collectionViewLayout = layout
         getAllItems()
         
         // for pop up menu
@@ -214,7 +221,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     ///Creates the collection view on the home screen and loads all necessary formats and data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = models[indexPath.row]
-        let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "hometile", for: indexPath) as! HomeTiles
+		let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: HomeTiles.identifier, for: indexPath) as! HomeTiles
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
         
         cell.dataSetName.text = model.datasetobject?.name
@@ -227,14 +234,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         myCollectionView.addGestureRecognizer(longPressGesture)
         
         return cell
-    }
-    
-    ///Handles the collection view formatting
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (UIScreen.main.bounds.size.width - 3 * cellSpacing) / 2
-        let height = width*1.5
-
-        return CGSize(width: width, height:height)
     }
     
 // MARK: OPEN DATASET HANDLING
@@ -277,3 +276,4 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
 }
+

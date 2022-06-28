@@ -9,6 +9,8 @@ import UIKit
 
 class HomeTiles: UICollectionViewCell {
     
+    static let identifier = "hometile"
+    
     @IBOutlet var myImageView: UIImageView!
     @IBOutlet weak var dataSetName: UILabel!
     @IBOutlet weak var creationDate: UILabel!
@@ -22,6 +24,7 @@ class HomeTiles: UICollectionViewCell {
         self.layer.borderWidth = 5.0
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
+        contentView.clipsToBounds = true
     }
     
 }

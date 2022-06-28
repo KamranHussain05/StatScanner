@@ -1,9 +1,9 @@
 //
 //  DataPointViewController.swift
-//  StatsScanner
+//  StatScanner
 //
 //  Created by Kamran Hussain on 1/20/22.
-//  This class is lowkey Caden's since 6/4/22
+//  Took over by Caden Pun on 6/4/22.
 
 import UIKit
 import SpreadsheetView
@@ -93,7 +93,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
         let headerCount = dataset.getKeys().count
-        if (headerCount < 4) {
+        if (headerCount < 5) {
             return (view.frame.size.width - 5.0) / CGFloat(headerCount)
         } else {
             return 200
@@ -137,7 +137,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         
         dialog.addAction(one)
         dialog.addAction(okAction)
-        dialog.preferredAction = okAction
+        dialog.preferredAction = one
         present(dialog, animated:true)
     }
 }
@@ -167,6 +167,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
+        field.sizeToFit()
 		field.delegate = self
 		field.frame = contentView.bounds
 	}
@@ -195,5 +196,4 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	func getText() -> String {
 		return field.text!
 	}
-	
 }

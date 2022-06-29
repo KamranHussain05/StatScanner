@@ -49,6 +49,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         // graph view initialization
         aaChartView = AAChartView()
         aaChartView.delegate = self
+        aaChartView.backgroundColor = .systemBackground
         
         aaChartView.frame = CGRect(x: 0, y: screenSize.height/15, width: screenSize.width, height: 3*screenSize.height/4)
         self.view.addSubview(aaChartView)

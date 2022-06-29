@@ -29,13 +29,11 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     
     @objc func initDataSet(_ notification: Notification) {
         dataset = (notification.object as! Dataset)
-        print("graph director successfully got dataset")
+        print("Graph View received dataset")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(initDataSet(_:)), name: Notification.Name("datasetobjectgraph"), object: nil)
         
         // horizontal scroller initialization
         chartScrollerView = UIPickerView()

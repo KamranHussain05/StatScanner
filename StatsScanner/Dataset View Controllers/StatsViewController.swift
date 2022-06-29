@@ -41,8 +41,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        
         loadData()
         title = "Stats"
         tableView.delegate = self
@@ -61,7 +60,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        print("StatVIew recieved dataset")
+        print("StatView recieved dataset")
         datasetobj = (notification.object as! Dataset)
     }
     

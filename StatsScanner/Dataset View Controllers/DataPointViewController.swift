@@ -24,7 +24,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 
 	@objc func initDataset(_ notification: Notification) {
-		print("DataPoint recieved data")
+		print("DataPoint View recieved dataset")
 		self.dataset = notification.object as? Dataset
 	}
 	
@@ -33,7 +33,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		
         edible = false
         sa = true
-		NotificationCenter.default.addObserver(self, selector: #selector(initDataset(_:)), name: Notification.Name("datasetobj"), object: nil)
 		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)

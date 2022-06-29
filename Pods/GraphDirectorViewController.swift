@@ -7,9 +7,8 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     let screenSize: CGRect = UIScreen.main.bounds // THIS INCLUDES THE NAVIGATION BAR
     
     var chartScrollerView: UIPickerView!
-    var currentGraph:String = "Scatter Plot" // default view begins on scatter plot
-    let chartTypeLabels = ["Scatter Plot", "Line Graph", "Bar Chart", "Pie Chart", "Area Chart", "Box Plot", "Bubble Chart", "Waterfall Plot", "Polygon Chart"]
-    let chartTypes = [AAChartType.scatter, AAChartType.line, AAChartType.bar, AAChartType.pie, AAChartType.area, AAChartType.boxplot, AAChartType.bubble, AAChartType.waterfall, AAChartType.polygon]
+    let chartTypeLabels = ["Area Chart", "Area Spline Chart", "Bar Chart", "Bubble Chart", "Column Chart", "Column Range Chart", "Line Graph", "Pie Chart", "Polygon Chart", "Pyramid Chart", "Scatter Plot", "Waterfall Plot"]
+    let chartTypes = [AAChartType.area, AAChartType.areaspline, AAChartType.bar, AAChartType.bubble, AAChartType.column, AAChartType.columnrange, AAChartType.line, AAChartType.pie, AAChartType.polygon, AAChartType.pyramid, AAChartType.scatter, AAChartType.waterfall]
     let width:CGFloat = 200
     let height:CGFloat = 50
     
@@ -67,25 +66,17 @@ extension GraphDirectorViewController: AAChartViewDelegate {
 //            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 //                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .categories(xvalsFormatted())
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .title(dataset.name)
-            .backgroundColor("#ffffff")
-//            .series([
-//                AASeriesElement()
-//                    .name("Tokyo")
-//                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
-//                AASeriesElement()
-//                    .name("New York")
-//                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
-//                AASeriesElement()
-//                    .name("Berlin")
-//                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
-//                AASeriesElement()
-//                    .name("London")
-//                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
-//                    ])
             .series(formattedData())
-        //The chart view object calls the instance object of AAChartModel and draws the final graphic
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+        // The chart view object calls the instance object of AAChartModel and draws the final graphic
+        print(UIColor.systemFill)
+        if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
+            aaChartModel.backgroundColor("#ffffff")
+        } else { // dark mode
+            aaChartModel.backgroundColor("#000000")
+        }
+        
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
     
@@ -129,7 +120,6 @@ extension GraphDirectorViewController: AAChartViewDelegate {
 }
 
 extension GraphDirectorViewController: UIPickerViewDataSource {
-    // delegate/datasource method declaration for the horizontal scroller
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
        return 1
     }
@@ -140,15 +130,13 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
     
     /// Changes graph when element changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(chartTypes[row] != currentGraphType) { // ensures graph is not the same
+        if(chartTypes[row] != currentGraphType) { // ensures graph is not the same (to prevent the graph doesn't prematurely refresh)
             changeGraphType(type: chartTypes[row])
-            print("graph changed to " + currentGraphType.rawValue)
         }
     }
     
     ///Returns current element in the scroller
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("bruh bruh")
         return chartTypeLabels[row]
     }
     

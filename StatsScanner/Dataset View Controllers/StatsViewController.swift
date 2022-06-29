@@ -199,7 +199,6 @@ class StatsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //numbers.textAlignment = .right
         numbers.sizeToFit()
         numbers.frame = CGRect(x: (contentView.frame.size.width - numbers.frame.size.width) - 20, y: (contentView.frame.size.height - numbers.frame.size.height)/2, width: numbers.frame.size.width, height: numbers.frame.size.height)
         label.frame = CGRect(x: 20, y: 0, width: contentView.frame.size.width - 5, height: contentView.frame.size.height)

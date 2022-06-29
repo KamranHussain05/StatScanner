@@ -31,8 +31,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         super.viewDidLoad()
 		print(view.frame.size.width)
 		let layout = UICollectionViewFlowLayout()
-		let width = (view.frame.size.width*(1-3*sc))/2
-		let height = (view.frame.size.width*(1.25-sc))/2
+		//let width = (view.frame.size.width*(1-3*sc))/2
+		//let height = (view.frame.size.width*(1.25-sc))/2
+		let width = (414*(1-3*sc))/2
+		let height = (414*(1.25-sc))/2
 		layout.itemSize = CGSize(width: width, height: height)
 		layout.minimumLineSpacing = sc*view.frame.size.width
 		layout.minimumInteritemSpacing = sc*view.frame.size.width
@@ -234,7 +236,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         myCollectionView.addGestureRecognizer(longPressGesture)
-        
         return cell
     }
     

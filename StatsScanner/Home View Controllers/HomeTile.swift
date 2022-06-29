@@ -24,6 +24,19 @@ class HomeTiles: UICollectionViewCell {
         self.layer.borderWidth = 5.0
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
+        dataSetName.adjustsFontSizeToFitWidth = true
+        dataSetName.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        creationDate.adjustsFontSizeToFitWidth = true
+        creationDate.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        numitems.adjustsFontSizeToFitWidth = true
+        numitems.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        openDataset.titleLabel?.textColor = .white
+        openDataset.titleLabel?.adjustsFontForContentSizeCategory = true
+        openDataset.titleLabel?.adjustsFontSizeToFitWidth = true
+        openDataset.titleLabel?.minimumScaleFactor = 0.25
+        openDataset.titleLabel?.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        openDataset.titleLabel?.numberOfLines = 1
+        
         contentView.clipsToBounds = true
     }
     

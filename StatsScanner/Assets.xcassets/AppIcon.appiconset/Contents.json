@@ -1,109 +1,109 @@
 {
   "images" : [
     {
-      "filename" : "StarsScanner-8.png",
+      "filename" : "StatScanner-2.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "StarsScanner-11.png",
+      "filename" : "StatScanner-5.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "StarsScanner-12.png",
+      "filename" : "StatScanner-6.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "StarsScanner-19.png",
+      "filename" : "StatScanner-14.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "StarsScanner-7.png",
+      "filename" : "StatScanner-13.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "StarsScanner-14.png",
+      "filename" : "StatScanner-10.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "StarsScanner-15.png",
+      "filename" : "StatScanner-9.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "StarsScanner-18.png",
+      "filename" : "StatScanner-16.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "StarsScanner-16.png",
+      "filename" : "StatScanner-8.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "StarsScanner-9.png",
+      "filename" : "StatScanner-4.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "StarsScanner-17.png",
+      "filename" : "StatScanner-15.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
-      "filename" : "StarsScanner-13.png",
+      "filename" : "StatScanner-7.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "StarsScanner-10.png",
+      "filename" : "StatScanner-3.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "StarsScanner-6.png",
+      "filename" : "StatScanner-12.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "StarsScanner-5.png",
+      "filename" : "StatScanner-19.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
-      "filename" : "StarsScanner-4.png",
+      "filename" : "StatScanner-17.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "StarsScanner-3.png",
+      "filename" : "StatScanner-18.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "StarsScanner-2.png",
+      "filename" : "StatScanner-11.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

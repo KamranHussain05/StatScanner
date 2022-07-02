@@ -70,10 +70,21 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         // The chart view object calls the instance object of AAChartModel and draws the final graphic
         print(UIColor.systemFill)
+        let color : AAStyle
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
+            color = AAStyle(color: "#000000")
+            aaChartModel.titleStyle(color)
+            aaChartModel.xAxisLabelsStyle(color)
+            aaChartModel.yAxisLabelsStyle(color)
+            //aaChartModel.dataLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
+            color = AAStyle(color: "#ffffff")
+            aaChartModel.titleStyle(color)
+            aaChartModel.xAxisLabelsStyle(color)
+            aaChartModel.yAxisLabelsStyle(color)
+            //aaChartModel.dataLabelsStyle(color)
         }
         
         aaChartView.aa_drawChartWithChartModel(aaChartModel)

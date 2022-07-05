@@ -47,6 +47,14 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         //tableView.frame = view.bounds *this stretches the frame to the entire screen
+        let appVersion = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let label = UILabel(frame: appVersion.bounds)
+        label.text = UIApplication.versionBuild()
+        label.numberOfLines = 1
+        label.frame = CGRect(x: 0, y: 60, width: view.frame.size.width, height: label.frame.size.height-60)
+        label.textAlignment = .center
+        appVersion.addSubview(label)
+        tableView.tableFooterView = appVersion
         view.addSubview(tableView)
     }
     
@@ -212,5 +220,23 @@ class StatsCell: UITableViewCell {
     public func configure(with model: cellStruc) {
         label.text = model.title
         numbers.text = model.calc
+    }
+}
+extension UIApplication {
+    struct Constants {
+        static let CFBundleShortVersionString = "CFBundleShortVersionString"
+    }
+    class func appVersion() -> String {
+        return Bundle.main.object(forInfoDictionaryKey: Constants.CFBundleShortVersionString) as! String
+    }
+  
+    class func appBuild() -> String {
+        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+    }
+  
+    class func versionBuild() -> String {
+        let version = appVersion(), build = appBuild()
+      
+        return version == build ? "v\(version)" : "v\(version) (\(build))"
     }
 }

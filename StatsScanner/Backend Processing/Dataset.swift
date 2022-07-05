@@ -34,13 +34,11 @@ public class Dataset: NSObject, NSCoding {
     
     public required convenience init?(coder decoder: NSCoder) {
         self.init()
-		print(calculations)
         data = decoder.decodeObject(forKey: "data") as? [[Double]] ?? [[]]
         name = decoder.decodeObject(forKey: "name") as? String ?? "Unnamed Dataset"
         creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
 		calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
-		print(calculations)
     }
     
     /// Creates a new dataset
@@ -260,7 +258,7 @@ public class Dataset: NSObject, NSCoding {
                 diffsqrs += pow(i - getSetAverage(), 2)
             }
         }
-        return sqrt(diffsqrs - Double(getTotalNumItems()))
+        return sqrt(diffsqrs / Double(getTotalNumItems()))
     }
     
     /// Finds the standard deviation of the specified axis
@@ -269,7 +267,7 @@ public class Dataset: NSObject, NSCoding {
         for e in data[index] {
             diffsqrs += pow(e-getAverage(axis: index), 2)
         }
-        return sqrt(diffsqrs - Double(getNumItems(index: index)))
+        return sqrt(diffsqrs / Double(getNumItems(index: index)))
     }
 	
 	/// Finds the mean absolute deviation of  everything in the dataset
@@ -280,7 +278,7 @@ public class Dataset: NSObject, NSCoding {
 				stuff += abs(z - getSetAverage())
 			}
 		}
-		return stuff / Double(data.count)
+		return stuff / Double(getTotalNumItems())
 	}
     
     /// Returns the mode(s) of the entire dataset
@@ -369,5 +367,6 @@ extension Collection where Iterator.Element == String {
 		return compactMap{ Double($0) }
 	}
 }
+
 
 

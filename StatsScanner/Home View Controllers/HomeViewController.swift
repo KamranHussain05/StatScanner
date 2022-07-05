@@ -29,7 +29,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		print(view.frame.size.width)
 		let layout = UICollectionViewFlowLayout()
 		//let width = (view.frame.size.width*(1-3*sc))/2
 		//let height = (view.frame.size.width*(1.25-sc))/2

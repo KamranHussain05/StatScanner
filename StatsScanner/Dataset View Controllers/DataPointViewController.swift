@@ -9,7 +9,7 @@ import UIKit
 import SpreadsheetView
 
 var edible : Bool!
-var sa : Bool!
+var sa : Bool! = true
 
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
@@ -32,7 +32,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
 		
         edible = false
-        sa = true
 		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)

@@ -46,15 +46,13 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         title = "Stats"
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.frame = view.bounds *this stretches the frame to the entire screen
-        let appVersion = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        let label = UILabel(frame: appVersion.bounds)
+        let version = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let label = UILabel(frame: version.bounds)
         label.text = UIApplication.versionBuild()
         label.numberOfLines = 1
-        label.frame = CGRect(x: 0, y: 60, width: view.frame.size.width, height: label.frame.size.height-60)
         label.textAlignment = .center
-        appVersion.addSubview(label)
-        tableView.tableFooterView = appVersion
+        version.addSubview(label)
+        tableView.tableFooterView = version
         view.addSubview(tableView)
     }
     
@@ -226,16 +224,16 @@ extension UIApplication {
     struct Constants {
         static let CFBundleShortVersionString = "CFBundleShortVersionString"
     }
-    class func appVersion() -> String {
+    class func vers() -> String {
         return Bundle.main.object(forInfoDictionaryKey: Constants.CFBundleShortVersionString) as! String
     }
   
-    class func appBuild() -> String {
+    class func build() -> String {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
     }
   
     class func versionBuild() -> String {
-        let version = appVersion(), build = appBuild()
+        let version = vers(), build = build()
       
         return version == build ? "v\(version)" : "v\(version) (\(build))"
     }

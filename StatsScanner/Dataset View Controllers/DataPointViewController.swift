@@ -127,6 +127,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		}
 	}
     
+    @IBAction func share() {
+        self.dataset.toCSV()
+    }
+    
     func showAlert() {
         let dialog = UIAlertController(title:"Cells Uneditable", message:"Cancel saving to resume editing.", preferredStyle: .alert)
         let one = UIAlertAction(title:"Do not show me this again", style: .default, handler: {(alert:UIAlertAction!)-> Void in sa = false})

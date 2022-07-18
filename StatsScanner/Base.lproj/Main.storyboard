@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -290,6 +290,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWQ-iX-ya5">
+                                <rect key="frame" x="304" y="74" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="HIm-uq-eXZ"/>
+                                    <constraint firstAttribute="width" constant="45" id="lSw-iP-F4T"/>
+                                </constraints>
+                                <state key="normal" image="square.and.arrow.up" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <action selector="share" destination="L5T-SC-KFO" eventType="touchUpInside" id="Len-Ha-bMW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jpl-LX-mXW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -297,7 +310,9 @@
                             <constraint firstItem="Jpl-LX-mXW" firstAttribute="trailing" secondItem="LQt-vn-g5R" secondAttribute="trailing" constant="20" id="2Zl-BA-vAm"/>
                             <constraint firstItem="1Sj-mQ-vBG" firstAttribute="top" secondItem="Jpl-LX-mXW" secondAttribute="top" constant="30" id="4qU-DP-dtx"/>
                             <constraint firstItem="LQt-vn-g5R" firstAttribute="top" secondItem="Jpl-LX-mXW" secondAttribute="top" constant="30" id="72c-5q-Msx"/>
+                            <constraint firstItem="UWQ-iX-ya5" firstAttribute="top" secondItem="Jpl-LX-mXW" secondAttribute="top" constant="30" id="7gb-oc-EIr"/>
                             <constraint firstItem="1Sj-mQ-vBG" firstAttribute="leading" secondItem="Jpl-LX-mXW" secondAttribute="leading" constant="20" id="IBZ-Ik-haD"/>
+                            <constraint firstItem="Jpl-LX-mXW" firstAttribute="trailing" secondItem="UWQ-iX-ya5" secondAttribute="trailing" constant="65" id="MQT-c9-Ruk"/>
                             <constraint firstItem="BGk-0v-X6f" firstAttribute="leading" secondItem="Cl5-OJ-SLX" secondAttribute="leadingMargin" constant="63" id="b5j-Rp-bcr"/>
                             <constraint firstItem="1Sj-mQ-vBG" firstAttribute="top" secondItem="Jpl-LX-mXW" secondAttribute="top" constant="30" id="nwe-r7-De7"/>
                             <constraint firstItem="BGk-0v-X6f" firstAttribute="top" secondItem="Cl5-OJ-SLX" secondAttribute="top" constant="-357" id="wXS-fR-IDq"/>
@@ -371,6 +386,7 @@
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="plus.forwardslash.minus" catalog="system" width="128" height="115"/>
         <image name="questionmark.folder" catalog="system" width="128" height="97"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="table" catalog="system" width="128" height="93"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

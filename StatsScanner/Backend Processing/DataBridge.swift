@@ -83,10 +83,7 @@ class DataBridge {
         let url = getDocumentsDirectory().appendingPathComponent(fileName)
         
         var stringData = ""
-        for i in 0...data.count-1 {
-            if(data[i].count-1 < 0){
-                break
-            }
+        for i in 1...data.count-1 {
             for j in 0...data[i].count-1 {
                 stringData += data[i][j]
                 if(j != data[i].count-1) {

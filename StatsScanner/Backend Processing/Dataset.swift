@@ -172,11 +172,12 @@ public class Dataset: NSObject, NSCoding {
 	/// Writes the data to a csv file and converts the dataset to a CSV string
 	func toCSV() {
 		var result : Array<Array<String>> = [[]]
+		result.append(keys)
 		
 		for e in data {
 			result.append(e.stringArray)
 		}
-		result.insert(keys, at: 0)
+		print(result)
 		
 		let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
 		db.writeCSV(fileName: fileName, data: result)

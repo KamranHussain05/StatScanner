@@ -254,6 +254,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         self.present(vc, animated: true, completion: nil)
 		
+		if(vc.isFirstResponder == false) {
+			self.updateItem(item: models[sender.tag], dataset: selectedDataset)
+			print("saving to core data")
+		}
+		
+		print("got here, checkpoint")
     }
     
     // MARK: LONG PRESS HANDLING

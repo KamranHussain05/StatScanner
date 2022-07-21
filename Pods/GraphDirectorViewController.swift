@@ -140,7 +140,7 @@ extension GraphDirectorViewController: UIPickerViewDataSource {
     
     /// Changes graph when element changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(chartTypes[row] != currentGraphType) { // ensures graph is not the same (to prevent the graph from prematurely refreshing)
+        if(chartTypes[row] != currentGraphType) { // ensures graph is not the same (to prevent the graph doesn't prematurely refresh)
             changeGraphType(type: chartTypes[row])
         }
     }

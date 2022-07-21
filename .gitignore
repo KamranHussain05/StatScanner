@@ -1,8 +1,5 @@
 
 .DS_Store
-Pods/Pods.xcodeproj/xcuserdata/kaleb.xcuserdatad/xcschemes/xcschememanagement.plist
-StatsScanner.xcodeproj/xcuserdata/kaleb.xcuserdatad/xcschemes/xcschememanagement.plist
-StatsScanner.xcworkspace/xcuserdata/kaleb.xcuserdatad/UserInterfaceState.xcuserstate
-StatsScanner.xcodeproj/project.pbxproj
+*.xcuserstate
 *.plist
 *.pbxproj

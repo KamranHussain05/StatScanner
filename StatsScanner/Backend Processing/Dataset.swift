@@ -177,6 +177,9 @@ public class Dataset: NSObject, NSCoding {
 		
 	/// Writes the data to a csv file and converts the dataset to a CSV string
 	func toCSV() {
+		if (self.isEmpty()) {
+			return
+		}
 		var result : Array<Array<String>> = [[]]
 		result.append(keys)
 		

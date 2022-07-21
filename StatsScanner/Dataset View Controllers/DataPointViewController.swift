@@ -75,7 +75,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         if (dataset.isEmpty()) {
-            return Int(view.frame.size.width/100)
+            //return Int(view.frame.size.width/100)
+            return 4
         } else {
             return self.dataset.getKeys().count
         }
@@ -90,11 +91,15 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
+        print("widthForColumn")
         let headerCount = dataset.getKeys().count
-        if (headerCount < 5) {
+        if (headerCount == 0) {
+            return (view.frame.size.width - 5.0)/4.0
+        } else if (headerCount < 5) {
             return (view.frame.size.width - 5.0) / CGFloat(headerCount)
         } else {
-            return 200
+            print("width is 150")
+            return 150
         }
     }
 
@@ -107,6 +112,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
     
     func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
+        if (dataset.isEmpty()) {
+            return 0
+        }
         return 1
     }
 	
@@ -129,6 +137,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     
     @IBAction func share() {
         self.dataset.toCSV()
+        let application = UIApplication.shared
+        let secpath = "shareddocuments://"
+        let url = URL(string: secpath)!
+        if (application.canOpenURL(url)) {
+            application.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func showAlert() {

@@ -17,7 +17,7 @@ class DataBridge {
     
     func writeData(data:String, fileName: String) {
         let str = data
-        let url = getDocumentsDirectory().appendingPathComponent(fileName + ".csv")
+        let url = DataBridge.getDocumentsDirectory().appendingPathComponent(fileName + ".csv")
         
         do {
             try str.write(to: url, atomically: true, encoding: .utf8)
@@ -26,14 +26,14 @@ class DataBridge {
         }
     }
     
-    func getDocumentsDirectory() -> URL {
+    public static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
     
 
     func readCSV(fileName: String, lineSeparator: String = "\n", valSeparator: String = ",") -> [[String]] {
-        let url = getDocumentsDirectory().appendingPathComponent(fileName)
+        let url = DataBridge.getDocumentsDirectory().appendingPathComponent(fileName)
         
         //Get Data
         print("reading csv")
@@ -80,7 +80,7 @@ class DataBridge {
     }
     
     func writeCSV(fileName:String, data:[[String]]) {
-        let url = getDocumentsDirectory().appendingPathComponent(fileName)
+        let url = DataBridge.getDocumentsDirectory().appendingPathComponent(fileName)
         
         var stringData = ""
         for i in 1...data.count-1 {

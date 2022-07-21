@@ -93,14 +93,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-        print("widthForColumn")
         let headerCount = dataset.getKeys().count
         if (headerCount == 0) {
             return (view.frame.size.width - 5.0)/4.0
         } else if (headerCount < 5) {
             return (view.frame.size.width - 5.0) / CGFloat(headerCount)
         } else {
-            print("width is 150")
             return 150
         }
     }
@@ -142,11 +140,15 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     @IBAction func share() {
         self.dataset.toCSV()
         let application = UIApplication.shared
-        let secpath = "shareddocuments://"
-        let url = URL(string: secpath)!
-        if (application.canOpenURL(url)) {
+        let url = DataBridge.getDocumentsDirectory()
+        let heeheehaw : URL!
+        let ios = url.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
+        heeheehaw = URL(string: ios)!
+        if (application.canOpenURL(heeheehaw)) {
+            application.open(heeheehaw, options: [:], completionHandler: nil)
+        }/* else if (application.canOpenURL(url)) {
             application.open(url, options: [:], completionHandler: nil)
-        }
+        }*/
     }
     
     func showAlert() {

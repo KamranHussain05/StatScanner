@@ -50,7 +50,7 @@ class StatsScannerTests: XCTestCase {
         15,1,3,44
         67,1,3,42
         """
-        let url = b.getDocumentsDirectory().appendingPathComponent("test.csv")
+        let url = DataBridge.getDocumentsDirectory().appendingPathComponent("test.csv")
         
         do {
             try str.write(to: url, atomically: true, encoding: .utf8)

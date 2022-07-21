@@ -20,10 +20,6 @@
 		</dict>
 		<dict/>
 	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>shareddocuments</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

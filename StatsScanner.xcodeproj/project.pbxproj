@@ -642,7 +642,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 21;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = ZB49DQ62Z9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -663,7 +663,7 @@
 				);
 				MARKETING_VERSION = 0.0.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalebcim.statscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -689,7 +689,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 21;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = ZB49DQ62Z9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -710,8 +710,8 @@
 				);
 				MARKETING_VERSION = 0.0.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.KamranHussain.StatScannerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalebcim.statscanner;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.kalebcim.statscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";

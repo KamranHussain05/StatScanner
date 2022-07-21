@@ -157,6 +157,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func onBackClick(_sender:UIButton) {
         if (_sender == self.back){
             self.dismiss(animated:true)
+            
         }
     }
 }

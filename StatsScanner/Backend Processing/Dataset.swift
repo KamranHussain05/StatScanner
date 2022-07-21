@@ -108,11 +108,17 @@ public class Dataset: NSObject, NSCoding {
 	
 	///Returns the dataset array without keys
 	public func getData() -> [[Double]] {
+		if(self.isEmpty()) {
+			return [[0]]
+		}
 		return self.data
 	}
 	
 	/// Returns the array containing the data in the specified index
    public func getData(axis:Int) -> [Double] {
+	   if(self.isEmpty()) {
+		   return [0]
+	   }
 	   var result = [Double]()
 	   for i in 0...data[0].count-1 {
 		   result.append(data[axis][i])

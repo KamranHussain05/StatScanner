@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  StatsScanner
+//  StatScanner
 //
 //  Created by Kaleb Kim and Kamran Hussain on 12/31/21.
 //  Editing by Caden Pun started on 6/27/22
@@ -253,6 +253,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: selectedDataset)
         
         self.present(vc, animated: true, completion: nil)
+		
     }
     
     // MARK: LONG PRESS HANDLING

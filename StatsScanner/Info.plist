@@ -20,6 +20,10 @@
 		</dict>
 		<dict/>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>shareddocuments</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -41,9 +45,7 @@
 	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>shareddocuments</string>
-	</array>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 </dict>
 </plist>

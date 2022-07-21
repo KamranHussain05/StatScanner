@@ -67,7 +67,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @objc func setDataSetObject(_ notification: Notification) {
         print("StatView recieved dataset")
-        datasetobj = (notification.object as! Dataset)
+        let proj = (notification.object as! DataSetProject)
+        self.datasetobj = proj.datasetobject
     }
     
     func loadData() {

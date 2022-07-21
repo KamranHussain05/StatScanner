@@ -14,7 +14,6 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     
     // for displaying the dataset
     var dataset = Dataset() // the current dataset which the user is on
-    
     var aaChartView: AAChartView!
     var switchingGraph = false
     let aaChartModel = AAChartModel()
@@ -28,7 +27,8 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     }
     
     @objc func initDataSet(_ notification: Notification) {
-        dataset = (notification.object as! Dataset)
+        let proj = (notification.object as! DataSetProject)
+        self.dataset = proj.datasetobject!
         print("Graph View received dataset")
     }
     

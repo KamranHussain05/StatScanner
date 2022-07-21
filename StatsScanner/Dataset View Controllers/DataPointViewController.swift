@@ -16,6 +16,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     private let spreadsheetView = SpreadsheetView()
     var dataset : Dataset!
 	@IBOutlet var edit: UIButton!
+    var proj : DataSetProject!
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
@@ -25,7 +26,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
 	@objc func initDataset(_ notification: Notification) {
 		print("DataPoint View recieved dataset")
-		self.dataset = notification.object as? Dataset
+        self.proj = notification.object as? DataSetProject
+        self.dataset = self.proj.datasetobject!
 	}
 	
     override func viewDidLoad() {
@@ -123,6 +125,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("Saving")
+            let h = HomeViewController()
+            h.updateItem(item:self.proj, dataset: self.dataset)
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
 			edible = false
             if (sa) {

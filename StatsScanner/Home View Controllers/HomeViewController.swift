@@ -177,7 +177,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     ///Writes a datasetproject to Core Data
-    func createItem(item: Dataset, name: String) {
+    public func createItem(item: Dataset, name: String) {
         let newItem = DataSetProject(context: context)
         newItem.datasetobject = item
         newItem.name = name
@@ -191,7 +191,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     ///Deletes a datasetproject from Core Data
-    func deleteItem(item: DataSetProject) {
+    public func deleteItem(item: DataSetProject) {
         context.delete(item)
         
         do {
@@ -202,10 +202,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     ///Updates the dataset project in Core Data
-    func updateItem(item: DataSetProject, dataset: Dataset) {
+    public func updateItem(item: DataSetProject, dataset: Dataset) {
         item.datasetobject = dataset
         do {
-            try context.save()
+			try context.save()
         } catch {
             fatalError("CORE DATA UPDATE FAILED")
         }
@@ -250,11 +250,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.modalPresentationStyle = .fullScreen
         
         //send the dataset object to the view controllers
-        NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: selectedDataset)
+		NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: models[sender.tag])
         
         self.present(vc, animated: true, completion: nil)
 		
-		if(vc.isFirstResponder == false) {
+		if(self.isEditing) {
 			self.updateItem(item: models[sender.tag], dataset: selectedDataset)
 			print("saving to core data")
 		}

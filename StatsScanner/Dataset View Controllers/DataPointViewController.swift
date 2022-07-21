@@ -110,7 +110,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         return 1
     }
 	
-	//MARK: ON EDIT CLICK
+//MARK: ON EDIT CLICK
 	
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {

@@ -141,14 +141,14 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         self.dataset.toCSV()
         let application = UIApplication.shared
         let url = DataBridge.getDocumentsDirectory()
-        let heeheehaw : URL!
+        let heeheeheehaw : URL!
         let ios = url.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
-        heeheehaw = URL(string: ios)!
-        if (application.canOpenURL(heeheehaw)) {
-            application.open(heeheehaw, options: [:], completionHandler: nil)
-        }/* else if (application.canOpenURL(url)) {
+        heeheeheehaw = URL(string: ios)!
+        if (application.canOpenURL(heeheeheehaw)) {
+            application.open(heeheeheehaw, options: [:], completionHandler: nil)
+        } else if (application.canOpenURL(url)) {
             application.open(url, options: [:], completionHandler: nil)
-        }*/
+        }
     }
     
     func showAlert() {

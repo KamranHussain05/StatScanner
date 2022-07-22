@@ -114,7 +114,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         var arr = [AASeriesElement]()
         let d = dataset.getData()
         
-        if(dataset.getData().count == 0){
+        if(dataset.getData().count <= 1) {
             arr.append(AASeriesElement().data([0]))
             return arr
         }

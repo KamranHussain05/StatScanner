@@ -8,19 +8,18 @@
 import Foundation
 import CoreData
 
-@objc(DataSet)
-public class DataSet : NSObject, NSCoding {
+@objc(Dataset)
+public class Dataset : NSObject, NSCoding {
     
 // MARK: Field Variables
     
     private var rawData : [[String]] = [[]]
     private var keys : [[String]] = [[],[],[]]
     private var numericalData : [[Double]] = [[]]
-    private var calculations : [Double] = Array<Double>(repeating: 0.0, count: 9)
-    private var calc : Calculations!
+    var calculations : [Double] = Array<Double>(repeating: 0.0, count: 9)
     
-    private var creationDate : String!
-    private var name : String = ""
+    var creationDate : String!
+    var name : String = ""
     
     private let db = DataBridge()
     private let h = HomeViewController()
@@ -42,7 +41,7 @@ public class DataSet : NSObject, NSCoding {
         coder.encode(name, forKey: "name")
     }
     
-    public required convenience init?(coder decoder: NSCoder) {
+    required convenience public init?(coder decoder: NSCoder) {
         self.init()
         self.rawData = decoder.decodeObject(forKey:"rawData") as? [[String]] ?? [[]]
         self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[],[],[]]
@@ -62,15 +61,24 @@ public class DataSet : NSObject, NSCoding {
         
     }
     
-    public init(name : String, fileContents: [[String]]) {
+    init(name : String, appendable: [[String]]) {
         super.init()
+        
         self.name = name
         self.creationDate = formatter.string(from: Date())
-        self.rawData = fileContents
-        self.keys = self.solveKeys(fileContents)
-        self.numericalData = self.cleanData(fileContents)
-        calc = Calculations(dataset: numericalData)
-        calculations = calc.calculate()
+        self.rawData = appendable
+        self.keys = self.solveKeys(appendable)
+        self.numericalData = self.cleanData(appendable)
+        self.calculations = Calculations(dataset : numericalData).calculate()
+    }
+    
+    init(name : String) {
+        self.name = name
+        self.rawData = [["0"]]
+        self.creationDate = formatter.string(from: Date())
+        self.numericalData = [[0]]
+        self.keys = []
+        self.calculations = Calculations(dataset: numericalData).calculate()
     }
     
 // MARK: Data Pre-Processing
@@ -95,5 +103,68 @@ public class DataSet : NSObject, NSCoding {
     
     private func cleanData(_:[[String]]) -> [[Double]]{
         return [[]]
+    }
+    
+// MARK: Getter and Setters
+    
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getCreationDate() -> String {
+        return self.creationDate
+    }
+    
+    func getData() -> [[Double]] {
+        if(self.numericalData.count*self.numericalData[0].count < 2) {
+            return [[0]]
+        }
+        return self.numericalData
+    }
+    
+    func getKeys() -> [String] {
+        return self.keys[0]
+    }
+    
+    func updateVal(x : Int, y : Int, val : Double) {
+        self.numericalData[y][x] = val
+    }
+    
+    func updateKey(x : Int, y : Int, val : String) {
+        self.keys[y][x] = val
+    }
+    
+    func getCalculations() -> [Double] {
+        return self.calculations
+    }
+    
+    func updateData(x : Int = 0, val : [Double]) {
+        self.numericalData.append(val)
+    }
+    
+    func getTotalNumItems() -> Int {
+        return rawData.count * rawData[0].count
+    }
+    
+// MARK: TO CSV
+
+    func toCSV() {
+        if (self.isEmpty()) {
+            return
+        }
+        var result : Array<Array<String>> = [[]]
+        //result.append(keys)
+        
+        for e in numericalData {
+            result.append(e.stringArray)
+        }
+        print(result)
+        
+        let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
+        db.writeCSV(fileName: fileName, data: result)
+    }
+    
+    func isEmpty() -> Bool{
+        return (numericalData.count * numericalData[0].count) < 2
     }
 }

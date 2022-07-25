@@ -202,12 +202,12 @@ class DataPointCell: Cell, UITextFieldDelegate {
         if (edible) {
             if (self.field.text!.isNumeric) { // is a number
                 let val = Double(self.field.text!)!
-                self.dataset.updateVal(indexX: self.x, indexY: self.y, val: val)
+                self.dataset.updateVal(x: self.x, y: self.y, val: val)
                 print(self.dataset.getData())
                 field.resignFirstResponder()
             } else if (self.backgroundColor == .systemFill) { // is a header
                 let val = String(self.field.text!)
-                self.dataset.updateHeader(index: self.x, val: val)
+                self.dataset.updateKey(x: self.x, y: 0, val: val)
                 print(self.dataset.getData())
                 field.resignFirstResponder()
             }

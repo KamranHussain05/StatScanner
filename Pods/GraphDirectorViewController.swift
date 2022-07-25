@@ -103,7 +103,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
     
     private func xvalsFormatted() -> [String] {
         var result = [String]()
-        let ds = dataset.getData(axis: 0)
+        let ds = dataset.getData()[0]
         for i in 0...ds.count-1 {
             result.append(String(ds[i]))
         }
@@ -122,7 +122,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         for i in 0...d[0].count-1 {
             arr.append(AASeriesElement()
                         .name(dataset.getKeys()[i])
-                        .data(dataset.getData(axis:i))
+                        .data(dataset.getData()[i])
             )
         }
         return arr

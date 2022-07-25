@@ -17,6 +17,7 @@ public class DataSet : NSObject, NSCoding {
     private var keys : [[String]] = [[],[],[]]
     private var numericalData : [[Double]] = [[]]
     private var calculations : [Double] = Array<Double>(repeating: 0.0, count: 9)
+    private var calc : Calculations!
     
     private var creationDate : String!
     private var name : String = ""
@@ -68,6 +69,8 @@ public class DataSet : NSObject, NSCoding {
         self.rawData = fileContents
         self.keys = self.solveKeys(fileContents)
         self.numericalData = self.cleanData(fileContents)
+        calc = Calculations(dataset: numericalData)
+        calculations = calc.calculate()
     }
     
 // MARK: Data Pre-Processing

@@ -75,15 +75,15 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         name = datasetobj.name
         date = datasetobj.creationDate
         items = String(datasetobj.getTotalNumItems())
-        mean = String(round(1000 * datasetobj.calculations.calculations[7]) / 1000)
-        median = String(datasetobj.calculations.calculations[3])
-        mode = String(datasetobj.calculations.calculations[2])
-        min = String(datasetobj.calculations.calculations[1])
-        max = String(datasetobj.calculations.calculations[0])
-        range = String(datasetobj.calculations.calculations[4])
-        stddev = String(round(1000 * datasetobj.calculations.calculations[5]) / 1000)
-        abdev = String(round(1000 * datasetobj.calculations.calculations[8]) / 1000)
-        error = String(round(1000 * datasetobj.calculations.calculations[6]) / 1000)
+        mean = String(round(1000 * datasetobj.calculations[7]) / 1000)
+        median = String(datasetobj.calculations[3])
+        mode = String(datasetobj.calculations[2])
+        min = String(datasetobj.calculations[1])
+        max = String(datasetobj.calculations[0])
+        range = String(datasetobj.calculations[4])
+        stddev = String(round(1000 * datasetobj.calculations[5]) / 1000)
+        abdev = String(round(1000 * datasetobj.calculations[8]) / 1000)
+        error = String(round(1000 * datasetobj.calculations[6]) / 1000)
         
         models[0].cells[0].calc = name
         models[0].cells[1].calc = date

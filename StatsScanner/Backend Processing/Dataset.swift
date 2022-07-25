@@ -18,7 +18,8 @@ public class Dataset: NSObject, NSCoding {
     private var keys: [String] = []
 	var name: String = "Unnamed Dataset"
 	var creationDate: String!
-	var calculations : Calculations!
+	private var numericalData : [[Double]] = [[]]
+	var calculations : [Double]
 	private let db = DataBridge()
 	private let h = HomeViewController()
 	
@@ -30,6 +31,7 @@ public class Dataset: NSObject, NSCoding {
         coder.encode(name, forKey: "name")
         coder.encode(creationDate, forKey: "creationDate")
 		//coder.encode(calculations, forKey: "calculations")
+		calculations = Calculations(dataset: numericalData).calculate()
     }
     
     public required convenience init?(coder decoder: NSCoder) {
@@ -39,7 +41,7 @@ public class Dataset: NSObject, NSCoding {
         creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
 		//calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
-		calculations = Calculations(dataset: self)
+		calculations = Calculations(dataset: numericalData).calculate()
     }
     
     /// Creates a new dataset
@@ -53,6 +55,7 @@ public class Dataset: NSObject, NSCoding {
         formatter.timeStyle = .none
         formatter.dateStyle = .short
         creationDate = formatter.string(from: currentDateTime)
+		calculations = Calculations(dataset: numericalData).calculate()
     }
     
     /// Creates a new dataset and assumes the first row contains the keys
@@ -71,7 +74,7 @@ public class Dataset: NSObject, NSCoding {
         a.remove(at: 0)
         self.data = self.cleanData(array: a)
 		
-		calculations.calculate()
+		calculations = Calculations(dataset: numericalData).calculate()
     }
     
     /// Creates a new dataset object with the specified name
@@ -83,6 +86,7 @@ public class Dataset: NSObject, NSCoding {
         formatter.timeStyle = .none
         formatter.dateStyle = .short
         creationDate = formatter.string(from: currentDateTime)
+		calculations = Calculations(dataset: numericalData).calculate()
     }
 	
 	// MARK: GETTERS AND MODIFIERS
@@ -120,25 +124,25 @@ public class Dataset: NSObject, NSCoding {
     /// Adds a value to the end of the dataset
     func addVal(val:Double) {
         data[data[0].count-1].append(val)
-		calculations.calculate()
+		calculations = Calculations(dataset: numericalData).calculate()
     }
     
     /// Changes a specific value
     func updateVal(indexX: Int, indexY: Int, val: Double) {
         data[indexX][indexY] = val
-		calculations.calculate()
+		calculations = Calculations(dataset: numericalData).calculate()
     }
 	
 	func updateHeader(index: Int, val: String) {
 		keys[index] = val
-		calculations.calculate()
+		calculations = Calculations(dataset: numericalData).calculate()
 	}
     
     /// Adds another dataset or 2D array that does not contain the key row
     func appendArray(array: [[String]]) {
         let cleanArr = cleanData(array: array)
         data.append(contentsOf: cleanArr)
-		calculations.calculate()
+		calculations = Calculations(dataset: numericalData).calculate()
     }
 	
 	/// Returns the number of items in the dataset

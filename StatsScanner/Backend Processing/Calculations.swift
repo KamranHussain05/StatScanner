@@ -9,13 +9,13 @@ import Foundation
 
 public class Calculations {
     var calculations : [Double] = Array<Double>(repeating: 0.0, count: 9)
-    var dataset : Dataset!
+    var dataset : [[Double]]
     
-    init(dataset: Dataset) {
+    init(dataset: [[Double]]) {
         self.dataset = dataset
     }
     
-    func calculate() {
+    public func calculate() -> [Double] {
         calculations[0] = (self.getMax())
         calculations[1] = (self.getMin())
         calculations[2] = (self.getMedian())
@@ -31,6 +31,7 @@ public class Calculations {
         } catch {
             fatalError("Core Data Save Failed")
         }*/
+        return calculations
     }
     
 // MARK: STATISTICS METHODS
@@ -38,94 +39,52 @@ public class Calculations {
     /// Returns average of the entire dataset spanning all variables
     private func getSetAverage() -> Double{
         var result = 0.0
-        for i in 0...dataset.getData().count-1 {
-            for j in 0...dataset.getData()[0].count-1 {
-                result+=dataset.getData()[i][j]
+        for i in 0...dataset.count-1 {
+            for j in 0...dataset[0].count-1 {
+                result+=dataset[i][j]
             }
         }
-        return result/Double(dataset.getTotalNumItems())
-    }
-    
-    /// Returns the average of a specified variable
-    private func getAverage(axis:Int) -> Double{
-        var result = 0.0
-        for i in 0...dataset.getData()[axis].count-1 {
-            result += dataset.getData()[i][axis]
-        }
-        return result/Double(dataset.getNumItems(index: axis))
+        return result/Double(dataset.count * dataset[0].count)
     }
     
     /// Returns the maximum value of the data set
     private func getMax() -> Double {
         var result = [Double]()
-        for i in 0...dataset.getData().count-1 {
-            result.append(dataset.getData()[i].max() ?? 0)
+        for i in 0...dataset.count-1 {
+            result.append(dataset[i].max() ?? 0)
         }
         return result.max()!
-    }
-    
-    /// Returns the highest value in the specified index
-    private func getMax(index: Int) -> Double {
-        return dataset.getData()[index].max()!
-        
     }
     
     /// Returns the minimum value in the data
     private func getMin() -> Double {
         var result = [Double]()
-        for i in 0...dataset.getData().count-1 {
-            result.append(dataset.getData()[i].min() ?? 0)
+        for i in 0...dataset.count-1 {
+            result.append(dataset[i].min() ?? 0)
         }
         return result.min()!
-    }
-    
-    /// Returns the minimum value in the specified index
-    private func getMin(index:Int) -> Double {
-        return dataset.getData()[index].min()!
     }
     
     /// Finds the standard deviation of everything in the dataset
     private func getStandardDeviation() -> Double {
         var diffsqrs = 0.0
-        for e in dataset.getData() {
+        for e in dataset {
             for i in e {
                 diffsqrs += pow(i - getSetAverage(), 2)
             }
         }
-        return sqrt(diffsqrs / Double(dataset.getTotalNumItems()))
-    }
-    
-    /// Finds the standard deviation of the specified axis
-    private func getStandardDeviation(index:Int) -> Double {
-        var diffsqrs = 0.0
-        for e in dataset.getData()[index] {
-            diffsqrs += pow(e-getAverage(axis: index), 2)
-        }
-        return sqrt(diffsqrs / Double(dataset.getNumItems(index: index)))
+        return sqrt(diffsqrs / Double(dataset.count * dataset[0].count))
     }
     
     /// Finds the mean absolute deviation of  everything in the dataset
     private func getMAD() -> Double {
         var stuff = 0.0
-        for i in dataset.getData() {
+        for i in dataset {
             for z in i {
                 stuff += abs(z - getSetAverage())
             }
         }
-        return stuff / Double(dataset.getTotalNumItems())
-    }
-    
-    /// Returns the mode(s) of the entire dataset
-    private func getModes() -> [Double] {
-        var res = [Double]()
-        for i in 0...dataset.getData().count-1 {
-            res.append(contentsOf: getModes(arr: dataset.getData()[i]))
-        }
-        return getModes(arr: res)
-    }
-    
-    private func getMode() -> Double {
-        return getModes()[0]
+        return stuff / Double(dataset.count * dataset[0].count)
     }
     
     /// Returns the mode(s) of the specified axis
@@ -139,9 +98,22 @@ public class Calculations {
         return []
     }
     
+    /// Returns the mode(s) of the entire dataset
+    private func getModes() -> [Double] {
+        var res = [Double]()
+        for i in 0...dataset.count-1 {
+            res.append(contentsOf: getModes(arr: dataset[i]))
+        }
+        return getModes(arr: res)
+    }
+    
+    private func getMode() -> Double {
+        return getModes()[0]
+    }
+    
     /// Returns the median of the entire datasete
     private func getMedian() -> Double {
-        var copy = dataset.getData()
+        var copy = dataset
         for i in 0...copy.count-1 {
             copy[i].sort()
         }
@@ -161,7 +133,7 @@ public class Calculations {
     
     /// Returns the median of the specified axis
     private func getMedian(axis: Int) -> Double {
-        var copy = dataset.getData()[axis]
+        var copy = dataset[axis]
         copy.sort()
         
         let i = copy.count/2
@@ -173,11 +145,6 @@ public class Calculations {
     
     /// Returns the standard error of the entire dataset
     private func getStandardError() -> Double {
-        return getStandardDeviation()/sqrt(Double(dataset.getData().count))
-    }
-    
-    /// Returns the standard error of the specified axis
-    private func getStandardError(axis: Int) -> Double {
-        return getStandardDeviation(index: axis)/sqrt(Double(dataset.getData()[axis].count))
+        return getStandardDeviation()/sqrt(Double(dataset.count))
     }
 }

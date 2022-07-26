@@ -16,6 +16,8 @@
 		4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */; };
 		4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9A288F551300BB1C03 /* Calculations.swift */; };
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
+		4D3B6E9F288F5DEA00BB1C03 /* FileWriterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */; };
+		4D3B6EA1288F5DF900BB1C03 /* DataArrayStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
 		4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */; };
 		4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE04DFC28551E7900C5D5BC /* CloudKit.framework */; };
@@ -71,6 +73,8 @@
 		4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTransformer.swift; sourceTree = "<group>"; };
 		4D3B6E9A288F551300BB1C03 /* Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
+		4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriterTest.swift; sourceTree = "<group>"; };
+		4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataArrayStruct.swift; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
 		4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		4DE04DFC28551E7900C5D5BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -236,6 +240,8 @@
 		A85092D227497F7A00392240 /* StatsScannerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */,
+				4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */,
 				A85092D327497F7A00392240 /* StatsScannerTests.swift */,
 			);
 			path = StatsScannerTests;
@@ -486,6 +492,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3B6E9F288F5DEA00BB1C03 /* FileWriterTest.swift in Sources */,
+				4D3B6EA1288F5DF900BB1C03 /* DataArrayStruct.swift in Sources */,
 				A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

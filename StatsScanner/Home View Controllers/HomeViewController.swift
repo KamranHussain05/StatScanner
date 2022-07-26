@@ -204,6 +204,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     ///Updates the dataset project in Core Data
     public func updateItem(item: DataSetProject, dataset: Dataset) {
         item.datasetobject = dataset
+		item.name = dataset.name
         do {
 			try context.save()
         } catch {

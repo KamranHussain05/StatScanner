@@ -65,11 +65,17 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
                 self.createWithName(method: 2)
             }
         )
+		
+		newDatasetMenu.addAction(
+			UIAlertAction(title:"Blank Dataset", style:.default) { (action) in
+				self.createWithName(method:3)
+		})
         
         newDatasetMenu.addAction(
             UIAlertAction(title:"Cancel", style: .destructive) { (action) in
                 print("cancelled addition")
             })
+		
     }
     
     // MARK: Data Import Handling
@@ -110,6 +116,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 			self?.dbuilder.name = new.name
 			self?.importCSV()
 			print("importing csv")
+			break
+		case 3:
+			print("creating blank dataset")
+			self?.createItem(item: new, name: new.name)
 			break
 		default:
 			return

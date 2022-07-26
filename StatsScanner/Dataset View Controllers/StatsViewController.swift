@@ -116,6 +116,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 return
             }
             self.datasetobj.name = text
+            self.loadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel/*, handler: { _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {

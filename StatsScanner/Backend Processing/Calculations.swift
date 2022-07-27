@@ -113,22 +113,20 @@ public class Calculations {
     
     /// Returns the median of the entire datasete
     private func getMedian() -> Double {
-        var copy = dataset
-        for i in 0...copy.count-1 {
-            copy[i].sort()
+        var oneD = Array<Double>(repeating: 0.0, count: 0)
+        for i in 0...dataset.count-1 {
+            for j in 0...dataset[0].count-1 {
+                oneD.append(dataset[i][j])
+            }
         }
-        let y = copy.count/2 - 1
-        let x = copy[y].count/2
-        print(x)
-        print(y)
-        if(y%2 == 0) {
-            return (copy[y][copy[x].count-1] + copy[y+1][0]) / 2
+        oneD.sort()
+        if (oneD.count % 2 == 0) {
+            let first = oneD[oneD.count/2-1]
+            let sec = oneD[(oneD.count)/2]
+            return (first + sec)/2
+        } else {
+            return oneD[(oneD.count-1)/2]
         }
-        if(x%2 == 0) {
-            return (copy[y][x+1] + copy[y][x]) / 2
-        }
-        
-        return copy[x][y]
     }
     
     /// Returns the median of the specified axis
@@ -145,6 +143,6 @@ public class Calculations {
     
     /// Returns the standard error of the entire dataset
     private func getStandardError() -> Double {
-        return getStandardDeviation()/sqrt(Double(dataset.count))
+        return getStandardDeviation()/sqrt(Double(dataset.count*dataset[0].count))
     }
 }

@@ -76,8 +76,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         date = datasetobj.creationDate
         items = String(datasetobj.getTotalNumItems())
         mean = String(round(1000 * datasetobj.calculations[7]) / 1000)
-        median = String(datasetobj.calculations[3])
-        mode = String(datasetobj.calculations[2])
+        median = String(datasetobj.calculations[2])
+        mode = String(datasetobj.calculations[3])
         min = String(datasetobj.calculations[1])
         max = String(datasetobj.calculations[0])
         range = String(datasetobj.calculations[4])

@@ -17,7 +17,7 @@ public class Dataset: NSObject, NSCoding {
 	private var keys: [String] = []
 	var name: String = "Unnamed Dataset"
 	var creationDate: String!
-	var calculations : [Double] = Array<Double>(repeating: 0.0, count:50)
+	var calculations : [Double] = Array<Double>(repeating: 0.0, count:9)
 	private let db = DataBridge()
 	private let h = HomeViewController()
 	
@@ -42,7 +42,6 @@ public class Dataset: NSObject, NSCoding {
 	
 	/// Creates a new dataset
 	override init() {
-		//print(calculations.count)
 		name = "Unnamed DataSet"
 		data = [[]]
 		// get the current date and time
@@ -86,7 +85,6 @@ public class Dataset: NSObject, NSCoding {
 	
 	///Runs all dataset calculations and stores them in the calculation structure for faster loading
 	private func calculate() {
-		print(calculations.count)
 		calculations[0] = (self.getMax())
 		calculations[1] = (self.getMin())
 		calculations[2] = (self.getMedian())
@@ -322,7 +320,7 @@ public class Dataset: NSObject, NSCoding {
 	
 	/// Returns the median of the entire datasete
 	private func getMedian() -> Double {
-		var copy = data
+		/*var copy = data
 		for i in 0...copy.count-1 {
 			copy[i].sort()
 		}
@@ -337,7 +335,21 @@ public class Dataset: NSObject, NSCoding {
 			return (copy[y][x+1] + copy[y][x]) / 2
 		}
 		
-		return copy[x][y]
+		return copy[x][y]*/
+		var oneD = Array<Double>(repeating: 0.0, count: 0)
+		for i in 0...data.count-1 {
+			for j in 0...data[0].count-1 {
+				oneD.append(data[i][j])
+			}
+		}
+		oneD.sort()
+		if (oneD.count % 2 == 0) {
+			let first = oneD[oneD.count/2-1]
+			let sec = oneD[(oneD.count)/2]
+			return (first + sec)/2
+		} else {
+			return oneD[(oneD.count-1)/2]
+		}
 	}
 	
 	/// Returns the median of the specified axis
@@ -354,12 +366,12 @@ public class Dataset: NSObject, NSCoding {
 	
 	/// Returns the standard error of the entire dataset
 	private func getStandardError() -> Double {
-		return getStandardDeviation()/sqrt(Double(data.count))
+		return getStandardDeviation()/sqrt(Double(getTotalNumItems()))
 	}
 	
 	/// Returns the standard error of the specified axis
 	private func getStandardError(axis: Int) -> Double {
-		return getStandardDeviation(index: axis)/sqrt(Double(data[axis].count))
+		return getStandardDeviation(index: axis)/sqrt(Double(getNumItems(index: axis)))
 	}
 }
 

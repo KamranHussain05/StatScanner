@@ -16,15 +16,15 @@ public class Calculations {
     }
     
     public func calculate() -> [Double] {
-        calculations[0] = (self.getMax())
-        calculations[1] = (self.getMin())
-        calculations[2] = (self.getMedian())
-        calculations[3] = (self.getMode())
-        calculations[4] = (self.getMax() - self.getMin())
-        calculations[5] = (self.getStandardDeviation())
-        calculations[6] = (self.getStandardError())
-        calculations[7] = (self.getSetAverage())
-        calculations[8] = (self.getMAD())
+        calculations[0] = (self.getSetAverage())
+        calculations[1] = (self.getMedian())
+        calculations[2] = (self.getMode())
+        calculations[3] = (self.getMin())
+        calculations[4] = (self.getMax())
+        calculations[5] = (self.getMax() - self.getMin())
+        calculations[6] = (self.getStandardDeviation())
+        calculations[7] = (self.getMAD())
+        calculations[8] = (self.getStandardError())
         print("Re-Did Calculations")
         /*do {
             try h.context.save()

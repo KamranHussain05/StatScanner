@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         )
 		
 		newDatasetMenu.addAction(
-			UIAlertAction(title:"Blank Dataset", style:.default) { (action) in
+			UIAlertAction(title:"New Dataset", style:.default) { (action) in
 				self.createWithName(method:3)
 		})
         

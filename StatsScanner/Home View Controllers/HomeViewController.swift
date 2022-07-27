@@ -43,7 +43,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         getAllItems()
         
         // for pop up menu
-        if(UIDevice.current.userInterfaceIdiom != .mac) {
+		let macurl = DataBridge.getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
+		if(UIApplication.shared.canOpenURL(URL(string: macurl)!)) {
             // don't allow user to take a photo if it's a mac (impractical)
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
@@ -262,6 +263,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         //send the dataset object to the view controllers
 		NotificationCenter.default.post(name:Notification.Name("datasetobj"), object: models[sender.tag])
+		NotificationCenter.default.post(name:Notification.Name("context"), object: self.context)
         
         self.present(vc, animated: true, completion: nil)
 		

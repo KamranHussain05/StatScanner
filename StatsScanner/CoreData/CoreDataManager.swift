@@ -18,7 +18,7 @@ class CoreDataManager {
         ValueTransformer.setValueTransformer(NSDatasetTransformer(), forName: NSValueTransformerName("NSDatasetTransformer"))
         
         persistentContainer = NSPersistentContainer(name: "DataSetProject")
-        persistentContainer.loadPersistentStores { descriptionn, error in
+        persistentContainer.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Unable to initialize Core Data \(error)")
             }

@@ -9,17 +9,17 @@ import Foundation
 import CoreData
 
 @objc(DatasetSkeleton)
-public class DatasetSkeleton : NSObject, NSCoding {
+public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
     
 // MARK: Field Variables
     
-    private var rawData : [[String]] = [[]]
-    private var keys : [[String]] = [[],[],[]]
-    private var numericalData : [[Double]] = [[]]
-    var calculations : [Double] = Array<Double>(repeating: 0.0, count: 9)
+    @NSManaged private var rawData : [[String]]!
+    @NSManaged private var keys : [[String]]!
+    @NSManaged private var numericalData : [[Double]]!
+    @NSManaged public var calculations : [Double]!
     
-    var creationDate : String!
-    var name : String = ""
+    @NSManaged public var creationDate : String!
+    @NSManaged var name : String!
     
     private let db = DataBridge()
     private let h = HomeViewController()
@@ -55,10 +55,14 @@ public class DatasetSkeleton : NSObject, NSCoding {
 //MARK: Initializers
     
     override init() {
+        super.init()
+        
         self.name = "New Unnamed Dataset"
         self.creationDate = formatter.string(from: Date())
-        rawData = []
-        
+        self.rawData = []
+        self.keys = [[],[],[]]
+        self.numericalData = []
+        self.calculations = Array<Double>(repeating: 0.0, count: 9)
     }
     
     init(name : String, appendable: [[String]]) {
@@ -69,15 +73,19 @@ public class DatasetSkeleton : NSObject, NSCoding {
         self.rawData = appendable
         self.keys = self.solveKeys(appendable)
         self.numericalData = self.cleanData(appendable)
+        self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset : numericalData).calculate()
     }
     
     init(name : String) {
+        super.init()
+        
         self.name = name
         self.rawData = [["0"]]
         self.creationDate = formatter.string(from: Date())
         self.numericalData = [[0]]
         self.keys = []
+        self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset: numericalData).calculate()
     }
     
@@ -168,3 +176,19 @@ public class DatasetSkeleton : NSObject, NSCoding {
         return (numericalData.count * numericalData[0].count) < 2
     }
 }
+
+
+// MARK: CORE DATA EXTENSIONS
+
+extension DatasetSkeleton {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<DatasetSkeleton> {
+        return NSFetchRequest<DatasetSkeleton>(entityName: "Dataset")
+    }
+
+}
+
+extension DatasetSkeleton: Identifiable {
+
+}
+

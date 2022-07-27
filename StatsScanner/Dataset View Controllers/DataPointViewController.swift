@@ -14,9 +14,11 @@ var sa : Bool! = true
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     private let spreadsheetView = SpreadsheetView()
-    var dataset : Dataset!
+    private var dataset : Dataset!
 	@IBOutlet var edit: UIButton!
-    var proj : DataSetProject!
+    private var proj : DataSetProject!
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
@@ -125,6 +127,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 			print("Saving")
             let h = HomeViewController()
             h.updateItem(item:self.proj, dataset: self.dataset)
+            do {
+                try self.context.save()
+            } catch {
+                fatalError("CORE DATA SAVE FAILED")
+            }
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
 			edible = false
             if (sa) {

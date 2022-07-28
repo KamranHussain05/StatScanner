@@ -66,7 +66,7 @@ public class Dataset: NSObject, NSCoding {
 		print(appendable[0])
 		keys = appendable[0]
 		var a = appendable
-		a.remove(at: 0)
+		a.removeFirst()
 		self.data = self.cleanData(array: a)
 		
 		self.calculate()
@@ -202,8 +202,16 @@ public class Dataset: NSObject, NSCoding {
 		for e in array {
 			result.append(e.doubleArray)
 		}
-		result.removeFirst()
-		result.removeLast()
+		if(result[0].count == 0) {
+			print("first row empty")
+			result.removeFirst()
+		}
+
+		if(result[result.count-1].count == 0) {
+			result.removeLast()
+			print("last row empty")
+		}
+		print(result)
 		return result
 	}
 	

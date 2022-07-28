@@ -125,13 +125,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("Saving")
-            let h = HomeViewController()
-            h.updateItem(item:self.proj, dataset: self.dataset)
-            do {
-                try self.context.save()
-            } catch {
-                fatalError("CORE DATA SAVE FAILED")
-            }
+            fatalError()
 			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
 			edible = false
             if (sa) {

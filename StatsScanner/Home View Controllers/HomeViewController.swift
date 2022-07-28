@@ -207,6 +207,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         
         do {
             try context.save()
+			getAllItems()
         } catch {
             fatalError("CORE DATA DELETION FAILED")
         }
@@ -218,6 +219,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 		item.name = dataset.name
         do {
 			try context.save()
+			getAllItems()
         } catch {
             fatalError("CORE DATA UPDATE FAILED")
         }

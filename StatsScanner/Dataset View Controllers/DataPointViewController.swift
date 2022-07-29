@@ -56,18 +56,21 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
     
 	//MARK: TABLE INIT
-	var count = 0
+	//var count = 0
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        print(dataset.getRawData()[indexPath.row][indexPath.section])
-        count += 1
-        print("method has been ran \(count) times")
-        print("rawData count is \(dataset.getRawData().count*dataset.getRawData()[0].count)")
+        //print(dataset.getRawData()[indexPath.row][indexPath.section])
+        //count += 1
+        //print("method has been ran \(count) times")
+        //print("rawData count is \(dataset.getRawData().count*dataset.getRawData()[0].count)")
         if (dataset.isEmpty()) {
             cell.setup(with: "", dataset: self.dataset)
             return cell
         } else {
             cell.setup(with: String(dataset.getRawData()[indexPath.row][indexPath.section]), dataset: self.dataset)
+            cell.dataset = self.dataset
+            cell.x = indexPath.column
+            cell.y = indexPath.row
             if (!cell.getText().isNumeric) {
                 cell.backgroundColor = .systemFill
             }
@@ -200,13 +203,17 @@ class DataPointCell: Cell, UITextFieldDelegate {
         if (edible) {
             if (self.field.text!.isNumeric) { // is a number
                 let val = Double(self.field.text!)!
-                self.dataset.updateVal(x: self.x, y: self.y, val: val)
+                self.dataset.updateVal(y: self.y, x: self.x, val: val)
+                print("new val: \(val), coordinates: (\(self.x!), \(self.y!))")
                 print(self.dataset.getData())
+                print(self.dataset.getRawData())
                 field.resignFirstResponder()
             } else if (self.backgroundColor == .systemFill) { // is a header
                 let val = String(self.field.text!)
                 //self.dataset.updateKey(x: self.x, y: self.y, val: val)
                 self.dataset.updateHeader(index: self.x, val: val)
+                print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
+                print(self.dataset.getKeys())
                 field.resignFirstResponder()
             }
         }

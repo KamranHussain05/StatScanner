@@ -136,12 +136,14 @@ public class Dataset: NSObject, NSCoding {
 	}
 	
 	/// Changes a specific value
-	func updateVal(x: Int, y: Int, val: Double) {
-		data[x][y] = val
+	func updateVal(y: Int, x: Int, val: Double) {
+		rawData[y][x] = String(val)
+		data[x-1][y] = val
 		self.calculate()
 	}
 	
 	func updateHeader(index: Int, val: String) {
+		rawData[index][0] = val
 		keys[index] = val
 		self.calculate()
 	}
@@ -217,6 +219,7 @@ public class Dataset: NSObject, NSCoding {
 		var result = 0.0
 		for i in 0...data.count-1 {
 			for j in 0...data[0].count-1 {
+				print(data[i][j])
 				result+=data[i][j]
 			}
 		}

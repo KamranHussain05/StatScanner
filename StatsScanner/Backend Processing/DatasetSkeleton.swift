@@ -16,13 +16,12 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
     @NSManaged private var rawData : [[String]]!
     @NSManaged private var keys : [[String]]!
     @NSManaged private var numericalData : [Double]!
-    @NSManaged public var calculations : [Double]!
+    @NSManaged private var calculations : [Double]!
     
-    @NSManaged public var creationDate : String!
-    @NSManaged var name : String!
+    @NSManaged private var creationDate : String!
+    @NSManaged private var name : String!
     
     private let db = DataBridge()
-    private let h = HomeViewController()
     private let formatter : DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
@@ -43,13 +42,13 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
     
     required convenience public init?(coder decoder: NSCoder) {
         self.init()
+        
         self.rawData = decoder.decodeObject(forKey:"rawData") as? [[String]] ?? [[]]
         self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[],[],[]]
         self.numericalData = decoder.decodeObject(forKey:"numericalData") as? [Double] ?? []
         self.calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
-        
     }
     
 //MARK: Initializers
@@ -91,6 +90,9 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
     
 // MARK: Data Pre-Processing
     
+    /// Resolves which axis of the CSV array are keys and adds those keys to a key array, the
+    /// method always assumes the top header contains keys.
+    /// @Return A 2D String array where the indices are Top, Left, and Right, respectively
     private func solveKeys(_ data:[[String]]) -> [[String]] {
         var res : [[String]] = [[],[],[]]
         res[0] = data[0]
@@ -109,6 +111,7 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
         return res
     }
     
+    /// Cleans the raw CSV data and extracts the numerical values for calculation and visualizatin
     private func cleanData(_:[[String]]) -> [Double] {
         var result = Array<Double>()
         for x in 0...self.rawData[0].count {

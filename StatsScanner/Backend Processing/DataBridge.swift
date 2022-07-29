@@ -107,6 +107,12 @@ class DataBridge {
                 result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
             }
         }
+        
+        for i in 0...result.count-1 {
+            if(result[i].isEmpty) {
+                result.remove(at: i)
+            }
+        }
         return result
     }
 

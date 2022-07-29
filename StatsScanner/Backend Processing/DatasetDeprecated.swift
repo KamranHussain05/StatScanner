@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 /// A DataSet Object which stores the array, name, creationdate, and more data
-@objc(DatasetDeprecated)
-public class DatasetDeprecated: NSObject, NSCoding {
+@objc(Dataset)
+public class Dataset: NSObject, NSCoding {
 	
 	var data : [[Double]] = [[]]
 	private var keys: [String] = []
@@ -32,7 +32,7 @@ public class DatasetDeprecated: NSObject, NSCoding {
 		coder.encode(name, forKey: "name")
 		coder.encode(creationDate, forKey: "creationDate")
 		coder.encode(calculations, forKey: "calculations")
-		cpder.encode(rawData, forKey: "rawData")
+		coder.encode(rawData, forKey: "rawData")
 	}
 	
 	public required convenience init?(coder decoder: NSCoder) {

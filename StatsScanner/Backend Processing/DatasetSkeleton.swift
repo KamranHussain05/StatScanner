@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-@objc(Dataset)
-public class Dataset: NSObject, NSCoding, NSFetchRequestResult {
+@objc(DatasetSkeleton)
+public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
     
 // MARK: Field Variables
     

@@ -8,14 +8,14 @@
 import Foundation
 import CoreData
 
-@objc(DatasetSkeleton)
-public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
+@objc(Dataset)
+public class Dataset: NSObject, NSCoding, NSFetchRequestResult {
     
 // MARK: Field Variables
     
     @NSManaged private var rawData : [[String]]!
     @NSManaged private var keys : [[String]]!
-    @NSManaged private var numericalData : [[Double]]!
+    @NSManaged private var numericalData : [Double]!
     @NSManaged public var calculations : [Double]!
     
     @NSManaged public var creationDate : String!
@@ -45,7 +45,7 @@ public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
         self.init()
         self.rawData = decoder.decodeObject(forKey:"rawData") as? [[String]] ?? [[]]
         self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[],[],[]]
-        self.numericalData = decoder.decodeObject(forKey:"numericalData") as? [[Double]] ?? [[]]
+        self.numericalData = decoder.decodeObject(forKey:"numericalData") as? [Double] ?? []
         self.calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
@@ -83,7 +83,7 @@ public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
         self.name = name
         self.rawData = [["0"]]
         self.creationDate = formatter.string(from: Date())
-        self.numericalData = [[0]]
+        self.numericalData = [0]
         self.keys = []
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset: numericalData).calculate()
@@ -109,8 +109,17 @@ public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
         return res
     }
     
-    private func cleanData(_:[[String]]) -> [[Double]]{
-        return [[]]
+    private func cleanData(_:[[String]]) -> [Double] {
+        var result = Array<Double>()
+        for x in 0...self.rawData[0].count {
+            for y in 0...self.rawData.count {
+                if(self.rawData[x][y].isNumeric) {
+                    result.append(Double(self.rawData[x][y])!)
+                }
+            }
+        }
+        
+        return result
     }
     
 // MARK: Getter and Setters
@@ -123,19 +132,19 @@ public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
         return self.creationDate
     }
     
-    func getData() -> [[Double]] {
-        if(self.numericalData.count*self.numericalData[0].count < 2) {
-            return [[0]]
+    func getData() -> [[String]] {
+        if(self.numericalData.count < 2) {
+            return [[""]]
         }
-        return self.numericalData
+        return self.rawData
     }
     
     func getKeys() -> [String] {
         return self.keys[0]
     }
     
-    func updateVal(x : Int, y : Int, val : Double) {
-        self.numericalData[y][x] = val
+    func updateVal(x : Int, y : Int, val : String) {
+        self.rawData[y][x] = val
     }
     
     func updateKey(x : Int, y : Int, val : String) {
@@ -144,10 +153,6 @@ public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
     
     func getCalculations() -> [Double] {
         return self.calculations
-    }
-    
-    func updateData(x : Int = 0, val : [Double]) {
-        self.numericalData.append(val)
     }
     
     func getTotalNumItems() -> Int {
@@ -160,20 +165,13 @@ public class DatasetSkeleton : NSObject, NSCoding, NSFetchRequestResult {
         if (self.isEmpty()) {
             return
         }
-        var result : Array<Array<String>> = [[]]
-        //result.append(keys)
-        
-        for e in numericalData {
-            result.append(e.stringArray)
-        }
-        print(result)
         
         let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
-        db.writeCSV(fileName: fileName, data: result)
+        db.writeCSV(fileName: fileName, data: self.rawData)
     }
     
     func isEmpty() -> Bool{
-        return (numericalData.count * numericalData[0].count) < 2
+        return (numericalData.count) < 2
     }
 }
 

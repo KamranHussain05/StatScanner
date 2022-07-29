@@ -36,7 +36,7 @@
 		A85092C927497F7A00392240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85092C727497F7A00392240 /* LaunchScreen.storyboard */; };
 		A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092D327497F7A00392240 /* StatsScannerTests.swift */; };
 		A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD6DF62779AE030048912C /* DataBridge.swift */; };
-		A8CA563227716205006BDF61 /* DatasetDepretiated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* DatasetDepretiated.swift */; };
+		A8CA563227716205006BDF61 /* DatasetDeprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* DatasetDeprecated.swift */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
 		A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56382772989D006BDF61 /* Cholesterol_R.csv */; };
 		A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563A277298AD006BDF61 /* Crime_R.csv */; };
@@ -101,7 +101,7 @@
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8BD6DEC27794A810048912C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8BD6DF62779AE030048912C /* DataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBridge.swift; sourceTree = "<group>"; };
-		A8CA563127716205006BDF61 /* DatasetDepretiated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetDepretiated.swift; sourceTree = "<group>"; usesTabs = 1; };
+		A8CA563127716205006BDF61 /* DatasetDeprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetDeprecated.swift; sourceTree = "<group>"; usesTabs = 1; };
 		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
 		A8CA56382772989D006BDF61 /* Cholesterol_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cholesterol_R.csv; sourceTree = "<group>"; };
 		A8CA563A277298AD006BDF61 /* Crime_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Crime_R.csv; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			children = (
 				4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */,
 				4D3B6E9A288F551300BB1C03 /* Calculations.swift */,
-				A8CA563127716205006BDF61 /* DatasetDepretiated.swift */,
+				A8CA563127716205006BDF61 /* DatasetDeprecated.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
 				4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */,
@@ -474,7 +474,7 @@
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
-				A8CA563227716205006BDF61 /* DatasetDepretiated.swift in Sources */,
+				A8CA563227716205006BDF61 /* DatasetDeprecated.swift in Sources */,
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				4D2F1688279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift in Sources */,

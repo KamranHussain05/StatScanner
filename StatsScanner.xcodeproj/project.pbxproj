@@ -29,7 +29,7 @@
 		A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F4907277F9A1300C8FB35 /* StatsViewController.swift */; };
 		A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092B927497F6F00392240 /* AppDelegate.swift */; };
 		A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BB27497F6F00392240 /* SceneDelegate.swift */; };
-		A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BD27497F6F00392240 /* CameraOCRThing.swift */; };
+		A85092BE27497F6F00392240 /* OCRScanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092BD27497F6F00392240 /* OCRScanning.swift */; };
 		A85092C127497F6F00392240 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85092BF27497F6F00392240 /* Main.storyboard */; };
 		A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A85092C227497F7000392240 /* StatsScanner.xcdatamodeld */; };
 		A85092C627497F7A00392240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85092C527497F7A00392240 /* Assets.xcassets */; };
@@ -88,7 +88,7 @@
 		A85092B627497F6F00392240 /* StatsScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatsScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85092B927497F6F00392240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A85092BB27497F6F00392240 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A85092BD27497F6F00392240 /* CameraOCRThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOCRThing.swift; sourceTree = "<group>"; };
+		A85092BD27497F6F00392240 /* OCRScanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRScanning.swift; sourceTree = "<group>"; };
 		A85092C027497F6F00392240 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A85092C327497F7000392240 /* StatsScanner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatsScanner.xcdatamodel; sourceTree = "<group>"; };
 		A85092C527497F7A00392240 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,27 +148,27 @@
 			path = "Home View Controllers";
 			sourceTree = "<group>";
 		};
-		0AF001592782BE61001BF87E /* Backend Processing */ = {
+		0AF001592782BE61001BF87E /* Backend */ = {
 			isa = PBXGroup;
 			children = (
 				4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */,
 				4D3B6E9A288F551300BB1C03 /* Calculations.swift */,
 				A8CA563127716205006BDF61 /* DatasetDeprecated.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
-				A85092BD27497F6F00392240 /* CameraOCRThing.swift */,
+				A85092BD27497F6F00392240 /* OCRScanning.swift */,
 				4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */,
 			);
-			path = "Backend Processing";
+			path = Backend;
 			sourceTree = "<group>";
 		};
-		0AF0015A2782BEA4001BF87E /* Dataset View Controllers */ = {
+		0AF0015A2782BEA4001BF87E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4DE04DF82850357300C5D5BC /* DataPointViewController.swift */,
 				A83F4907277F9A1300C8FB35 /* StatsViewController.swift */,
 				4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */,
 			);
-			path = "Dataset View Controllers";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		1F291427D55372448DC04E64 /* Pods */ = {
@@ -223,9 +223,9 @@
 				A85092B927497F6F00392240 /* AppDelegate.swift */,
 				A85092BB27497F6F00392240 /* SceneDelegate.swift */,
 				0AF001582782BE54001BF87E /* Home View Controllers */,
+				0AF0015A2782BEA4001BF87E /* View Controllers */,
 				4DE04DF72850344B00C5D5BC /* CoreData */,
-				0AF001592782BE61001BF87E /* Backend Processing */,
-				0AF0015A2782BEA4001BF87E /* Dataset View Controllers */,
+				0AF001592782BE61001BF87E /* Backend */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
@@ -468,7 +468,7 @@
 			files = (
 				A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */,
 				4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */,
-				A85092BE27497F6F00392240 /* CameraOCRThing.swift in Sources */,
+				A85092BE27497F6F00392240 /* OCRScanning.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				4D2F1687279AACF70096F9DA /* DataSetProject+CoreDataClass.swift in Sources */,
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,

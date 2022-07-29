@@ -30,9 +30,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		let layout = UICollectionViewFlowLayout()
-		//let width = (view.frame.size.width*(1-3*sc))/2
-		//let height = (view.frame.size.width*(1.25-sc))/2
-		// 414 is width of iphone11 screen
 		let width = (414*(1-3*sc))/2
 		let height = (414*(1.25-sc))/2
 		layout.itemSize = CGSize(width: width, height: height)
@@ -134,7 +131,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     
     ///Presents the image scanning window and starts that pipeline
 	func scanningImage() {
-        let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
+        let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! OCRScanning
         scanview.modalPresentationStyle = .popover
         scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)

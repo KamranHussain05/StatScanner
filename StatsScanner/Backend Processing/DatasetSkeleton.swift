@@ -8,18 +8,18 @@
 import Foundation
 import CoreData
 
-@objc(DatasetSkeleton)
-public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
+@objc(Dataset)
+public class Dataset: NSObject, NSCoding {
     
 // MARK: Field Variables
     
-    @NSManaged private var rawData : [[String]]!
-    @NSManaged private var keys : [[String]]!
-    @NSManaged private var numericalData : [Double]!
-    @NSManaged private var calculations : [Double]!
+    private var rawData : [[String]]!
+    private var keys : [[String]]!
+    private var numericalData : [Double]!
+    private var calculations : [Double]!
     
-    @NSManaged private var creationDate : String!
-    @NSManaged private var name : String!
+    private var creationDate : String!
+    private var name : String!
     
     private let db = DataBridge()
     private let formatter : DateFormatter = {
@@ -71,7 +71,7 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
         self.creationDate = formatter.string(from: Date())
         self.rawData = appendable
         self.keys = self.solveKeys(appendable)
-        self.numericalData = self.cleanData(appendable)
+        self.updateNumData()
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset : numericalData).calculate()
     }
@@ -104,7 +104,7 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
             left.append(data[i][0])
         }
         
-        for i in 0...data[data[0].count].count-1 {
+        for i in 0...data[data[0].count-1].count-1 {
             right.append(data[data[0].count-1][i])
         }
         
@@ -112,20 +112,24 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
     }
     
     /// Cleans the raw CSV data and extracts the numerical values for calculation and visualizatin
-    private func cleanData(_:[[String]]) -> [Double] {
+    private func updateNumData() {
         var result = Array<Double>()
-        for x in 0...self.rawData[0].count {
-            for y in 0...self.rawData.count {
-                if(self.rawData[x][y].isNumeric) {
-                    result.append(Double(self.rawData[x][y])!)
+        for i in 0...self.rawData.count-1 {
+            for j in 0...self.rawData[0].count-1 {
+                if(self.rawData[i][j].isNumeric) {
+                    result.append(Double(self.rawData[i][j])!)
                 }
             }
         }
         
-        return result
+        self.numericalData = result
     }
     
-// MARK: Getter and Setters
+    private func reCalculate() {
+        self.calculations = Calculations(dataset:numericalData).calculate()
+    }
+    
+// MARK: Getters
     
     func getName() -> String {
         return self.name
@@ -142,16 +146,12 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
         return self.rawData
     }
     
+    func getNumericalData() -> [Double] {
+        return self.numericalData
+    }
+    
     func getKeys() -> [String] {
         return self.keys[0]
-    }
-    
-    func updateVal(x : Int, y : Int, val : String) {
-        self.rawData[y][x] = val
-    }
-    
-    func updateKey(x : Int, y : Int, val : String) {
-        self.keys[y][x] = val
     }
     
     func getCalculations() -> [Double] {
@@ -160,6 +160,22 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
     
     func getTotalNumItems() -> Int {
         return rawData.count * rawData[0].count
+    }
+    
+// MARK: Setters
+    
+    func updateVal(x : Int, y : Int, val : String) {
+        self.rawData[y][x] = val
+        self.updateNumData()
+        self.reCalculate()
+    }
+    
+    func updateKey(x : Int = 0, y : Int, val : String) {
+        self.keys[y][x] = val
+    }
+    
+    func setName(name : String) {
+        self.name = name
     }
     
 // MARK: TO CSV
@@ -181,15 +197,33 @@ public class DatasetSkeleton: NSObject, NSCoding, NSFetchRequestResult {
 
 // MARK: CORE DATA EXTENSIONS
 
-extension DatasetSkeleton {
+//extension Dataset {
+//
+//    @nonobjc public class func fetchRequest() -> NSFetchRequest<Dataset> {
+//        return NSFetchRequest<Dataset>(entityName: "Dataset")
+//    }
+//
+//}
+//
+//extension Dataset: Identifiable {
+//
+//}
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<DatasetSkeleton> {
-        return NSFetchRequest<DatasetSkeleton>(entityName: "Dataset")
+// MARK: DATA EXTENSIONS
+extension String {
+    var isNumeric : Bool {
+        return Double(self) != nil
     }
-
 }
 
-extension DatasetSkeleton: Identifiable {
-
+extension Collection where Iterator.Element == Double {
+    var stringArray : [String] {
+        return compactMap{ String($0) }
+    }
 }
 
+extension Collection where Iterator.Element == String {
+    var doubleArray: [Double] {
+        return compactMap{ Double($0) }
+    }
+}

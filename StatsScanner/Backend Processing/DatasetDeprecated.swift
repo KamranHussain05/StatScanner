@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 /// A DataSet Object which stores the array, name, creationdate, and more data
-@objc(Dataset)
-public class Dataset: NSObject, NSCoding {
+@objc(DatasetDeprecated)
+public class DatasetDeprecated: NSObject, NSCoding {
 	
 	var data : [[Double]] = [[]]
 	private var keys: [String] = []
@@ -374,24 +374,5 @@ public class Dataset: NSObject, NSCoding {
 	/// Returns the standard error of the specified axis
 	private func getStandardError(axis: Int) -> Double {
 		return getStandardDeviation(index: axis)/sqrt(Double(getNumItems(index: axis)))
-	}
-}
-
-//MARK: EXTENSIONS
-extension String {
-	var isNumeric : Bool {
-		return Double(self) != nil
-	}
-}
-
-extension Collection where Iterator.Element == Double {
-	var stringArray : [String] {
-		return compactMap{ String($0) }
-	}
-}
-
-extension Collection where Iterator.Element == String {
-	var doubleArray: [Double] {
-		return compactMap{ Double($0) }
 	}
 }

@@ -72,18 +72,18 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func loadData() {
-        name = datasetobj.name
-        date = datasetobj.creationDate
+        name = datasetobj.getName()
+        date = datasetobj.getCreationDate()
         items = String(datasetobj.getTotalNumItems())
-        mean = String(round(1000 * datasetobj.calculations[0]) / 1000)
-        median = String(datasetobj.calculations[1])
-        mode = String(datasetobj.calculations[2])
-        min = String(datasetobj.calculations[3])
-        max = String(datasetobj.calculations[4])
-        range = String(datasetobj.calculations[5])
-        stddev = String(round(1000 * datasetobj.calculations[6]) / 1000)
-        abdev = String(round(1000 * datasetobj.calculations[7]) / 1000)
-        error = String(round(1000 * datasetobj.calculations[8]) / 1000)
+        mean = String(round(1000 * datasetobj.getCalculations()[0]) / 1000)
+        median = String(datasetobj.getCalculations()[1])
+        mode = String(datasetobj.getCalculations()[2])
+        min = String(datasetobj.getCalculations()[3])
+        max = String(datasetobj.getCalculations()[4])
+        range = String(datasetobj.getCalculations()[5])
+        stddev = String(round(1000 * datasetobj.getCalculations()[6]) / 1000)
+        abdev = String(round(1000 * datasetobj.getCalculations()[7]) / 1000)
+        error = String(round(1000 * datasetobj.getCalculations()[8]) / 1000)
         
         models[0].cells[0].calc = name
         models[0].cells[1].calc = date
@@ -115,7 +115,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
-            self.datasetobj.name = text
+            self.datasetobj.setName(name: text)
             self.loadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel/*, handler: { _ in

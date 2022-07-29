@@ -67,7 +67,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             cell.setup(with: "", dataset: self.dataset)
             return cell
         } else {
-            cell.setup(with: String(dataset.getRawData()[indexPath.row][indexPath.section]), dataset: self.dataset)
+            cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
             cell.dataset = self.dataset
             cell.x = indexPath.column
             cell.y = indexPath.row
@@ -91,7 +91,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         if (dataset.isEmpty()) {
             return Int(view.frame.size.height/50)
         } else {
-            return self.dataset.getRawData().count
+            return self.dataset.getData().count
         }
     }
 
@@ -203,15 +203,15 @@ class DataPointCell: Cell, UITextFieldDelegate {
         if (edible) {
             if (self.field.text!.isNumeric) { // is a number
                 let val = Double(self.field.text!)!
-                self.dataset.updateVal(y: self.y, x: self.x, val: val)
+                self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
                 print("new val: \(val), coordinates: (\(self.x!), \(self.y!))")
+                print(self.dataset.getNumericalData())
                 print(self.dataset.getData())
-                print(self.dataset.getRawData())
                 field.resignFirstResponder()
             } else if (self.backgroundColor == .systemFill) { // is a header
                 let val = String(self.field.text!)
                 //self.dataset.updateKey(x: self.x, y: self.y, val: val)
-                self.dataset.updateHeader(index: self.x, val: val)
+                self.dataset.updateKey(y: self.x, val: val)
                 print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
                 print(self.dataset.getKeys())
                 field.resignFirstResponder()

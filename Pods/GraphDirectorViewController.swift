@@ -65,7 +65,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
 //            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 //                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .categories(xvalsFormatted())
-            .title(dataset.name)
+            .title(dataset.getName())
             .series(formattedData())
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         // The chart view object calls the instance object of AAChartModel and draws the final graphic

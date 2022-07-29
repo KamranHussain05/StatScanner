@@ -49,7 +49,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
                     print("Scanning image")
-                    _ = self.scanningImage()
+                    self.scanningImage()
                 }
             )
         }
@@ -92,35 +92,30 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 	
     ///Creates a new dataset
     func createWithName(method: Int) {
-        let new = Dataset()
-        let alert = UIAlertController(title: "New DataSet Name",
-                                      message: nil,
-                                      preferredStyle: .alert)
+        let alert = UIAlertController(title: "New DataSet Name", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-		}
-		new.name = text
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {return}
+			
+		let new = Dataset(name: text)
             
 		switch(method) {
 		case 0:
-			_ = self?.scanningImage()
+			self?.scanningImage()
 			print("scanning image")
 			break
 		case 1:
 			//import image method call
 			print("importing image")
-			self?.createItem(item: new, name: new.name) //remove this after pipelines are implemented
+			self?.createItem(item: new, name: new.getName()) //remove this after pipelines are implemented
 			break
 		case 2:
-			self?.dbuilder.name = new.name
+			self?.dbuilder.name = new.getName()
 			self?.importCSV()
 			print("importing csv")
 			break
 		case 3:
 			print("creating blank dataset")
-			self?.createItem(item: new, name: new.name)
+			self?.createItem(item: new, name: new.getName())
 			break
 		default:
 			return
@@ -138,12 +133,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     ///Presents the image scanning window and starts that pipeline
-	func scanningImage() -> Bool {
+	func scanningImage() {
         let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
         scanview.modalPresentationStyle = .popover
         scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)
-		return true
     }
 	
 	///Launches the controller for CSV importing
@@ -216,7 +210,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     ///Updates the dataset project in Core Data
     public func updateItem(item: DataSetProject, dataset: Dataset) {
         item.datasetobject = dataset
-		item.name = dataset.name
+		item.name = dataset.getName()
         do {
 			try context.save()
 			getAllItems()
@@ -242,11 +236,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 		let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: HomeTiles.identifier, for: indexPath) as! HomeTiles
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
         
-        cell.dataSetName.text = model.datasetobject?.name
+        cell.dataSetName.text = model.datasetobject?.getName()
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
-        cell.creationDate.text = "Created: " + (model.datasetobject?.creationDate)!
+        cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!
-        print(model.datasetobject!.name)
+        print(model.datasetobject!.getName())
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         myCollectionView.addGestureRecognizer(longPressGesture)
@@ -259,7 +253,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     @objc func openDataSet(_ sender:UIButton) {
         print("Opening DataSet")
         self.selectedDataset = models[sender.tag].datasetobject!
-        print(selectedDataset.name)
+        print(selectedDataset.getName())
         let vc = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
         vc.modalPresentationStyle = .fullScreen
         

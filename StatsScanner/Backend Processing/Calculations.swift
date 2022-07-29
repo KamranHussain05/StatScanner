@@ -9,9 +9,10 @@ import Foundation
 
 public class Calculations {
     var calculations : [Double] = Array<Double>(repeating: 0.0, count: 9)
-    var dataset : [[Double]]
+   
+    var dataset : [Double]
     
-    init(dataset: [[Double]]) {
+    init(dataset: [Double]) {
         self.dataset = dataset
     }
     
@@ -26,11 +27,7 @@ public class Calculations {
         calculations[7] = (self.getMAD())
         calculations[8] = (self.getStandardError())
         print("Re-Did Calculations")
-        /*do {
-            try h.context.save()
-        } catch {
-            fatalError("Core Data Save Failed")
-        }*/
+        
         return calculations
     }
     
@@ -40,51 +37,37 @@ public class Calculations {
     private func getSetAverage() -> Double{
         var result = 0.0
         for i in 0...dataset.count-1 {
-            for j in 0...dataset[0].count-1 {
-                result+=dataset[i][j]
-            }
+            result+=dataset[i]
         }
-        return result/Double(dataset.count * dataset[0].count)
+        return result/Double(dataset.count)
     }
     
     /// Returns the maximum value of the data set
     private func getMax() -> Double {
-        var result = [Double]()
-        for i in 0...dataset.count-1 {
-            result.append(dataset[i].max() ?? 0)
-        }
-        return result.max()!
+        return self.dataset.max()!
     }
     
     /// Returns the minimum value in the data
     private func getMin() -> Double {
-        var result = [Double]()
-        for i in 0...dataset.count-1 {
-            result.append(dataset[i].min() ?? 0)
-        }
-        return result.min()!
+        return self.dataset.min()!
     }
     
     /// Finds the standard deviation of everything in the dataset
     private func getStandardDeviation() -> Double {
         var diffsqrs = 0.0
         for e in dataset {
-            for i in e {
-                diffsqrs += pow(i - getSetAverage(), 2)
-            }
+                diffsqrs += pow(e - getSetAverage(), 2)
         }
-        return sqrt(diffsqrs / Double(dataset.count * dataset[0].count))
+        return sqrt(diffsqrs / Double(dataset.count))
     }
     
     /// Finds the mean absolute deviation of  everything in the dataset
     private func getMAD() -> Double {
-        var stuff = 0.0
-        for i in dataset {
-            for z in i {
-                stuff += abs(z - getSetAverage())
-            }
+        var sum = 0.0
+        for e in dataset {
+            sum += abs(e - getSetAverage())
         }
-        return stuff / Double(dataset.count * dataset[0].count)
+        return sum / Double(dataset.count)
     }
     
     /// Returns the mode(s) of the specified axis
@@ -98,27 +81,13 @@ public class Calculations {
         return []
     }
     
-    /// Returns the mode(s) of the entire dataset
-    private func getModes() -> [Double] {
-        var res = [Double]()
-        for i in 0...dataset.count-1 {
-            res.append(contentsOf: getModes(arr: dataset[i]))
-        }
-        return getModes(arr: res)
-    }
-    
     private func getMode() -> Double {
-        return getModes()[0]
+        return getModes(arr: self.dataset)[0]
     }
     
     /// Returns the median of the entire datasete
     private func getMedian() -> Double {
-        var oneD = Array<Double>(repeating: 0.0, count: 0)
-        for i in 0...dataset.count-1 {
-            for j in 0...dataset[0].count-1 {
-                oneD.append(dataset[i][j])
-            }
-        }
+        var oneD = dataset
         oneD.sort()
         if (oneD.count % 2 == 0) {
             let first = oneD[oneD.count/2-1]
@@ -129,20 +98,8 @@ public class Calculations {
         }
     }
     
-    /// Returns the median of the specified axis
-    private func getMedian(axis: Int) -> Double {
-        var copy = dataset[axis]
-        copy.sort()
-        
-        let i = copy.count/2
-        if(i%2 == 0) {
-            return (copy[i]+copy[i+1])/2
-        }
-        return copy[i]
-    }
-    
     /// Returns the standard error of the entire dataset
     private func getStandardError() -> Double {
-        return getStandardDeviation()/sqrt(Double(dataset.count*dataset[0].count))
+        return getStandardDeviation()/sqrt(Double(dataset.count))
     }
 }

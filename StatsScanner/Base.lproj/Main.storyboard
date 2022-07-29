@@ -336,15 +336,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxJ-XI-dAb">
-                                <rect key="frame" x="349" y="74" width="45" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxJ-XI-dAb">
+                                <rect key="frame" x="354" y="74" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Geq-Zu-sDe"/>
                                     <constraint firstAttribute="width" constant="45" id="un6-UK-2z2"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title=" ">
-                                    <imageReference key="image" image="arrowshape.turn.up.backward.fill" catalog="system" symbolScale="large"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <imageReference key="image" image="xmark.app.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="onBackClickWith_sender:" destination="Y0Z-dZ-eFM" eventType="touchUpInside" id="wJB-sI-IAf"/>
@@ -376,11 +377,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbF-7h-BgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1916" y="-664"/>
+            <point key="canvasLocation" x="-1917.3913043478262" y="-664.28571428571422"/>
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
         <image name="pencil.tip.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
@@ -388,6 +388,7 @@
         <image name="questionmark.folder" catalog="system" width="128" height="97"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="table" catalog="system" width="128" height="93"/>
+        <image name="xmark.app.fill" catalog="system" width="128" height="114"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -119,9 +119,13 @@ public class Dataset: NSObject, NSCoding {
 		return self.data
 	}
 	
+	///Returns the rawdata array
+	public func getRawData() -> [[String]] {
+		return self.rawData
+	}
+	
 	///Returns the Dataset keys/x-axis
 	public func getKeys() -> [String]{
-		print(self.keys)
 		return self.keys
 	}
 	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
@@ -176,7 +176,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal">
-                                            <imageReference key="image" image="plus.app.fill" catalog="system" symbolScale="large"/>
+                                            <imageReference key="image" image="plus.app" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
                                         <connections>
@@ -390,7 +390,7 @@
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
         <image name="pencil.tip.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
-        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="plus.forwardslash.minus" catalog="system" width="128" height="115"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="table" catalog="system" width="128" height="93"/>

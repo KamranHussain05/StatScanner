@@ -213,7 +213,14 @@ Project Link: [https://github.com/KamranHussain05/StatScanner](https://github.co
 * Logo Designed by [Lagumists](https://www.instagram.com/lagumists/)
 * Graphing Utilities Powered by [AAChartKit](https://github.com/AAChartModel/AAChartKit-Swift)
 * Data Point View Powered by [SpreadsheetView](https://github.com/bannzai/SpreadsheetView)
+
+Icons
 * <a href="https://www.flaticon.com/free-icons/data" title="data icons">Data icons created by Kiranshastry - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/leadership" title="leadership icons">Leadership icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/statistics" title="statistics icons">Statistics icons created by Andrean Prabowo - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/pie-chart" title="pie chart icons">Pie chart icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/curve" title="curve icons">Curve icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/stocks" title="stocks icons">Stocks icons created by Freepik - Flaticon</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

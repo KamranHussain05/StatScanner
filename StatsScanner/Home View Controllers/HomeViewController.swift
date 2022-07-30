@@ -21,6 +21,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
 	
+	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5",
+	"DataSetIcon6"]
+	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let newDatasetMenu = UIAlertController(title: "New Dataset",
         message: "Select how you would like to import your data",
@@ -238,6 +241,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!
         print(model.datasetobject!.getName())
+		cell.myImageView.image = UIImage(named: icons[indexPath.row])
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         myCollectionView.addGestureRecognizer(longPressGesture)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20019"/>
@@ -123,7 +123,7 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-NR-B5J">
                                                             <rect key="frame" x="0.0" y="19" width="180" height="83"/>
                                                             <color key="tintColor" name="AccentColor"/>
-                                                            <imageReference key="image" image="DataSetIcon" symbolScale="small"/>
+                                                            <imageReference key="image" image="DataSetIcon6" symbolScale="small"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
@@ -386,7 +386,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DataSetIcon" width="128" height="128"/>
+        <image name="DataSetIcon6" width="512" height="512"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
         <image name="pencil.tip.crop.circle.badge.plus" catalog="system" width="128" height="113"/>

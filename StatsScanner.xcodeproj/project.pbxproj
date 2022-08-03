@@ -18,8 +18,8 @@
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
 		4D3B6E9F288F5DEA00BB1C03 /* FileWriterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */; };
 		4D3B6EA1288F5DF900BB1C03 /* DataArrayStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */; };
+		4D9E980A2899E50A0014CA6D /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E98092899E50A0014CA6D /* DatasetBuilder.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
-		4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */; };
 		4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE04DFC28551E7900C5D5BC /* CloudKit.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
 		A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897A277EF0B100B8C2FE /* HomeTileList.swift */; };
@@ -75,8 +75,8 @@
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
 		4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriterTest.swift; sourceTree = "<group>"; };
 		4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataArrayStruct.swift; sourceTree = "<group>"; };
+		4D9E98092899E50A0014CA6D /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatasetBuilder.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/DatasetBuilder.swift"; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
-		4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		4DE04DFC28551E7900C5D5BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 				A8CA563127716205006BDF61 /* DatasetDeprecated.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* OCRScanning.swift */,
-				4DE04DFA2852DEB500C5D5BC /* DatasetBuilder.swift */,
+				4D9E98092899E50A0014CA6D /* DatasetBuilder.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -484,7 +484,7 @@
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,
 				A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */,
 				4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */,
-				4DE04DFB2852DEB600C5D5BC /* DatasetBuilder.swift in Sources */,
+				4D9E980A2899E50A0014CA6D /* DatasetBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

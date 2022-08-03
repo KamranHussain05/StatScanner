@@ -3,7 +3,9 @@
 //  StatScanner
 //
 //  Created by Caden Pun on 6/22/22.
+
 //MARK: New Stat View Controller
+
 import UIKit
 
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -159,7 +161,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func onBackClick(_sender:UIButton) {
         if (_sender == self.back){
             self.dismiss(animated:true)
-            
+            let h = HomeViewController()
+            h.getAllItems()
         }
     }
 }

@@ -62,8 +62,6 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             .chartType(currentGraphType)
             .animationType(.easeInSine)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
-//            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-//                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .categories(xvalsFormatted())
             .title(dataset.getName())
             .series(formattedData())
@@ -77,14 +75,12 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             aaChartModel.titleStyle(color)
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
-            //aaChartModel.dataLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
             aaChartModel.titleStyle(color)
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
-            //aaChartModel.dataLabelsStyle(color)
         }
         
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
@@ -114,7 +110,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         var arr = [AASeriesElement]()
         let d = dataset.getData()
         
-        if(dataset.getData().count <= 1) {
+        if(dataset.isEmpty()) {
             arr.append(AASeriesElement().data([0]))
             return arr
         }
@@ -128,6 +124,8 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         return arr
     }
 }
+
+// MARK: Picker View
 
 extension GraphDirectorViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -131,6 +131,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             if (sa) {
                 showAlert()
             }
+            self.updateItem(item: self.proj, dataset: self.dataset)
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("Editing")
 			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
@@ -162,6 +163,16 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         dialog.addAction(okAction)
         dialog.preferredAction = one
         present(dialog, animated:true)
+    }
+    
+    private func updateItem(item: DataSetProject, dataset: Dataset) {
+        item.datasetobject = dataset
+        item.name = dataset.getName()
+        do {
+            try context.save()
+        } catch {
+            fatalError("CORE DATA UPDATE FAILED")
+        }
     }
 }
 

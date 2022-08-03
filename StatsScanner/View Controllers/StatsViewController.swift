@@ -161,6 +161,14 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func onBackClick(_sender:UIButton) {
         if (_sender == self.back){
             self.dismiss(animated:true)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if isBeingDismissed {
+            print("being dismissed")
             let h = HomeViewController()
             h.getAllItems()
         }

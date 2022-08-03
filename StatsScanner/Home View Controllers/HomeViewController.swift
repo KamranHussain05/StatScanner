@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var models = [DataSetProject]()
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
+	public let name = "HomeViewController"
 	
 	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5",
 	"DataSetIcon6"]

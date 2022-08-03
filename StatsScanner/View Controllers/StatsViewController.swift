@@ -159,8 +159,12 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func onBackClick(_sender:UIButton) {
-        if (_sender == self.back){
+        if (_sender == self.back) {
+            print("dismissing dataset")
             self.dismiss(animated:true)
+            let h = self.tabBarController?.parent as? HomeViewController // Loads the parent view (HVC) and grabs the same object from memory
+            h?.getAllItems()
+            print(h?.name)
         }
     }
     

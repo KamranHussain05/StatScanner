@@ -177,6 +177,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             DispatchQueue.main.async {
                 self.myCollectionView.reloadData()
             }
+			print("Loaded from core data")
         } catch {
             fatalError("CORE DATA FETCH FAILED")
         }
@@ -191,6 +192,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         do {
             try context.save()
             getAllItems()
+			print("Created in Core Data")
         } catch {
             fatalError("CORE DATA WRITE FAILED")
         }
@@ -203,6 +205,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         do {
             try context.save()
 			getAllItems()
+			print("Deleted from Core Data")
         } catch {
             fatalError("CORE DATA DELETION FAILED")
         }
@@ -215,6 +218,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         do {
 			try context.save()
 			getAllItems()
+			print("Saved to Core Data")
         } catch {
             fatalError("CORE DATA UPDATE FAILED")
         }

@@ -12,6 +12,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBOutlet var back: UIButton!
     private var datasetobj: Dataset!
+    private var proj : DataSetProject!
     
     private var name: String!
     private var date: String!
@@ -38,6 +39,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.init(coder: coder)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        
+        
         configure()
     }
     
@@ -69,7 +72,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @objc func setDataSetObject(_ notification: Notification) {
         print("StatView recieved dataset")
-        let proj = (notification.object as! DataSetProject)
+        self.proj = (notification.object as! DataSetProject)
         self.datasetobj = proj.datasetobject
     }
     
@@ -164,6 +167,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.dismiss(animated:true)
             //let h = self.tabBarController?.parent as? HomeViewController // Loads the parent view (HVC) and grabs the same object from memory
             let home = self.presentingViewController as? HomeViewController
+            home?.updateItem(item: self.proj, dataset: self.datasetobj)
             home?.getAllItems()
         }
     }

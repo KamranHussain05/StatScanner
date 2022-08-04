@@ -197,21 +197,6 @@ public class Dataset: NSObject, NSCoding {
     }
 }
 
-
-// MARK: CORE DATA EXTENSIONS
-
-//extension Dataset {
-//
-//    @nonobjc public class func fetchRequest() -> NSFetchRequest<Dataset> {
-//        return NSFetchRequest<Dataset>(entityName: "Dataset")
-//    }
-//
-//}
-//
-//extension Dataset: Identifiable {
-//
-//}
-
 // MARK: DATA EXTENSIONS
 extension String {
     var isNumeric : Bool {

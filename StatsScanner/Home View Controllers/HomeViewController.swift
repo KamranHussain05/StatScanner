@@ -241,7 +241,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 		let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: HomeTiles.identifier, for: indexPath) as! HomeTiles
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
         
-        cell.dataSetName.text = model.datasetobject?.getName()
+        cell.dataSetName.text = model.name
+		model.datasetobject?.setName(name: model.name!)
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
         cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!

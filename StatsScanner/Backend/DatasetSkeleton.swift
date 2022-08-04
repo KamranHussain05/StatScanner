@@ -44,7 +44,7 @@ public class Dataset: NSObject, NSCoding {
         self.init()
         
         self.rawData = decoder.decodeObject(forKey:"rawData") as? [[String]] ?? [[]]
-        self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[],[],[]]
+        self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[""],[""],[""]]
         self.numericalData = decoder.decodeObject(forKey:"numericalData") as? [Double] ?? []
         self.calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
@@ -59,7 +59,7 @@ public class Dataset: NSObject, NSCoding {
         self.name = "New Unnamed Dataset"
         self.creationDate = formatter.string(from: Date())
         self.rawData = []
-        self.keys = [[],[],[]]
+        self.keys = [[""],[""],[""]]
         self.numericalData = []
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
     }
@@ -151,6 +151,9 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func getKeys() -> [String] {
+        if(self.isEmpty()) {
+            return [""]
+        }
         return self.keys[0]
     }
     

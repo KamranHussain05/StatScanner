@@ -131,10 +131,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             
             let home = self.presentingViewController as? HomeViewController
             home?.updateItem(item: self.proj, dataset: self.dataset)
-            home?.getAllItems()
             
             if (sa) {
-                showAlert()
+                // showAlert()
             }
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("Editing")

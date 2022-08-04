@@ -33,7 +33,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         return table
     }()
     
-    var models = [section]()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var models = [section]()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -122,6 +123,9 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             self.datasetobj.setName(name: text)
             self.loadData()
+            
+            let home = self.presentingViewController as? HomeViewController
+            home?.updateItem(item: self.proj, dataset: self.datasetobj)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel/*, handler: { _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
@@ -165,10 +169,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if (_sender == self.back) {
             print("dismissing dataset")
             self.dismiss(animated:true)
-            //let h = self.tabBarController?.parent as? HomeViewController // Loads the parent view (HVC) and grabs the same object from memory
-            let home = self.presentingViewController as? HomeViewController
-            home?.updateItem(item: self.proj, dataset: self.datasetobj)
-            home?.getAllItems()
         }
     }
 }

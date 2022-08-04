@@ -70,6 +70,7 @@ public class Dataset: NSObject, NSCoding {
         self.name = name
         self.creationDate = formatter.string(from: Date())
         self.rawData = appendable
+        cleanRaw()
         self.keys = self.solveKeys(appendable)
         self.updateNumData()
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
@@ -111,7 +112,7 @@ public class Dataset: NSObject, NSCoding {
         return res
     }
     
-    /// Cleans the raw CSV data and extracts the numerical values for calculation and visualizatin
+    /// Cleans the raw CSV data and extracts the numerical values for calculation and visualization
     private func updateNumData() {
         var result = Array<Double>()
         for i in 0...self.rawData.count-1 {
@@ -123,6 +124,34 @@ public class Dataset: NSObject, NSCoding {
         }
         
         self.numericalData = result
+    }
+    
+   /// Clean rawData array
+    private func cleanRaw() {
+        print("cleaning raw data")
+        for i in 0...self.rawData.count-1 {
+            var count = 0
+            for j in 0...self.rawData[0].count-1 {
+                if (rawData[i][j].isEmpty) {
+                    count+=1
+                }
+            }
+            if (count == self.rawData[0].count) {
+                self.rawData.remove(at: i)
+            }
+        }
+        
+        /*for j in 0...self.rawData[0].count-1 {
+            var count = 0
+            for i in 0...self.rawData.count-1 {
+                if (rawData[i][j].isEmpty) {
+                    count+=1
+                }
+            }
+            if (count == self.rawData[0].count) {
+                self.rawData[0].remove(at: j)
+            }
+        }*/
     }
     
     private func reCalculate() {

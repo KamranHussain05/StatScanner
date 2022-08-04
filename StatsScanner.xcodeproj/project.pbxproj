@@ -46,6 +46,7 @@
 		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
+		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
+		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +273,7 @@
 		A8CA5633277295BC006BDF61 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */,
 				4D2F168E279BE9C60096F9DA /* Awards_R.csv */,
 				A8CA564827729924006BDF61 /* Video_R.csv */,
 				A8CA56462772991E006BDF61 /* Titanic_R.csv */,
@@ -382,6 +385,7 @@
 				A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */,
 				A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */,
 				A85092C627497F7A00392240 /* Assets.xcassets in Resources */,
+				AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */,
 				4D2F168F279BE9C70096F9DA /* Awards_R.csv in Resources */,
 				A8CA563F277298C7006BDF61 /* Graduate_R.csv in Resources */,
 				A85092C127497F6F00392240 /* Main.storyboard in Resources */,

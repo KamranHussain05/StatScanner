@@ -162,19 +162,9 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if (_sender == self.back) {
             print("dismissing dataset")
             self.dismiss(animated:true)
-            let h = self.tabBarController?.parent as? HomeViewController // Loads the parent view (HVC) and grabs the same object from memory
-            h?.getAllItems()
-            print(h?.name)
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        if isBeingDismissed {
-            print("being dismissed")
-            let h = HomeViewController()
-            h.getAllItems()
+            //let h = self.tabBarController?.parent as? HomeViewController // Loads the parent view (HVC) and grabs the same object from memory
+            let home = self.presentingViewController as? HomeViewController
+            home?.getAllItems()
         }
     }
 }

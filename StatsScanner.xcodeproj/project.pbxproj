@@ -18,7 +18,6 @@
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
 		4D3B6E9F288F5DEA00BB1C03 /* FileWriterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */; };
 		4D3B6EA1288F5DF900BB1C03 /* DataArrayStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */; };
-		4D9E980A2899E50A0014CA6D /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9E98092899E50A0014CA6D /* DatasetBuilder.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
 		4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE04DFC28551E7900C5D5BC /* CloudKit.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
@@ -47,6 +46,7 @@
 		A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564427729918006BDF61 /* Smoker_R.csv */; };
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
+		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
 		4D3B6E9E288F5DE900BB1C03 /* FileWriterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriterTest.swift; sourceTree = "<group>"; };
 		4D3B6EA0288F5DF900BB1C03 /* DataArrayStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataArrayStruct.swift; sourceTree = "<group>"; };
-		4D9E98092899E50A0014CA6D /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatasetBuilder.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/DatasetBuilder.swift"; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
 		4DE04DFC28551E7900C5D5BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
+		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,7 @@
 				A8CA563127716205006BDF61 /* DatasetDeprecated.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* OCRScanning.swift */,
-				4D9E98092899E50A0014CA6D /* DatasetBuilder.swift */,
+				AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -484,7 +484,7 @@
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,
 				A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */,
 				4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */,
-				4D9E980A2899E50A0014CA6D /* DatasetBuilder.swift in Sources */,
+				AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,7 +658,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 350;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -679,7 +679,7 @@
 				);
 				MARKETING_VERSION = 0.0.4;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cadenpun.StatScannerInternal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -705,7 +705,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 350;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -726,7 +726,7 @@
 				);
 				MARKETING_VERSION = 0.0.4;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cadenpun.StatScannerInternal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";

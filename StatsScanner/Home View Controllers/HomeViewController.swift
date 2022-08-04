@@ -247,12 +247,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!
         print(model.datasetobject!.getName())
-		cell.myImageView.image = UIImage(named: icons[indexPath.row])
+		cell.myImageView.image = iconChoose()
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         myCollectionView.addGestureRecognizer(longPressGesture)
         return cell
     }
+	
+	func iconChoose() -> UIImage {
+		return UIImage(named: icons[Int.random(in: 0...5)])!
+	}
     
 // MARK: OPEN DATASET HANDLING
     

@@ -155,11 +155,18 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 	
 	///Reads the CSV file and loads it into an array of stirngs
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-		let rawFile = db.readCSV(inputFile: url)
-		print(rawFile)
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
-		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 		controller.dismiss(animated: true)
+		do {
+			let rawFile = try db.readCSV(inputFile: url)
+			print(rawFile)
+			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
+			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		} catch {
+			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file is corrupted or incompatible.", preferredStyle: .alert)
+			let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
+			dialog.addAction(okAction)
+			present(dialog, animated:true)
+		}
 	}
 	
 	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

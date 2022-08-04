@@ -132,7 +132,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             stat?.loadData()
             
             if (sa) {
-                showAlert()
+                // showAlert()
             }
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("Editing")

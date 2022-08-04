@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc(Dataset)
 public class Dataset: NSObject, NSCoding {
@@ -20,6 +21,7 @@ public class Dataset: NSObject, NSCoding {
     
     private var creationDate : String!
     private var name : String!
+    private var icon : UIImage!
     
     private let db = DataBridge()
     private let formatter : DateFormatter = {
@@ -38,6 +40,7 @@ public class Dataset: NSObject, NSCoding {
         coder.encode(calculations, forKey: "calculations")
         coder.encode(creationDate, forKey: "creationDate")
         coder.encode(name, forKey: "name")
+        coder.encode(icon, forKey: "icon")
     }
     
     required convenience public init?(coder decoder: NSCoder) {
@@ -49,6 +52,7 @@ public class Dataset: NSObject, NSCoding {
         self.calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
+        self.icon = decoder.decodeObject(forKey: "icon") as? UIImage
     }
     
 //MARK: Initializers

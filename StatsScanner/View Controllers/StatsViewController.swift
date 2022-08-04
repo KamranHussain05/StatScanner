@@ -41,13 +41,11 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
         
-        
         configure()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
         title = "Stats"
         tableView.delegate = self
@@ -63,6 +61,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewDidLayoutSubviews() {
+        print("Layout subviews")
         loadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
@@ -72,12 +71,16 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        print("StatView recieved dataset")
-        self.proj = (notification.object as! DataSetProject)
-        self.datasetobj = proj.datasetobject
+        print("StatsView recieved dataset")
+        self.proj = notification.object as? DataSetProject
+        self.datasetobj = self.proj.datasetobject!
     }
     
     func loadData() {
+        print("load data statsview")
+        let home = self.presentingViewController as? HomeViewController
+        home?.updateItem(item: self.proj, dataset: self.datasetobj)
+        
         name = datasetobj.getName()
         date = datasetobj.getCreationDate()
         items = String(datasetobj.getTotalNumItems())

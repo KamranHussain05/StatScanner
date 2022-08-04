@@ -27,7 +27,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 
 	@objc func initDataset(_ notification: Notification) {
-		print("DataPoint View recieved dataset")
+		print("DataPointView recieved dataset")
         self.proj = notification.object as? DataSetProject
         self.dataset = self.proj.datasetobject!
 	}
@@ -36,7 +36,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
 		
         edible = false
-		
+        //print(dataset.getData())
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)
         spreadsheetView.dataSource = self
@@ -59,10 +59,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//var count = 0
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        //print(dataset.getRawData()[indexPath.row][indexPath.section])
-        //count += 1
-        //print("method has been ran \(count) times")
-        //print("rawData count is \(dataset.getRawData().count*dataset.getRawData()[0].count)")
         if (dataset.isEmpty()) {
             cell.setup(with: "", dataset: self.dataset)
             return cell
@@ -131,9 +127,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             
             let home = self.presentingViewController as? HomeViewController
             home?.updateItem(item: self.proj, dataset: self.dataset)
+
+            let stat = tabBarController?.viewControllers?.first as? StatsViewController
+            stat?.loadData()
             
             if (sa) {
-                // showAlert()
+                showAlert()
             }
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("Editing")

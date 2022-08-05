@@ -68,8 +68,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             cell.dataset = self.dataset
             cell.x = indexPath.column
             cell.y = indexPath.row
-            if (!cell.getText().isNumeric) {
-                cell.backgroundColor = .systemFill
+            for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
+                if (cell.getText() == self.dataset.getKeys()[i]) {
+                    cell.backgroundColor = .systemFill
+                }
             }
 		}
 		return cell
@@ -80,6 +82,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             //return Int(view.frame.size.width/100)
             return 4
         } else {
+            print(self.dataset.getKeys())
             return self.dataset.getKeys().count
         }
     }
@@ -205,6 +208,14 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         field.becomeFirstResponder()
         if (edible) {
+            if (self.field.text!.isEmpty) {
+                let val = Double(self.field.text!)!
+                self.dataset.addVal(val: String(val))
+                print("new val: \(val)")
+                print(self.dataset.getNumericalData())
+                print(self.dataset.getData())
+                field.resignFirstResponder()
+            }
             if (self.field.text!.isNumeric) { // is a number
                 let val = Double(self.field.text!)!
                 self.dataset.updateVal(x: self.x, y: self.y, val: String(val))

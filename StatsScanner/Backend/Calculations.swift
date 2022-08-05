@@ -17,15 +17,21 @@ public class Calculations {
     }
     
     public func calculate() -> [Double] {
-        calculations[0] = (self.getSetAverage())
-        calculations[1] = (self.getMedian())
-        calculations[2] = (self.getMode())
-        calculations[3] = (self.getMin())
-        calculations[4] = (self.getMax())
-        calculations[5] = (self.getMax() - self.getMin())
-        calculations[6] = (self.getStandardDeviation())
-        calculations[7] = (self.getMAD())
-        calculations[8] = (self.getStandardError())
+        if (self.dataset.count != 0) {
+            calculations[0] = (self.getSetAverage())
+            calculations[1] = (self.getMedian())
+            calculations[2] = (self.getMode())
+            calculations[3] = (self.getMin())
+            calculations[4] = (self.getMax())
+            calculations[5] = (self.getMax() - self.getMin())
+            calculations[6] = (self.getStandardDeviation())
+            calculations[7] = (self.getMAD())
+            calculations[8] = (self.getStandardError())
+        } else {
+            for i in 0...calculations.count-1 {
+                calculations[i] = 0
+            }
+        }
         print("Re-Did Calculations")
         
         return calculations

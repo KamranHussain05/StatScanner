@@ -74,8 +74,8 @@ public class Dataset: NSObject, NSCoding {
         self.name = name
         self.creationDate = formatter.string(from: Date())
         self.rawData = appendable
-        self.keys = self.solveKeys(appendable)
         self.cleanRaw()
+        self.keys = self.solveKeys(self.rawData)
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.updateNumData()
         self.calculations = Calculations(dataset : numericalData).calculate()
@@ -85,9 +85,9 @@ public class Dataset: NSObject, NSCoding {
         super.init()
         
         self.name = name
-        self.rawData = [["0"]]
+        self.rawData = [[]]
         self.creationDate = formatter.string(from: Date())
-        self.numericalData = [0]
+        self.numericalData = []
         self.keys = []
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset: numericalData).calculate()
@@ -144,8 +144,6 @@ public class Dataset: NSObject, NSCoding {
                 self.rawData.remove(at: i)
             }
         }
-        var keyi = 0 // implement later
-        var keyj = 0
         for j in 0...self.rawData[0].count-1 {
             var count = 0
             for i in 0...self.rawData.count-1 {
@@ -158,14 +156,9 @@ public class Dataset: NSObject, NSCoding {
             if (count == self.rawData.count) {
                 for x in 0...rawData.count-1 {
                     self.rawData[x].remove(at: j)
-                    keyj=j
                 }
             }
         }
-        keys[keyi].remove(at: keyj)
-        print(rawData!)
-        print(rawData.count)
-        print(rawData[0].count)
     }
     
     private func reCalculate() {
@@ -222,6 +215,10 @@ public class Dataset: NSObject, NSCoding {
     
     func setName(name : String) {
         self.name = name
+    }
+    
+    func addVal(val: String) {
+        self.rawData[0].append(val)
     }
     
 // MARK: TO CSV

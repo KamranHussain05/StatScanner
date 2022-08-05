@@ -62,7 +62,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         print(dataset.getData())
         if (dataset.isEmpty()) {
             cell.setup(with: "", dataset: self.dataset)
-            return cell
+            cell.dataset = self.dataset
+            cell.x = indexPath.column
+            cell.y = indexPath.row
         } else {
             cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
             cell.dataset = self.dataset
@@ -82,7 +84,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             //return Int(view.frame.size.width/100)
             return 4
         } else {
-            print(self.dataset.getKeys())
             return self.dataset.getKeys().count
         }
     }
@@ -207,16 +208,10 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         field.becomeFirstResponder()
+        let text = self.field.text!
         if (edible) {
-            if (self.field.text!.isEmpty) {
-                let val = Double(self.field.text!)!
-                self.dataset.addVal(val: String(val))
-                print("new val: \(val)")
-                print(self.dataset.getNumericalData())
-                print(self.dataset.getData())
-                field.resignFirstResponder()
-            }
-            if (self.field.text!.isNumeric) { // is a number
+            if (text.isNumeric) { // is a number
+                print("changing number")
                 let val = Double(self.field.text!)!
                 self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
                 print("new val: \(val), coordinates: (\(self.x!), \(self.y!))")
@@ -224,6 +219,7 @@ class DataPointCell: Cell, UITextFieldDelegate {
                 print(self.dataset.getData())
                 field.resignFirstResponder()
             } else if (self.backgroundColor == .systemFill) { // is a header
+                print("changing header")
                 let val = String(self.field.text!)
                 //self.dataset.updateKey(x: self.x, y: self.y, val: val)
                 self.dataset.updateKey(y: self.x, val: val)

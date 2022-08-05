@@ -85,7 +85,7 @@ public class Dataset: NSObject, NSCoding {
         super.init()
         
         self.name = name
-        self.rawData = [[]]
+        self.rawData = [[], [], [], []]
         self.creationDate = formatter.string(from: Date())
         self.numericalData = []
         self.keys = []
@@ -149,7 +149,6 @@ public class Dataset: NSObject, NSCoding {
             for i in 0...self.rawData.count-1 {
                 let str = rawData[i][j].trimmingCharacters(in: .whitespacesAndNewlines)
                 if (str.isEmpty) {
-                    print("\(j), \(i)")
                     count+=1
                 }
             }
@@ -198,27 +197,37 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func getTotalNumItems() -> Int {
-        return rawData.count * rawData[0].count
+        var counter = 0
+        if (!self.isEmpty()) {
+            for i in 0...rawData.count-1 {
+                for j in 0...rawData[i].count-1 {
+                    counter+=1
+                }
+            }
+        }
+        return counter
     }
     
 // MARK: Setters
     
     func updateVal(x : Int, y : Int, val : String) {
-        self.rawData[y][x] = val
-        self.updateNumData()
-        self.reCalculate()
+        if (!self.isEmpty()) {
+            self.rawData[y][x] = val
+            self.updateNumData()
+            self.reCalculate()
+        } else {
+            print("M.....T")
+            self.rawData[0].append("0")
+        }
     }
     
-    func updateKey(x : Int = 0, y : Int, val : String) {
+    func updateKey(x : Int = 0, y : Int, val : String) { //assuming top row key
         self.keys[y][x] = val
+        self.rawData[y][x] = val
     }
     
     func setName(name : String) {
         self.name = name
-    }
-    
-    func addVal(val: String) {
-        self.rawData[0].append(val)
     }
     
 // MARK: TO CSV

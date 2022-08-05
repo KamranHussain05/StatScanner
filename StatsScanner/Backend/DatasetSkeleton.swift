@@ -74,10 +74,10 @@ public class Dataset: NSObject, NSCoding {
         self.name = name
         self.creationDate = formatter.string(from: Date())
         self.rawData = appendable
-        cleanRaw()
         self.keys = self.solveKeys(appendable)
-        self.updateNumData()
+        self.cleanRaw()
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
+        self.updateNumData()
         self.calculations = Calculations(dataset : numericalData).calculate()
     }
     
@@ -144,18 +144,28 @@ public class Dataset: NSObject, NSCoding {
                 self.rawData.remove(at: i)
             }
         }
-        
-        /*for j in 0...self.rawData[0].count-1 {
+        var keyi = 0 // implement later
+        var keyj = 0
+        for j in 0...self.rawData[0].count-1 {
             var count = 0
             for i in 0...self.rawData.count-1 {
-                if (rawData[i][j].isEmpty) {
+                let str = rawData[i][j].trimmingCharacters(in: .whitespacesAndNewlines)
+                if (str.isEmpty) {
+                    print("\(j), \(i)")
                     count+=1
                 }
             }
-            if (count == self.rawData[0].count) {
-                self.rawData[0].remove(at: j)
+            if (count == self.rawData.count) {
+                for x in 0...rawData.count-1 {
+                    self.rawData[x].remove(at: j)
+                    keyj=j
+                }
             }
-        }*/
+        }
+        keys[keyi].remove(at: keyj)
+        print(rawData!)
+        print(rawData.count)
+        print(rawData[0].count)
     }
     
     private func reCalculate() {

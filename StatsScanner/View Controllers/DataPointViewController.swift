@@ -59,6 +59,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//var count = 0
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
+        print(dataset.getData())
         if (dataset.isEmpty()) {
             cell.setup(with: "", dataset: self.dataset)
             return cell

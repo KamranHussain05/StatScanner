@@ -207,26 +207,34 @@ class DataPointCell: Cell, UITextFieldDelegate {
     }
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        field.becomeFirstResponder()
         let text = self.field.text!
-        if (edible) {
-            if (text.isNumeric) { // is a number
-                print("changing number")
-                let val = Double(self.field.text!)!
-                self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
-                print("new val: \(val), coordinates: (\(self.x!), \(self.y!))")
-                print(self.dataset.getNumericalData())
-                print(self.dataset.getData())
-                field.resignFirstResponder()
-            } else if (self.backgroundColor == .systemFill) { // is a header
-                print("changing header")
-                let val = String(self.field.text!)
-                //self.dataset.updateKey(x: self.x, y: self.y, val: val)
-                self.dataset.updateKey(y: self.x, val: val)
-                print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
-                print(self.dataset.getKeys())
-                field.resignFirstResponder()
-            }
+        field.becomeFirstResponder()
+        if (text.isEmpty) {
+            print("empty box")
+            field.resignFirstResponder()
+        } else if (text.isNumeric) { // is a number
+            print("changing number")
+            let val = self.field.text!
+            self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
+            print("new datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
+            print(self.dataset.getNumericalData())
+            print(self.dataset.getData())
+            field.resignFirstResponder()
+        } else if (self.backgroundColor == .systemFill) { // is a header
+            print("changing header")
+            let val = String(self.field.text!)
+            //self.dataset.updateKey(x: self.x, y: self.y, val: val)
+            self.dataset.updateKey(x: self.x, val: val)
+            print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
+            print(self.dataset.getKeys())
+            field.resignFirstResponder()
+        } else { // String data
+            print("String data")
+            let val = String(self.field.text!)
+            self.dataset.updateRaw(x: self.x, y: self.y, val: val)
+            print("new string datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
+            print(self.dataset.getData())
+            field.resignFirstResponder()
         }
         return edible
 	}

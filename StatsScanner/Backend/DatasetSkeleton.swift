@@ -211,19 +211,22 @@ public class Dataset: NSObject, NSCoding {
 // MARK: Setters
     
     func updateVal(x : Int, y : Int, val : String) {
-        if (!self.isEmpty()) {
-            self.rawData[y][x] = val
-            self.updateNumData()
-            self.reCalculate()
-        } else {
-            print("M.....T")
-            self.rawData[0].append("0")
-        }
+        updateRaw(x: x, y: y, val: val)
+        self.updateNumData()
+        self.reCalculate()
     }
     
-    func updateKey(x : Int = 0, y : Int, val : String) { //assuming top row key
+    func updateKey(x: Int, y: Int = 0, val : String) { //assuming top row key
         self.keys[y][x] = val
         self.rawData[y][x] = val
+    }
+    
+    func updateRaw(x: Int, y: Int, val: String) {
+        if (!self.isEmpty()) {
+            self.rawData[y][x] = val
+        } else {
+            // Append somehow
+        }
     }
     
     func setName(name : String) {

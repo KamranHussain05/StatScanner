@@ -18,6 +18,7 @@ public class Dataset: NSObject, NSCoding {
     private var keys : [[String]]!
     private var numericalData : [Double]!
     private var calculations : [Double]!
+    private var graphData : [[Double]]!
     
     private var creationDate : String!
     private var name : String!
@@ -41,6 +42,7 @@ public class Dataset: NSObject, NSCoding {
         coder.encode(creationDate, forKey: "creationDate")
         coder.encode(name, forKey: "name")
         coder.encode(icon, forKey: "icon")
+        coder.encode(graphData, forKey: "graphData")
     }
     
     required convenience public init?(coder decoder: NSCoder) {
@@ -53,6 +55,7 @@ public class Dataset: NSObject, NSCoding {
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
         self.icon = decoder.decodeObject(forKey: "icon") as? UIImage
+        self.graphData = decoder.decodeObject(forKey: "graphData") as? [[Double]] ?? [[]]
     }
     
 //MARK: Initializers
@@ -66,6 +69,7 @@ public class Dataset: NSObject, NSCoding {
         self.keys = [[""],[""],[""]]
         self.numericalData = []
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
+        self.graphData = [[0]]
     }
     
     init(name : String, appendable: [[String]]) {
@@ -78,7 +82,8 @@ public class Dataset: NSObject, NSCoding {
         self.keys = self.solveKeys(self.rawData)
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.updateNumData()
-        self.calculations = Calculations(dataset : numericalData).calculate()
+        self.calculations = Calculations(dataset : self.numericalData).calculate()
+        self.graphData = self.genGraphData(array: self.rawData)
     }
     
     init(name : String) {
@@ -92,6 +97,7 @@ public class Dataset: NSObject, NSCoding {
         self.keys = [[""], [""], [""]]
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset: numericalData).calculate()
+        self.graphData = [[]]
     }
     
 // MARK: Data Pre-Processing
@@ -165,6 +171,25 @@ public class Dataset: NSObject, NSCoding {
         self.calculations = Calculations(dataset:numericalData).calculate()
     }
     
+    private func genGraphData(array: [[String]]) -> [[Double]] {
+        // Build the initial array and convert values to doubles
+        var joe : Array<Array<Double>> = []
+        
+        for i in 1...array.count-1 {
+            joe.append(array[i].doubleArray)
+        }
+        
+        // Rotate the array
+        var res = Array<Array<Double>>(repeating: Array<Double>(repeating: 0, count: joe.count), count: joe[0].count)
+        
+        for i in 0...res.count-1 {
+            for j in 0...res[i].count-1 {
+                res[i][j] = joe[j][i]
+            }
+        }
+        return res
+    }
+    
 // MARK: Getters
     
     func getName() -> String {
@@ -189,21 +214,9 @@ public class Dataset: NSObject, NSCoding {
         }
         return self.keys[0]
     }
-    
+
     func getGraphData() -> [[Double]] {
-        return cleanData(array: self.rawData)
-
-    }
-    
-    private func cleanData(array: [[String]]) -> [[Double]] {
-        var result : Array<Array<Double>> = [[]]
-        
-        for e in array {
-            result.append(e.doubleArray)
-        }
-        result.remove(at: 0)
-
-        return result
+        return self.graphData
     }
     
     func getCalculations() -> [Double] {
@@ -240,6 +253,7 @@ public class Dataset: NSObject, NSCoding {
             self.rawData[y][x] = val
             self.updateNumData()
             self.reCalculate()
+            self.graphData = self.genGraphData(array: self.rawData)
         }
     }
     

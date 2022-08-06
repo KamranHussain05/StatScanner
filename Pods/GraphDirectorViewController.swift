@@ -72,7 +72,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
-            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24))
+            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24).fontFamily(""))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         } else { // dark mode
@@ -100,9 +100,11 @@ extension GraphDirectorViewController: AAChartViewDelegate {
     private func xvalsFormatted() -> [String] {
         var result = [String]()
         let ds = dataset.getData()[0]
+        
         for i in 0...ds.count-1 {
             result.append(String(ds[i]))
         }
+        
         return result
     }
     
@@ -122,6 +124,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
                         .data(dataset.getGraphData()[i])
             )
         }
+        
         return arr
     }
 }

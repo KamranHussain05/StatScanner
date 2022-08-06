@@ -314,3 +314,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+enum ArrayError: Error {
+	case outOfBoundsError
+}
+

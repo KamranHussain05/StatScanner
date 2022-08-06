@@ -7,6 +7,7 @@
 
 import UIKit
 import UniformTypeIdentifiers
+import Vision
 
 // MARK: Home View Controller
 
@@ -161,11 +162,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 			print(rawFile)
 			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
 			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-		} catch {
+		} catch VNErrorCode.outOfBoundsError {
 			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file is corrupted or incompatible.", preferredStyle: .alert)
 			let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
 			dialog.addAction(okAction)
 			present(dialog, animated:true)
+		} catch {
+			
 		}
 	}
 	
@@ -312,9 +315,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             present(alert, animated: true, completion: nil)
         }
     }
-}
-
-enum ArrayError: Error {
-	case outOfBoundsError
 }
 

@@ -246,7 +246,6 @@ extension UIApplication {
   
     class func versionBuild() -> String {
         let version = vers(), build = build()
-        print(version == build ? "v\(version)" : "v\(version) (\(build))")
         return version == build ? "v\(version)" : "v\(version) (\(build))"
         //return "v\(version) (\(build))"
     }

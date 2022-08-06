@@ -58,7 +58,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//var count = 0
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
         for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
             if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {

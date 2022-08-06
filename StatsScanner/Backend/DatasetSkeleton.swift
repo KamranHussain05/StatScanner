@@ -83,14 +83,13 @@ public class Dataset: NSObject, NSCoding {
     
     init(name : String) {
         super.init()
-        
+        print("New Dataset")
         self.name = name
         let rows = Int(UIScreen.main.bounds.height/50)
-        //self.rawData = [Array<String>(repeating: "", count: rows), Array<String>(repeating: "", count: rows), Array<String>(repeating: "", count: rows), Array<String>(repeating: "", count: rows)]
         self.rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
         self.creationDate = formatter.string(from: Date())
         self.numericalData = []
-        self.keys = []
+        self.keys = [[""], [""], [""]]
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset: numericalData).calculate()
     }
@@ -101,11 +100,11 @@ public class Dataset: NSObject, NSCoding {
     /// method always assumes the top header contains keys.
     /// @Return A 2D String array where the indices are Top, Left, and Right, respectively
     private func solveKeys(_ data:[[String]]) -> [[String]] {
-        var res : [[String]] = [[],[],[]]
+        var res : [[String]] = [[""],[""],[""]]
         res[0] = data[0]
         
-        var left : [String] = []
-        var right : [String] = []
+        var left : [String] = [""]
+        var right : [String] = [""]
         
         for i in 0...data.count-1 {
             left.append(data[i][0])
@@ -177,9 +176,6 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func getData() -> [[String]] {
-        /*if(self.numericalData.count < 2) {
-            return [[""]]
-        }*/
         return self.rawData
     }
     
@@ -209,7 +205,15 @@ public class Dataset: NSObject, NSCoding {
                 }
             }
         }
-        
+        if (!self.keys.isEmpty) {
+            for i in 0...keys.count-1 {
+                for j in 0...keys[i].count-1 {
+                    if (!keys[i][j].isEmpty || keys[i][j] != "") {
+                        counter-=1
+                    }
+                }
+            }
+        }
         return counter
     }
     

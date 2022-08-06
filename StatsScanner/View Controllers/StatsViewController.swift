@@ -236,11 +236,8 @@ class StatsCell: UITableViewCell {
     }
 }
 extension UIApplication {
-    struct Constants {
-        static let CFBundleShortVersionString = "CFBundleShortVersionString"
-    }
     class func vers() -> String {
-        return Bundle.main.object(forInfoDictionaryKey: Constants.CFBundleShortVersionString) as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
   
     class func build() -> String {
@@ -249,7 +246,8 @@ extension UIApplication {
   
     class func versionBuild() -> String {
         let version = vers(), build = build()
-      
+        print(version == build ? "v\(version)" : "v\(version) (\(build))")
         return version == build ? "v\(version)" : "v\(version) (\(build))"
+        //return "v\(version) (\(build))"
     }
 }

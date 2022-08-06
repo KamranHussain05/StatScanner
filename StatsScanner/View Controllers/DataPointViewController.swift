@@ -36,7 +36,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
 		
         edible = false
-        //print(dataset.getData())
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)
         spreadsheetView.dataSource = self
@@ -59,28 +58,22 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//var count = 0
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        print(dataset.getData())
-        if (dataset.isEmpty()) {
-            cell.setup(with: "", dataset: self.dataset)
-            cell.dataset = self.dataset
-            cell.x = indexPath.column
-            cell.y = indexPath.row
-        } else {
-            cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
-            cell.dataset = self.dataset
-            cell.x = indexPath.column
-            cell.y = indexPath.row
-            for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
-                if (cell.getText() == self.dataset.getKeys()[i]) {
-                    cell.backgroundColor = .systemFill
-                }
+        
+        cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
+        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
+            if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
+                cell.backgroundColor = .systemFill
             }
-		}
+        }
+        cell.dataset = self.dataset
+        cell.x = indexPath.column
+        cell.y = indexPath.row
+        
 		return cell
 	}
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty()) {
+        if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
             //return Int(view.frame.size.width/100)
             return 4
         } else {
@@ -89,11 +82,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty()) {
-            return Int(view.frame.size.height/50)
-        } else {
-            return self.dataset.getData().count
-        }
+        return self.dataset.getData().count
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -116,7 +105,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
     
     func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty()) {
+        if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
             return 0
         }
         return 1
@@ -207,32 +196,19 @@ class DataPointCell: Cell, UITextFieldDelegate {
     }
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let text = self.field.text!
         field.becomeFirstResponder()
-        if (text.isEmpty) {
-            print("empty box")
-            field.resignFirstResponder()
-        } else if (text.isNumeric) { // is a number
-            print("changing number")
-            let val = self.field.text!
-            self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
-            print("new datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
-            print(self.dataset.getNumericalData())
-            print(self.dataset.getData())
-            field.resignFirstResponder()
-        } else if (self.backgroundColor == .systemFill) { // is a header
-            print("changing header")
+        
+        if (self.backgroundColor == .systemFill) { // is a header
             let val = String(self.field.text!)
-            //self.dataset.updateKey(x: self.x, y: self.y, val: val)
             self.dataset.updateKey(x: self.x, val: val)
             print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
             print(self.dataset.getKeys())
             field.resignFirstResponder()
-        } else { // String data
-            print("String data")
-            let val = String(self.field.text!)
-            self.dataset.updateRaw(x: self.x, y: self.y, val: val)
-            print("new string datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
+        } else { // is a datapoint
+            let val = self.field.text!
+            self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
+            print("new datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
+            print(self.dataset.getNumericalData())
             print(self.dataset.getData())
             field.resignFirstResponder()
         }

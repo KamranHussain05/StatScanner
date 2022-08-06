@@ -16,7 +16,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private var name: String!
     private var date: String!
-    private var items: String!
+    private var points: String!
     private var mean: String!
     private var median: String!
     private var mode: String!
@@ -83,7 +83,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         name = datasetobj.getName()
         date = datasetobj.getCreationDate()
-        items = String(datasetobj.getTotalNumItems())
+        points = String(datasetobj.getTotalNumItems())
         mean = String(round(1000 * datasetobj.getCalculations()[0]) / 1000)
         median = String(round(1000 * datasetobj.getCalculations()[1]) / 1000)
         mode = String(round(1000 * datasetobj.getCalculations()[2]) / 1000)
@@ -96,7 +96,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         models[0].cells[0].calc = name
         models[0].cells[1].calc = date
-        models[0].cells[2].calc = items
+        models[0].cells[2].calc = points
         models[1].cells[0].calc = mean
         models[1].cells[1].calc = median
         models[1].cells[2].calc = mode
@@ -111,7 +111,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func configure() {
-        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
+        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: points) {}]))
         models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
         models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: stddev) {}, cellStruc(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruc(title: "Standard Error", calc: error) {}]))

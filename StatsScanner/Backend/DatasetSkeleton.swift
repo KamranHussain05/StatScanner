@@ -85,7 +85,9 @@ public class Dataset: NSObject, NSCoding {
         super.init()
         
         self.name = name
-        self.rawData = [[], [], [], []]
+        let rows = Int(UIScreen.main.bounds.height/50)
+        //self.rawData = [Array<String>(repeating: "", count: rows), Array<String>(repeating: "", count: rows), Array<String>(repeating: "", count: rows), Array<String>(repeating: "", count: rows)]
+        self.rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
         self.creationDate = formatter.string(from: Date())
         self.numericalData = []
         self.keys = []
@@ -175,9 +177,9 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func getData() -> [[String]] {
-        if(self.numericalData.count < 2) {
+        /*if(self.numericalData.count < 2) {
             return [[""]]
-        }
+        }*/
         return self.rawData
     }
     
@@ -186,7 +188,7 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func getKeys() -> [String] {
-        if(self.isEmpty()) {
+        if(self.isEmpty() || self.keys.isEmpty) {
             return [""]
         }
         return self.keys[0]
@@ -201,32 +203,29 @@ public class Dataset: NSObject, NSCoding {
         if (!self.isEmpty()) {
             for i in 0...rawData.count-1 {
                 for j in 0...rawData[i].count-1 {
-                    counter+=1
+                    if (!rawData[i][j].isEmpty || rawData[i][j] != "") {
+                        counter+=1
+                    }
                 }
             }
         }
+        
         return counter
     }
     
 // MARK: Setters
     
     func updateVal(x : Int, y : Int, val : String) {
-        updateRaw(x: x, y: y, val: val)
-        self.updateNumData()
-        self.reCalculate()
+        if (true) {
+            self.rawData[y][x] = val
+            self.updateNumData()
+            self.reCalculate()
+        }
     }
     
     func updateKey(x: Int, y: Int = 0, val : String) { //assuming top row key
         self.keys[y][x] = val
         self.rawData[y][x] = val
-    }
-    
-    func updateRaw(x: Int, y: Int, val: String) {
-        if (!self.isEmpty()) {
-            self.rawData[y][x] = val
-        } else {
-            // Append somehow
-        }
     }
     
     func setName(name : String) {
@@ -245,7 +244,19 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func isEmpty() -> Bool{
-        return (numericalData.count) < 2
+        //return (numericalData.count) < 2
+        var counter = 0
+        for i in 0...rawData.count-1 {
+            for j in 0...rawData[i].count-1 {
+                if (rawData[i][j].isEmpty || rawData[i][j] == "") {
+                    counter+=1
+                }
+            }
+        }
+        if (counter == rawData.count*rawData[0].count) {
+            return true
+        }
+        return false
     }
 }
 

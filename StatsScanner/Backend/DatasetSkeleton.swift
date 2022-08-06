@@ -190,6 +190,22 @@ public class Dataset: NSObject, NSCoding {
         return self.keys[0]
     }
     
+    func getGraphData() -> [[Double]] {
+        return cleanData(array: self.rawData)
+
+    }
+    
+    private func cleanData(array: [[String]]) -> [[Double]] {
+        var result : Array<Array<Double>> = [[]]
+        
+        for e in array {
+            result.append(e.doubleArray)
+        }
+        result.remove(at: 0)
+
+        return result
+    }
+    
     func getCalculations() -> [Double] {
         return self.calculations
     }

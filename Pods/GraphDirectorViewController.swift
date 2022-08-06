@@ -72,13 +72,13 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
-            aaChartModel.titleStyle(color)
+            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
-            aaChartModel.titleStyle(color)
+            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 24))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         }
@@ -93,7 +93,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
-    func addDataCategories(cat:[String]){
+    func addDataCategories(cat:[String]) {
         self.aaChartModel.categories(cat)
     }
     
@@ -108,17 +108,18 @@ extension GraphDirectorViewController: AAChartViewDelegate {
     
     private func formattedData() -> [AASeriesElement] {
         var arr = [AASeriesElement]()
-        let d = dataset.getData()
         
-        if(dataset.isEmpty()) {
-            arr.append(AASeriesElement().data([0]))
+        if(self.dataset.isEmpty()) {
+            arr.append(AASeriesElement()
+                .name("0")
+                .data(["0"]))
             return arr
         }
         
-        for i in 0...d[0].count-1 {
+        for i in 0...self.dataset.getData()[0].count-1 {
             arr.append(AASeriesElement()
                         .name(dataset.getKeys()[i])
-                        .data(dataset.getData()[i])
+                        .data(dataset.getGraphData()[i])
             )
         }
         return arr

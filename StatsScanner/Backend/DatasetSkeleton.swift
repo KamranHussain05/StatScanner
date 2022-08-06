@@ -173,20 +173,29 @@ public class Dataset: NSObject, NSCoding {
     
     private func genGraphData(array: [[String]]) -> [[Double]] {
         // Build the initial array and convert values to doubles
-        var joe : Array<Array<Double>> = []
+        var joe : Array<Array<String>> = []
         
         for i in 1...array.count-1 {
-            joe.append(array[i].doubleArray)
+            joe.append(array[i])
         }
         
         // Rotate the array
-        var res = Array<Array<Double>>(repeating: Array<Double>(repeating: 0, count: joe.count), count: joe[0].count)
+        var mid = Array<Array<String>>(repeating: Array<String>(repeating: "", count: joe.count), count: joe[0].count)
         
-        for i in 0...res.count-1 {
-            for j in 0...res[i].count-1 {
-                res[i][j] = joe[j][i]
+        for i in 0...mid.count-1 {
+            for j in 0...mid[i].count-1 {
+                mid[i][j] = joe[j][i]
             }
         }
+        
+        // Convert to doubles and remove string columns
+        var res = Array<Array<Double>>(repeating: Array<Double>(repeating: 0, count: joe.count), count: joe[0].count)
+        print("Initial Array \(res)")
+        for i in 0...mid.count-1 {
+            res[i] = mid[i].doubleArray
+        }
+        
+        print(res)
         return res
     }
     

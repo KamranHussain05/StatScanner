@@ -10,13 +10,16 @@ import Foundation
 import CoreData
 
 /// A DataSet Object which stores the array, name, creationdate, and more data
-@objc(Dataset)
-public class Dataset: NSObject, NSCoding {
+@objc(DatasetDeprecated)
+public class DatasetDeprecated: NSObject, NSCoding {
 	
 	var data : [[Double]] = [[]]
 	private var keys: [String] = []
+	private var rawData : [[String]] = [[]]
+	
 	var name: String = "Unnamed Dataset"
 	var creationDate: String!
+	
 	var calculations : [Double] = Array<Double>(repeating: 0.0, count:9)
 	private let db = DataBridge()
 	private let h = HomeViewController()
@@ -29,6 +32,7 @@ public class Dataset: NSObject, NSCoding {
 		coder.encode(name, forKey: "name")
 		coder.encode(creationDate, forKey: "creationDate")
 		coder.encode(calculations, forKey: "calculations")
+		coder.encode(rawData, forKey: "rawData")
 	}
 	
 	public required convenience init?(coder decoder: NSCoder) {
@@ -38,12 +42,14 @@ public class Dataset: NSObject, NSCoding {
 		creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
 		keys = decoder.decodeObject(forKey: "keys") as? [String] ?? []
 		calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
+		rawData = decoder.decodeObject(forKey:"rawData") as? [[String]] ?? [[]]
 	}
 	
 	/// Creates a new dataset
 	override init() {
 		name = "Unnamed DataSet"
 		data = [[]]
+		rawData = [[]]
 		// get the current date and time
 		let currentDateTime = Date()
 		let formatter = DateFormatter()
@@ -55,8 +61,9 @@ public class Dataset: NSObject, NSCoding {
 	/// Creates a new dataset and assumes the first row contains the keys
 	public init(name: String, appendable: [[String]]) {
 		super.init()
-		self.name = name
 		
+		self.name = name
+		self.rawData = appendable
 		let currentDateTime = Date()
 		let formatter = DateFormatter()
 		formatter.timeStyle = .none
@@ -112,32 +119,15 @@ public class Dataset: NSObject, NSCoding {
 		return self.data
 	}
 	
-	/// Returns the array containing the data in the specified index
-   public func getData(axis:Int) -> [Double] {
-	   if(self.isEmpty()) {
-		   return [0]
-	   }
-	   var result = [Double]()
-	   for i in 0...data[0].count-1 {
-		   result.append(data[axis][i])
-	   }
-	   return result
-   }
+	///Returns the rawdata array
+	public func getRawData() -> [[String]] {
+		return self.rawData
+	}
 	
 	///Returns the Dataset keys/x-axis
 	public func getKeys() -> [String]{
-		print(self.keys)
 		return self.keys
 	}
-	
-	/// Returns the specified dataset key
-	func getKey(index: Int) -> String {
-		return self.keys[index]
-	}
-	
-	//func updateKey(x : Int, y : Int, val : String) {
-		//self.keys[x] = val
-	//}
 	
 	/// Adds a value to the end of the dataset
 	func addVal(val:Double) {
@@ -146,12 +136,14 @@ public class Dataset: NSObject, NSCoding {
 	}
 	
 	/// Changes a specific value
-	func updateVal(x: Int, y: Int, val: Double) {
-		data[x][y] = val
+	func updateVal(y: Int, x: Int, val: Double) {
+		rawData[y][x] = String(val)
+		data[x-1][y] = val
 		self.calculate()
 	}
 	
 	func updateHeader(index: Int, val: String) {
+		rawData[index][0] = val
 		keys[index] = val
 		self.calculate()
 	}
@@ -227,6 +219,7 @@ public class Dataset: NSObject, NSCoding {
 		var result = 0.0
 		for i in 0...data.count-1 {
 			for j in 0...data[0].count-1 {
+				print(data[i][j])
 				result+=data[i][j]
 			}
 		}
@@ -381,24 +374,5 @@ public class Dataset: NSObject, NSCoding {
 	/// Returns the standard error of the specified axis
 	private func getStandardError(axis: Int) -> Double {
 		return getStandardDeviation(index: axis)/sqrt(Double(getNumItems(index: axis)))
-	}
-}
-
-//MARK: EXTENSIONS
-extension String {
-	var isNumeric : Bool {
-		return Double(self) != nil
-	}
-}
-
-extension Collection where Iterator.Element == Double {
-	var stringArray : [String] {
-		return compactMap{ String($0) }
-	}
-}
-
-extension Collection where Iterator.Element == String {
-	var doubleArray: [Double] {
-		return compactMap{ Double($0) }
 	}
 }

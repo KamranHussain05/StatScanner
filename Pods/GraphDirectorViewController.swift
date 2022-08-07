@@ -62,10 +62,8 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             .chartType(currentGraphType)
             .animationType(.easeInSine)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
-//            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-//                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .categories(xvalsFormatted())
-            .title(dataset.name)
+            .title(dataset.getName())
             .series(formattedData())
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         // The chart view object calls the instance object of AAChartModel and draws the final graphic
@@ -74,17 +72,15 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
-            aaChartModel.titleStyle(color)
+            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24).fontFamily(""))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
-            //aaChartModel.dataLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
-            aaChartModel.titleStyle(color)
+            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 24))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
-            //aaChartModel.dataLabelsStyle(color)
         }
         
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
@@ -97,37 +93,43 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
-    func addDataCategories(cat:[String]){
+    func addDataCategories(cat:[String]) {
         self.aaChartModel.categories(cat)
     }
     
     private func xvalsFormatted() -> [String] {
         var result = [String]()
         let ds = dataset.getData()[0]
+        
         for i in 0...ds.count-1 {
             result.append(String(ds[i]))
         }
+        
         return result
     }
     
     private func formattedData() -> [AASeriesElement] {
         var arr = [AASeriesElement]()
-        let d = dataset.getData()
         
-        if(dataset.getData().count <= 1) {
-            arr.append(AASeriesElement().data([0]))
+        if(self.dataset.isEmpty()) {
+            arr.append(AASeriesElement()
+                .name("0")
+                .data(["0"]))
             return arr
         }
         
-        for i in 0...d[0].count-1 {
+        for i in 0...self.dataset.getData()[0].count-1 {
             arr.append(AASeriesElement()
                         .name(dataset.getKeys()[i])
-                        .data(dataset.getData()[i])
+                        .data(dataset.getGraphData()[i])
             )
         }
+        
         return arr
     }
 }
+
+// MARK: Picker View
 
 extension GraphDirectorViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

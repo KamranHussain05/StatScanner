@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     var isNumber: Bool {
@@ -32,51 +33,41 @@ class DataBridge {
     }
     
 
-    func readCSV(fileName: String, lineSeparator: String = "\n", valSeparator: String = ",") -> [[String]] {
+    func readCSV(fileName: String, lineSeparator: String = "\n", valSeparator: String = ",") throws -> [[String]] {
         let url = DataBridge.getDocumentsDirectory().appendingPathComponent(fileName)
         
         //Get Data
         print("reading csv")
         var result: [[String]] = []
+        let data = try String(contentsOf: url)
+        let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
         
-        do {
-            let data = try String(contentsOf: url)
-            let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
-            for row in rows {
-                let columns = row.components(separatedBy: valSeparator)
-                result.append(columns)
-            }
-            print("copying cleaned data")
-            result = cleanCSVData(data: result)
-            return result
-        } catch {
-            // Any Errors will go here
-            print(error)
-            return [[]]
+        for row in rows {
+            let columns = row.components(separatedBy: valSeparator)
+            result.append(columns)
         }
+        
+        print("copying cleaned data")
+        try result = cleanCSVData(data: result)
+        return result
     }
     
-    func readCSV(inputFile: URL, lineSeparator: String = "\n", valSeparator: String = ",") -> [[String]] {
-        
+    func readCSV(inputFile: URL, lineSeparator: String = "\n", valSeparator: String = ",") throws -> [[String]] {
         //Get Data
         print("reading csv")
-        var result: [[String]] = []
         
-        do {
-            let data = try String(contentsOf: inputFile)
-            let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
-            for row in rows {
-                let columns = row.components(separatedBy: valSeparator)
-                result.append(columns)
-            }
-            print("copying cleaned data")
-            result = cleanCSVData(data: result)
-            return result
-        } catch {
-            // Any Errors will go here
-            print(error)
-            return [[]]
+        var result: [[String]] = []
+        let data = try String(contentsOf: inputFile)
+        let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
+        
+        for row in rows {
+            let columns = row.components(separatedBy: valSeparator)
+            result.append(columns)
         }
+        
+        print("copying cleaned data")
+        try result = cleanCSVData(data: result)
+        return result
     }
     
     func writeCSV(fileName:String, data:[[String]]) {
@@ -99,12 +90,19 @@ class DataBridge {
         }
     }
     
-    private func cleanCSVData(data: [[String]]) -> [[String]] {
+    private func cleanCSVData(data: [[String]]) throws -> [[String]] {
         var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count)
         print("cleaning data")
+        
         for i in 0...data.count-1 {
             for j in 0...data[i].count-1 {
                 result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
+            }
+        }
+        
+        for i in 0...result.count-1 {
+            if(result[i].isEmpty) {
+                result.remove(at: i)
             }
         }
         return result

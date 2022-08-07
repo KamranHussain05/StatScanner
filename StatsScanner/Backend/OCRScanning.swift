@@ -8,7 +8,7 @@
 import UIKit
 import Vision
 
-class CameraOCRThing: UIViewController {
+class OCRScanning: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var newScanButton: UIButton!
@@ -58,7 +58,7 @@ class CameraOCRThing: UIViewController {
     }
 }
 
-extension CameraOCRThing: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension OCRScanning: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

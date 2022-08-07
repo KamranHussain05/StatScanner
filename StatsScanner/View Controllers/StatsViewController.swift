@@ -3,17 +3,20 @@
 //  StatScanner
 //
 //  Created by Caden Pun on 6/22/22.
+
 //MARK: New Stat View Controller
+
 import UIKit
 
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var back: UIButton!
     private var datasetobj: Dataset!
+    private var proj : DataSetProject!
     
     private var name: String!
     private var date: String!
-    private var items: String!
+    private var points: String!
     private var mean: String!
     private var median: String!
     private var mode: String!
@@ -30,18 +33,19 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         return table
     }()
     
-    var models = [section]()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var models = [section]()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setDataSetObject(_:)), name: Notification.Name("datasetobj"), object: nil)
+        
         configure()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
         title = "Stats"
         tableView.delegate = self
@@ -57,6 +61,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewDidLayoutSubviews() {
+        print("Layout subviews")
         loadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
@@ -66,28 +71,32 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func setDataSetObject(_ notification: Notification) {
-        print("StatView recieved dataset")
-        let proj = (notification.object as! DataSetProject)
-        self.datasetobj = proj.datasetobject
+        print("StatsView recieved dataset")
+        self.proj = notification.object as? DataSetProject
+        self.datasetobj = self.proj.datasetobject!
     }
     
     func loadData() {
-        name = datasetobj.name
-        date = datasetobj.creationDate
-        items = String(datasetobj.getTotalNumItems())
-        mean = String(round(1000 * datasetobj.calculations[0]) / 1000)
-        median = String(datasetobj.calculations[1])
-        mode = String(datasetobj.calculations[2])
-        min = String(datasetobj.calculations[3])
-        max = String(datasetobj.calculations[4])
-        range = String(datasetobj.calculations[5])
-        stddev = String(round(1000 * datasetobj.calculations[6]) / 1000)
-        abdev = String(round(1000 * datasetobj.calculations[7]) / 1000)
-        error = String(round(1000 * datasetobj.calculations[8]) / 1000)
+        print("load data statsview")
+        let home = self.presentingViewController as? HomeViewController
+        home?.updateItem(item: self.proj, dataset: self.datasetobj)
+        
+        name = datasetobj.getName()
+        date = datasetobj.getCreationDate()
+        points = String(datasetobj.getTotalNumItems())
+        mean = String(round(1000 * datasetobj.getCalculations()[0]) / 1000)
+        median = String(round(1000 * datasetobj.getCalculations()[1]) / 1000)
+        mode = String(round(1000 * datasetobj.getCalculations()[2]) / 1000)
+        min = String(round(1000 * datasetobj.getCalculations()[3]) / 1000)
+        max = String(round(1000 * datasetobj.getCalculations()[4]) / 1000)
+        range = String(round(1000 * datasetobj.getCalculations()[5]) / 1000)
+        stddev = String(round(1000 * datasetobj.getCalculations()[6]) / 1000)
+        abdev = String(round(1000 * datasetobj.getCalculations()[7]) / 1000)
+        error = String(round(1000 * datasetobj.getCalculations()[8]) / 1000)
         
         models[0].cells[0].calc = name
         models[0].cells[1].calc = date
-        models[0].cells[2].calc = items
+        models[0].cells[2].calc = points
         models[1].cells[0].calc = mean
         models[1].cells[1].calc = median
         models[1].cells[2].calc = mode
@@ -102,7 +111,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func configure() {
-        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: items) {}]))
+        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: points) {}]))
         models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
         models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: stddev) {}, cellStruc(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
@@ -115,8 +124,11 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
-            self.datasetobj.name = text
+            self.datasetobj.setName(name: text)
             self.loadData()
+            
+            let home = self.presentingViewController as? HomeViewController
+            home?.updateItem(item: self.proj, dataset: self.datasetobj)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel/*, handler: { _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
@@ -157,9 +169,9 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func onBackClick(_sender:UIButton) {
-        if (_sender == self.back){
+        if (_sender == self.back) {
+            print("dismissing dataset")
             self.dismiss(animated:true)
-            
         }
     }
 }
@@ -224,11 +236,8 @@ class StatsCell: UITableViewCell {
     }
 }
 extension UIApplication {
-    struct Constants {
-        static let CFBundleShortVersionString = "CFBundleShortVersionString"
-    }
     class func vers() -> String {
-        return Bundle.main.object(forInfoDictionaryKey: Constants.CFBundleShortVersionString) as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
   
     class func build() -> String {
@@ -237,7 +246,8 @@ extension UIApplication {
   
     class func versionBuild() -> String {
         let version = vers(), build = build()
-      
+        print(version == build ? "v\(version)" : "v\(version) (\(build))")
         return version == build ? "v\(version)" : "v\(version) (\(build))"
+        //return "v\(version) (\(build))"
     }
 }

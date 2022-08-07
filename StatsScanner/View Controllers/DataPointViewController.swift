@@ -27,7 +27,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 
 	@objc func initDataset(_ notification: Notification) {
-		print("DataPoint View recieved dataset")
+		print("DataPointView recieved dataset")
         self.proj = notification.object as? DataSetProject
         self.dataset = self.proj.datasetobject!
 	}
@@ -36,7 +36,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
 		
         edible = false
-		
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)
         spreadsheetView.dataSource = self
@@ -56,29 +55,24 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
     
 	//MARK: TABLE INIT
-	
+	//var count = 0
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        if (dataset.isEmpty()) {
-            cell.setup(with: "", dataset: self.dataset)
-            return cell
-        } else if (indexPath.row == 0) {
-            cell.setup(with: String(dataset.getKeys()[indexPath.section]), dataset: self.dataset)
-            if (!cell.getText().isNumeric) {
+        cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
+        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
+            if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
                 cell.backgroundColor = .systemFill
             }
-			cell.dataset = self.dataset
-			cell.x = indexPath.column
-			cell.y = indexPath.row
-			return cell
-		} else {
-            cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
-		}
+        }
+        cell.dataset = self.dataset
+        cell.x = indexPath.column
+        cell.y = indexPath.row
+        
 		return cell
 	}
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty()) {
+        if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
             //return Int(view.frame.size.width/100)
             return 4
         } else {
@@ -87,16 +81,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty()) {
-            return Int(view.frame.size.height/50)
-        } else {
-            return self.dataset.getData().count
-        }
+        return self.dataset.getData().count
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
         let headerCount = dataset.getKeys().count
-        if (headerCount == 0) {
+        if (headerCount == 0 || (headerCount == 1 && dataset.getKeys()[0].isEmpty)) {
             return (view.frame.size.width - 5.0)/4.0
         } else if (headerCount < 5) {
             return (view.frame.size.width - 5.0) / CGFloat(headerCount)
@@ -114,7 +104,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
     
     func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty()) {
+        if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
             return 0
         }
         return 1
@@ -125,11 +115,17 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
 			print("Saving")
-            fatalError()
-			edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
-			edible = false
+            edible = false
+            edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
+            
+            let home = self.presentingViewController as? HomeViewController
+            home?.updateItem(item: self.proj, dataset: self.dataset)
+
+            let stat = tabBarController?.viewControllers?.first as? StatsViewController
+            stat?.loadData()
+            
             if (sa) {
-                showAlert()
+                // showAlert()
             }
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
 			print("Editing")
@@ -200,19 +196,20 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         field.becomeFirstResponder()
-        if (edible) {
-            if (self.field.text!.isNumeric) { // is a number
-                let val = Double(self.field.text!)!
-                self.dataset.updateVal(x: self.x, y: self.y, val: val)
-                //print(self.dataset.getData())
-                field.resignFirstResponder()
-            } else if (self.backgroundColor == .systemFill) { // is a header
-                let val = String(self.field.text!)
-                //self.dataset.updateKey(x: self.x, y: 0, val: val)
-                self.dataset.updateHeader(index: self.x, val: val)
-                //print(self.dataset.getData())
-                field.resignFirstResponder()
-            }
+        
+        if (self.backgroundColor == .systemFill) { // is a header
+            let val = String(self.field.text!)
+            self.dataset.updateKey(x: self.x, val: val)
+            print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
+            print(self.dataset.getKeys())
+            field.resignFirstResponder()
+        } else { // is a datapoint
+            let val = self.field.text!
+            self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
+            print("new datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
+            print(self.dataset.getNumericalData())
+            print(self.dataset.getData())
+            field.resignFirstResponder()
         }
         return edible
 	}

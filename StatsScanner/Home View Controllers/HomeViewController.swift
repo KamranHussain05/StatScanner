@@ -20,6 +20,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var models = [DataSetProject]()
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
+	public let name = "HomeViewController"
+	
+	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5",
+	"DataSetIcon6"]
 	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let newDatasetMenu = UIAlertController(title: "New Dataset",
@@ -30,9 +34,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		let layout = UICollectionViewFlowLayout()
-		//let width = (view.frame.size.width*(1-3*sc))/2
-		//let height = (view.frame.size.width*(1.25-sc))/2
-		// 414 is width of iphone11 screen
 		let width = (414*(1-3*sc))/2
 		let height = (414*(1.25-sc))/2
 		layout.itemSize = CGSize(width: width, height: height)
@@ -49,7 +50,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
                     print("Scanning image")
-                    _ = self.scanningImage()
+                    self.scanningImage()
                 }
             )
         }
@@ -92,35 +93,30 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 	
     ///Creates a new dataset
     func createWithName(method: Int) {
-        let new = Dataset()
-        let alert = UIAlertController(title: "New DataSet Name",
-                                      message: nil,
-                                      preferredStyle: .alert)
+        let alert = UIAlertController(title: "New DataSet Name", message: nil, preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-		}
-		new.name = text
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {return}
+			
+		let new = Dataset(name: text)
             
 		switch(method) {
 		case 0:
-			_ = self?.scanningImage()
+			self?.scanningImage()
 			print("scanning image")
 			break
 		case 1:
 			//import image method call
 			print("importing image")
-			self?.createItem(item: new, name: new.name) //remove this after pipelines are implemented
+			self?.createItem(item: new, name: new.getName()) //remove this after pipelines are implemented
 			break
 		case 2:
-			self?.dbuilder.name = new.name
+			self?.dbuilder.name = new.getName()
 			self?.importCSV()
 			print("importing csv")
 			break
 		case 3:
 			print("creating blank dataset")
-			self?.createItem(item: new, name: new.name)
+			self?.createItem(item: new, name: new.getName())
 			break
 		default:
 			return
@@ -138,12 +134,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     ///Presents the image scanning window and starts that pipeline
-	func scanningImage() -> Bool {
-        let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! CameraOCRThing
+	func scanningImage() {
+        let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! OCRScanning
         scanview.modalPresentationStyle = .popover
         scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)
-		return true
     }
 	
 	///Launches the controller for CSV importing
@@ -160,11 +155,18 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 	
 	///Reads the CSV file and loads it into an array of stirngs
 	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-		let rawFile = db.readCSV(inputFile: url)
-		print(rawFile)
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
-		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 		controller.dismiss(animated: true)
+		do {
+			let rawFile = try db.readCSV(inputFile: url)
+			print(rawFile)
+			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
+			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		} catch {
+			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file is corrupted or incompatible.", preferredStyle: .alert)
+			let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
+			dialog.addAction(okAction)
+			present(dialog, animated:true)
+		}
 	}
 	
 	func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
@@ -182,6 +184,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
             DispatchQueue.main.async {
                 self.myCollectionView.reloadData()
             }
+			print("Loaded from core data")
         } catch {
             fatalError("CORE DATA FETCH FAILED")
         }
@@ -196,6 +199,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         do {
             try context.save()
             getAllItems()
+			print("Created in Core Data")
         } catch {
             fatalError("CORE DATA WRITE FAILED")
         }
@@ -208,6 +212,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         do {
             try context.save()
 			getAllItems()
+			print("Deleted from Core Data")
         } catch {
             fatalError("CORE DATA DELETION FAILED")
         }
@@ -216,10 +221,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     ///Updates the dataset project in Core Data
     public func updateItem(item: DataSetProject, dataset: Dataset) {
         item.datasetobject = dataset
-		item.name = dataset.name
+		item.name = dataset.getName()
         do {
 			try context.save()
 			getAllItems()
+			print("Saved to Core Data")
         } catch {
             fatalError("CORE DATA UPDATE FAILED")
         }
@@ -242,16 +248,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 		let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: HomeTiles.identifier, for: indexPath) as! HomeTiles
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longTap(_:)))
         
-        cell.dataSetName.text = model.datasetobject?.name
+        cell.dataSetName.text = model.name
+		model.datasetobject?.setName(name: model.name!)
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
-        cell.creationDate.text = "Created: " + (model.datasetobject?.creationDate)!
+        cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!
-        print(model.datasetobject!.name)
+        print(model.datasetobject!.getName())
+		cell.myImageView.image = iconChoose()
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         myCollectionView.addGestureRecognizer(longPressGesture)
         return cell
     }
+	
+	func iconChoose() -> UIImage {
+		return UIImage(named: icons[Int.random(in: 0...5)])!
+	}
     
 // MARK: OPEN DATASET HANDLING
     
@@ -259,7 +271,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     @objc func openDataSet(_ sender:UIButton) {
         print("Opening DataSet")
         self.selectedDataset = models[sender.tag].datasetobject!
-        print(selectedDataset.name)
+        print(selectedDataset.getName())
         let vc = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
         vc.modalPresentationStyle = .fullScreen
         

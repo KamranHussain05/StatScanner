@@ -7,8 +7,8 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     let screenSize: CGRect = UIScreen.main.bounds // THIS INCLUDES THE NAVIGATION BAR
     
     var chartScrollerView: UIPickerView!
-    let chartTypeLabels = ["Area Chart", "Area Spline Chart", "Bar Chart", "Bubble Chart", "Column Chart", "Column Range Chart", "Line Graph", "Pie Chart", "Polygon Chart", "Pyramid Chart", "Scatter Plot", "Waterfall Plot"]
-    let chartTypes = [AAChartType.area, AAChartType.areaspline, AAChartType.bar, AAChartType.bubble, AAChartType.column, AAChartType.columnrange, AAChartType.line, AAChartType.pie, AAChartType.polygon, AAChartType.pyramid, AAChartType.scatter, AAChartType.waterfall]
+    let chartTypeLabels = ["Area Chart", "Area Spline Chart", "Bar Chart", "Bubble Chart", "Column Chart", "Column Range Chart", "Line Graph", "Pie Chart", "Polygon Chart", "Pyramid Chart", "Scatter Plot", "Waterfall Plot", "Spline"]
+    let chartTypes = [AAChartType.area, AAChartType.areaspline, AAChartType.bar, AAChartType.bubble, AAChartType.column, AAChartType.columnrange, AAChartType.line, AAChartType.pie, AAChartType.polygon, AAChartType.pyramid, AAChartType.scatter, AAChartType.waterfall, AAChartType.spline]
     let width:CGFloat = 200
     let height:CGFloat = 50
     
@@ -66,8 +66,6 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             .title(dataset.getName())
             .series(formattedData())
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-        // The chart view object calls the instance object of AAChartModel and draws the final graphic
-        print(UIColor.systemFill)
         let color : AAStyle
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")

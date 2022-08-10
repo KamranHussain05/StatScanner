@@ -3,7 +3,7 @@
 //  StatScanner
 //
 //  Created by Kaleb Kim and Kamran Hussain on 12/31/21.
-//  Editing by Caden Pun started on 6/27/22
+//  Caden Pun
 
 import UIKit
 import UniformTypeIdentifiers

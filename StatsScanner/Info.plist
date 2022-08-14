@@ -41,9 +41,5 @@
 	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>
-	<key>CFBundleVersion</key>
-	<string></string>
-	<key>CFBundleShortVersionString</key>
-	<string></string>
 </dict>
 </plist>

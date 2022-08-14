@@ -11,7 +11,7 @@ import Vision
 
 // MARK: Home View Controller
 
-class HomeViewController: UIViewController, UIDocumentPickerDelegate {
+class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
@@ -21,8 +21,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
     private var models = [DataSetProject]()
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
-	public let name = "HomeViewController"
-	
+
 	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5",
 	"DataSetIcon6"]
 	
@@ -108,7 +107,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
 		case 1:
 			//import image method call
 			print("importing image")
-			self?.createItem(item: new, name: new.getName()) //remove this after pipelines are implemented
+			self?.importImage()
 			break
 		case 2:
 			self?.dbuilder.name = new.getName()
@@ -141,6 +140,21 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate {
         scanview.popoverPresentationController?.sourceView = self.myCollectionView
         self.present(scanview, animated: true, completion: nil)
     }
+	
+	///Allows the user to select and import an image of a dataset to the app
+	func importImage() {
+		let picker = UIImagePickerController()
+		picker.allowsEditing = true
+		picker.delegate = self
+		present(picker, animated: true)
+	}
+	
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		guard let image = info[.editedImage] as? UIImage else { return }
+
+		dismiss(animated: true)
+		print(image)
+	}
 	
 	///Launches the controller for CSV importing
 	func importCSV() {

@@ -107,7 +107,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		case 1:
 			//import image method call
 			print("importing image")
-			self?.importImage() 
+			self?.importImage()
 			break
 		case 2:
 			self?.dbuilder.name = new.getName()

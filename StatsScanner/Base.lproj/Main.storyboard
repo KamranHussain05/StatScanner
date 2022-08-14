@@ -113,7 +113,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-NR-B5J">
-                                                            <rect key="frame" x="0.0" y="4" width="180" height="108"/>
+                                                            <rect key="frame" x="0.0" y="11" width="180" height="96"/>
                                                             <imageReference key="image" image="questionmark.folder" catalog="system" symbolScale="small"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xR-RN-WLA">
@@ -130,7 +130,7 @@
                                                         <constraint firstItem="VdL-pw-zjl" firstAttribute="width" secondItem="pbS-ij-FfT" secondAttribute="width" multiplier="0.905882" id="5xe-eh-j5L"/>
                                                         <constraint firstItem="I4O-NR-B5J" firstAttribute="centerX" secondItem="pbS-ij-FfT" secondAttribute="centerX" id="9Cb-jG-DOJ"/>
                                                         <constraint firstItem="3xR-RN-WLA" firstAttribute="width" secondItem="pbS-ij-FfT" secondAttribute="width" multiplier="0.905556" id="EWE-17-RRZ"/>
-                                                        <constraint firstItem="I4O-NR-B5J" firstAttribute="centerY" secondItem="pbS-ij-FfT" secondAttribute="centerY" multiplier="0.45" id="FZa-xj-JIS"/>
+                                                        <constraint firstItem="I4O-NR-B5J" firstAttribute="centerY" secondItem="pbS-ij-FfT" secondAttribute="centerY" multiplier="0.45" constant="1.1999999999999957" id="FZa-xj-JIS"/>
                                                         <constraint firstItem="I4O-NR-B5J" firstAttribute="width" secondItem="pbS-ij-FfT" secondAttribute="width" id="Gai-Xj-b5j"/>
                                                         <constraint firstItem="3xR-RN-WLA" firstAttribute="centerY" secondItem="pbS-ij-FfT" secondAttribute="centerY" multiplier="1.8" id="NFf-XI-oeC"/>
                                                         <constraint firstItem="adE-1s-4AM" firstAttribute="width" secondItem="pbS-ij-FfT" secondAttribute="width" multiplier="0.905882" id="Pgo-Ea-nsf"/>
@@ -143,7 +143,7 @@
                                                         <constraint firstItem="DjR-kc-mgk" firstAttribute="width" secondItem="pbS-ij-FfT" secondAttribute="width" multiplier="0.905882" id="p6L-7d-qV2"/>
                                                         <constraint firstItem="DjR-kc-mgk" firstAttribute="height" secondItem="pbS-ij-FfT" secondAttribute="height" multiplier="0.072" id="sUc-Dq-ij6"/>
                                                         <constraint firstItem="VdL-pw-zjl" firstAttribute="centerX" secondItem="pbS-ij-FfT" secondAttribute="centerX" id="zAo-p5-K8V"/>
-                                                        <constraint firstItem="I4O-NR-B5J" firstAttribute="height" secondItem="pbS-ij-FfT" secondAttribute="height" multiplier="0.439922" id="zOt-8L-PWW"/>
+                                                        <constraint firstItem="I4O-NR-B5J" firstAttribute="height" secondItem="pbS-ij-FfT" secondAttribute="height" multiplier="0.439922" constant="-11.999876" id="zOt-8L-PWW"/>
                                                         <constraint firstItem="DjR-kc-mgk" firstAttribute="centerY" secondItem="pbS-ij-FfT" secondAttribute="centerY" multiplier="1.25" id="zmU-tg-OZu"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>

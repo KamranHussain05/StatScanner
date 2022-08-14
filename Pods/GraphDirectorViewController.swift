@@ -71,13 +71,13 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
             aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24).fontFamily(""))
-            //aaChartModel.xAxisLabelsStyle(color)
+            aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
             aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 24))
-            //aaChartModel.xAxisLabelsStyle(color)
+            aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         }
         

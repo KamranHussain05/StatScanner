@@ -346,10 +346,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsP-rf-jeC">
-                                <rect key="frame" x="349" y="73" width="48" height="45"/>
+                                <rect key="frame" x="349" y="73" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="0AR-zC-5cO"/>
+                                    <constraint firstAttribute="width" constant="45" id="VKT-7c-4KD"/>
+                                    <constraint firstAttribute="height" constant="45" id="ahy-qc-HH4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="l11-Lc-Qha"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="arrowshape.turn.up.left" catalog="system" symbolScale="large"/>
+                                    <imageReference key="image" image="arrowshape.turn.up.left" catalog="system"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
                                 <connections>
@@ -368,6 +374,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Stats" image="plus.forwardslash.minus" catalog="system" selectedImage="plus.forwardslash.minus" id="GyP-xA-Qo9"/>
+                    <connections>
+                        <outlet property="back" destination="NsP-rf-jeC" id="4vk-V3-oaJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbF-7h-BgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

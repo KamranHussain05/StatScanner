@@ -360,6 +360,7 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="89r-n3-i6J"/>
+                                    <action selector="onBackClickWith_sender:" destination="Y0Z-dZ-eFM" eventType="touchUpInside" id="bm7-Ls-3X1"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -107,7 +107,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		case 1:
 			//import image method call
 			print("importing image")
-			self?.createItem(item: new, name: new.getName()) //remove this after pipelines are implemented
+			self?.importImage() 
 			break
 		case 2:
 			self?.dbuilder.name = new.getName()
@@ -149,7 +149,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		present(picker, animated: true)
 	}
 	
-	@objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		guard let image = info[.editedImage] as? UIImage else { return }
 
 		dismiss(animated: true)

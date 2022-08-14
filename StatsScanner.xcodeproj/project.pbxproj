@@ -683,6 +683,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 373;
 				DEVELOPMENT_TEAM = 76G3N963K9;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;
@@ -731,6 +732,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 373;
 				DEVELOPMENT_TEAM = 76G3N963K9;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StatScanner;

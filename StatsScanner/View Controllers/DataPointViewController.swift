@@ -87,7 +87,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
-            return 5
+            return 4
         } else {
             return self.dataset.getKeys().count
         }

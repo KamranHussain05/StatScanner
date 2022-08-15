@@ -45,6 +45,8 @@ public class Dataset: NSObject, NSCoding {
         coder.encode(graphData, forKey: "graphData")
     }
     
+//MARK: Initializers
+    
     required convenience public init?(coder decoder: NSCoder) {
         self.init()
         
@@ -57,8 +59,6 @@ public class Dataset: NSObject, NSCoding {
         self.icon = decoder.decodeObject(forKey: "icon") as? UIImage
         self.graphData = decoder.decodeObject(forKey: "graphData") as? [[Double]] ?? [[]]
     }
-    
-//MARK: Initializers
     
     override init() {
         super.init()
@@ -88,7 +88,7 @@ public class Dataset: NSObject, NSCoding {
     
     init(name : String) {
         super.init()
-        print("New Dataset")
+        
         self.name = name
         let rows = Int(UIScreen.main.bounds.height/50)
         self.rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)

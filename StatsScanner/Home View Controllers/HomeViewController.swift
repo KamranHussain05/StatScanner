@@ -34,10 +34,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
 		let layout = UICollectionViewFlowLayout()
-		layout.itemSize = CGSize(width: (414*(1-3*sc))/2, height: (414*(1.25-sc))/2)
-		//layout.minimumLineSpacing = sc*414/3
-		//layout.minimumInteritemSpacing = sc*414/3*0
-		//layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*414/3, bottom: 0, right: sc*414/3)
+		let width = CGFloat(UIScreen.main.bounds.width)
+		layout.itemSize = CGSize(width: (width*(1-3*sc))/2, height: (width*(1.25-sc))/2)
+		layout.minimumLineSpacing = sc*width
+		layout.minimumInteritemSpacing = sc*width
+		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*width, bottom: 0, right: sc*width)
 		myCollectionView.collectionViewLayout = layout
         getAllItems()
         

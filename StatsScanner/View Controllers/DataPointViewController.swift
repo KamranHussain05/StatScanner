@@ -60,7 +60,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
         
-        for i in 0...self.dataset.getKeys().count { // change when implement side keys
+        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
             if(i == self.dataset.getKeys().count) {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
                 cell.setup(with: indexPath.column, dataset: self.dataset)

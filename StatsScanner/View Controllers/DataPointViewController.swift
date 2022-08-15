@@ -37,6 +37,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		
         edible = false
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
+        spreadsheetView.register(AddColumnCell.self, forCellWithReuseIdentifier: AddColumnCell.identifier)
+        spreadsheetView.register(AddRowCell.self, forCellWithReuseIdentifier: AddRowCell.identifier)
 		spreadsheetView.gridStyle = .solid(width: 2, color: .gray)
         spreadsheetView.dataSource = self
 		spreadsheetView.delegate = self
@@ -252,7 +254,35 @@ class AddColumnCell : Cell {
     }
     
     @IBAction func addColumn() {
-        print("pp poo poo check")
+        print("Adding Column")
+        self.dataset.addColumn()
+    }
+    
+}
+
+class AddRowCell : Cell {
+    
+    static let identifier = "addrow"
+    private var button = UIButton()
+    private var y  : Int! = 0
+    private var dataset : Dataset!
+    
+    public func setup(with y : Int, dataset : Dataset) {
+        self.y = y
+        self.dataset = dataset
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        button.sizeToFit()
+        button.frame = contentView.bounds
+        button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
+        button.tintColor = .systemGreen
+    }
+    
+    @IBAction func addColumn() {
+        print("Adding Column")
+        self.dataset.addColumn()
     }
     
 }

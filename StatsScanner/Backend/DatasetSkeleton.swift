@@ -275,6 +275,14 @@ public class Dataset: NSObject, NSCoding {
         self.name = name
     }
     
+    func addColumn() {
+        
+    }
+    
+    func addRow() {
+        
+    }
+    
 // MARK: TO CSV
 
     func toCSV() {

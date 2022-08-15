@@ -87,14 +87,14 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
-            return 4
+            return 5
         } else {
             return self.dataset.getKeys().count
         }
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return self.dataset.getData().count
+        return self.dataset.getData().count + 1
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -281,8 +281,8 @@ class AddRowCell : Cell {
     }
     
     @IBAction func addColumn() {
-        print("Adding Column")
-        self.dataset.addColumn()
+        print("Adding Row")
+        self.dataset.addRow()
     }
     
 }

@@ -59,11 +59,17 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
-        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
+        
+        for i in 0...self.dataset.getKeys().count { // change when implement side keys
             if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
                 cell.backgroundColor = .systemFill
             }
+            if(i == self.dataset.getKeys().count) {
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
+                
+            }
         }
+        
         cell.dataset = self.dataset
         cell.x = indexPath.column
         cell.y = indexPath.row
@@ -164,7 +170,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
 class DataPointCell: Cell, UITextFieldDelegate {
 	
-	static let identifier = "datapoint"
+	static let identifier = "datapointcell"
 	
 	private let field = UITextField()
     var x : Int! = 0
@@ -188,7 +194,8 @@ class DataPointCell: Cell, UITextFieldDelegate {
         field.sizeToFit()
 		field.delegate = self
 		field.frame = contentView.bounds
-	}
+        
+    }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return edible
     }
@@ -216,4 +223,8 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	func getText() -> String {
 		return field.text!
 	}
+}
+
+class addColumnCell: Cell {
+    static let identifier = ""
 }

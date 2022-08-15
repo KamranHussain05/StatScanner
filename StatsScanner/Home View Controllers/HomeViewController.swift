@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		layout.itemSize = CGSize(width: (414*(1-3*sc))/2, height: (414*(1.25-sc))/2)
 		layout.minimumLineSpacing = sc*414
 		layout.minimumInteritemSpacing = sc*414
-		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: 0, bottom: 0, right: sc*100)
+		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: 0, bottom: 0, right: sc*414)
 		myCollectionView.collectionViewLayout = layout
         getAllItems()
         

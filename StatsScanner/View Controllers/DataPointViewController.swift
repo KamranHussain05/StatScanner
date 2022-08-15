@@ -94,7 +94,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return self.dataset.getData().count + 1
+        return self.dataset.getData().count
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {

@@ -346,12 +346,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsP-rf-jeC">
-                                <rect key="frame" x="349" y="73" width="45" height="45"/>
+                                <rect key="frame" x="349" y="74" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="0AR-zC-5cO"/>
-                                    <constraint firstAttribute="width" constant="45" id="VKT-7c-4KD"/>
-                                    <constraint firstAttribute="height" constant="45" id="ahy-qc-HH4"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="l11-Lc-Qha"/>
+                                    <constraint firstAttribute="height" constant="45" id="PCh-DD-hyU"/>
+                                    <constraint firstAttribute="width" constant="45" id="Zvp-sy-qkX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal">
@@ -367,10 +365,9 @@
                         <viewLayoutGuide key="safeArea" id="lf9-Bh-g8U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NsP-rf-jeC" firstAttribute="top" secondItem="lf9-Bh-g8U" secondAttribute="top" constant="29" id="5eN-o6-eCu"/>
+                            <constraint firstItem="NsP-rf-jeC" firstAttribute="top" secondItem="lf9-Bh-g8U" secondAttribute="top" constant="30" id="0ib-44-B5b"/>
                             <constraint firstItem="3XH-0T-hAn" firstAttribute="top" secondItem="lf9-Bh-g8U" secondAttribute="top" constant="30" id="I0d-mi-gqN"/>
-                            <constraint firstItem="lf9-Bh-g8U" firstAttribute="bottom" secondItem="NsP-rf-jeC" secondAttribute="bottom" constant="695" id="fM7-uL-WjK"/>
-                            <constraint firstItem="NsP-rf-jeC" firstAttribute="leading" secondItem="3XH-0T-hAn" secondAttribute="trailing" constant="187" id="j79-dw-J02"/>
+                            <constraint firstItem="lf9-Bh-g8U" firstAttribute="trailing" secondItem="NsP-rf-jeC" secondAttribute="trailing" constant="20" id="JSi-Mw-y4Y"/>
                             <constraint firstItem="3XH-0T-hAn" firstAttribute="leading" secondItem="lf9-Bh-g8U" secondAttribute="leading" constant="20" id="jhO-Tn-hwV"/>
                         </constraints>
                     </view>

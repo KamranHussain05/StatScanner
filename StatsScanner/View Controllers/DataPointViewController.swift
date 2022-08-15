@@ -61,12 +61,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
         
         for i in 0...self.dataset.getKeys().count { // change when implement side keys
-            if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
-                cell.backgroundColor = .systemFill
-            }
             if(i == self.dataset.getKeys().count) {
                 let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
                 cell.setup(with: indexPath.column, dataset: self.dataset)
+                return cell
+            } else if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
+                cell.backgroundColor = .systemFill
             }
         }
         

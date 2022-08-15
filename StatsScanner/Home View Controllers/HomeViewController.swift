@@ -35,6 +35,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         super.viewDidLoad()
 		let layout = UICollectionViewFlowLayout()
 		let width = CGFloat(UIScreen.main.bounds.width)
+		print(width)
 		layout.itemSize = CGSize(width: (width*(1-3*sc))/2, height: (width*(1.25-sc))/2)
 		layout.minimumLineSpacing = sc*width
 		layout.minimumInteritemSpacing = sc*width

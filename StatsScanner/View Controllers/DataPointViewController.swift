@@ -60,12 +60,18 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
         
-        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
-            if(i == self.dataset.getKeys().count) {
-                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
-                cell.setup(with: indexPath.column, dataset: self.dataset)
-                return cell
-            } else if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
+        if(indexPath.column == self.dataset.getKeys().count && indexPath.row  == 0) {
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
+            cell.setup(with: indexPath.column, dataset: self.dataset)
+            return cell
+        } else if (indexPath.column == 0 && indexPath.row == self.dataset.getData().count) {
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
+            cell.setup(with: indexPath.column, dataset: self.dataset)
+            return cell
+        }
+        
+        for i in 0...self.dataset.getKeys().count { // change when implement side keys
+             if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
                 cell.backgroundColor = .systemFill
             }
         }
@@ -241,6 +247,8 @@ class AddColumnCell : Cell {
         super.layoutSubviews()
         button.sizeToFit()
         button.frame = contentView.bounds
+        button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
+        button.tintColor = .systemGreen
     }
     
     @IBAction func addColumn() {

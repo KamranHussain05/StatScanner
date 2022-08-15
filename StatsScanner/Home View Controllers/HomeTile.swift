@@ -21,7 +21,7 @@ class HomeTiles: UICollectionViewCell {
         contentView.backgroundColor = .secondarySystemFill
         // cell rounded section
         self.layer.cornerRadius = 10.0
-        self.layer.borderWidth = 5.0
+        //self.layer.borderWidth = 5.0
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
         dataSetName.adjustsFontSizeToFitWidth = true

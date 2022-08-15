@@ -37,18 +37,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		let width = CGFloat(UIScreen.main.bounds.width)
 		print(width)
 		if (width < 414) {
-			layout.itemSize = CGSize(width: (width*(1-3*sc))/2, height: (width*(1.25-sc))/2)
-			layout.minimumLineSpacing = sc*width
-			layout.minimumInteritemSpacing = sc*width
-			layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*width, bottom: 0, right: sc*width)
-			myCollectionView.collectionViewLayout = layout
+			layoutConstraints(layout: layout, width: width)
 		} else {
-			layout.itemSize = CGSize(width: (414*(1-3*sc))/2, height: (414*(1.25-sc))/2)
-			layout.minimumLineSpacing = sc*414
-			layout.minimumInteritemSpacing = sc*414
-			layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*414, bottom: 0, right: sc*414)
-			myCollectionView.collectionViewLayout = layout
+			layoutConstraints(layout: layout, width: 414)
 		}
+		myCollectionView.collectionViewLayout = layout
         getAllItems()
         
         // for pop up menu
@@ -87,6 +80,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
             })
 		
     }
+	
+	func layoutConstraints(layout: UICollectionViewFlowLayout, width: CGFloat) {
+		layout.itemSize = CGSize(width: (width*(1-3*sc))/2, height: (width*(1.25-sc))/2)
+		layout.minimumLineSpacing = sc*width
+		layout.minimumInteritemSpacing = sc*width
+		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*width, bottom: 0, right: sc*width)
+	}
     
     // MARK: Data Import Handling
     

@@ -60,7 +60,7 @@ class StatsScannerTests: XCTestCase {
     }
     
     func testReading() throws {
-        print(b.readCSV(fileName: "test.csv", lineSeparator: "\n", valSeparator: ","))
+        print(try b.readCSV(fileName: "test.csv", lineSeparator: "\n", valSeparator: ","))
     }
     
     func testDatasetPathway() throws {

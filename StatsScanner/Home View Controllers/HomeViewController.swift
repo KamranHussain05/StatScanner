@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     @IBOutlet var newDatasetButton: UIButton!
     
     private var selectedDataset: Dataset!
-	private var sc: CGFloat = 0.05
+	private var sc: CGFloat = 0.01
     private var models = [DataSetProject]()
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()

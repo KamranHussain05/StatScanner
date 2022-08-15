@@ -70,7 +70,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             return cell
         }
         
-        for i in 0...self.dataset.getKeys().count { // change when implement side keys
+        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
              if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
                 cell.backgroundColor = .systemFill
             }

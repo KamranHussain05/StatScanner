@@ -65,8 +65,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
                 cell.backgroundColor = .systemFill
             }
             if(i == self.dataset.getKeys().count) {
-                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-                
+                let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
+                cell.setup(with: indexPath.column, dataset: self.dataset)
             }
         }
         
@@ -168,7 +168,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
 	//MARK: Cell Handling
 
-class DataPointCell: Cell, UITextFieldDelegate {
+class DataPointCell : Cell, UITextFieldDelegate {
 	
 	static let identifier = "datapointcell"
 	
@@ -225,6 +225,26 @@ class DataPointCell: Cell, UITextFieldDelegate {
 	}
 }
 
-class addColumnCell: Cell {
-    static let identifier = ""
+class AddColumnCell : Cell {
+    
+    static let identifier = "addcolumn"
+    private var button = UIButton()
+    private var x  : Int! = 0
+    private var dataset : Dataset!
+    
+    public func setup(with x : Int, dataset : Dataset) {
+        self.x = x
+        self.dataset = dataset
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        button.sizeToFit()
+        button.frame = contentView.bounds
+    }
+    
+    @IBAction func addColumn() {
+        print("pp poo poo check")
+    }
+    
 }

@@ -301,7 +301,6 @@
 				A85092B327497F6F00392240 /* Frameworks */,
 				A85092B427497F6F00392240 /* Resources */,
 				7004EBC60BB541826FF77C0F /* [CP] Embed Pods Frameworks */,
-				AF69CC1C289F009A007B2C03 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -440,25 +439,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StatsScanner/Pods-StatsScanner-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF69CC1C289F009A007B2C03 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"${PROJECT_DIR}\"\n\n# Make sure working directory is clean.\n#if output=$(git status --porcelain) && [ -n \"$output\" ]; then\n    #echo \"error: Please commit any uncommitted files before proceeding:\\n$output\"\n    #exit 1\n#fi\n\n# Make sure we are on master (and not a feature branch, for instance)\nCURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)\nif [[ \"$CURRENT_BRANCH\" != \"main\" ]]; then\n    echo \"error: Please switch to the main branch before proceeding.\"\n    exit 1\nfi\n\n# Get the current marketing version\nOLD_VERSION=$(agvtool what-marketing-version -terse1)\nif [[ \"$OLD_VERSION\" == \"\\$(MARKETING_VERSION)\" ]]; then\n    OLD_VERSION=\"${MARKETING_VERSION}\"\n    echo \"warning: agvtool is still broken, and ignores \\$(MARKETING_VERSION). Using \\\"$OLD_VERSION\\\" as the marketing version.\"\nfi\n\n# Get the old build number\nOLD_BUILD=$(agvtool what-version -terse);\n\n# Tag the last commit on master\nTAG_MESSAGE=\"Version $OLD_VERSION ($OLD_BUILD)\"\nGIT_TAG=\"releases/${OLD_VERSION//[^0-9A-Za-z.]/_}-${OLD_BUILD//[^0-9A-Za-z.]/_}\"\necho $TAG_MESSAGE | git tag -a \"$GIT_TAG\" -f -F -\n\n# Bump the build version\nagvtool bump\n\n# Get the new build number\nNEW_BUILD=$(agvtool what-version -terse)\n\n# Decide the new branch name\nNEW_BRANCH=\"version/${OLD_VERSION//[^0-9A-Za-z]/_}-${NEW_BUILD//[^0-9A-Za-z]/_}\"\n\n# Make sure it doesn't already exist, or revert if it does\nif output=$(git rev-parse --verify --quiet refs/heads/$NEW_BRANCH) && [ -n \"$output\" ]; then\n    agvtool new-version \"$OLD_BUILD\"\n    git tag -d \"GIT_TAG\"\n    echo \"error: The branch $NEW_BRANCH already exists. Please remove it and try again. Reverting to the previous version.\"\n    exit 1\nfi\n\n# Try to create the new branch, or revert if we can't\nif output=$(git checkout -q -b \"$NEW_BRANCH\") && [ -n \"$output\" ]; then\n    agvtool new-version \"$OLD_BUILD\"\n    git tag -d \"GIT_TAG\"\n    echo \"error: An error occurred while branching. Reverting to the previous version.\"\n    exit 1\nfi\n\n# Commit the changes\nCOMMIT_MESSAGE=\"Version $OLD_VERSION ($NEW_BUILD)\"\necho $COMMIT_MESSAGE | git commit -a -F -\n\nLOG_MESSAGE=\"Bumped build from $OLD_BUILD to $NEW_BUILD [Version: $OLD_VERSION Build: $NEW_BUILD]\"\necho $LOG_MESSAGE\n\n";
 			showEnvVarsInLog = 0;
 		};
 		E6012131C8F1E2019D7B875F /* [CP] Check Pods Manifest.lock */ = {

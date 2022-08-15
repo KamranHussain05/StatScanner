@@ -57,23 +57,25 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
     
 	//MARK: TABLE INIT
-	//var count = 0
+	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
-		let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        
+        // Add the add row/column cell to the grid as a single cell
         if(indexPath.column == self.dataset.getKeys().count && indexPath.row  == 0) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
             cell.setup(with: indexPath.column, dataset: self.dataset)
             return cell
         } else if (indexPath.column == 0 && indexPath.row == self.dataset.getData().count) {
-            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
-            cell.setup(with: indexPath.column, dataset: self.dataset)
+            let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddRowCell.identifier, for: indexPath) as! AddRowCell
+            cell.setup(with: indexPath.row, dataset: self.dataset)
             return cell
         }
         
+        let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
+        
+        // Check if the cell is a key and change its fill color
         for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
-             if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
+            if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
                 cell.backgroundColor = .systemFill
             }
         }

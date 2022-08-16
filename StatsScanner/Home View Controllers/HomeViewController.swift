@@ -45,7 +45,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         getAllItems()
         
 		let macurl = DataBridge.getDocumentsDirectory()
-		if(UIApplication.shared.canOpenURL(macurl)) {
+		let fone = URL(string: macurl.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://"))!
+		if(!UIApplication.shared.canOpenURL(fone) && UIApplication.shared.canOpenURL(macurl)) {
             // don't allow user to take a photo if it's a mac (impractical)
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in

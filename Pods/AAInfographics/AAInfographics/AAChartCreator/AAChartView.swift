@@ -171,7 +171,6 @@ public class AAChartView: WKWebView {
     private func safeEvaluateJavaScriptString (_ jsString: String) {
         if optionsJson == nil {
             #if DEBUG
-            print("💀💀💀AAChartView did not finish loading!!!")
             #endif
             return
         }
@@ -202,7 +201,7 @@ public class AAChartView: WKWebView {
                 ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
                 
                 """
-                print(errorInfo)
+
             }
             #endif
 
@@ -226,10 +225,6 @@ public class AAChartView: WKWebView {
         let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
         if data != nil {
             let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
-            print("""
-                -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
-                \(prettyPrintedModelJson!)
-                """)
         }
         #endif
         
@@ -241,7 +236,6 @@ public class AAChartView: WKWebView {
         configuration.userContentController.removeAllUserScripts()
         NotificationCenter.default.removeObserver(self)
         #if DEBUG
-        print("👻👻👻 AAChartView was destroyed!!!")
         #endif
     }
 
@@ -654,7 +648,6 @@ extension AAChartView {
     
      func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
         if !JSONSerialization.isValidJSONObject(dictionary) {
-            print("❌ String object is not valid Dictionary JSON String")
             return ""
         }
         
@@ -665,7 +658,6 @@ extension AAChartView {
     
     func getJSONStringFromArray(array: [Any]) -> String {
         if !JSONSerialization.isValidJSONObject(array) {
-            print("❌ String object is not valid Array JSON String")
             return ""
         }
         

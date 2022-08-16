@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         super.viewDidLoad()
 		let layout = UICollectionViewFlowLayout()
 		let width = CGFloat(UIScreen.main.bounds.width)
-		print(width)
+
 		if (width < 414) {
 			layoutConstraints(layout: layout, width: width)
 		} else {
@@ -50,7 +50,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
             // don't allow user to take a photo if it's a mac (impractical)
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
-                    print("Scanning image")
                     self.scanningImage()
                 }
             )
@@ -58,7 +57,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         
         newDatasetMenu.addAction(
             UIAlertAction(title: "Import Image", style: .default) { (action) in
-                print("Importing Image")
                 self.createWithName(method: 1)
             }
         )
@@ -76,7 +74,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         
         newDatasetMenu.addAction(
             UIAlertAction(title:"Cancel", style: .destructive) { (action) in
-                print("cancelled addition")
             })
 		
     }
@@ -110,20 +107,15 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		switch(method) {
 		case 0:
 			self?.scanningImage()
-			print("scanning image")
 			break
 		case 1:
-			//import image method call
-			print("importing image")
 			self?.importImage()
 			break
 		case 2:
 			self?.dbuilder.name = new.getName()
 			self?.importCSV()
-			print("importing csv")
 			break
 		case 3:
-			print("creating blank dataset")
 			self?.createItem(item: new, name: new.getName())
 			break
 		default:
@@ -181,7 +173,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		controller.dismiss(animated: true)
 		do {
 			let rawFile = try db.readCSV(inputFile: url)
-			print(rawFile)
 			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
 			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 		} catch {
@@ -207,7 +198,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
             DispatchQueue.main.async {
                 self.myCollectionView.reloadData()
             }
-			print("Loaded from core data")
         } catch {
             fatalError("CORE DATA FETCH FAILED")
         }
@@ -222,7 +212,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         do {
             try context.save()
             getAllItems()
-			print("Created in Core Data")
         } catch {
             fatalError("CORE DATA WRITE FAILED")
         }
@@ -235,7 +224,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         do {
             try context.save()
 			getAllItems()
-			print("Deleted from Core Data")
         } catch {
             fatalError("CORE DATA DELETION FAILED")
         }
@@ -248,7 +236,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         do {
 			try context.save()
 			getAllItems()
-			print("Saved to Core Data")
         } catch {
             fatalError("CORE DATA UPDATE FAILED")
         }
@@ -276,7 +263,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
         cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!
-        print(model.datasetobject!.getName())
 		cell.myImageView.image = iconChoose()
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
@@ -292,9 +278,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     ///Opens the dataset and loads it from coredata
     @objc func openDataSet(_ sender:UIButton) {
-        print("Opening DataSet")
         self.selectedDataset = models[sender.tag].datasetobject!
-        print(selectedDataset.getName())
         let vc = storyboard?.instantiateViewController(withIdentifier: "expandedview") as! UITabBarController
         vc.modalPresentationStyle = .fullScreen
         
@@ -306,10 +290,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 		
 		if(self.isEditing) {
 			self.updateItem(item: models[sender.tag], dataset: selectedDataset)
-			print("saving to core data")
 		}
 		
-		print("got here, checkpoint")
     }
     
     // MARK: LONG PRESS HANDLING
@@ -324,7 +306,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if(gesture.state == .began) {
             let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-				print("deleting ", self!.models[deletionIndex.row].name!)
 				self?.deleteItem(item: self!.models[deletionIndex.row])
                 self!.getAllItems()
             }))

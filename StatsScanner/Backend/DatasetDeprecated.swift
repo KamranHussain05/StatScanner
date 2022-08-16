@@ -70,7 +70,6 @@ public class DatasetDeprecated: NSObject, NSCoding {
 		formatter.dateStyle = .short
 		creationDate = formatter.string(from: currentDateTime)
 		
-		print(appendable[0])
 		keys = appendable[0]
 		var a = appendable
 		a.removeFirst()
@@ -101,7 +100,6 @@ public class DatasetDeprecated: NSObject, NSCoding {
 		calculations[6] = (self.getStandardDeviation())
 		calculations[7] = (self.getMAD())
 		calculations[8] = (self.getStandardError())
-		print("Re-Did Calculations")
 		do {
 			try h.context.save()
 		} catch {
@@ -181,7 +179,6 @@ public class DatasetDeprecated: NSObject, NSCoding {
 		for e in data {
 			result.append(e.stringArray)
 		}
-		print(result)
 		
 		let fileName = self.name.replacingOccurrences(of: " ", with: "") + self.creationDate.replacingOccurrences(of: "/", with: "-") + ".csv"
 		db.writeCSV(fileName: fileName, data: result)
@@ -195,15 +192,12 @@ public class DatasetDeprecated: NSObject, NSCoding {
 			result.append(e.doubleArray)
 		}
 		if(result[0].count == 0) {
-			print("first row empty")
 			result.removeFirst()
 		}
 
 		if(result[result.count-1].count == 0) {
 			result.removeLast()
-			print("last row empty")
 		}
-		print(result)
 		return result
 	}
 	
@@ -219,11 +213,9 @@ public class DatasetDeprecated: NSObject, NSCoding {
 		var result = 0.0
 		for i in 0...data.count-1 {
 			for j in 0...data[0].count-1 {
-				print(data[i][j])
 				result+=data[i][j]
 			}
 		}
-		print("\(result) / \(data.count*data[0].count) = \(result/Double(data.count*data[0].count))")
 		return result/Double(data.count*data[0].count)
 	}
 	
@@ -328,8 +320,6 @@ public class DatasetDeprecated: NSObject, NSCoding {
 		}
 		let y = copy.count/2 - 1
 		let x = copy[y].count/2
-		print(x)
-		print(y)
 		if(y%2 == 0) {
 			return (copy[y][copy[x].count-1] + copy[y+1][0]) / 2
 		}

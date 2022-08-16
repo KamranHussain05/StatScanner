@@ -37,7 +37,6 @@ class DataBridge {
         let url = DataBridge.getDocumentsDirectory().appendingPathComponent(fileName)
         
         //Get Data
-        print("reading csv")
         var result: [[String]] = []
         let data = try String(contentsOf: url)
         let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
@@ -47,14 +46,12 @@ class DataBridge {
             result.append(columns)
         }
         
-        print("copying cleaned data")
         try result = cleanCSVData(data: result)
         return result
     }
     
     func readCSV(inputFile: URL, lineSeparator: String = "\n", valSeparator: String = ",") throws -> [[String]] {
         //Get Data
-        print("reading csv")
         
         var result: [[String]] = []
         let data = try String(contentsOf: inputFile)
@@ -65,7 +62,6 @@ class DataBridge {
             result.append(columns)
         }
         
-        print("copying cleaned data")
         try result = cleanCSVData(data: result)
         return result
     }
@@ -92,7 +88,6 @@ class DataBridge {
     
     private func cleanCSVData(data: [[String]]) throws -> [[String]] {
         var result = [[String]](repeating: [String](repeating: "", count: data[0].count), count: data.count)
-        print("cleaning data")
         
         for i in 0...data.count-1 {
             for j in 0...data[i].count-1 {

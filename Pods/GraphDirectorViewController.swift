@@ -29,7 +29,6 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     @objc func initDataSet(_ notification: Notification) {
         let proj = (notification.object as! DataSetProject)
         self.dataset = proj.datasetobject!
-        print("Graph View received dataset")
     }
     
     override func viewDidLoad() {

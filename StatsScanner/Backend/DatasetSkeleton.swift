@@ -139,7 +139,6 @@ public class Dataset: NSObject, NSCoding {
     
    /// Clean rawData array
     private func cleanRaw() {
-        print("cleaning raw data")
         for i in 0...self.rawData.count-1 {
             var count = 0
             for j in 0...self.rawData[0].count-1 {
@@ -190,12 +189,10 @@ public class Dataset: NSObject, NSCoding {
         
         // Convert to doubles and remove string columns
         var res = Array<Array<Double>>(repeating: Array<Double>(repeating: 0, count: joe.count), count: joe[0].count)
-        print("Initial Array \(res)")
         for i in 0...mid.count-1 {
             res[i] = mid[i].doubleArray
         }
         
-        print(res)
         return res
     }
     

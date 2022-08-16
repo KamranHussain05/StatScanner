@@ -32,7 +32,6 @@ public class Calculations {
                 calculations[i] = 0
             }
         }
-        print("Re-Did Calculations")
         
         return calculations
     }

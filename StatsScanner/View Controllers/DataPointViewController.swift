@@ -27,7 +27,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 
 	@objc func initDataset(_ notification: Notification) {
-		print("DataPointView recieved dataset")
         self.proj = notification.object as? DataSetProject
         self.dataset = self.proj.datasetobject!
 	}
@@ -129,7 +128,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
-			print("Saving")
             edible = false
             edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
             
@@ -143,7 +141,6 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
                 // showAlert()
             }
 		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
-			print("Editing")
 			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
 			edible = true
 		}
@@ -216,15 +213,10 @@ class DataPointCell : Cell, UITextFieldDelegate {
         if (self.backgroundColor == .systemFill) { // is a header
             let val = String(self.field.text!)
             self.dataset.updateKey(x: self.x, val: val)
-            print("new key: \(val), coordinates: (\(self.x!), \(self.y!))")
-            print(self.dataset.getKeys())
             field.resignFirstResponder()
         } else { // is a datapoint
             let val = self.field.text!
             self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
-            print("new datapoint: \(val), coordinates: (\(self.x!), \(self.y!))")
-            print(self.dataset.getNumericalData())
-            print(self.dataset.getData())
             field.resignFirstResponder()
         }
         return edible
@@ -256,7 +248,6 @@ class AddColumnCell : Cell {
     }
     
     @IBAction func addColumn() {
-        print("Adding Column")
         self.dataset.addColumn()
     }
     
@@ -283,7 +274,6 @@ class AddRowCell : Cell {
     }
     
     @IBAction func addColumn() {
-        print("Adding Row")
         self.dataset.addRow()
     }
     

@@ -50,7 +50,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         
         spreadsheetView.translatesAutoresizingMaskIntoConstraints = false
         spreadsheetView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
-        spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)).isActive = true
+        spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)+130).isActive = true
         spreadsheetView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         spreadsheetView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
@@ -59,11 +59,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
         // Add the add row/column cell to the grid as a single cell
-        if(indexPath.column == self.dataset.getKeys().count && indexPath.row  == 0) {
+        if(indexPath.column == self.dataset.getKeys().count) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
             cell.setup(with: indexPath.column, dataset: self.dataset)
+            
             return cell
-        } else if (indexPath.column == 0 && indexPath.row == self.dataset.getData().count) {
+        } else if (indexPath.row == self.dataset.getData().count) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddRowCell.identifier, for: indexPath) as! AddRowCell
             cell.setup(with: indexPath.row, dataset: self.dataset)
             return cell
@@ -88,14 +89,14 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
-            return 4
+            return 4+1
         } else {
-            return self.dataset.getKeys().count
+            return self.dataset.getKeys().count+1
         }
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
-        return self.dataset.getData().count
+        return self.dataset.getData().count+1
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
@@ -249,6 +250,7 @@ class AddColumnCell : Cell {
     
     @IBAction func addColumn() {
         self.dataset.addColumn()
+        print("adding column")
     }
     
 }
@@ -275,6 +277,7 @@ class AddRowCell : Cell {
     
     @IBAction func addColumn() {
         self.dataset.addRow()
+        print("adding row")
     }
     
 }

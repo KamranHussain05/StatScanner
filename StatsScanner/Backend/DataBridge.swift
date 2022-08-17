@@ -93,7 +93,7 @@ class DataBridge {
         
         for i in 0...data.count-1 {
             for j in 0...data[i].count-1 {
-                guard case result[i][j] = data[safe: i]![safe: j]!.replacingOccurrences(of: "\r", with: "") else {
+                guard case result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "") else {
                     throw FileIOError.CorruptedFile
                 }
             }

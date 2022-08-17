@@ -196,6 +196,44 @@ public class Dataset: NSObject, NSCoding {
         return res
     }
     
+// MARK: Setters
+    
+    func updateVal(x : Int, y : Int, val : String) {
+        self.rawData[y][x] = val
+        self.keys = self.solveKeys(self.rawData)
+        self.updateNumData()
+        self.reCalculate()
+        self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
+    func updateKey(x: Int, y: Int = 0, val : String) { //assuming top row key
+        self.keys[y][x] = val
+        self.rawData[y][x] = val
+    }
+    
+    func setName(name : String) {
+        self.name = name
+    }
+    
+    func addColumn() {
+        for i in 0...rawData.count-1 {
+            rawData[i].append("")
+        }
+
+        self.keys = self.solveKeys(self.rawData)
+        self.updateNumData()
+        self.reCalculate()
+        self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
+    func addRow() {
+        rawData.append(Array<String>.init(repeating: "", count: rawData[0].count))
+        
+        self.updateNumData()
+        self.reCalculate()
+        self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
 // MARK: Getters
     
     func getName() -> String {
@@ -250,34 +288,6 @@ public class Dataset: NSObject, NSCoding {
             }
         }
         return counter
-    }
-    
-// MARK: Setters
-    
-    func updateVal(x : Int, y : Int, val : String) {
-        if (true) {
-            self.rawData[y][x] = val
-            self.updateNumData()
-            self.reCalculate()
-            self.graphData = self.genGraphData(array: self.rawData)
-        }
-    }
-    
-    func updateKey(x: Int, y: Int = 0, val : String) { //assuming top row key
-        self.keys[y][x] = val
-        self.rawData[y][x] = val
-    }
-    
-    func setName(name : String) {
-        self.name = name
-    }
-    
-    func addColumn() {
-        
-    }
-    
-    func addRow() {
-        
     }
     
 // MARK: TO CSV

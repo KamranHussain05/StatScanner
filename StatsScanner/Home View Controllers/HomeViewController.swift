@@ -157,12 +157,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	///Launches the controller for CSV importing
 	func importCSV() {
 		let supportedFiles : [UTType] = [UTType.data]
-		
 		let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
 		
 		controller.delegate = self
 		controller.allowsMultipleSelection = false
-		
 		present(controller, animated:true, completion:nil)
 	}
 	
@@ -173,12 +171,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			let rawFile = try db.readCSV(inputFile: urls[0])
 			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
 			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-		} catch {
-			print(error)
+		} catch FileIOError.CorruptedFile {
 			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file could not be read.", preferredStyle: .alert)
 			let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
 			dialog.addAction(okAction)
 			present(dialog, animated:true)
+		} catch {
+			print(error)
 		}
 	}
 	
@@ -303,7 +302,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 		guard let deletionIndex = myCollectionView.indexPathForItem(at: gesture.location(in: myCollectionView)) else { return }
 		
         if(gesture.state == .began) {
-            let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Delete Dataset", message: "This is Irreversible", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
 				self?.deleteItem(item: self!.models[deletionIndex.row])
                 self!.getAllItems()

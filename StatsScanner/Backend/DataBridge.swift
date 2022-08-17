@@ -57,6 +57,7 @@ class DataBridge {
         
         var result: [[String]] = []
         let data = try String(contentsOf: inputFile)
+        print(data)
         let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
         
         for row in rows {
@@ -93,9 +94,10 @@ class DataBridge {
         
         for i in 0...data.count-1 {
             for j in 0...data[i].count-1 {
-                guard case result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "") else {
+                if(data[i].count > data[0].count) {
                     throw FileIOError.CorruptedFile
                 }
+                result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
             }
         }
         

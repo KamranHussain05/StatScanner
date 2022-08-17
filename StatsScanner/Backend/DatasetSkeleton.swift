@@ -108,17 +108,16 @@ public class Dataset: NSObject, NSCoding {
     private func solveKeys(_ data:[[String]]) -> [[String]] {
         var res : [[String]] = [[""],[""],[""]]
         res[0] = data[0]
-        
-        var left : [String] = [""]
-        var right : [String] = [""]
-        
-        for i in 0...data.count-1 {
-            left.append(data[i][0])
-        }
-        
-        for i in 0...data[data[0].count-1].count-1 {
-            right.append(data[data[0].count-1][i])
-        }
+//        var left : [String] = [""]
+//        var right : [String] = [""]
+//
+//        for i in 0...data.count-1 {
+//            left.append(data[i][0])
+//        }
+//        *second for loop cause iob for pooper scooper*
+//        for i in 0...data[data[0].count-1].count-1 {
+//            right.append(data[data[0].count-1][i])
+//        }
         
         return res
     }
@@ -174,6 +173,10 @@ public class Dataset: NSObject, NSCoding {
         // Build the initial array and convert values to doubles
         var joe : Array<Array<String>> = []
         
+        if (array.count == 1) {
+            return [[]]
+        }
+        
         for i in 1...array.count-1 {
             joe.append(array[i])
         }
@@ -219,10 +222,25 @@ public class Dataset: NSObject, NSCoding {
         for i in 0...rawData.count-1 {
             rawData[i].append("")
         }
-
         self.keys = self.solveKeys(self.rawData)
         self.updateNumData()
         self.reCalculate()
+        self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
+    func delColumn() {
+        if (rawData[0].count > 1) {
+            for i in 0...rawData.count-1 {
+                rawData[i].removeLast()
+            }
+        } else {
+            print("become mt dataset")
+            let rows = Int(UIScreen.main.bounds.height/50)
+            rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
+        }
+        self.updateNumData()
+        self.reCalculate()
+        self.keys = self.solveKeys(self.rawData)
         self.graphData = self.genGraphData(array: self.rawData)
     }
     
@@ -231,6 +249,20 @@ public class Dataset: NSObject, NSCoding {
         
         self.updateNumData()
         self.reCalculate()
+        self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
+    func delRow() {
+        if (rawData.count > 1) {
+            rawData.removeLast()
+        } else {
+            print("become mt dataset")
+            let rows = Int(UIScreen.main.bounds.height/50)
+            rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
+        }
+        self.updateNumData()
+        self.reCalculate()
+        self.keys = self.solveKeys(self.rawData)
         self.graphData = self.genGraphData(array: self.rawData)
     }
     

@@ -292,7 +292,9 @@ public class Dataset: NSObject, NSCoding {
     }
     
     func isEmpty() -> Bool{
-        //return (numericalData.count) < 2
+        if (rawData.isEmpty || rawData[0].isEmpty) {
+            return true
+        }
         var counter = 0
         for i in 0...rawData.count-1 {
             for j in 0...rawData[i].count-1 {

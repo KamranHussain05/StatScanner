@@ -44,9 +44,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		myCollectionView.collectionViewLayout = layout
         getAllItems()
         
-		let macurl = DataBridge.getDocumentsDirectory()
-		let fone = URL(string: macurl.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://"))!
-		if(!UIApplication.shared.canOpenURL(fone) && UIApplication.shared.canOpenURL(macurl)) {
+		let fone = URL(string: DataBridge.getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://"))!
+		if(UIApplication.shared.canOpenURL(fone)) {
             // don't allow user to take a photo if it's a mac (impractical)
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
@@ -169,14 +168,15 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	}
 	
 	///Reads the CSV file and loads it into an array of stirngs
-	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+	func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
 		controller.dismiss(animated: true)
 		do {
-			let rawFile = try db.readCSV(inputFile: url)
+			let rawFile = try db.readCSV(inputFile: urls[0])
 			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
 			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 		} catch {
-			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file is corrupted or incompatible.", preferredStyle: .alert)
+			print(error)
+			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file could not be read.", preferredStyle: .alert)
 			let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
 			dialog.addAction(okAction)
 			present(dialog, animated:true)

@@ -44,8 +44,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		myCollectionView.collectionViewLayout = layout
         getAllItems()
         
-		let fone = URL(string: DataBridge.getDocumentsDirectory().absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://"))!
-		if(UIApplication.shared.canOpenURL(fone)) {
+		if(isPhone()) {
             // don't allow user to take a photo if it's a mac (impractical)
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in

@@ -19,6 +19,4 @@ class DatasetBuilder {
         dataset = nil
         name = "New Dataset"
     }
-    
-    
 }

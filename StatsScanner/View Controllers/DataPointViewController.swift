@@ -61,12 +61,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
          //Add the add row/column cell to the grid as a single cell
         if(indexPath.column == self.dataset.getKeys().count) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
-            cell.setup(with: indexPath.column, dataset: self.dataset)
-
+            cell.setup(with: indexPath.column, dataset: self.dataset, view : self.spreadsheetView)
             return cell
         } else if (indexPath.row == self.dataset.getData().count) {
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddRowCell.identifier, for: indexPath) as! AddRowCell
-            cell.setup(with: indexPath.row, dataset: self.dataset)
+            cell.setup(with: indexPath.row, dataset: self.dataset, view: self.spreadsheetView)
             return cell
         }
         
@@ -100,8 +99,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-        let headerCount = dataset.getKeys().count + 1
-        if (headerCount == 0 || (headerCount == 2 && dataset.getKeys()[0].isEmpty)) {
+        let headerCount = dataset.getKeys().count
+        if (column == headerCount) {
+            return 30
+        } else if (headerCount == 0 || (headerCount == 1 && dataset.getKeys()[0].isEmpty)) {
             return (view.frame.size.width - 5.0)/4.0
         } else if (headerCount < 6) {
             return (view.frame.size.width - 5.0) / CGFloat(headerCount)
@@ -111,7 +112,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
-      return 50
+        if(row == self.dataset.getData().count) {
+            return 30
+        }
+        return 50
     }
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -238,10 +242,12 @@ class AddColumnCell : Cell {
     private var button = UIButton()
     private var x  : Int! = 0
     private var dataset : Dataset!
+    private var spview : SpreadsheetView!
     
-    public func setup(with x : Int, dataset : Dataset) {
+    public func setup(with x : Int, dataset : Dataset, view : SpreadsheetView) {
         self.x = x
         self.dataset = dataset
+        self.spview = view
     }
     
     override func layoutSubviews() {
@@ -250,10 +256,15 @@ class AddColumnCell : Cell {
         button.frame = contentView.bounds
         button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
         button.tintColor = .systemGreen
+        button.addTarget(self, action: #selector(self.addColumn), for: .touchUpInside)
+        contentView.addSubview(button)
+        
+        self.backgroundColor = .systemBackground
     }
     
-    @IBAction func addColumn() {
+    @objc func addColumn() {
         self.dataset.addColumn()
+        self.spview.reloadData()
         print("adding column")
     }
     
@@ -262,13 +273,15 @@ class AddColumnCell : Cell {
 class AddRowCell : Cell {
     
     static let identifier = "addrow"
-    private var button = UIButton()
+    private var button : UIButton! = UIButton()
     private var y  : Int! = 0
     private var dataset : Dataset!
+    private var spview : SpreadsheetView!
     
-    public func setup(with y : Int, dataset : Dataset) {
+    public func setup(with y : Int, dataset : Dataset, view : SpreadsheetView) {
         self.y = y
         self.dataset = dataset
+        self.spview = view
     }
     
     override func layoutSubviews() {
@@ -277,10 +290,15 @@ class AddRowCell : Cell {
         button.frame = contentView.bounds
         button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
         button.tintColor = .systemGreen
+        button.addTarget(self, action: #selector(self.addRow), for: .touchUpInside)
+        contentView.addSubview(button)
+
+        self.backgroundColor = .systemBackground
     }
     
-    @IBAction func addRow() {
+    @objc func addRow() {
         self.dataset.addRow()
+        self.spview.reloadData()
         print("adding row")
     }
     

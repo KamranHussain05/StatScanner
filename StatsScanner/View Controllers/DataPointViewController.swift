@@ -89,7 +89,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
-            return 4+1
+            return 4 + 1
         } else {
             return self.dataset.getKeys().count+1
         }
@@ -138,6 +138,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             let stat = tabBarController?.viewControllers?.first as? StatsViewController
             stat?.loadData()
             
+            self.spreadsheetView.reloadData()
+            
             if (sa) {
                 // showAlert()
             }
@@ -149,15 +151,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     
     @IBAction func share() {
         self.dataset.toCSV()
-        let application = UIApplication.shared
-        let url = DataBridge.getDocumentsDirectory()
-        let heeheeheehaw : URL!
-        let ios = url.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://")
-        heeheeheehaw = URL(string: ios)!
-        if (application.canOpenURL(heeheeheehaw)) {
-            application.open(heeheeheehaw, options: [:], completionHandler: nil)
-        } else if (application.canOpenURL(url)) {
-            application.open(url, options: [:], completionHandler: nil)
+        let mac = DataBridge.getDocumentsDirectory()
+        let heeheeheehaw = URL(string: mac.absoluteString.replacingOccurrences(of: "file://", with: "shareddocuments://"))!
+        if (isPhone()) {
+            UIApplication.shared.open(heeheeheehaw, options: [:], completionHandler: nil)
+        } else if (UIApplication.shared.canOpenURL(mac)) {
+            UIApplication.shared.open(mac, options: [:], completionHandler: nil)
         }
     }
     
@@ -226,6 +225,11 @@ class DataPointCell : Cell, UITextFieldDelegate {
 	func getText() -> String {
 		return field.text!
 	}
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        field.text = nil
+    }
 }
 
 class AddColumnCell : Cell {
@@ -275,7 +279,7 @@ class AddRowCell : Cell {
         button.tintColor = .systemGreen
     }
     
-    @IBAction func addColumn() {
+    @IBAction func addRow() {
         self.dataset.addRow()
         print("adding row")
     }

@@ -35,7 +35,6 @@
 		A85092C927497F7A00392240 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85092C727497F7A00392240 /* LaunchScreen.storyboard */; };
 		A85092D427497F7A00392240 /* StatsScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092D327497F7A00392240 /* StatsScannerTests.swift */; };
 		A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD6DF62779AE030048912C /* DataBridge.swift */; };
-		A8CA563227716205006BDF61 /* DatasetDeprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA563127716205006BDF61 /* DatasetDeprecated.swift */; };
 		A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */; };
 		A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56382772989D006BDF61 /* Cholesterol_R.csv */; };
 		A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA563A277298AD006BDF61 /* Crime_R.csv */; };
@@ -48,6 +47,7 @@
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
+		AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,6 @@
 		A85092EC2749822B00392240 /* StatsScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatsScanner-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8BD6DEC27794A810048912C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A8BD6DF62779AE030048912C /* DataBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBridge.swift; sourceTree = "<group>"; };
-		A8CA563127716205006BDF61 /* DatasetDeprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetDeprecated.swift; sourceTree = "<group>"; usesTabs = 1; };
 		A8CA56362772987F006BDF61 /* Birthweight_reduced_kg_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Birthweight_reduced_kg_R.csv; sourceTree = "<group>"; };
 		A8CA56382772989D006BDF61 /* Cholesterol_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cholesterol_R.csv; sourceTree = "<group>"; };
 		A8CA563A277298AD006BDF61 /* Crime_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Crime_R.csv; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
+		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +153,9 @@
 		0AF001592782BE61001BF87E /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */,
 				4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */,
 				4D3B6E9A288F551300BB1C03 /* Calculations.swift */,
-				A8CA563127716205006BDF61 /* DatasetDeprecated.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* OCRScanning.swift */,
 				AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */,
@@ -478,7 +478,6 @@
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
-				A8CA563227716205006BDF61 /* DatasetDeprecated.swift in Sources */,
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				A85092C427497F7000392240 /* StatsScanner.xcdatamodeld in Sources */,
 				4D2F1688279AACF70096F9DA /* DataSetProject+CoreDataProperties.swift in Sources */,
@@ -486,6 +485,7 @@
 				4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,
+				AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */,
 				A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */,
 				4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */,
 				AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */,

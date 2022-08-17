@@ -42,6 +42,7 @@ class DataBridge {
         let rows = data.components(separatedBy: CharacterSet(charactersIn: lineSeparator))
         
         for row in rows {
+            //check for quotations and ignore commas in quotations
             let columns = row.components(separatedBy: valSeparator)
             result.append(columns)
         }
@@ -50,6 +51,7 @@ class DataBridge {
         return result
     }
     
+    // MARK: USED METHOD
     func readCSV(inputFile: URL, lineSeparator: String = "\n", valSeparator: String = ",") throws -> [[String]] {
         //Get Data
         
@@ -91,7 +93,9 @@ class DataBridge {
         
         for i in 0...data.count-1 {
             for j in 0...data[i].count-1 {
-                result[i][j] = data[i][j].replacingOccurrences(of: "\r", with: "")
+                guard case result[i][j] = data[safe: i]![safe: j]!.replacingOccurrences(of: "\r", with: "") else {
+                    throw FileIOError.CorruptedFile
+                }
             }
         }
         

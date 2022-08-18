@@ -10,6 +10,7 @@ import SpreadsheetView
 
 var edible : Bool!
 var sa : Bool! = true
+var mt : Bool!
 
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
@@ -18,6 +19,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	@IBOutlet var edit: UIButton!
     private var proj : DataSetProject!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var adder : Int!
 
 	
 	required init?(coder: NSCoder) {
@@ -35,6 +37,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
 		
         edible = false
+        mt = self.dataset.isEmpty()
+        
 		spreadsheetView.register(DataPointCell.self, forCellWithReuseIdentifier: DataPointCell.identifier)
         spreadsheetView.register(AddColumnCell.self, forCellWithReuseIdentifier: AddColumnCell.identifier)
         spreadsheetView.register(AddRowCell.self, forCellWithReuseIdentifier: AddRowCell.identifier)
@@ -47,7 +51,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        if (isPhone()) {
+           adder = 10
+        } else {
+            adder = 30
+        }
         spreadsheetView.translatesAutoresizingMaskIntoConstraints = false
         spreadsheetView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
         spreadsheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)).isActive = true
@@ -58,9 +66,10 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: TABLE INIT
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
-        if((indexPath.column == self.dataset.getKeys().count && !self.dataset.isEmpty()) || (indexPath.column == 4 && self.dataset.isEmpty())) { // addcolumn
+        if(((indexPath.column == self.dataset.getKeys().count && !mt) || (indexPath.column == 4 && mt))) { // addcolumn
+            print("column cell: (\(indexPath.column), \(indexPath.row))")
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
-            cell.setup(with: indexPath.row, with: indexPath.column, dataset: self.dataset, view: self.spreadsheetView)
+            cell.setup(with: indexPath.column, with: indexPath.row, dataset: self.dataset, view: self.spreadsheetView)
             cell.x = indexPath.column
             cell.y = indexPath.row
             cell.gridlines.top = .none
@@ -68,8 +77,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             cell.gridlines.right = .none
             return cell
         } else if (indexPath.row == self.dataset.getData().count) { // addrow
+            print("row cell: (\(indexPath.column), \(indexPath.row))")
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddRowCell.identifier, for: indexPath) as! AddRowCell
-            cell.setup(with: indexPath.row, with: indexPath.column, dataset: self.dataset, view: self.spreadsheetView)
+            cell.setup(with: indexPath.column, with: indexPath.row, dataset: self.dataset, view: self.spreadsheetView)
             cell.x = indexPath.column
             cell.y = indexPath.row
             cell.gridlines.bottom = .none
@@ -81,10 +91,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
         
-        // Check if the cell is a key and change its fill color
-        for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
-            if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
-                cell.backgroundColor = .systemFill
+        if (indexPath.row == 0 || indexPath.column == 0 || indexPath.column == self.dataset.getData().count-1) {
+            // Check if the cell is a key and change its fill color
+            for i in 0...self.dataset.getKeys().count-1 { // change when implement side keys
+                if (cell.getText() == self.dataset.getKeys()[i] && cell.getText() != "") {
+                    cell.backgroundColor = .systemFill
+                }
             }
         }
         
@@ -96,7 +108,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-        if (dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
+        if (mt || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
             return 4+1
         } else {
             return self.dataset.getKeys().count+1
@@ -109,13 +121,13 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
         let headerCount = dataset.getKeys().count
-        if ((column == headerCount && !self.dataset.isEmpty()) || (column == 4 && self.dataset.isEmpty())) {
-            return 30
+        if ((column == headerCount && !mt) || (column == 4 && mt)) {
+            return (view.frame.size.width) / CGFloat(adder)
         }
         if (headerCount == 0 || (headerCount == 1 && dataset.getKeys()[0].isEmpty)) {
-            return (view.frame.size.width - 5.0) / CGFloat(4+1)
+            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(4)
         } else if (headerCount < 6) {
-            return (view.frame.size.width - 5.0-30) / CGFloat(headerCount)
+            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(headerCount)
         } else {
             return 200
         }
@@ -123,7 +135,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, heightForRow row: Int) -> CGFloat {
         if(row == self.dataset.getData().count) {
-            return 30
+            return (view.frame.size.width) / CGFloat(adder)
         }
         return 50
     }
@@ -133,13 +145,13 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
     
     func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
-        if (self.dataset.isEmpty() || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""] || !isPhone()) {
+        if (mt || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""] || !isPhone()) {
             return 0
         }
         return 1
     }
     
-//MARK: ON EDIT CLICK
+//MARK: Buttons
 	
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
@@ -187,7 +199,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 }
 
-	//MARK: Cell Handling
+//MARK: DataPointCell
 
 class DataPointCell : Cell, UITextFieldDelegate {
 	
@@ -228,10 +240,12 @@ class DataPointCell : Cell, UITextFieldDelegate {
             let val = String(self.field.text!)
             self.dataset.updateKey(x: self.x, val: val)
             field.resignFirstResponder()
+            mt = self.dataset.isEmpty()
         } else { // is a datapoint
             let val = self.field.text!
             self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
             field.resignFirstResponder()
+            mt = self.dataset.isEmpty()
         }
         return edible
 	}
@@ -240,6 +254,8 @@ class DataPointCell : Cell, UITextFieldDelegate {
 		return field.text!
 	}
 }
+
+//MARK: AddColumnCell
 
 class AddColumnCell : Cell {
     
@@ -255,40 +271,51 @@ class AddColumnCell : Cell {
         self.y = y
         self.dataset = dataset
         self.spview = view
+        self.backgroundColor = .systemBackground
+        if (y == 0) {
+            print("column green: (\(x), \(y))")
+            button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
+            button.tintColor = .systemGreen
+            button.addTarget(self, action: #selector(self.addColumn), for: .touchUpInside)
+            contentView.addSubview(button)
+        } else if (y == 1) {
+            print("column red: (\(x), \(y))")
+            button.setImage(UIImage(systemName: "minus.diamond.fill"), for: .normal)
+            button.tintColor = .systemRed
+            button.addTarget(self, action: #selector(self.delColumn), for: .touchUpInside)
+            contentView.addSubview(button)
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         button.sizeToFit()
         button.frame = contentView.bounds
-        if (y == 0) {
-            button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
-            button.tintColor = .systemGreen
-            button.addTarget(self, action: #selector(self.addColumn), for: .touchUpInside)
-            contentView.addSubview(button)
-        } else if (y == 1) {
-            button.setImage(UIImage(systemName: "minus.diamond.fill"), for: .normal)
-            button.tintColor = .systemRed
-            button.addTarget(self, action: #selector(self.delColumn), for: .touchUpInside)
-            contentView.addSubview(button)
-        }
-        
-        self.backgroundColor = .systemBackground
     }
     
     @objc func addColumn() {
         self.dataset.addColumn()
-        self.spview.reloadData()
         print("adding column")
+        mt = self.dataset.isEmpty()
+        self.spview.reloadData()
     }
     
     @objc func delColumn() {
         self.dataset.delColumn()
-        self.spview.reloadData()
         print("deleting column")
+        mt = self.dataset.isEmpty()
+        self.spview.reloadData()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        button.setImage(nil, for: .normal)
+        button.tintColor = .none
+        //button.removeFromSuperview()
+    }
 }
+
+//MARK: AddRowCell
 
 class AddRowCell : Cell {
     
@@ -304,37 +331,46 @@ class AddRowCell : Cell {
         self.y = y
         self.dataset = dataset
         self.spview = view
+        if (x == 0) {
+            print("row green: (\(x), \(y))")
+            button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
+            button.tintColor = .systemGreen
+            button.addTarget(self, action: #selector(self.addRow), for: .touchUpInside)
+            contentView.addSubview(button)
+        } else if (x == 1) {
+            print("row green: (\(x), \(y))")
+            button.setImage(UIImage(systemName: "minus.diamond.fill"), for: .normal)
+            button.tintColor = .systemRed
+            button.addTarget(self, action: #selector(self.delRow), for: .touchUpInside)
+            contentView.addSubview(button)
+        }
+        self.backgroundColor = .systemBackground
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         button.sizeToFit()
         button.frame = contentView.bounds
-        if (x == 0) {
-            button.setImage(UIImage(systemName: "plus.diamond.fill"), for: .normal)
-            button.tintColor = .systemGreen
-            button.addTarget(self, action: #selector(self.addRow), for: .touchUpInside)
-            contentView.addSubview(button)
-        } else if (x == 1) {
-            button.setImage(UIImage(systemName: "minus.diamond.fill"), for: .normal)
-            button.tintColor = .systemRed
-            button.addTarget(self, action: #selector(self.delRow), for: .touchUpInside)
-            contentView.addSubview(button)
-        }
-
-        self.backgroundColor = .systemBackground
     }
     
     @objc func addRow() {
         self.dataset.addRow()
-        self.spview.reloadData()
         print("adding row")
+        mt = self.dataset.isEmpty()
+        self.spview.reloadData()
     }
     
     @objc func delRow() {
         self.dataset.delRow()
-        self.spview.reloadData()
         print("deleting row")
+        mt = self.dataset.isEmpty()
+        self.spview.reloadData()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        button.setImage(nil, for: .normal)
+        button.tintColor = .none
+        //button.removeFromSuperview()
+    }
 }

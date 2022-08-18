@@ -66,7 +66,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: TABLE INIT
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
-        if(((indexPath.column == self.dataset.getKeys().count && !mt) || (indexPath.column == 4 && mt))) { // addcolumn
+        if(((indexPath.column == self.dataset.getKeys().count && !mt) || (indexPath.column == self.dataset.getData()[0].count && mt))) { // addcolumn
             print("column cell: (\(indexPath.column), \(indexPath.row))")
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
             cell.setup(with: indexPath.column, with: indexPath.row, dataset: self.dataset, view: self.spreadsheetView)
@@ -89,7 +89,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         }
         
         let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
-        cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.section]), dataset: self.dataset)
+        cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.column]), dataset: self.dataset)
         
         if (indexPath.row == 0 || indexPath.column == 0 || indexPath.column == self.dataset.getData().count-1) {
             // Check if the cell is a key and change its fill color
@@ -109,7 +109,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
         if (mt || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
-            return 4+1
+            return self.dataset.getData()[0].count+1
         } else {
             return self.dataset.getKeys().count+1
         }
@@ -121,11 +121,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
         let headerCount = dataset.getKeys().count
-        if ((column == headerCount && !mt) || (column == 4 && mt)) {
+        if ((column == headerCount && !mt) || (column == self.dataset.getData()[0].count && mt)) {
             return (view.frame.size.width) / CGFloat(adder)
         }
         if (headerCount == 0 || (headerCount == 1 && dataset.getKeys()[0].isEmpty)) {
-            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(4)
+            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(self.dataset.getData()[0].count)
         } else if (headerCount < 6) {
             return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(headerCount)
         } else {
@@ -305,13 +305,13 @@ class AddColumnCell : Cell {
         print("deleting column")
         mt = self.dataset.isEmpty()
         self.spview.reloadData()
+        print("numcolumns: \(self.dataset.getData()[0].count+1)")
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         button.setImage(nil, for: .normal)
         button.tintColor = .none
-        //button.removeFromSuperview()
     }
 }
 
@@ -371,6 +371,5 @@ class AddRowCell : Cell {
         super.prepareForReuse()
         button.setImage(nil, for: .normal)
         button.tintColor = .none
-        //button.removeFromSuperview()
     }
 }

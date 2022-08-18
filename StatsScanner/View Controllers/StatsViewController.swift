@@ -7,12 +7,13 @@
 //MARK: New Stat View Controller
 
 import UIKit
+import CoreGraphics
 
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var back: UIButton!
     private var datasetobj: Dataset!
-    private var proj : DataSetProject!
+    private var proj: DataSetProject!
     
     private var name: String!
     private var date: String!
@@ -50,13 +51,24 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         title = "Stats"
         tableView.delegate = self
         tableView.dataSource = self
-        let version = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        let label = UILabel(frame: version.bounds)
-        label.text = UIApplication.versionBuild()
-        label.numberOfLines = 1
-        label.textAlignment = .center
-        version.addSubview(label)
+        
+        let version = UIView(frame: CGRect(x: (view.frame.size.width-150)/2, y: 0, width: 150, height: 150))
+        
+        let build = UILabel(frame: CGRect(x: 0, y: version.frame.size.height/2, width: 4*version.frame.size.width/5, height : version.frame.size.height/2))
+        build.text = UIApplication.versionBuild()
+        build.numberOfLines = 1
+        build.textAlignment = .center
+        
+        let infoB = UIButton()
+        infoB.frame = CGRect(x: 4*version.frame.size.width/5, y: version.frame.size.height/2, width: version.frame.size.width/5, height: version.frame.size.height/2)
+        infoB.setImage(UIImage(systemName: "info.circle"), for: .normal)
+        infoB.tintColor = .systemBlue
+        infoB.addTarget(self, action: #selector(self.infoScreen), for: .touchUpInside)
+        
+        version.addSubview(build)
+        version.addSubview(infoB)
         tableView.tableFooterView = version
+        
         view.addSubview(tableView)
     }
     
@@ -72,6 +84,10 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @objc func setDataSetObject(_ notification: Notification) {
         self.proj = notification.object as? DataSetProject
         self.datasetobj = self.proj.datasetobject!
+    }
+    
+    @objc func infoScreen() {
+        print("tapped info button")
     }
     
     func loadData() {
@@ -107,11 +123,13 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.tableView.reloadData()
     }
     
+    //MARK: TABLE INIT
+    
     func configure() {
-        models.append(section(title: "Information", cells: [cellStruc(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruc(title: "Creation Date", calc: date) {}, cellStruc(title: "Data Points", calc: points) {}]))
-        models.append(section(title: "Averages", cells: [cellStruc(title: "Mean", calc: mean) {}, cellStruc(title: "Median", calc: median) {}, cellStruc(title: "Mode", calc: mode) {}]))
-        models.append(section(title: "Scope", cells: [cellStruc(title: "Min", calc: min) {}, cellStruc(title: "Max", calc: max) {}, cellStruc(title: "Range", calc: range) {}]))
-        models.append(section(title: "Error", cells: [cellStruc(title: "Standard Deviation", calc: stddev) {}, cellStruc(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruc(title: "Standard Error", calc: error) {}]))
+        models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruct(title: "Creation Date", calc: date) {}, cellStruct(title: "Data Points", calc: points) {}]))
+        models.append(section(title: "Averages", cells: [cellStruct(title: "Mean", calc: mean) {}, cellStruct(title: "Median", calc: median) {}, cellStruct(title: "Mode", calc: mode) {}]))
+        models.append(section(title: "Scope", cells: [cellStruct(title: "Min", calc: min) {}, cellStruct(title: "Max", calc: max) {}, cellStruct(title: "Range", calc: range) {}]))
+        models.append(section(title: "Error", cells: [cellStruct(title: "Standard Deviation", calc: stddev) {}, cellStruct(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruct(title: "Standard Error", calc: error) {}]))
     }
     
     func textfieldAlert(_ title: String, action: String) {
@@ -174,7 +192,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 //MARK: Structs
 
-struct cellStruc {
+struct cellStruct {
     let title: String
     var calc: String!
     var handler: (()-> Void)
@@ -182,10 +200,10 @@ struct cellStruc {
 
 struct section {
     let title: String
-    var cells: [cellStruc]
+    var cells: [cellStruct]
 }
 
-//MARK: Stats Cells
+//MARK: StatsCell
 
 class StatsCell: UITableViewCell {
     static let identifier = "StatsCell"
@@ -226,7 +244,7 @@ class StatsCell: UITableViewCell {
         numbers.text = nil
     }
     
-    public func configure(with model: cellStruc) {
+    public func configure(with model: cellStruct) {
         label.text = model.title
         numbers.text = model.calc
     }

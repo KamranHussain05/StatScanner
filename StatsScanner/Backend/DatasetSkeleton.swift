@@ -102,22 +102,40 @@ public class Dataset: NSObject, NSCoding {
     
 // MARK: Data Pre-Processing
     
-    /// Resolves which axis of the CSV array are keys and adds those keys to a key array, the
-    /// method always assumes the top header contains keys.
-    /// @Return A 2D String array where the indices are Top, Left, and Right, respectively
+    /// Solves the keys and determines which keys are being used
     private func solveKeys(_ data:[[String]]) -> [[String]] {
-        var res : [[String]] = [[""],[""],[""]]
-        res[0] = data[0]
-//        var left : [String] = [""]
-//        var right : [String] = [""]
-//
-//        for i in 0...data.count-1 {
-//            left.append(data[i][0])
-//        }
-//        *second for loop cause iob for pooper scooper*
-//        for i in 0...data[data[0].count-1].count-1 {
-//            right.append(data[data[0].count-1][i])
-//        }
+        var res : [[String]] = [[""],[""]]
+        
+        // Check if top is keys
+        var topCount = 0
+        for i in 0...data[0].count-1 {
+            if(!data[0][i].isNumeric && !data[0][i].isEmpty) {
+                topCount += 1
+            }
+        }
+        
+        if(topCount > 1) {
+            res[0] = data[0]
+        }
+        
+        //Check if left is keys
+        var leftCount = 0
+        var left : [String] = []
+        for i in 0...data.count-1 {
+            left.append(data[i][0])
+        }
+        
+        for i in 0...left.count-1 {
+            if(!left[i].isNumeric && !left[i].isEmpty) {
+                leftCount += 1
+            }
+        }
+        
+        if(leftCount > 1) {
+            res[1] = left
+        }
+        
+        print(res)
         
         return res
     }
@@ -199,14 +217,18 @@ public class Dataset: NSObject, NSCoding {
         return res
     }
     
-// MARK: Setters
-    
-    func updateVal(x : Int, y : Int, val : String) {
-        self.rawData[y][x] = val
+    private func refresh() {
         self.keys = self.solveKeys(self.rawData)
         self.updateNumData()
         self.reCalculate()
         self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
+// MARK: Setters
+    
+    func updateVal(x : Int, y : Int, val : String) {
+        self.rawData[y][x] = val
+        self.refresh()
     }
     
     func updateKey(x: Int, y: Int = 0, val : String) { //assuming top row key
@@ -222,10 +244,7 @@ public class Dataset: NSObject, NSCoding {
         for i in 0...rawData.count-1 {
             rawData[i].append("")
         }
-        self.keys = self.solveKeys(self.rawData)
-        self.updateNumData()
-        self.reCalculate()
-        self.graphData = self.genGraphData(array: self.rawData)
+        self.refresh()
     }
     
     func delColumn() {
@@ -238,18 +257,13 @@ public class Dataset: NSObject, NSCoding {
             let rows = Int(UIScreen.main.bounds.height/50)
             rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
         }
-        self.updateNumData()
-        self.reCalculate()
-        self.keys = self.solveKeys(self.rawData)
-        self.graphData = self.genGraphData(array: self.rawData)
+        self.refresh()
     }
     
     func addRow() {
         rawData.append(Array<String>.init(repeating: "", count: rawData[0].count))
         
-        self.updateNumData()
-        self.reCalculate()
-        self.graphData = self.genGraphData(array: self.rawData)
+        self.refresh()
     }
     
     func delRow() {
@@ -260,10 +274,7 @@ public class Dataset: NSObject, NSCoding {
             let rows = Int(UIScreen.main.bounds.height/50)
             rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
         }
-        self.updateNumData()
-        self.reCalculate()
-        self.keys = self.solveKeys(self.rawData)
-        self.graphData = self.genGraphData(array: self.rawData)
+        self.refresh()
     }
     
 // MARK: Getters
@@ -317,7 +328,7 @@ public class Dataset: NSObject, NSCoding {
                 }
             }
         }
-        if (!self.keys.isEmpty) {
+        if (!self.keysEmpty(index:0)) {
             for i in 0...keys.count-1 {
                 for j in 0...keys[i].count-1 {
                     if (!keys[i][j].isEmpty || keys[i][j] != "") {

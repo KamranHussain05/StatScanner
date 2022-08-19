@@ -23,11 +23,11 @@ class NSDatasetTransformer: ValueTransformer {
     }
     
     override func reverseTransformedValue(_ value: Any?) -> Any? {
-        guard let data = value as? Data else {return nil }
+        guard let ds = value as? Data else {return nil }
         
         do {
-            let color = try NSKeyedUnarchiver.unarchivedObject(ofClass: Dataset.self, from: data)
-            return color
+            let data = try NSKeyedUnarchiver.unarchivedObject(ofClass: Dataset.self, from: ds)
+            return data
         } catch {
             return nil
         }

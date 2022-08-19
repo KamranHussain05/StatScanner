@@ -118,14 +118,11 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-        let headerCount = dataset.getKeys().count
-        if ((column == headerCount && !mt) || (column == self.dataset.getData()[0].count && mt)) {
+        //let headerCount = dataset.getKeys().count
+        if (column == self.dataset.getData()[0].count) {
             return (view.frame.size.width) / CGFloat(adder)
-        }
-        if (headerCount == 0 || (headerCount == 1 && dataset.getKeys()[0].isEmpty)) {
+        } else if (self.dataset.getData()[0].count < 6) {
             return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(self.dataset.getData()[0].count)
-        } else if (headerCount < 6) {
-            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(headerCount)
         } else {
             return 200
         }

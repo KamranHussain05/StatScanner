@@ -51,7 +51,7 @@ public class Dataset: NSObject, NSCoding {
         self.init()
         
         self.rawData = decoder.decodeObject(forKey:"rawData") as? [[String]] ?? [[]]
-        self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[""],[""],[""]]
+        self.keys = decoder.decodeObject(forKey: "keys") as? [[String]] ?? [[],[],[]]
         self.numericalData = decoder.decodeObject(forKey:"numericalData") as? [Double] ?? []
         self.calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
@@ -66,7 +66,7 @@ public class Dataset: NSObject, NSCoding {
         self.name = "New Unnamed Dataset"
         self.creationDate = formatter.string(from: Date())
         self.rawData = []
-        self.keys = [[""],[""],[""]]
+        self.keys = [[],[],[]]
         self.numericalData = []
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.graphData = [[0]]
@@ -94,7 +94,7 @@ public class Dataset: NSObject, NSCoding {
         self.rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
         self.creationDate = formatter.string(from: Date())
         self.numericalData = []
-        self.keys = [[""], [""], [""]]
+        self.keys = [[], [], []]
         self.calculations = Array<Double>(repeating: 0.0, count: 9)
         self.calculations = Calculations(dataset: numericalData).calculate()
         self.graphData = [[]]
@@ -284,11 +284,18 @@ public class Dataset: NSObject, NSCoding {
         return self.numericalData
     }
     
-    func getKeys() -> [String] {
+    func getKeys() -> [[String]] {
         if(self.isEmpty() || self.keys.isEmpty) {
-            return [""]
+            return [[],[],[]]
         }
-        return self.keys[0]
+        return self.keys
+    }
+    
+    func getKeys(index: Int) -> [String] {
+        if(self.isEmpty() || self.keys.isEmpty) {
+            return []
+        }
+        return self.keys[index]
     }
 
     func getGraphData() -> [[Double]] {
@@ -346,6 +353,42 @@ public class Dataset: NSObject, NSCoding {
             }
         }
         if (counter == rawData.count*rawData[0].count) {
+            return true
+        }
+        return false
+    }
+    
+    func keysEmpty() -> Bool {
+        if (keys.isEmpty) {
+            return true
+        }
+        var counter = 0
+        var total = 0
+        for i in 0...keys.count-1 {
+            for j in 0...keys[i].count-1 {
+                total+=1
+                if (keys[i][j].isEmpty || keys[i][j] == "") {
+                    counter+=1
+                }
+            }
+        }
+        if (counter == total) {
+            return true
+        }
+        return false
+    }
+    
+    func keysEmpty(index: Int) -> Bool {
+        if (keys[index].isEmpty) {
+            return true
+        }
+        var counter = 0
+        for i in 0...keys[index].count-1 {
+            if (keys[index][i].isEmpty || keys[index][i] == "") {
+                counter+=1
+            }
+        }
+        if (counter == keys[index].count) {
             return true
         }
         return false

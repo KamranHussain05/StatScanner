@@ -117,7 +117,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         
         for i in 0...self.dataset.getData()[0].count-1 {
             arr.append(AASeriesElement()
-                        .name(dataset.getKeys()[i])
+                        .name(dataset.getKeys(index: 0)[i])
                         .data(dataset.getGraphData()[i])
             )
         }

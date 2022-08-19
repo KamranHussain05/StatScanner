@@ -48,6 +48,7 @@
 		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
 		AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */; };
+		AFD226D928B03156005FDB4C /* Randumb_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AFD226D828B03156005FDB4C /* Randumb_R.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
+		AFD226D828B03156005FDB4C /* Randumb_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Randumb_R.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 		A8CA5633277295BC006BDF61 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AFD226D828B03156005FDB4C /* Randumb_R.csv */,
 				AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */,
 				4D2F168E279BE9C60096F9DA /* Awards_R.csv */,
 				A8CA564827729924006BDF61 /* Video_R.csv */,
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8CA564527729918006BDF61 /* Smoker_R.csv in Resources */,
+				AFD226D928B03156005FDB4C /* Randumb_R.csv in Resources */,
 				A8CA564127729909006BDF61 /* Ice_cream_R.csv in Resources */,
 				A8CA56432772990F006BDF61 /* Normal_R.csv in Resources */,
 				A8CA564927729924006BDF61 /* Video_R.csv in Resources */,
@@ -662,7 +666,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 420;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
@@ -684,7 +688,7 @@
 				);
 				MARKETING_VERSION = 0.0.4;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cadenpun.StatScannerInternal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -711,7 +715,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 420;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatsScanner/Info.plist;
@@ -733,7 +737,7 @@
 				);
 				MARKETING_VERSION = 0.0.4;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamranhussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cadenpun.StatScannerInternal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";

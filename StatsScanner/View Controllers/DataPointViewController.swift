@@ -68,7 +68,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	//MARK: TABLE INIT
 	
 	func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
-        if((indexPath.column == self.dataset.getData()[0].count && lk) || (indexPath.column == self.dataset.getData()[0].count + self.dataset.getKeys()[1].count && !lk)) { // addcolumn
+        if(indexPath.column == self.dataset.getData()[0].count) { // addcolumn
             let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: AddColumnCell.identifier, for: indexPath) as! AddColumnCell
             cell.setup(with: indexPath.column, with: indexPath.row, dataset: self.dataset, view: self.spreadsheetView)
             cell.x = indexPath.column
@@ -90,8 +90,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         
         let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: DataPointCell.identifier, for: indexPath) as! DataPointCell
         cell.setup(with: String(dataset.getData()[indexPath.row][indexPath.column]), dataset: self.dataset)
-        
-        if ((indexPath.row == 0 && !self.dataset.keysEmpty(index: 0)) || (indexPath.column == 0 && !lk)) {
+        if (((indexPath.row == 0) || (indexPath.column == 0)) && !mt) {
             // Check if the cell is a key and change its fill color
             for i in 0...self.dataset.getKeys().count-1 {
                 for j in 0...self.dataset.getKeys()[i].count-1 {
@@ -110,16 +109,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
 	
     func numberOfColumns(in spreadsheetView: SpreadsheetView) -> Int {
-//        if (mt || self.dataset.getKeys().isEmpty || self.dataset.getKeys() == [""]) {
-//            return self.dataset.getData()[0].count+1
-//        } else {
-//            return self.dataset.getKeys().count+1
-//        }
-        if (lk) {
-            return self.dataset.getData()[0].count+1
-        } else {
-            return self.dataset.getData()[0].count+2
-        }
+        return self.dataset.getData()[0].count+1
     }
 
     func numberOfRows(in spreadsheetView: SpreadsheetView) -> Int {
@@ -127,18 +117,12 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     }
 
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, widthForColumn column: Int) -> CGFloat {
-//        if (column == self.dataset.getData()[0].count) {
-//            return (view.frame.size.width) / CGFloat(adder)
-//        } else if (self.dataset.getData()[0].count < 6) {
-//            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(self.dataset.getData()[0].count)
-//        } else {
-//            return 200
-//        }
-        if (column == self.dataset.getData()[0].count) { //adddel column
-            return (view.frame.size.width) / CGFloat(adder)
-        } else if ((self.dataset.getData()[0].count + self.dataset.getKeys()[1].count) < 6) { //less than 6 columns
-            return (view.frame.size.width - 5.0 - (view.frame.size.width) / CGFloat(adder)) / CGFloat(self.dataset.getData()[0].count + self.dataset.getKeys()[1].count)
-        } else { //greater than 6 columns
+        let adddel = (view.frame.size.width) / CGFloat(adder)
+        if (column == self.dataset.getData()[0].count) {
+            return adddel
+        } else if (self.numberOfColumns(in: spreadsheetView)-1 < 4) {
+            return (view.frame.size.width - 5.0 - adddel) / CGFloat(self.numberOfColumns(in: spreadsheetView)-1)
+        } else {
             return 200
         }
     }
@@ -155,7 +139,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	}
     
     func frozenRows(in spreadsheetView: SpreadsheetView) -> Int {
-        if (mt || self.dataset.getKeys()[0].isEmpty || !isPhone()) {
+        if (mt || self.dataset.keysEmpty(index: 0) || !isPhone()) {
             return 0
         }
         return 1
@@ -304,12 +288,14 @@ class AddColumnCell : Cell {
     @objc func addColumn() {
         self.dataset.addColumn()
         mt = self.dataset.isEmpty()
+        lk = self.dataset.keysEmpty(index: 1)
         self.spview.reloadData()
     }
     
     @objc func delColumn() {
         self.dataset.delColumn()
         mt = self.dataset.isEmpty()
+        lk = self.dataset.keysEmpty(index: 1)
         self.spview.reloadData()
     }
     
@@ -359,12 +345,14 @@ class AddRowCell : Cell {
     @objc func addRow() {
         self.dataset.addRow()
         mt = self.dataset.isEmpty()
+        lk = self.dataset.keysEmpty(index: 1)
         self.spview.reloadData()
     }
     
     @objc func delRow() {
         self.dataset.delRow()
         mt = self.dataset.isEmpty()
+        lk = self.dataset.keysEmpty(index: 1)
         self.spview.reloadData()
     }
     

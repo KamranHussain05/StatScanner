@@ -208,7 +208,11 @@ class DataPointCell : Cell, UITextFieldDelegate {
     public func setup(with text: String, dataset : Dataset) {
 		field.text = text
 		field.textColor = .label
-        field.keyboardType = .numbersAndPunctuation
+        if (field.text!.isNumeric) {
+            field.keyboardType = .numbersAndPunctuation
+        } else {
+            field.keyboardType = .default
+        }
 		field.textAlignment = .center
 		field.returnKeyType = .done
 		field.delegate = self
@@ -224,13 +228,19 @@ class DataPointCell : Cell, UITextFieldDelegate {
 		field.frame = contentView.bounds
         
     }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return edible
     }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if (textFieldShouldReturn(field)) {
+            return textFieldShouldReturn(field)
+        }
+        return !edible
+    }
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        field.becomeFirstResponder()
-        
         if (self.backgroundColor == .systemFill) { // is a header
             let val = String(self.field.text!)
             self.dataset.updateKey(x: self.x, y: self.y, val: val)

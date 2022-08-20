@@ -134,9 +134,7 @@ public class Dataset: NSObject, NSCoding {
         if(leftCount > 1) {
             res[1] = left
         }
-        
-        print(res)
-        
+                
         return res
     }
     

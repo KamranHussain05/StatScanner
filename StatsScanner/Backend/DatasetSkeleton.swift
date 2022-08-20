@@ -231,8 +231,13 @@ public class Dataset: NSObject, NSCoding {
         self.refresh()
     }
     
-    func updateKey(x: Int, y: Int = 0, val : String) { //assuming top row key
-        self.keys[y][x] = val
+    func updateKey(x: Int, y: Int, val : String) { //assuming top row key
+        if (x == 0) {
+            self.keys[1][y] = val
+        }
+        if (y == 0) {
+            self.keys[y][x] = val
+        }
         self.rawData[y][x] = val
     }
     

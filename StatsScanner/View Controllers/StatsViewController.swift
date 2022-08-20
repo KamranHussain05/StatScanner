@@ -47,6 +47,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadData()
         title = "Stats"
         tableView.delegate = self
@@ -247,20 +248,5 @@ class StatsCell: UITableViewCell {
     public func configure(with model: cellStruct) {
         label.text = model.title
         numbers.text = model.calc
-    }
-}
-extension UIApplication {
-    class func vers() -> String {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-    }
-  
-    class func build() -> String {
-        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
-    }
-  
-    class func versionBuild() -> String {
-        let version = vers(), build = build()
-        return version == build ? "v\(version)" : "v\(version) (\(build))"
-        //return "v\(version) (\(build))"
     }
 }

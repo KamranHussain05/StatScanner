@@ -24,3 +24,32 @@ extension Collection where Indices.Iterator.Element == Index {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension UIViewController {
+    
+    func hideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRec())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRec())
+    }
+
+    private func endEditingRec() -> UIGestureRecognizer {
+        let g = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        g.cancelsTouchesInView = false
+        return g
+    }
+}
+
+extension UIApplication {
+    class func vers() -> String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    }
+  
+    class func build() -> String {
+        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+    }
+  
+    class func versionBuild() -> String {
+        let version = vers(), build = build()
+        return version == build ? "v\(version)" : "v\(version) (\(build))"
+    }
+}

@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		let layout = UICollectionViewFlowLayout()
 		let width = CGFloat(UIScreen.main.bounds.width)
 

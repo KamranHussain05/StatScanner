@@ -36,7 +36,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+        self.hideKeyboardOnTap()
+        
         edible = false
         mt = self.dataset.isEmpty()
         lk = self.dataset.keysEmpty(index: 1)
@@ -232,17 +233,22 @@ class DataPointCell : Cell, UITextFieldDelegate {
         
         if (self.backgroundColor == .systemFill) { // is a header
             let val = String(self.field.text!)
-            self.dataset.updateKey(x: self.x, val: val)
-            field.resignFirstResponder()
+            self.dataset.updateKey(x: self.x, y: self.y, val: val)
             mt = self.dataset.isEmpty()
         } else { // is a datapoint
             let val = self.field.text!
             self.dataset.updateVal(x: self.x, y: self.y, val: String(val))
-            field.resignFirstResponder()
             mt = self.dataset.isEmpty()
         }
-        return edible
+        
+        field.resignFirstResponder()
+        return true
 	}
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+    }
 	
 	func getText() -> String {
 		return field.text!

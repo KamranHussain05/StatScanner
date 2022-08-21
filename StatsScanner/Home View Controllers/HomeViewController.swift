@@ -22,8 +22,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
 
-	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5",
-	"DataSetIcon6"]
+	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5", "DataSetIcon6"]
 	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let newDatasetMenu = UIAlertController(title: "New Dataset",
@@ -101,7 +100,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         alert.addTextField(configurationHandler: nil)
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { [weak self] _ in guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {return}
 			
-		let new = Dataset(name: text)
+			let new = Dataset(name: text, icon: self!.iconChoose())
             
 		switch(method) {
 		case 0:
@@ -112,6 +111,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			break
 		case 2:
 			self?.dbuilder.name = new.getName()
+			self?.dbuilder.icon = new.getIcon()
 			self?.importCSV()
 			break
 		case 3:
@@ -170,7 +170,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		controller.dismiss(animated: true)
 		do {
 			let rawFile = try db.readCSV(inputFile: urls[0])
-			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, appendable: rawFile)
+			self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: rawFile)
 			self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 		} catch FileIOError.CorruptedFile {
 			let dialog = UIAlertController(title:"Error Importing CSV", message:"Your CSV file could not be read.", preferredStyle: .alert)
@@ -203,7 +203,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     }
     
     ///Writes a datasetproject to Core Data
-    public func createItem(item: Dataset, name: String) {
+	public func createItem(item: Dataset, name: String) {
         let newItem = DataSetProject(context: context)
         newItem.datasetobject = item
         newItem.name = name
@@ -262,7 +262,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.numitems.text = "Contains " + String(model.datasetobject!.getTotalNumItems()) + " items"
         cell.creationDate.text = "Created: " + (model.datasetobject?.getCreationDate())!
         self.selectedDataset = model.datasetobject!
-		cell.myImageView.image = iconChoose()
+		cell.myImageView.image = model.datasetobject!.getIcon()
         cell.openDataset.tag = indexPath.row
         cell.openDataset.addTarget(self, action: #selector(openDataSet(_:)), for: .touchUpInside)
         myCollectionView.addGestureRecognizer(longPressGesture)

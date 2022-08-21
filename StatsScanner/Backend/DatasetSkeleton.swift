@@ -56,7 +56,7 @@ public class Dataset: NSObject, NSCoding {
         self.calculations = decoder.decodeObject(forKey: "calculations") as? [Double] ?? []
         self.creationDate = decoder.decodeObject(forKey: "creationDate") as? String ?? ""
         self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
-        self.icon = decoder.decodeObject(forKey: "icon") as? UIImage
+        self.icon = decoder.decodeObject(forKey: "icon") as? UIImage ?? UIImage(named: "DataSetIcon1")
         self.graphData = decoder.decodeObject(forKey: "graphData") as? [[Double]] ?? [[]]
     }
     
@@ -64,6 +64,7 @@ public class Dataset: NSObject, NSCoding {
         super.init()
         
         self.name = "New Unnamed Dataset"
+        self.icon = UIImage(named: "DatasetIcon1")
         self.creationDate = formatter.string(from: Date())
         self.rawData = []
         self.keys = [[],[],[]]
@@ -72,10 +73,11 @@ public class Dataset: NSObject, NSCoding {
         self.graphData = [[0]]
     }
     
-    init(name : String, appendable: [[String]]) {
+    init(name: String, icon: UIImage, appendable: [[String]]) {
         super.init()
         
         self.name = name
+        self.icon = icon
         self.creationDate = formatter.string(from: Date())
         self.rawData = appendable
         self.cleanRaw()
@@ -86,10 +88,11 @@ public class Dataset: NSObject, NSCoding {
         self.graphData = self.genGraphData(array: self.rawData)
     }
     
-    init(name : String) {
+    init(name: String, icon: UIImage) {
         super.init()
         
         self.name = name
+        self.icon = icon
         let rows = Int(UIScreen.main.bounds.height/50)
         self.rawData = Array<Array<String>>(repeating: Array<String>(repeating: "", count: 4), count: rows)
         self.creationDate = formatter.string(from: Date())
@@ -243,6 +246,10 @@ public class Dataset: NSObject, NSCoding {
         self.name = name
     }
     
+    func setIcon(icon: UIImage) {
+        self.icon = icon
+    }
+    
     func addColumn() {
         for i in 0...rawData.count-1 {
             rawData[i].append("")
@@ -341,6 +348,10 @@ public class Dataset: NSObject, NSCoding {
             }
         }
         return counter
+    }
+    
+    func getIcon() -> UIImage {
+        return self.icon
     }
     
 // MARK: TO CSV

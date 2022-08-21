@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	private let db : DataBridge! = DataBridge()
 	private var dbuilder = DatasetBuilder()
 
-	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5", "DataSetIcon6"]
+	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5", "DataSetIcon6", "DataSetIcon7", "DataSetIcon8", "DataSetIcon9", "DataSetIcon10", "DataSetIcon11", "DataSetIcon12", "DataSetIcon13", "DataSetIcon14", "DataSetIcon15", "DataSetIcon16"]
 	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let newDatasetMenu = UIAlertController(title: "New Dataset",
@@ -270,7 +270,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 	
 	func iconChoose() -> UIImage {
-		return UIImage(named: icons[Int.random(in: 0...5)])!
+		return UIImage(named: icons[Int.random(in: 0...15)])!
 	}
     
 // MARK: OPEN DATASET HANDLING

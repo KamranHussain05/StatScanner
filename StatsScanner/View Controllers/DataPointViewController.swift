@@ -9,7 +9,6 @@ import UIKit
 import SpreadsheetView
 
 var edible : Bool!
-var sa : Bool! = true
 var mt : Bool!
 var lk : Bool! = true
 
@@ -38,7 +37,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         super.viewDidLoad()
         self.hideKeyboardOnTap()
         
-        edible = false
+        edible = true
         mt = self.dataset.isEmpty()
         lk = self.dataset.keysEmpty(index: 1)
         
@@ -149,9 +148,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 //MARK: Buttons
 	
 	@IBAction func onEditClick() {
-		if (edit.imageView?.image == UIImage(systemName: "arrow.down.circle.fill")) {
+		if (edit.imageView?.image == UIImage(systemName: "pencil")) {
             edible = false
-            edit.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
+            edit.setImage(UIImage(systemName: "pencil.slash"), for: .normal)
             
             let home = self.presentingViewController as? HomeViewController
             home?.updateItem(item: self.proj, dataset: self.dataset)
@@ -160,12 +159,8 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             stat?.loadData()
             
             self.spreadsheetView.reloadData()
-            
-            if (sa) {
-                // showAlert()
-            }
-		} else if (edit.imageView?.image == UIImage(systemName: "pencil.tip.crop.circle.badge.plus")) {
-			edit.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
+		} else if (edit.imageView?.image == UIImage(systemName: "pencil.slash")) {
+			edit.setImage(UIImage(systemName: "pencil"), for: .normal)
 			edible = true
 		}
 	}
@@ -183,7 +178,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     
     func showAlert() {
         let dialog = UIAlertController(title:"Cells Uneditable", message:"Cancel saving to resume editing.", preferredStyle: .alert)
-        let one = UIAlertAction(title:"Do not show me this again", style: .default, handler: {(alert:UIAlertAction!)-> Void in sa = false})
+        let one = UIAlertAction(title:"Do not show me this again", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
         // maybe style destructive if red text is better
         let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
         

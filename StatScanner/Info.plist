@@ -8,18 +8,15 @@
 			<key>CFBundleTypeName</key>
 			<string>csv</string>
 			<key>LSHandlerRank</key>
-			<string>Owner</string>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>csv</string>
+				<string>public.data</string>
 			</array>
 		</dict>
-		<dict>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-		</dict>
-		<dict/>
 	</array>
+	<key>ITSEncryptionExportComplianceCode</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

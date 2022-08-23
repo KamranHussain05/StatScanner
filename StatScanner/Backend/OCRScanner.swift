@@ -59,8 +59,10 @@ class OCRScanner {
         processResults(strArray: recognizedStrings)
     }
     
-    private func processResults(strArray: [String]) {
+    // MARK: NEEDS TO CONVERT 1D STRING ARRAY TO 2D STRING ARRAY
+    private func processResults(strArray: [String]) -> [[String]] {
         print(strArray)
+        return [["lessgooooo"]]
     }
     
     public func getResults() -> [String] {

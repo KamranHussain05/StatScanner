@@ -158,6 +158,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		}
 
 		let scanner = OCRScanner(img: info[.editedImage] as! UIImage)
+		// scanner.getResults() <- use that if you want [String]
 		
 		print(image) // for checking
 	}

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		346D63DA28B4BE7E00AEFB65 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */; };
+		346D63DC28B4BED000AEFB65 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */; };
 		4D052FBC28B354CB004A9F40 /* StatsScanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D052FBA28B354CB004A9F40 /* StatsScanner.xcdatamodeld */; };
 		4D052FBE28B3562D004A9F40 /* StatScannerTests in Resources */ = {isa = PBXBuildFile; fileRef = 4D052FBD28B3562D004A9F40 /* StatScannerTests */; };
 		4D052FC028B35655004A9F40 /* StatScannerUITests in Resources */ = {isa = PBXBuildFile; fileRef = 4D052FBF28B35654004A9F40 /* StatScannerUITests */; };
@@ -53,6 +55,8 @@
 		03B112DEF00A92BAB84DF61B /* Pods-StatsScannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.debug.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA0734D6996A5217388FD8E /* Pods-StatsScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.release.xcconfig"; sourceTree = "<group>"; };
+		346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D052FBB28B354CB004A9F40 /* StatsScanner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatsScanner.xcdatamodel; sourceTree = "<group>"; };
 		4D052FBD28B3562D004A9F40 /* StatScannerTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StatScannerTests; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				4DE04DF82850357300C5D5BC /* DataPointViewController.swift */,
 				A83F4907277F9A1300C8FB35 /* StatsViewController.swift */,
 				4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */,
+				346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */,
+				346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */,
+				346D63DA28B4BE7E00AEFB65 /* CameraViewController.swift in Sources */,
 				4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */,
 				A85092BE27497F6F00392240 /* OCRScanner.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
@@ -389,6 +396,7 @@
 				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */,
 				4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */,
+				346D63DC28B4BED000AEFB65 /* PhotoViewController.swift in Sources */,
 				4D052FBC28B354CB004A9F40 /* StatsScanner.xcdatamodeld in Sources */,
 				A85092BC27497F6F00392240 /* SceneDelegate.swift in Sources */,
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,

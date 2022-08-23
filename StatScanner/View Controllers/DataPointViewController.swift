@@ -190,7 +190,9 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.onEditClick()
+        if (edible) {
+            self.onEditClick()
+        }
     }
 }
 

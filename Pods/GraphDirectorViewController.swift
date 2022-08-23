@@ -65,18 +65,18 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             .categories(xvalsFormatted())
             .title(dataset.getName())
             .series(formattedData())
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0", "#561F37", "#39A2AE", "#453823", "#F5D491", "#F9B9B7", "#0DAB76", "#0B5D1E", "#053B06", "#D64933", "#EEE5E9", "#246EB9", "#F5EE9E"])
         let color : AAStyle
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
-            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24).fontFamily(""))
+            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 40, weight: .bold).fontFamily("System"))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
-            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 24))
+            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 40, weight: .bold).fontFamily("System"))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         }
@@ -116,7 +116,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             return arr
         }
         
-        for i in 0...self.dataset.getData()[0].count-1 {
+        for i in 0...self.dataset.getKeys()[0].count-1 {
             arr.append(AASeriesElement()
                         .name(dataset.getKeys(index: 0)[i])
                         .data(dataset.getGraphData()[i])

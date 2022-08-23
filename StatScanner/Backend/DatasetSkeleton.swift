@@ -347,6 +347,10 @@ public class Dataset: NSObject, NSCoding {
                 }
             }
         }
+        
+        if (counter < 0) {
+            return 0
+        }
         return counter
     }
     

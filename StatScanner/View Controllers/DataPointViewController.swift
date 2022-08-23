@@ -176,7 +176,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         }
     }
     
-    func showAlert() {
+    func tutAlert() {
         let dialog = UIAlertController(title:"Cells Uneditable", message:"Cancel saving to resume editing.", preferredStyle: .alert)
         let one = UIAlertAction(title:"Do not show me this again", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
         // maybe style destructive if red text is better
@@ -186,6 +186,13 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
         dialog.addAction(okAction)
         dialog.preferredAction = one
         present(dialog, animated:true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (edible) {
+            self.onEditClick()
+        }
     }
 }
 

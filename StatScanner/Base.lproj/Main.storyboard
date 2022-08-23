@@ -14,9 +14,9 @@
         <!--Scan Data-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="OCRScanning" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="OCRScanning" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-si-RuA">
@@ -28,7 +28,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Take Scan"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Retake Image"/>
                                 <connections>
                                     <action selector="didTapNewScanButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="bfx-eS-7ZG"/>
                                 </connections>
@@ -58,7 +58,7 @@
         <!--Home-->
         <scene sceneID="at7-J2-gGA">
             <objects>
-                <viewController storyboardIdentifier="home" title="Home" id="kjN-nm-ZNR" customClass="HomeViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" title="Home" id="kjN-nm-ZNR" customClass="HomeViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5j-Nm-Tqd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
                                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hometile" id="xnL-xh-OnE" customClass="HomeTiles" customModule="StatsScanner" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hometile" id="xnL-xh-OnE" customClass="HomeTiles" customModule="StatScanner" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="0.0" width="180" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pbS-ij-FfT">
@@ -176,7 +176,6 @@
                                         </state>
                                         <connections>
                                             <action selector="didTapNewDatasetButton" destination="kjN-nm-ZNR" eventType="touchUpInside" id="e41-9U-RVW"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="scansegue" id="sN8-Md-Ec6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -230,7 +229,7 @@
         <!--Graphs-->
         <scene sceneID="kK9-KG-baU">
             <objects>
-                <viewController id="ZPM-Pj-gqE" customClass="GraphDirectorViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZPM-Pj-gqE" customClass="GraphDirectorViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oeQ-Rp-V02">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -259,7 +258,7 @@
         <!--More-->
         <scene sceneID="Zjf-sc-lpY">
             <objects>
-                <viewController title="More" id="L5T-SC-KFO" customClass="DataPointViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="More" id="L5T-SC-KFO" customClass="DataPointViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cl5-OJ-SLX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,7 +330,7 @@
         <!--Stats-->
         <scene sceneID="aLk-E0-kei">
             <objects>
-                <viewController id="Y0Z-dZ-eFM" customClass="StatsViewController" customModule="StatsScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y0Z-dZ-eFM" customClass="StatsViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f5J-zA-gRc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -48,7 +48,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
             // don't allow user to take a photo if it's a mac (impractical)
             newDatasetMenu.addAction(
                 UIAlertAction(title: "Take Image", style: .default) { (action) in
-                    self.scanningImage()
+                    self.createWithName(method: 0)
                 }
             )
         }
@@ -66,13 +66,16 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         )
 		
 		newDatasetMenu.addAction(
-			UIAlertAction(title:"New Dataset", style:.default) { (action) in
-				self.createWithName(method:3)
-		})
+			UIAlertAction(title: "Empty Dataset", style: .default) { (action) in
+				self.createWithName(method: 3)
+			}
+		)
         
         newDatasetMenu.addAction(
-            UIAlertAction(title:"Cancel", style: .destructive) { (action) in
-            })
+            UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+				// user cancels menu, nothing needs to be done
+            }
+		)
 		
     }
 	
@@ -104,20 +107,18 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
             
 		switch(method) {
 		case 0:
-			self?.scanningImage()
-			break
+			self?.captureImage()
 		case 1:
 			self?.importImage()
-			break
 		case 2:
 			self?.dbuilder.name = new.getName()
 			self?.dbuilder.icon = new.getIcon()
 			self?.importCSV()
-			break
 		case 3:
 			self?.createItem(item: new, name: new.getName())
 			break
 		default:
+			print("What option did you choose?")
 			return
 		}
             
@@ -132,15 +133,16 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         present(alert, animated: true, completion: nil)
     }
     
-    ///Presents the image scanning window and starts that pipeline
-	func scanningImage() {
-        let scanview = storyboard?.instantiateViewController(withIdentifier: "scanview") as! OCRScanning
-        scanview.modalPresentationStyle = .popover
-        scanview.popoverPresentationController?.sourceView = self.myCollectionView
-        self.present(scanview, animated: true, completion: nil)
+    ///Take a new picture
+	func captureImage() {
+		let picker = UIImagePickerController()
+		picker.sourceType = .camera
+		picker.allowsEditing = true
+		picker.delegate = self
+		present(picker, animated: true)
     }
 	
-	///Allows the user to select and import an image of a dataset to the app
+	///Import an image from the user's library
 	func importImage() {
 		let picker = UIImagePickerController()
 		picker.allowsEditing = true
@@ -149,20 +151,24 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	}
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-		guard let image = info[.editedImage] as? UIImage else { return }
+		picker.dismiss(animated: true)
+		guard let image = info[.editedImage] as? UIImage else {
+			print("No image found")
+			return
+		}
 
-		dismiss(animated: true)
-		print(image)
+		let scanner = OCRScanner(img: info[.editedImage] as! UIImage)
+		
+		print(image) // for checking
 	}
 	
 	///Launches the controller for CSV importing
 	func importCSV() {
 		let supportedFiles : [UTType] = [UTType.data]
 		let controller = UIDocumentPickerViewController(forOpeningContentTypes: supportedFiles, asCopy: true)
-		
 		controller.delegate = self
 		controller.allowsMultipleSelection = false
-		present(controller, animated:true, completion:nil)
+		present(controller, animated: true, completion: nil)
 	}
 	
 	///Reads the CSV file and loads it into an array of stirngs

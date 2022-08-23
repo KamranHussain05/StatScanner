@@ -7,8 +7,9 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     let screenSize: CGRect = UIScreen.main.bounds // THIS INCLUDES THE NAVIGATION BAR
     
     var chartScrollerView: UIPickerView!
-    let chartTypeLabels = ["Area Chart", "Area Spline Chart", "Bar Chart", "Bubble Chart", "Column Chart", "Column Range Chart", "Line Graph", "Pie Chart", "Polygon Chart", "Pyramid Chart", "Scatter Plot", "Waterfall Plot", "Spline"]
-    let chartTypes = [AAChartType.area, AAChartType.areaspline, AAChartType.bar, AAChartType.bubble, AAChartType.column, AAChartType.columnrange, AAChartType.line, AAChartType.pie, AAChartType.polygon, AAChartType.pyramid, AAChartType.scatter, AAChartType.waterfall, AAChartType.spline]
+    let chartTypeLabels = ["Scatter Plot", "Line Graph", "Column Range Chart", "Bar Chart", "Spline", "Area Chart", "Polygon Chart", "Area Spline Chart", "Bubble Chart", "Column Chart", "Pie Chart", "Waterfall Plot"]
+    
+    let chartTypes = [AAChartType.scatter, AAChartType.line, AAChartType.columnrange, AAChartType.bar, AAChartType.spline, AAChartType.area, AAChartType.polygon, AAChartType.areaspline, AAChartType.bubble, AAChartType.column, AAChartType.pie, AAChartType.waterfall]
     let width:CGFloat = 200
     let height:CGFloat = 50
     
@@ -50,7 +51,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         aaChartView.delegate = self
         aaChartView.backgroundColor = .systemBackground
         
-        aaChartView.frame = CGRect(x: 0, y: screenSize.height/15, width: screenSize.width, height: 3*screenSize.height/4)
+        aaChartView.frame = CGRect(x: 0, y: screenSize.height/15 + 70, width: screenSize.width, height: 3*screenSize.height/4 - 70)
         self.view.addSubview(aaChartView)
     }
 }

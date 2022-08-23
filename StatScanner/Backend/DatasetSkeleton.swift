@@ -117,7 +117,7 @@ public class Dataset: NSObject, NSCoding {
             }
         }
         
-        if(topCount > 1) {
+        if(topCount > 0) {
             res[0] = data[0]
         }
         
@@ -134,7 +134,7 @@ public class Dataset: NSObject, NSCoding {
             }
         }
         
-        if(leftCount > 1) {
+        if(leftCount > 0) {
             res[1] = left
         }
                 

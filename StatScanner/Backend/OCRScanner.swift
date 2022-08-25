@@ -10,7 +10,8 @@ import Vision
 
 class OCRScanner {
     private var image: UIImage!
-    private var strProcessed: [String]!
+    private var processedDataset: [[String]]!
+    private var finishedProcessing = false
     
     init(img: UIImage) {
         self.image = img // already has been checked if object passed is UIImage
@@ -60,15 +61,49 @@ class OCRScanner {
     }
     
     // MARK: NEEDS TO CONVERT 1D STRING ARRAY TO 2D STRING ARRAY
-    private func processResults(strArray: [String]) -> [[String]] {
+    private func processResults(strArray: [String]) {
         print(strArray)
-        return [["lessgooooo"]]
+        var output: [[String]] = [[]]
+        var headerCount = 0 // also the amount of columns that exist
+        if(strArray.count == 0) {
+            print("OCR failed, string array empty. Aborting...")
+            return
+        }
+        
+        // HEADERS ON TOP HORIZONTALLY: find amount of headers
+        for i in strArray { // check how many headers there are based off of letter detection
+            if i.rangeOfCharacter(from: NSCharacterSet.letters) != nil {
+                headerCount += 1
+            } else {
+                break
+            }
+        }
+        
+        print("Headers found: \(headerCount)")
+        
+        // add headers into first array in 2d array
+        for i in 0...headerCount-1 {
+            output[0].append(strArray[i])
+        }
+        
+        print("Headers added: \(output)")
+        
+        for i in headerCount...strArray.count-1 {
+            if(i % headerCount == 0) {
+                output.append([]) // add new empty array each time a new row is being added
+            }
+            output[i/headerCount].append(strArray[i])
+        }
+        
+        print("Data added: \(output)")
+        
+        processedDataset = output
     }
     
-    public func getResults() -> [String] {
-        if let outputStrArray = strProcessed {
+    public func getResults() -> [[String]] {
+        if let outputStrArray = processedDataset {
             return outputStrArray
         }
-        return [""] // returns empty string array if results have not been processed yet
+        return [[""]] // returns empty string array if results have not been processed yet
     }
 }

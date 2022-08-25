@@ -158,7 +158,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		}
 
 		let scanner = OCRScanner(img: info[.editedImage] as! UIImage)
-		// scanner.getResults() <- use that if you want [String]
+		// this creates a new dataset with the array returned from the ocr pipeline
+		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
+		
+		// creates a new dataset in coredata
+		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 		
 		print(image) // for checking
 	}

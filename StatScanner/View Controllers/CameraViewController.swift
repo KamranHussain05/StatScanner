@@ -29,14 +29,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         super.viewDidLoad()
         cameraAuthorization()
     }
-//    private func setupUI() {
-//        view.addSubviews(backButton, takePhotoButton)
-//
-//        takePhotoButton.makeConstraints(top: nil, left: nil, right: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, topMargin: 0, leftMargin: 0, rightMargin: 0, bottomMargin: 15, width: 80, height: 80)
-//        takePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//
-//        backButton.makeConstraints(top: view.safeAreaLayoutGuide.topAnchor, left: nil, right: view.rightAnchor, bottom: nil, topMargin: 15, leftMargin: 0, rightMargin: 10, bottomMargin: 0, width: 50, height: 50)
-//    }
     
     private func cameraAuthorization() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {

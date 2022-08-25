@@ -7,8 +7,9 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
     let screenSize: CGRect = UIScreen.main.bounds // THIS INCLUDES THE NAVIGATION BAR
     
     var chartScrollerView: UIPickerView!
-    let chartTypeLabels = ["Area Chart", "Area Spline Chart", "Bar Chart", "Bubble Chart", "Column Chart", "Column Range Chart", "Line Graph", "Pie Chart", "Polygon Chart", "Pyramid Chart", "Scatter Plot", "Waterfall Plot", "Spline"]
-    let chartTypes = [AAChartType.area, AAChartType.areaspline, AAChartType.bar, AAChartType.bubble, AAChartType.column, AAChartType.columnrange, AAChartType.line, AAChartType.pie, AAChartType.polygon, AAChartType.pyramid, AAChartType.scatter, AAChartType.waterfall, AAChartType.spline]
+    let chartTypeLabels = ["Scatter Plot", "Line Graph", "Column Range Chart", "Bar Chart", "Spline", "Area Chart", "Polygon Chart", "Area Spline Chart", "Bubble Chart", "Column Chart", "Pie Chart", "Waterfall Plot"]
+    
+    let chartTypes = [AAChartType.scatter, AAChartType.line, AAChartType.columnrange, AAChartType.bar, AAChartType.spline, AAChartType.area, AAChartType.polygon, AAChartType.areaspline, AAChartType.bubble, AAChartType.column, AAChartType.pie, AAChartType.waterfall]
     let width:CGFloat = 200
     let height:CGFloat = 50
     
@@ -50,7 +51,7 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         aaChartView.delegate = self
         aaChartView.backgroundColor = .systemBackground
         
-        aaChartView.frame = CGRect(x: 0, y: screenSize.height/15, width: screenSize.width, height: 3*screenSize.height/4)
+        aaChartView.frame = CGRect(x: 0, y: screenSize.height/15 + 70, width: screenSize.width, height: 3*screenSize.height/4 - 70)
         self.view.addSubview(aaChartView)
     }
 }
@@ -64,18 +65,18 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             .categories(xvalsFormatted())
             .title(dataset.getName())
             .series(formattedData())
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0", "#561F37", "#39A2AE", "#453823", "#F5D491", "#F9B9B7", "#0DAB76", "#0B5D1E", "#053B06", "#D64933", "#EEE5E9", "#246EB9", "#F5EE9E"])
         let color : AAStyle
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
-            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 24).fontFamily(""))
+            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 40, weight: .bold).fontFamily("System"))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
-            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 24))
+            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 40, weight: .bold).fontFamily("System"))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         }
@@ -115,7 +116,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
             return arr
         }
         
-        for i in 0...self.dataset.getData()[0].count-1 {
+        for i in 0...self.dataset.getKeys()[0].count-1 {
             arr.append(AASeriesElement()
                         .name(dataset.getKeys(index: 0)[i])
                         .data(dataset.getGraphData()[i])

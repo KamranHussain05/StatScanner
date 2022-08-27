@@ -222,20 +222,8 @@
                     <view key="view" contentMode="scaleToFill" id="oeQ-Rp-V02">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrW-QI-M2F">
-                                <rect key="frame" x="20" y="74" width="169" height="39"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="EJh-OB-ukR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="wrW-QI-M2F" firstAttribute="top" secondItem="EJh-OB-ukR" secondAttribute="top" constant="30" id="fuL-wi-9sG"/>
-                            <constraint firstItem="wrW-QI-M2F" firstAttribute="leading" secondItem="EJh-OB-ukR" secondAttribute="leading" constant="20" id="kS2-v4-PQk"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graphs" image="chart.xyaxis.line" catalog="system" id="hKw-c1-m1N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

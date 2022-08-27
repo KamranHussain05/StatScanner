@@ -50,8 +50,10 @@ class GraphDirectorViewController: UIViewController, UIPickerViewDelegate {
         aaChartView = AAChartView()
         aaChartView.delegate = self
         aaChartView.backgroundColor = .systemBackground
+        aaChartView.isClearBackgroundColor = true
         
-        aaChartView.frame = CGRect(x: 0, y: screenSize.height/15 + 70, width: screenSize.width, height: 3*screenSize.height/4 - 70)
+        aaChartView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 3*screenSize.height/3.6
+        )
         self.view.addSubview(aaChartView)
     }
 }
@@ -61,6 +63,7 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         aaChartModel
             .chartType(currentGraphType)
             .animationType(.easeInSine)
+            .zoomType(AAChartZoomType.xy)
             .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
             .categories(xvalsFormatted())
             .title(dataset.getName())
@@ -70,13 +73,13 @@ extension GraphDirectorViewController: AAChartViewDelegate {
         if(self.traitCollection.userInterfaceStyle != .dark) { // light mode
             aaChartModel.backgroundColor("#ffffff")
             color = AAStyle(color: "#000000")
-            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 40, weight: .bold).fontFamily("System"))
+            aaChartModel.titleStyle(AAStyle(color: "#000000", fontSize: 35, weight: .bold).fontFamily("Arial"))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         } else { // dark mode
             aaChartModel.backgroundColor("#000000")
             color = AAStyle(color: "#ffffff")
-            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 40, weight: .bold).fontFamily("System"))
+            aaChartModel.titleStyle(AAStyle(color: "#ffffff", fontSize: 35, weight: .bold).fontFamily("Arial"))
             aaChartModel.xAxisLabelsStyle(color)
             aaChartModel.yAxisLabelsStyle(color)
         }

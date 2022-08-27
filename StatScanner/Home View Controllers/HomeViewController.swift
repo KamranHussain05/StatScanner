@@ -107,8 +107,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
             
 		switch(method) {
 		case 0:
+			self?.dbuilder.name = new.getName()
+			self?.dbuilder.icon = new.getIcon()
 			self?.captureImage()
 		case 1:
+			self?.dbuilder.name = new.getName()
+			self?.dbuilder.icon = new.getIcon()
 			self?.importImage()
 		case 2:
 			self?.dbuilder.name = new.getName()

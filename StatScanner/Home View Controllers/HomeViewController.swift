@@ -154,7 +154,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		   isPinchToZoomEnabled: true,
 		   isHighlightingEnabled: true)
 		let d = 80.0
-		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.5*d, width: d, height: d))
+		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
 		photo.layer.cornerRadius = d/2
 		photo.layer.borderWidth = 5
 		photo.layer.borderColor = UIColor.white.cgColor
@@ -171,12 +171,29 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	
 	@objc func photo() {
 		print("pressed the button")
-//		if let image = try? await scan.capturePhoto() {
-//			print("took a photo")
-//			UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//		}
+		Task {
+			try await asyncStuff()
+		}
 		scan.stopScanning()
 		scan.dismiss(animated: true)
+	}
+	
+	@objc func asyncStuff() async throws {
+//		for try await item in scan.recognizedItems {
+//			for it in item {
+//				switch it {
+//				case .text(let text):
+//					print("text: \(text.transcript)")
+//				default:
+//					print("not text")
+//			}
+//			}
+//
+//		}
+		if let image = try? await scan.capturePhoto() {
+			print("took a photo")
+			UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+		}
 	}
 	
 	func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {

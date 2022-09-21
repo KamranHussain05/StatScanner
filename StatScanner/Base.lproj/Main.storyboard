@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,7 +14,7 @@
         <!--Scan Data-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="OCRScanning" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scanview" title="Scan Data" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ScanViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,11 +53,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5pe-kv-U1c">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="-1" y="-1" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
-                                        <rect key="frame" x="20" y="74" width="324" height="40"/>
+                                        <rect key="frame" x="20" y="78" width="324" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="36W-7S-v1f"/>
                                             <constraint firstAttribute="width" constant="324" id="lzN-zQ-DYA"/>
@@ -67,7 +67,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDI-T2-Ujr">
-                                        <rect key="frame" x="0.0" y="122" width="414" height="691"/>
+                                        <rect key="frame" x="0.0" y="126" width="414" height="688"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUI-D9-ujO">
                                             <size key="itemSize" width="180" height="258"/>
@@ -153,7 +153,7 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
-                                        <rect key="frame" x="349" y="74" width="45" height="45"/>
+                                        <rect key="frame" x="349" y="78" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="K9O-qj-Rp1"/>
                                             <constraint firstAttribute="width" constant="45" id="pNy-Cx-IFK"/>
@@ -241,13 +241,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sj-mQ-vBG">
-                                <rect key="frame" x="20" y="74" width="171" height="39"/>
+                                <rect key="frame" x="20" y="78" width="171" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQt-vn-g5R">
-                                <rect key="frame" x="349" y="74" width="45" height="45"/>
+                                <rect key="frame" x="349" y="78" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Yvx-YE-njH"/>
                                     <constraint firstAttribute="width" constant="45" id="kn3-8U-t0l"/>
@@ -267,7 +267,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWQ-iX-ya5">
-                                <rect key="frame" x="304" y="74" width="45" height="45"/>
+                                <rect key="frame" x="304" y="78" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="HIm-uq-eXZ"/>
                                     <constraint firstAttribute="width" constant="45" id="lSw-iP-F4T"/>
@@ -313,7 +313,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statistics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XH-0T-hAn">
-                                <rect key="frame" x="20" y="74" width="142" height="40"/>
+                                <rect key="frame" x="20" y="78" width="142" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9sl-6R-YHT"/>
                                 </constraints>
@@ -322,7 +322,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsP-rf-jeC">
-                                <rect key="frame" x="349" y="74" width="45" height="45"/>
+                                <rect key="frame" x="349" y="78" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="PCh-DD-hyU"/>
                                     <constraint firstAttribute="width" constant="45" id="Zvp-sy-qkX"/>
@@ -359,8 +359,8 @@
     </scenes>
     <resources>
         <image name="DataSetIcon12" width="512" height="512"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
-        <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
+        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="104"/>
+        <image name="chart.xyaxis.line" catalog="system" width="128" height="102"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="plus.forwardslash.minus" catalog="system" width="128" height="115"/>

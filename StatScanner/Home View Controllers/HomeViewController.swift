@@ -8,14 +8,17 @@
 import UIKit
 import UniformTypeIdentifiers
 import Vision
+import VisionKit
 
 // MARK: Home View Controller
 
-class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+@available(iOS 16.0, *)
+class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DataScannerViewControllerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
-    
+	
+	private var scan: DataScannerViewController!
     private var selectedDataset: Dataset!
 	private var sc: CGFloat = 0.05
     private var models = [DataSetProject]()
@@ -139,12 +142,51 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     
     ///Take a new picture
 	func captureImage() {
-		let picker = UIImagePickerController()
-		picker.sourceType = .camera
-		picker.allowsEditing = true
-		picker.delegate = self
-		present(picker, animated: true)
+//		let picker = UIImagePickerController()
+//		picker.sourceType = .camera
+//		picker.allowsEditing = true
+//		picker.delegate = self
+//		present(picker, animated: true)
+		scan = DataScannerViewController(
+			recognizedDataTypes: [.text()],
+		   qualityLevel: .accurate, recognizesMultipleItems: true,
+		   isHighFrameRateTrackingEnabled: true,
+		   isPinchToZoomEnabled: true,
+		   isHighlightingEnabled: true)
+		let d = 80.0
+		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.5*d, width: d, height: d))
+		photo.layer.cornerRadius = d/2
+		photo.layer.borderWidth = 5
+		photo.layer.borderColor = UIColor.white.cgColor
+//		photo.setImage(UIImage(systemName: "circle"), for: .normal)
+//		photo.tintColor = .white
+		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
+		scan.delegate = self
+		scan.view.addSubview(photo)
+		
+		present(scan, animated: true) {
+			try? self.scan.startScanning()
+		}
     }
+	
+	@objc func photo() {
+		print("pressed the button")
+//		if let image = try? await scan.capturePhoto() {
+//			print("took a photo")
+//			UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//		}
+		scan.stopScanning()
+		scan.dismiss(animated: true)
+	}
+	
+	func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
+		switch item {
+		case .text(let text):
+			print("text: \(text.transcript)")
+		default:
+			print("not text")
+		}
+	}
 	
 	///Import an image from the user's library
 	func importImage() {
@@ -162,12 +204,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		}
 
 		let scanner = OCRScanner(img: info[.editedImage] as! UIImage)
+		//let scanner = ScanViewController()
 		// this creates a new dataset with the array returned from the ocr pipeline
 		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
-		
+
 		// creates a new dataset in coredata
 		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-		
+
 		print(image) // for checking
 	}
 	
@@ -259,6 +302,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
 // MARK: VIEW CONFIG
 
+@available(iOS 16.0, *)
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     ///Specifies the number of cells to add to the collection view

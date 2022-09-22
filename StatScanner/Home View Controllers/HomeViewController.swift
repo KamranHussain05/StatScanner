@@ -142,67 +142,68 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     
     ///Take a new picture
 	func captureImage() {
-//		let picker = UIImagePickerController()
-//		picker.sourceType = .camera
-//		picker.allowsEditing = true
-//		picker.delegate = self
-//		present(picker, animated: true)
 		scan = DataScannerViewController(
 			recognizedDataTypes: [.text()],
 		   qualityLevel: .accurate, recognizesMultipleItems: true,
 		   isHighFrameRateTrackingEnabled: true,
 		   isPinchToZoomEnabled: true,
 		   isHighlightingEnabled: true)
-		let d = 80.0
-		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
-		photo.layer.cornerRadius = d/2
-		photo.layer.borderWidth = 5
-		photo.layer.borderColor = UIColor.white.cgColor
-//		photo.setImage(UIImage(systemName: "circle"), for: .normal)
-//		photo.tintColor = .white
-		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
+//		let d = 80.0
+//		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
+//		photo.layer.cornerRadius = d/2
+//		photo.layer.borderWidth = 5
+//		photo.layer.borderColor = UIColor.white.cgColor
+//		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
+//		scan.view.addSubview(photo)
+		let text = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+		text.text = "Tap any of the highlights to scan"
+		text.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height*0.85)
+		text.textColor = .white
+		text.textAlignment = .center
+		scan.view.addSubview(text)
 		scan.delegate = self
-		scan.view.addSubview(photo)
 		
 		present(scan, animated: true) {
 			try? self.scan.startScanning()
 		}
     }
 	
-	@objc func photo() {
-		print("pressed the button")
-		Task {
-			try await asyncStuff()
-		}
-		scan.stopScanning()
-		scan.dismiss(animated: true)
-	}
-	
-	@objc func asyncStuff() async throws {
-//		for try await item in scan.recognizedItems {
-//			for it in item {
-//				switch it {
-//				case .text(let text):
-//					print("text: \(text.transcript)")
-//				default:
-//					print("not text")
-//			}
-//			}
-//
+//	@objc func photo() {
+//		print("pressed the button")
+//		Task {
+//			print("async stuff")
+//			try await asyncStuff()
 //		}
-		if let image = try? await scan.capturePhoto() {
-			print("took a photo")
-			UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-		}
-	}
+//		scan.dismiss(animated: true)
+//	}
+//
+//	@objc func asyncStuff() async throws {
+//		if let image = try? await scan.capturePhoto() {
+//			print("took a photo")
+//			UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//		}
+//		var iter = scan.recognizedItems.makeAsyncIterator()
+//		while let list = await iter.next() {
+//			for item in list {
+//				print(item)
+//			}
+//		}
+//		scan.stopScanning()
+//	}
 	
 	func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
+		var strings: String!
 		switch item {
 		case .text(let text):
-			print("text: \(text.transcript)")
+			if (!text.transcript.isEmpty) {
+				strings = text.transcript
+			}
 		default:
 			print("not text")
 		}
+		print(strings!)
+		scan.stopScanning()
+		scan.dismiss(animated: true)
 	}
 	
 	///Import an image from the user's library

@@ -144,23 +144,17 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	func captureImage() {
 		scan = DataScannerViewController(
 			recognizedDataTypes: [.text()],
-		   qualityLevel: .accurate, recognizesMultipleItems: true,
-		   isHighFrameRateTrackingEnabled: true,
+			qualityLevel: .accurate, recognizesMultipleItems: true,
+		   isHighFrameRateTrackingEnabled: false,
 		   isPinchToZoomEnabled: true,
 		   isHighlightingEnabled: true)
-//		let d = 80.0
-//		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
-//		photo.layer.cornerRadius = d/2
-//		photo.layer.borderWidth = 5
-//		photo.layer.borderColor = UIColor.white.cgColor
-//		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
-//		scan.view.addSubview(photo)
-		let text = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-		text.text = "Tap any of the highlights to scan"
-		text.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height*0.85)
-		text.textColor = .white
-		text.textAlignment = .center
-		scan.view.addSubview(text)
+		let d = 80.0
+		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
+		photo.layer.cornerRadius = d/2
+		photo.layer.borderWidth = 5
+		photo.layer.borderColor = UIColor.white.cgColor
+		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
+		scan.view.addSubview(photo)
 		scan.delegate = self
 		
 		present(scan, animated: true) {
@@ -168,42 +162,56 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		}
     }
 	
-//	@objc func photo() {
-//		print("pressed the button")
-//		Task {
-//			print("async stuff")
-//			try await asyncStuff()
-//		}
-//		scan.dismiss(animated: true)
-//	}
-//
-//	@objc func asyncStuff() async throws {
-//		if let image = try? await scan.capturePhoto() {
-//			print("took a photo")
-//			UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//		}
-//		var iter = scan.recognizedItems.makeAsyncIterator()
-//		while let list = await iter.next() {
-//			for item in list {
-//				print(item)
-//			}
-//		}
-//		scan.stopScanning()
-//	}
+	@objc func photo() {
+		print("pressed the button")
+		Task {
+			try await asyncStuff()
+		}
+		scan.dismiss(animated: true)
+	}
+
+	@objc func asyncStuff() async throws {
+		var data = ""
+		var oneD : [String] = []
+		var iter = scan.recognizedItems.makeAsyncIterator()
+		while let list = await iter.next() {
+			for item in list {
+				switch item {
+				case .text(let text):
+					data.append(text.transcript)
+				default:
+					print("not text")
+				}
+			}
+		}
+		print(data)
+		while (data.contains("\n")) {
+			let index = data.firstIndex(of: "\n")
+			let point = String(data[...index!])
+			print(point)
+			let replaced = data.replacingOccurrences(of: point, with: "")
+			data = replaced
+			oneD.append(point)
+		}
+		for i in 0...oneD.count-1 {
+			let replaced = oneD[i].replacingOccurrences(of: "\n", with: "")
+			oneD[i] = replaced
+		}
+		print(oneD)
+		scan.stopScanning()
+		
+		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: )
+		// creates a new dataset in coredata
+		//self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+	}
 	
 	func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
-		var strings: String!
 		switch item {
 		case .text(let text):
-			if (!text.transcript.isEmpty) {
-				strings = text.transcript
-			}
+			print(text.transcript)
 		default:
 			print("not text")
 		}
-		print(strings!)
-		scan.stopScanning()
-		scan.dismiss(animated: true)
 	}
 	
 	///Import an image from the user's library

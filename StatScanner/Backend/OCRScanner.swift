@@ -61,7 +61,7 @@ class OCRScanner {
     }
     
     // MARK: NEEDS TO CONVERT 1D STRING ARRAY TO 2D STRING ARRAY
-    private func processResults(strArray: [String]) {
+    func processResults(strArray: [String]) {
         print(strArray)
         var output: [[String]] = [[]]
         var headerCount = 0 // also the amount of columns that exist

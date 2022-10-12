@@ -148,12 +148,19 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		   isHighFrameRateTrackingEnabled: false,
 		   isPinchToZoomEnabled: true,
 		   isHighlightingEnabled: true)
-		let d = 80.0
+		let d = 70.0
 		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
 		photo.layer.cornerRadius = d/2
 		photo.layer.borderWidth = 5
 		photo.layer.borderColor = UIColor.white.cgColor
+		photo.layer.backgroundColor = UIColor.white.cgColor
 		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
+		let p = 90.0
+		let outer = UIButton(frame: CGRect(x: (view.frame.size.width-p)/2, y: view.frame.size.height-2.75*d-(p-d)/2, width: p, height: p))
+		outer.layer.cornerRadius = p/2
+		outer.layer.borderWidth = 5
+		outer.layer.borderColor = UIColor.white.cgColor
+		scan.view.addSubview(outer)
 		scan.view.addSubview(photo)
 		scan.delegate = self
 		

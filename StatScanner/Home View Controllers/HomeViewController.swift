@@ -188,7 +188,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		while (data.contains("\n")) {
 			let index = data.firstIndex(of: "\n")
 			let point = String(data[...index!])
-			print(point)
 			let replaced = data.replacingOccurrences(of: point, with: "")
 			data = replaced
 			oneD.append(point)
@@ -200,9 +199,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		print(oneD)
 		scan.stopScanning()
 		
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: )
-		// creates a new dataset in coredata
-		//self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: OCRScanner.processResults(strArray: oneD))
+		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 	}
 	
 	func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {

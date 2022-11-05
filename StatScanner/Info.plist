@@ -36,11 +36,7 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>We need permission for your camera for your image obviously...</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need permission to take photos</string>
 </dict>
 </plist>

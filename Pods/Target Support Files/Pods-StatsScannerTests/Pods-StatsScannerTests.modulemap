@@ -1,6 +1,0 @@
-framework module Pods_StatsScannerTests {
-  umbrella header "Pods-StatsScannerTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

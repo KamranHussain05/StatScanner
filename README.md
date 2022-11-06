@@ -96,7 +96,7 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 * Statistics Calculation
   * Mean, Median, Mode
   * Min, Max, Range
-  * Standard Deviation, Standard Error
+  * Standard Deviation, Standard Error, Mean Absolute Deviation
 
 
 ### Built With
@@ -115,33 +115,27 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 <!-- USAGE EXAMPLES -->
 ## How to Use the App
 
-### Import Data Via Scan
-1. Click the + button in the top right corner and select the camera icon from the menu
-2. Make sure you data is in a table format in order for it to be added properly
-3. Scan you document and click "Add Data"
-4. After you data has been extracted, you will be navigated to a page containing basic calculations on your data
-
-### Import Data Manually
-1. Click the + button in the top right corner and select the list icon from the menu
-2. Add your Data points to the columns in the view and label the columns
-3. Save your project
+### Importing Data
+1. Click the + button in the top right corner and select your data importation method
+ - If you selected the "Take Image" or "Import Image" option, make sure your data is in a table format for maximum accuracy
+2. After your data has been extracted, you will be navigated to a page containing basic information on your dataset
 
 ### Visualizing Data 
-1. Open the project containing your data or import your data
-2. Click the graph icon and select a type of visualization
-3. You can pinch to zoom and click on data points to interact with the graph
+1. Open a dataset
+2. Click the Graph tab and choose your preferred visualization by scrolling on the carousel
+3. You can pinch to zoom, highlight specific data points by tapping, as well as focus on a specific column
 
-### Export Visualizations
-1. Open the project containing your data or import your data
-2. Visualize your data
-3. While in the graph tab, save the visualization as an image
-4. Press the share button and send your graph
+### Edit Data
+1. Open a dataset
+2. Click the Data tab and tap on a data cell to edit
+3. When finished with edits, click the pencil icon in the top right corner to save your changes
+ - A crossed out pencil icon indicates that you are not in edit mode
+5. Click the green + button or red - button on the edges of your data to add or delete rows and columns
 
 ### Export Data
-1. Open the project containing your data
-2. Click the "View Raw Data" Tab
-3. Click the export button to export a CSV file of your data
-4. Click the share button to share your CSV data
+1. Open a dataset
+2. Click the Data tab and tap on the export button in the top right corner
+3. A CSV copy of your data will be exported to the StatScanner app folder in Files or Documents
 
 
 _For more examples, please refer to the [Documentation](https://github.com/KamranHussain05/StatsScanner/blob/main/README.md)_

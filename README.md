@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/StatScanner-02.png" alt="Logo" width="130" height="130">
+    <img src="images/StatScanner-02-logo.png" alt="Logo" width="130" height="130">
   </a>
 
 <h3 align="center">StatScanner</h3>
@@ -83,17 +83,46 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 
 ## Features
 
-* Data Visualization
-  * Scatter Plot
-  * Line Graph
-  * Bar Chart
-  * Pie Chart
-  * Area Chart
-  * Box Plot
-  * Bubble Chart
-  * Waterfall Plot
-  * Polygon Chart
-* Statistics Calculation
+**Data Visualization**
+
+<div align="center">
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/CrimeAreaChartExample.png" alt="Logo" width="500" height="300">
+  </a>
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/CrimeLineGraph-Example.png" alt="Logo" width="500" height="300">
+  </a>
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/GamePlay-BarGraphExample.png" alt="Logo" width="500" height="300">
+  </a>
+</div align="center">
+  
+<div style="float: left; width: 50%;">
+<ul>
+<li>Scatter Plot</li>
+<li>Line Graph</li>
+<li>Bar Chart</li>
+<li>Pie Chart</li>
+</ul>
+</div>
+<div style="float: right; width: 50%;">
+<ul>
+<li>Area Chart</li>
+<li>Box Plot</li>
+<li>Bubble Chart</li>
+<li>Waterfall Plot</li>
+</ul>
+</div>
+  
+  
+**Statistics Calculation**
+
+<div align="center">
+<a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/Statics-View.png" alt="Logo" width="600" height="400">
+  </a>
+</div align="center">
+
   * Mean, Median, Mode
   * Min, Max, Range
   * Standard Deviation, Standard Error, Mean Absolute Deviation

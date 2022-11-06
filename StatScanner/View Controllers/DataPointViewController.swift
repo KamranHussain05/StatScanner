@@ -12,6 +12,7 @@ var edible : Bool!
 var mt : Bool!
 var lk : Bool! = true
 
+@available(iOS 16.0, *)
 class DataPointViewController: UIViewController, SpreadsheetViewDataSource, SpreadsheetViewDelegate {
     
     private let spreadsheetView = SpreadsheetView()

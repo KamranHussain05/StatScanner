@@ -8,14 +8,17 @@
 import UIKit
 import UniformTypeIdentifiers
 import Vision
+import VisionKit
 
 // MARK: Home View Controller
 
-class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+@available(iOS 16.0, *)
+class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DataScannerViewControllerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet var newDatasetButton: UIButton!
-    
+	
+	private var scan: DataScannerViewController!
     private var selectedDataset: Dataset!
 	private var sc: CGFloat = 0.05
     private var models = [DataSetProject]()
@@ -139,12 +142,82 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     
     ///Take a new picture
 	func captureImage() {
-		let picker = UIImagePickerController()
-		picker.sourceType = .camera
-		picker.allowsEditing = true
-		picker.delegate = self
-		present(picker, animated: true)
+		scan = DataScannerViewController(
+			recognizedDataTypes: [.text()],
+			qualityLevel: .accurate, recognizesMultipleItems: true,
+		   isHighFrameRateTrackingEnabled: false,
+		   isPinchToZoomEnabled: true,
+		   isHighlightingEnabled: true)
+		let d = 70.0
+		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
+		photo.layer.cornerRadius = d/2
+		photo.layer.borderWidth = 5
+		photo.layer.borderColor = UIColor.white.cgColor
+		photo.layer.backgroundColor = UIColor.white.cgColor
+		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
+		let p = 90.0
+		let outer = UIButton(frame: CGRect(x: (view.frame.size.width-p)/2, y: view.frame.size.height-2.75*d-(p-d)/2, width: p, height: p))
+		outer.layer.cornerRadius = p/2
+		outer.layer.borderWidth = 5
+		outer.layer.borderColor = UIColor.white.cgColor
+		scan.view.addSubview(outer)
+		scan.view.addSubview(photo)
+		scan.delegate = self
+		
+		present(scan, animated: true) {
+			try? self.scan.startScanning()
+		}
     }
+	
+	@objc func photo() {
+		print("pressed the button")
+		Task {
+			try await asyncStuff()
+		}
+		scan.dismiss(animated: true)
+	}
+
+	@objc func asyncStuff() async throws {
+		var data = ""
+		var oneD : [String] = []
+		var iter = scan.recognizedItems.makeAsyncIterator()
+		while let list = await iter.next() {
+			for item in list {
+				switch item {
+				case .text(let text):
+					data.append(text.transcript)
+				default:
+					print("not text")
+				}
+			}
+		}
+		print(data)
+		while (data.contains("\n")) {
+			let index = data.firstIndex(of: "\n")
+			let point = String(data[...index!])
+			let replaced = data.replacingOccurrences(of: point, with: "")
+			data = replaced
+			oneD.append(point)
+		}
+		for i in 0...oneD.count-1 {
+			let replaced = oneD[i].replacingOccurrences(of: "\n", with: "")
+			oneD[i] = replaced
+		}
+		print(oneD)
+		scan.stopScanning()
+		
+		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: OCRScanner.processResults(strArray: oneD))
+		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+	}
+	
+	func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
+		switch item {
+		case .text(let text):
+			print(text.transcript)
+		default:
+			print("not text")
+		}
+	}
 	
 	///Import an image from the user's library
 	func importImage() {
@@ -162,12 +235,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		}
 
 		let scanner = OCRScanner(img: info[.editedImage] as! UIImage)
+		//let scanner = ScanViewController()
 		// this creates a new dataset with the array returned from the ocr pipeline
 		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
-		
+
 		// creates a new dataset in coredata
 		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-		
+
 		print(image) // for checking
 	}
 	
@@ -259,6 +333,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
 // MARK: VIEW CONFIG
 
+@available(iOS 16.0, *)
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     ///Specifies the number of cells to add to the collection view

@@ -57,17 +57,17 @@ class OCRScanner {
                                                 Int(image.size.height))
         }
         print(boundingRects) // will have to figure out how to display them later
-        processResults(strArray: recognizedStrings)
+        processedDataset = OCRScanner.processResults(strArray: recognizedStrings)
     }
     
     // MARK: NEEDS TO CONVERT 1D STRING ARRAY TO 2D STRING ARRAY
-    private func processResults(strArray: [String]) {
+    static func processResults(strArray: [String]) -> [[String]] {
         print(strArray)
         var output: [[String]] = [[]]
         var headerCount = 0 // also the amount of columns that exist
         if(strArray.count == 0) {
             print("OCR failed, string array empty. Aborting...")
-            return
+            return [[]]
         }
         
         // HEADERS ON TOP HORIZONTALLY: find amount of headers
@@ -96,8 +96,7 @@ class OCRScanner {
         }
         
         print("Data added: \(output)")
-        
-        processedDataset = output
+        return output
     }
     
     public func getResults() -> [[String]] {

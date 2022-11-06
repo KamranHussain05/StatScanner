@@ -109,6 +109,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         let photoPreviewContainer = PhotoViewController(frame: self.view.frame)
         photoPreviewContainer.photoImageView.image = previewImage
+        photoPreviewContainer.photoImageView.isUserInteractionEnabled = true
         self.view.addSubview(photoPreviewContainer)
     }
     

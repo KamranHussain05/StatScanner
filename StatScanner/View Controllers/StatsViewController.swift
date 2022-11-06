@@ -9,6 +9,7 @@
 import UIKit
 import CoreGraphics
 
+@available(iOS 16.0, *)
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var back: UIButton!

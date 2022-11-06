@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/StatScanner-02.png" alt="Logo" width="130" height="130">
+    <img src="images/StatScanner-02-logo.png" alt="Logo" width="130" height="130">
   </a>
 
 <h3 align="center">StatScanner</h3>
@@ -83,17 +83,46 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 
 ## Features
 
-* Data Visualization
-  * Scatter Plot
-  * Line Graph
-  * Bar Chart
-  * Pie Chart
-  * Area Chart
-  * Box Plot
-  * Bubble Chart
-  * Waterfall Plot
-  * Polygon Chart
-* Statistics Calculation
+**Data Visualization**
+
+<div align="center">
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/CrimeAreaChartExample.png" alt="Logo" width="500" height="300">
+  </a>
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/CrimeLineGraph-Example.png" alt="Logo" width="500" height="300">
+  </a>
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/GamePlay-BarGraphExample.png" alt="Logo" width="500" height="300">
+  </a>
+</div align="center">
+  
+<div style="float: left; width: 50%;">
+<ul>
+<li>Scatter Plot</li>
+<li>Line Graph</li>
+<li>Bar Chart</li>
+<li>Pie Chart</li>
+</ul>
+</div>
+<div style="float: right; width: 50%;">
+<ul>
+<li>Area Chart</li>
+<li>Box Plot</li>
+<li>Bubble Chart</li>
+<li>Waterfall Plot</li>
+</ul>
+</div>
+  
+  
+**Statistics Calculation**
+
+<div align="center">
+<a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/Statics-View.png" alt="Logo" width="600" height="400">
+  </a>
+</div align="center">
+
   * Mean, Median, Mode
   * Min, Max, Range
   * Standard Deviation, Standard Error, Mean Absolute Deviation
@@ -123,13 +152,13 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 ### Visualizing Data 
 1. Open a dataset
 2. Click the Graph tab and choose your preferred visualization by scrolling on the carousel
-3. You can pinch to zoom, highlight specific data points by tapping, as well as focus on a specific column
+3. You can pinch to zoom, highlight specific data points by tapping, and focus on a specific column
 
 ### Edit Data
 1. Open a dataset
 2. Click the Data tab and tap on a data cell to edit
-3. When finished with edits, click the pencil icon in the top right corner to save your changes
- - A crossed out pencil icon indicates that you are not in edit mode
+3. When finished with edits, save your changes with the check mark in the top right corner
+ - The pencil icon indicates that you are not in edit mode (toggleable pencil icon has yet to be implemented)
 5. Click the green + button or red - button on the edges of your data to add or delete rows and columns
 
 ### Export Data
@@ -164,8 +193,8 @@ See the [open issues](https://github.com/KamranHussain05/StatsScanner/issues) fo
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" and leave your email in the issue description. We will reach out to you if your change will be appended.
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" and leave your email in the issue description. We will contact you with the email provided if your change will be appended.
+Don't forget to give the project a star!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -222,14 +251,14 @@ Icons
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/KamranHussain05/StatsScanner.svg?style=for-the-badge
-[contributors-url]: https://github.com/KamranHussain05/StatsScanner/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/KamranHussain05/StatsScanner.svg?style=for-the-badge
-[forks-url]: https://github.com/KamranHussain05/StatsScanner/network/members
-[stars-shield]: https://img.shields.io/github/stars/KamranHussain05/StatsScanner.svg?style=for-the-badge
-[stars-url]: https://github.com/KamranHussain05/StatsScanner/stargazers
-[issues-shield]: https://img.shields.io/github/issues/KamranHussain05/StatsScanner.svg?style=for-the-badge
-[issues-url]: https://github.com/KamranHussain05/StatsScanner/issues
-[license-shield]: https://img.shields.io/github/license/KamranHussain05/StatsScanner.svg?style=for-the-badge
-[license-url]: https://github.com/KamranHussain05/StatsScanner/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/KamranHussain05/StatScanner.svg?style=for-the-badge
+[contributors-url]: https://github.com/KamranHussain05/StatScanner/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/KamranHussain05/StatScanner.svg?style=for-the-badge
+[forks-url]: https://github.com/KamranHussain05/StatScanner/network/members
+[stars-shield]: https://img.shields.io/github/stars/KamranHussain05/StatScanner.svg?style=for-the-badge
+[stars-url]: https://github.com/KamranHussain05/StatScanner/stargazers
+[issues-shield]: https://img.shields.io/github/issues/KamranHussain05/StatScanner.svg?style=for-the-badge
+[issues-url]: https://github.com/KamranHussain05/StatScanner/issues
+[license-shield]: https://img.shields.io/github/license/KamranHussain05/StatScanner.svg?style=for-the-badge
+[license-url]: https://github.com/KamranHussain05/StatScanner/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png

@@ -1,7 +1,8 @@
 .DS_Store
 *.xcuserstate
 xcschememanagement.plist
-Statscanner.xcodeproj/project.xcworkspace/*
+StatScanner.xcodeproj/project.xcworkspace/xcshareddata/*
+StatScanner.xcodeproj/project.xcworkspace/xcuserdata/*
 StatScanner.xcodeproj/xcshareddata/*
 StatScanner.xcodeproj/xcuserdata/*
 StatScanner.xcworkspace/xcshareddata/*

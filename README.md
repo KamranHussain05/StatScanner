@@ -123,13 +123,13 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 ### Visualizing Data 
 1. Open a dataset
 2. Click the Graph tab and choose your preferred visualization by scrolling on the carousel
-3. You can pinch to zoom, highlight specific data points by tapping, as well as focus on a specific column
+3. You can pinch to zoom, highlight specific data points by tapping, and focus on a specific column
 
 ### Edit Data
 1. Open a dataset
 2. Click the Data tab and tap on a data cell to edit
-3. When finished with edits, click the pencil icon in the top right corner to save your changes
- - A crossed out pencil icon indicates that you are not in edit mode
+3. When finished with edits, save your changes with the check mark in the top right corner
+ - The pencil icon indicates that you are not in edit mode (toggleable pencil icon has yet to be implemented)
 5. Click the green + button or red - button on the edges of your data to add or delete rows and columns
 
 ### Export Data
@@ -164,8 +164,8 @@ See the [open issues](https://github.com/KamranHussain05/StatsScanner/issues) fo
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" and leave your email in the issue description. We will reach out to you if your change will be appended.
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" and leave your email in the issue description. We will contact you with the email provided if your change will be appended.
+Don't forget to give the project a star!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)

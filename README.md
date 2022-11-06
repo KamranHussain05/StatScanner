@@ -83,19 +83,7 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 
 ## Features
 
-**Data Visualization**
-
-<div align="center">
-  <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/CrimeAreaChartExample.png" alt="Logo" width="500" height="300">
-  </a>
-  <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/CrimeLineGraph-Example.png" alt="Logo" width="500" height="300">
-  </a>
-  <a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/GamePlay-BarGraphExample.png" alt="Logo" width="500" height="300">
-  </a>
-</div align="center">
+### Data Visualizations
   
 <div style="float: left; width: 50%;">
 <ul>
@@ -103,30 +91,35 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 <li>Line Graph</li>
 <li>Bar Chart</li>
 <li>Pie Chart</li>
-</ul>
-</div>
-<div style="float: right; width: 50%;">
-<ul>
 <li>Area Chart</li>
 <li>Box Plot</li>
 <li>Bubble Chart</li>
 <li>Waterfall Plot</li>
 </ul>
 </div>
-  
-  
-**Statistics Calculation**
-
 <div align="center">
-<a href="https://github.com/KamranHussain05/StatsScanner">
-    <img src="images/Statics-View.png" alt="Logo" width="600" height="400">
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/CrimeAreaChartExample.png" alt="Logo" width="325" height="200">
+  </a>
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/GamePlay-BarGraphExample.png" alt="Logo" width="325" height="200">
+  </a>
+  <a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/CrimeLineGraph-Example.png" alt="Logo" width="325" height="200">
   </a>
 </div align="center">
+  
+### Statistics
 
   * Mean, Median, Mode
   * Min, Max, Range
   * Standard Deviation, Standard Error, Mean Absolute Deviation
-
+  
+  <div align="center">
+<a href="https://github.com/KamranHussain05/StatsScanner">
+    <img src="images/Statics-View.png" alt="Logo" width="600" height="400">
+  </a>
+</div align="center">
 
 ### Built With
 
@@ -159,7 +152,7 @@ StatScanner is an IOS app designed to process and visualize any numerical data. 
 2. Click the Data tab and tap on a data cell to edit
 3. When finished with edits, save your changes with the check mark in the top right corner
  - The pencil icon indicates that you are not in edit mode (toggleable pencil icon has yet to be implemented)
-5. Click the green + button or red - button on the edges of your data to add or delete rows and columns
+4. Click the green + button or red - button on the edges of your data to add or delete rows and columns
 
 ### Export Data
 1. Open a dataset

@@ -151,7 +151,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
 	@IBAction func onEditClick() {
 		if (edit.imageView?.image == UIImage(systemName: "pencil")) {
             edible = false
-            edit.setImage(UIImage(systemName: "pencil.slash"), for: .normal)
+            edit.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
             
             let home = self.presentingViewController as? HomeViewController
             home?.updateItem(item: self.proj, dataset: self.dataset)
@@ -160,7 +160,7 @@ class DataPointViewController: UIViewController, SpreadsheetViewDataSource, Spre
             stat?.loadData()
             
             self.spreadsheetView.reloadData()
-		} else if (edit.imageView?.image == UIImage(systemName: "pencil.slash")) {
+		} else if (edit.imageView?.image == UIImage(systemName: "checkmark.seal")) {
 			edit.setImage(UIImage(systemName: "pencil"), for: .normal)
 			edible = true
 		}

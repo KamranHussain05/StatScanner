@@ -2,4 +2,6 @@
 *.xcuserstate
 xcschememanagement.plist
 StatsScanner.xcodeproj/project.pbxproj
+xcshareddata/xcschemes
+xcuserdata
 Builds/*

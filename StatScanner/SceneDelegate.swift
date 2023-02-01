@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  StatsScanner
+//  StatScanner
 //
 //  Created by Kamran on 11/20/21.
 //

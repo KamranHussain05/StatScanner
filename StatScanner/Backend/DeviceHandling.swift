@@ -41,6 +41,9 @@ extension Collection where Indices.Iterator.Element == Index {
 /// Extensions for view controller gesture recognitions
 extension UIViewController {
     
+    /// Retracts the keyboard from the userinterface to allow for dismissal from UI elements besides buttons
+    ///
+    /// - Authors: Caden Pun
     func hideKeyboardOnTap() {
         self.view.addGestureRecognizer(self.endEditingRec())
         self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRec())
@@ -53,8 +56,8 @@ extension UIViewController {
     }
 }
 
-/// Extensions for the entire application to iterate build and version numbers and display them in app
-///
+/// Extensions that allow the ability to iterate build and version numbers to display in app
+/// Checks the version number and pulls it from the app metadata.
 /// - Authors: Caden Pun
 extension UIApplication {
     class func vers() -> String {

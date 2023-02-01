@@ -323,6 +323,38 @@ public class Dataset: NSObject, NSCoding {
         return self.graphData
     }
     
+    func getColumnCalcs(axis:Int) -> [Double] {
+        var bald = Array<Double>(repeating:0.0, count: graphData[0].count)
+        var idx = 0
+        bald[0] = numericalData[axis]
+        
+        // Columns
+        for i in 1...graphData[0].count-1 {
+            idx = axis+(i*(keys[0].count))  // Formula to calculate idx for matrix transposition
+            bald[i] = self.numericalData[idx]
+        }
+        
+        var newCalcs = Calculations(dataset:bald).calculate()
+        print(newCalcs)
+        return newCalcs
+    }
+    
+    func getRowCalcs(axis:Int) -> [Double] {
+        var bald = Array<Double>(repeating:0.0, count:graphData.count)
+        var idx = 0
+        bald[0] = numericalData[axis]
+        
+        // Rows
+        for i in 1...graphData.count-1 {
+            idx = (axis*(keys[1].count)) + i // Formula to calculate idx for matrix transposition
+            bald[i] = self.numericalData[idx]
+        }
+        
+        var newCalcs = Calculations(dataset:bald).calculate()
+        print(newCalcs)
+        return newCalcs
+    }
+    
     func getCalculations() -> [Double] {
         return self.calculations
     }

@@ -184,9 +184,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	func captureImage() {
 		scan = DataScannerViewController(
 			recognizedDataTypes: [.text()],
-			qualityLevel: .accurate, recognizesMultipleItems: true,
-		   isHighFrameRateTrackingEnabled: false,
-		   isPinchToZoomEnabled: true,
+			qualityLevel: .fast, recognizesMultipleItems: true,
+		   isHighFrameRateTrackingEnabled: true,
+		   isPinchToZoomEnabled: false,
 		   isHighlightingEnabled: true)
 		let d = 70.0
 		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))

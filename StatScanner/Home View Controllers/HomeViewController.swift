@@ -32,12 +32,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	private var dbuilder = DatasetBuilder()					/// DatasetBuilder object var. Builds a dataset for CoreData
 
 	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5", "DataSetIcon6", "DataSetIcon7", "DataSetIcon8", "DataSetIcon9", "DataSetIcon10", "DataSetIcon11", "DataSetIcon12", "DataSetIcon13", "DataSetIcon14", "DataSetIcon15", "DataSetIcon16"]					/// Array of icon images for each dataset tile
-	
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext /// CoreData context for referencing CoreData objects. This is needed to fetch Datasets from CoreData and index them properly.
-    let newDatasetMenu = UIAlertController(title: "New Dataset",	/// Dataset menu object that is brought up on the DatasetMenu button. This inherits the UIAlertController
-        message: "Select how you would like to import your data",
-        preferredStyle: .actionSheet
-    )
+
+  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	
 	/// Setups the view initially, basically the main method of the App. All commands, view elements, and fetching is done from this function, after the basic setup is done.
 	/// - Parameters: None
@@ -48,60 +44,31 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		// Handle view layouts and setup
-		let layout = UICollectionViewFlowLayout()
-		let width = CGFloat(UIScreen.main.bounds.width)
+      // Handle view layouts and setup
+      let layout = UICollectionViewFlowLayout()
+      let width = CGFloat(UIScreen.main.bounds.width)
 
-		if (width < 414) {
-			layoutConstraints(layout: layout, width: width)
-		} else {
-			layoutConstraints(layout: layout, width: 414)
-		}
-		// Create the collection view
-		myCollectionView.collectionViewLayout = layout
-        getAllItems()	// Load all the items from CoreData and load their class references into memory
-        
-		// Check if the Application is running on an iPhone, then add the take image option. Images and scans cannot be taken on a device running MacOS.
-		if(isPhone()) {
-            newDatasetMenu.addAction(
-                UIAlertAction(title: "Take Image", style: .default) { (action) in
-                    self.createWithName(method: 0)
-                }
-            )
-        }
-        
-		// Add the other items to the menu.
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Import Image", style: .default) { (action) in
-                self.createWithName(method: 1)
-            }
-        )
-        
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Import CSV", style: .default) { (action) in
-                self.createWithName(method: 2)
-            }
-        )
-		
-		newDatasetMenu.addAction(
-			UIAlertAction(title: "Empty Dataset", style: .default) { (action) in
-				self.createWithName(method: 3)
-			}
-		)
-        
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Cancel", style: .destructive) { (action) in
-				// user cancels menu, nothing needs to be done
-            }
-		)
-		
+      if (width < 414) {
+        layoutConstraints(layout: layout, width: width)
+      } else {
+        layoutConstraints(layout: layout, width: 414)
+      }
+      // Create the collection view
+      myCollectionView.collectionViewLayout = layout
+
+      getAllItems()	// Load all the items from CoreData and load their class references into memory
+
+      let newDatasetMenu = constructNewDatasetMenu()
     }
+	
+	// MARK: Frontend Construction Helper Methods
 	
 	/// Set the layout constraints and ensure the content frame clip to the edges of the device. This function ensures UI elements are properly adapted properly to difference screen resolutions, scales, and sizes.
 	/// - Authors: Kaleb Kim
 	/// - Parameters
 	/// 	- layout: The UICollectionView flow layout. Needed to adapt the defualt layout to the current screen.
 	/// 	- width: Spacing between home screen cells
+  
 	func layoutConstraints(layout: UICollectionViewFlowLayout, width: CGFloat) {
 		layout.itemSize = CGSize(width: (width*(1-3*sc))/2, height: (width*(1.25-sc))/2)
 		layout.minimumLineSpacing = sc*width
@@ -109,19 +76,33 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*width, bottom: 0, right: sc*width)
 	}
     
-    // MARK: Data Import Handling
+    // when plus button is pressed (creates new menu)
+    func constructNewDatasetMenu() -> UIMenu {
+		return UIMenu(title: "New Dataset", children: [
+			UIAction(title: "Take Image", image: UIImage(systemName: "camera")) { (action) in
+				self.createWithName(method: 0)
+			},
+			UIAction(title: "Import Image", image: UIImage(systemName: "square.and.arrow.down")) { (action) in
+				self.createWithName(method: 1)
+			},
+			UIAction(title: "Import CSV", image: UIImage(systemName: "chart.bar.doc.horizontal")) { (action) in
+				self.createWithName(method: 2)
+			},
+			UIAction(title: "Create Empty Dataset", image: UIImage(systemName: "doc.badge.plus")) { (action) in
+				self.createWithName(method: 3)
+			}
+		])
+    }
+	
+	// MARK: Data Import Handling
     
-    /// Creates a dataset menu, displays it, and pins it to the middle of screen when the plus button is pressed
+  /// Creates a dataset menu, displays it, and pins it to the middle of screen when the plus button is pressed
 	///
 	/// - Returns: Implicitly returns a new collection view object by displaying it to the user. Also saves the new dataset to Core Data
 	/// - Authors: Kaleb Kim
-    @IBAction func didTapNewDatasetButton() {
-        newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
-        if(UIDevice.current.userInterfaceIdiom == .pad) {
-            newDatasetMenu.popoverPresentationController?.sourceRect = CGRect.init(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-        }
-        self.present(newDatasetMenu, animated: true, completion: nil)
-    }
+  @IBAction func didTapNewDatasetButton() {
+
+  }
 	
     /// Creates a new ``Dataset`` and adds it to CoreData by adding the new dataset to a created ``DatasetProject`` object
 	///

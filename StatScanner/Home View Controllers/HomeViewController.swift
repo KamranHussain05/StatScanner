@@ -28,11 +28,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	private let icons = ["DataSetIcon1", "DataSetIcon2", "DataSetIcon3", "DataSetIcon4", "DataSetIcon5", "DataSetIcon6", "DataSetIcon7", "DataSetIcon8", "DataSetIcon9", "DataSetIcon10", "DataSetIcon11", "DataSetIcon12", "DataSetIcon13", "DataSetIcon14", "DataSetIcon15", "DataSetIcon16"]
 	
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let newDatasetMenu = UIAlertController(title: "New Dataset",
-        message: "Select how you would like to import your data",
-        preferredStyle: .actionSheet
-    )
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -46,41 +42,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		}
 		myCollectionView.collectionViewLayout = layout
         getAllItems()
-        
-		if(isPhone()) {
-            // don't allow user to take a photo if it's a mac (impractical)
-            newDatasetMenu.addAction(
-                UIAlertAction(title: "Take Image", style: .default) { (action) in
-                    self.createWithName(method: 0)
-                }
-            )
-        }
-        
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Import Image", style: .default) { (action) in
-                self.createWithName(method: 1)
-            }
-        )
-        
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Import CSV", style: .default) { (action) in
-                self.createWithName(method: 2)
-            }
-        )
 		
-		newDatasetMenu.addAction(
-			UIAlertAction(title: "Empty Dataset", style: .default) { (action) in
-				self.createWithName(method: 3)
-			}
-		)
-        
-        newDatasetMenu.addAction(
-            UIAlertAction(title: "Cancel", style: .destructive) { (action) in
-				// user cancels menu, nothing needs to be done
-            }
-		)
-		
+		let newDatasetMenu = constructNewDatasetMenu()
     }
+	
+	// MARK: Frontend Construction Helper Methods
 	
 	func layoutConstraints(layout: UICollectionViewFlowLayout, width: CGFloat) {
 		layout.itemSize = CGSize(width: (width*(1-3*sc))/2, height: (width*(1.25-sc))/2)
@@ -89,16 +55,25 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		layout.sectionInset = UIEdgeInsets(top: 0.02*view.frame.size.width, left: sc*width, bottom: 0, right: sc*width)
 	}
     
-    // MARK: Data Import Handling
-    
     // when plus button is pressed (creates new menu)
-    @IBAction func didTapNewDatasetButton() {
-        newDatasetMenu.popoverPresentationController?.sourceView = self.myCollectionView
-        if(UIDevice.current.userInterfaceIdiom == .pad) {
-            newDatasetMenu.popoverPresentationController?.sourceRect = CGRect.init(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-        }
-        self.present(newDatasetMenu, animated: true, completion: nil)
+    func constructNewDatasetMenu() -> UIMenu {
+		return UIMenu(title: "New Dataset", children: [
+			UIAction(title: "Take Image", image: UIImage(systemName: "camera")) { (action) in
+				self.createWithName(method: 0)
+			},
+			UIAction(title: "Import Image", image: UIImage(systemName: "square.and.arrow.down")) { (action) in
+				self.createWithName(method: 1)
+			},
+			UIAction(title: "Import CSV", image: UIImage(systemName: "chart.bar.doc.horizontal")) { (action) in
+				self.createWithName(method: 2)
+			},
+			UIAction(title: "Create Empty Dataset", image: UIImage(systemName: "doc.badge.plus")) { (action) in
+				self.createWithName(method: 3)
+			}
+		])
     }
+	
+	// MARK: Data Import Handling
 	
     ///Creates a new dataset
     func createWithName(method: Int) {

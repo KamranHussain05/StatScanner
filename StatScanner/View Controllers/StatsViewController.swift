@@ -15,6 +15,10 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var back: UIButton!
     private var datasetobj: Dataset!
     private var proj: DataSetProject!
+    private var pickerView : UIPickerView!
+    private var calcTypes : [String] = ["Whole Dataset", "Column", "Row"]
+    private var chosenAxis: String! = "Whole Dataset"
+    private var index: Int!
     
     private var name: String!
     private var date: String!
@@ -112,15 +116,15 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         models[0].cells[0].calc = name
         models[0].cells[1].calc = date
         models[0].cells[2].calc = points
-        models[1].cells[0].calc = mean
-        models[1].cells[1].calc = median
-        models[1].cells[2].calc = mode
-        models[2].cells[0].calc = min
-        models[2].cells[1].calc = max
-        models[2].cells[2].calc = range
-        models[3].cells[0].calc = stddev
-        models[3].cells[1].calc = abdev
-        models[3].cells[2].calc = error
+        models[2].cells[0].calc = mean
+        models[2].cells[1].calc = median
+        models[2].cells[2].calc = mode
+        models[3].cells[0].calc = min
+        models[3].cells[1].calc = max
+        models[3].cells[2].calc = range
+        models[4].cells[0].calc = stddev
+        models[4].cells[1].calc = abdev
+        models[4].cells[2].calc = error
         
         self.tableView.reloadData()
     }
@@ -129,10 +133,13 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func configure() {
         models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruct(title: "Creation Date", calc: date) {}, cellStruct(title: "Data Points", calc: points) {}]))
+        models.append(section(title:"Configuation", cells: [cellStruct(title: "Axis", calc: calcTypes[0]) {self.axisMenu()}, cellStruct(title: "Index") {self.indexMenu()}]))
         models.append(section(title: "Averages", cells: [cellStruct(title: "Mean", calc: mean) {}, cellStruct(title: "Median", calc: median) {}, cellStruct(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruct(title: "Min", calc: min) {}, cellStruct(title: "Max", calc: max) {}, cellStruct(title: "Range", calc: range) {}]))
         models.append(section(title: "Error", cells: [cellStruct(title: "Standard Deviation", calc: stddev) {}, cellStruct(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruct(title: "Standard Error", calc: error) {}]))
     }
+    
+    // MARK: Text Field Handling
     
     func textfieldAlert(_ title: String, action: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
@@ -155,6 +162,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         alert.popoverPresentationController?.sourceView = self.view
         present(alert, animated:true)
     }
+    
+    // MARK: Table View Configuration
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return models.count
@@ -190,6 +199,84 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.dismiss(animated:true)
         }
     }
+    
+    // MARK: Picker Menu Setup
+    
+    func axisMenu() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for option in calcTypes {
+            let action = UIAlertAction(title: option, style: .default, handler: { [self] (action) in
+                self.models[1].cells[0].calc = option
+                self.chosenAxis = option
+                self.tableView.reloadData()
+            })
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func indexMenu() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        var options : [Int]! = [0]
+        var ax = 0
+        if(chosenAxis == calcTypes[0]) {
+            ax = 0
+        } else if(chosenAxis == calcTypes[1]) {
+            for i in 0...self.datasetobj.getGraphData().count-2 {
+                options.append(i+1)
+            }
+            ax=1
+        } else {
+            for i in 0...self.datasetobj.getGraphData()[0].count-1 {
+                options.append(i+1)
+            }
+            ax=2
+        }
+        
+        for option in options {
+            let action = UIAlertAction(title: String(option), style: .default, handler: { [self] (action) in
+                self.models[1].cells[1].calc = String(option)
+                var newCalc = [0.0]
+                // Update the stats
+                if(ax==0) {
+                    updateCalcs(newCalc:self.datasetobj.getCalculations(), num:self.datasetobj.getTotalNumItems())
+                } else if(ax==1) {
+                    newCalc = self.datasetobj.getColumnCalcs(axis: option)
+                    updateCalcs(newCalc: newCalc, num:options.count)
+                } else {
+                    newCalc = self.datasetobj.getRowCalcs(axis: option)
+                    updateCalcs(newCalc: newCalc, num:options.count)
+                }
+            })
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func updateCalcs(newCalc:[Double], num:Int) {
+        models[0].cells[2].calc = String(num)
+        models[2].cells[0].calc = String(round(1000 * newCalc[0]) / 1000)
+        models[2].cells[1].calc = String(round(1000 * newCalc[1]) / 1000)
+        models[2].cells[2].calc = String(round(1000 * newCalc[2]) / 1000)
+        models[3].cells[0].calc = String(round(1000 * newCalc[3]) / 1000)
+        models[3].cells[1].calc = String(round(1000 * newCalc[4]) / 1000)
+        models[3].cells[2].calc = String(round(1000 * newCalc[5]) / 1000)
+        models[4].cells[0].calc = String(round(1000 * newCalc[6]) / 1000)
+        models[4].cells[1].calc = String(round(1000 * newCalc[7]) / 1000)
+        models[4].cells[2].calc = String(round(1000 * newCalc[8]) / 1000)
+        
+        self.tableView.reloadData()
+    }
+    
 }
 
 //MARK: Structs

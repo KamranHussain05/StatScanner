@@ -14,18 +14,18 @@
 		4D052FC028B35655004A9F40 /* StatScannerUITests in Resources */ = {isa = PBXBuildFile; fileRef = 4D052FBF28B35654004A9F40 /* StatScannerUITests */; };
 		4D11804028B319ED00FA701A /* DataSetProject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D11803F28B319ED00FA701A /* DataSetProject+CoreDataProperties.swift */; };
 		4D11804228B319FF00FA701A /* DataSetProject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D11804128B319FF00FA701A /* DataSetProject+CoreDataClass.swift */; };
-		4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */; };
 		4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */; };
 		4D2F168F279BE9C70096F9DA /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4D2F168E279BE9C60096F9DA /* Awards_R.csv */; };
 		4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */; };
 		4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9A288F551300BB1C03 /* Calculations.swift */; };
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
+		4DA417F529906B2F004E87BA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
 		4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE04DFC28551E7900C5D5BC /* CloudKit.framework */; };
+		8D17AE4A56F738F94642A322 /* Pods_StatScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7A731F1ABA7EB1B9D6412C /* Pods_StatScanner.framework */; };
 		A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8088978277EEF8500B8C2FE /* HomeTile.swift */; };
 		A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897A277EF0B100B8C2FE /* HomeTileList.swift */; };
 		A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808897F277EF1C600B8C2FE /* HomeViewController.swift */; };
-		A8088981277EF9DE00B8C2FE /* Pods_StatsScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */; };
 		A8088984277EFA2C00B8C2FE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BD6DEC27794A810048912C /* CoreData.framework */; };
 		A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F4907277F9A1300C8FB35 /* StatsViewController.swift */; };
 		A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85092B927497F6F00392240 /* AppDelegate.swift */; };
@@ -52,12 +52,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03B112DEF00A92BAB84DF61B /* Pods-StatsScannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.debug.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2FA0734D6996A5217388FD8E /* Pods-StatsScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.release.xcconfig"; sourceTree = "<group>"; };
 		346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46195DFE2C5083923F40D6A0 /* Pods-StatScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatScanner/Pods-StatScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		4D052FBB28B354CB004A9F40 /* StatsScanner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StatsScanner.xcdatamodel; sourceTree = "<group>"; };
 		4D052FBD28B3562D004A9F40 /* StatScannerTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StatScannerTests; sourceTree = "<group>"; };
 		4D052FBF28B35654004A9F40 /* StatScannerUITests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StatScannerUITests; sourceTree = "<group>"; };
@@ -65,17 +63,14 @@
 		4D11804128B319FF00FA701A /* DataSetProject+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSetProject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4D11804328B31AC700FA701A /* StatScanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatScanner.entitlements; sourceTree = "<group>"; };
 		4D11804528B3526E00FA701A /* StatScanner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StatScanner-Bridging-Header.h"; sourceTree = "<group>"; };
-		4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphDirectorViewController.swift; path = Pods/GraphDirectorViewController.swift; sourceTree = SOURCE_ROOT; };
 		4D2F1689279AAEDE0096F9DA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4D2F168E279BE9C60096F9DA /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; usesTabs = 0; };
 		4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTransformer.swift; sourceTree = "<group>"; };
 		4D3B6E9A288F551300BB1C03 /* Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
+		4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphDirectorViewController.swift; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
 		4DE04DFC28551E7900C5D5BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScannerTests.release.xcconfig"; path = "Target Support Files/Pods-StatsScannerTests/Pods-StatsScannerTests.release.xcconfig"; sourceTree = "<group>"; };
-		A1BCA46C3BD6307DD59B2BA8 /* Pods-StatsScanner-StatsScannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner-StatsScannerUITests/Pods-StatsScanner-StatsScannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8088978277EEF8500B8C2FE /* HomeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTile.swift; sourceTree = "<group>"; };
 		A808897A277EF0B100B8C2FE /* HomeTileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTileList.swift; sourceTree = "<group>"; };
 		A808897F277EF1C600B8C2FE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -101,11 +96,12 @@
 		A8CA56462772991E006BDF61 /* Titanic_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Titanic_R.csv; sourceTree = "<group>"; };
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatsScanner.debug.xcconfig"; path = "Target Support Files/Pods-StatsScanner/Pods-StatsScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
 		AFD226D828B03156005FDB4C /* Randumb_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Randumb_R.csv; sourceTree = "<group>"; };
+		CB7A731F1ABA7EB1B9D6412C /* Pods_StatScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF69636A761F38ED91819D39 /* Pods-StatScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StatScanner.release.xcconfig"; path = "Target Support Files/Pods-StatScanner/Pods-StatScanner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +110,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */,
-				A8088981277EF9DE00B8C2FE /* Pods_StatsScanner.framework in Frameworks */,
 				A8088984277EFA2C00B8C2FE /* CoreData.framework in Frameworks */,
+				8D17AE4A56F738F94642A322 /* Pods_StatScanner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +146,7 @@
 			children = (
 				4DE04DF82850357300C5D5BC /* DataPointViewController.swift */,
 				A83F4907277F9A1300C8FB35 /* StatsViewController.swift */,
-				4D2F167D279694300096F9DA /* GraphDirectorViewController.swift */,
+				4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */,
 				346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */,
 				346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */,
 			);
@@ -160,12 +156,8 @@
 		1F291427D55372448DC04E64 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */,
-				2FA0734D6996A5217388FD8E /* Pods-StatsScanner.release.xcconfig */,
-				A1BCA46C3BD6307DD59B2BA8 /* Pods-StatsScanner-StatsScannerUITests.debug.xcconfig */,
-				5D61EFCE8277669F5D8EC58B /* Pods-StatsScanner-StatsScannerUITests.release.xcconfig */,
-				03B112DEF00A92BAB84DF61B /* Pods-StatsScannerTests.debug.xcconfig */,
-				75AE24AC1E9C216F0B21CD77 /* Pods-StatsScannerTests.release.xcconfig */,
+				46195DFE2C5083923F40D6A0 /* Pods-StatScanner.debug.xcconfig */,
+				EF69636A761F38ED91819D39 /* Pods-StatScanner.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -227,9 +219,9 @@
 			children = (
 				4DE04DFC28551E7900C5D5BC /* CloudKit.framework */,
 				A8BD6DEC27794A810048912C /* CoreData.framework */,
-				2679B530C4B5896811AF345F /* Pods_StatsScanner.framework */,
 				AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */,
 				3F136E0EAFBDDC597822A53A /* Pods_StatsScannerTests.framework */,
+				CB7A731F1ABA7EB1B9D6412C /* Pods_StatScanner.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -265,7 +257,7 @@
 				A85092B227497F6F00392240 /* Sources */,
 				A85092B327497F6F00392240 /* Frameworks */,
 				A85092B427497F6F00392240 /* Resources */,
-				7004EBC60BB541826FF77C0F /* [CP] Embed Pods Frameworks */,
+				A2FCE9FB9226B34F99D3631C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -354,28 +346,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StatsScanner-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-StatScanner-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7004EBC60BB541826FF77C0F /* [CP] Embed Pods Frameworks */ = {
+		A2FCE9FB9226B34F99D3631C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StatsScanner/Pods-StatsScanner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-StatScanner/Pods-StatScanner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StatsScanner/Pods-StatsScanner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-StatScanner/Pods-StatScanner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StatsScanner/Pods-StatsScanner-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StatScanner/Pods-StatScanner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -393,7 +385,6 @@
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
-				4D2F167E279694300096F9DA /* GraphDirectorViewController.swift in Sources */,
 				4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */,
 				4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */,
 				346D63DC28B4BED000AEFB65 /* PhotoViewController.swift in Sources */,
@@ -402,6 +393,7 @@
 				A808897B277EF0B100B8C2FE /* HomeTileList.swift in Sources */,
 				AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */,
 				4D11804028B319ED00FA701A /* DataSetProject+CoreDataProperties.swift in Sources */,
+				4DA417F529906B2F004E87BA /* GraphDirectorViewController.swift in Sources */,
 				A83F4908277F9A1300C8FB35 /* StatsViewController.swift in Sources */,
 				4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */,
 				4D11804228B319FF00FA701A /* DataSetProject+CoreDataClass.swift in Sources */,
@@ -550,7 +542,7 @@
 		};
 		A85092E427497F7B00392240 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC074948257DC94D791DC6A0 /* Pods-StatsScanner.debug.xcconfig */;
+			baseConfigurationReference = 46195DFE2C5083923F40D6A0 /* Pods-StatScanner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -601,7 +593,7 @@
 		};
 		A85092E527497F7B00392240 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FA0734D6996A5217388FD8E /* Pods-StatsScanner.release.xcconfig */;
+			baseConfigurationReference = EF69636A761F38ED91819D39 /* Pods-StatScanner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

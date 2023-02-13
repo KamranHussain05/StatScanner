@@ -56,11 +56,13 @@ class OCRScanner {
                                                 Int(image.size.width),
                                                 Int(image.size.height))
         }
+        
         print(boundingRects) // will have to figure out how to display them later
-        processedDataset = OCRScanner.processResults(strArray: recognizedStrings)
+        // processedDataset = OCRScanner.processResults(strArray: recognizedStrings)
     }
     
     // MARK: NEEDS TO CONVERT 1D STRING ARRAY TO 2D STRING ARRAY
+    
     static func processResults(strArray: [String]) -> [[String]] {
         print(strArray)
         var output: [[String]] = [[]]
@@ -98,6 +100,8 @@ class OCRScanner {
         print("Data added: \(output)")
         return output
     }
+    
+    // MARK: Results return
     
     public func getResults() -> [[String]] {
         if let outputStrArray = processedDataset {

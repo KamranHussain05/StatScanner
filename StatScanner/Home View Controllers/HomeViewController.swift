@@ -44,21 +44,23 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-      // Handle view layouts and setup
-      let layout = UICollectionViewFlowLayout()
-      let width = CGFloat(UIScreen.main.bounds.width)
+		// Handle view layouts and setup
+		let layout = UICollectionViewFlowLayout()
+		let width = CGFloat(UIScreen.main.bounds.width)
 
-      if (width < 414) {
-        layoutConstraints(layout: layout, width: width)
-      } else {
-        layoutConstraints(layout: layout, width: 414)
-      }
-      // Create the collection view
-      myCollectionView.collectionViewLayout = layout
+		if (width < 414) {
+		layoutConstraints(layout: layout, width: width)
+		} else {
+		layoutConstraints(layout: layout, width: 414)
+		}
+		// Create the collection view
+		myCollectionView.collectionViewLayout = layout
 
-      getAllItems()	// Load all the items from CoreData and load their class references into memory
+		getAllItems()	// Load all the items from CoreData and load their class references into memory
 
-      let newDatasetMenu = constructNewDatasetMenu()
+		let newDatasetMenu = constructNewDatasetMenu()
+		newDatasetButton.showsMenuAsPrimaryAction = true
+		newDatasetButton.menu = newDatasetMenu
     }
 	
 	// MARK: Frontend Construction Helper Methods
@@ -79,7 +81,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     // when plus button is pressed (creates new menu)
     func constructNewDatasetMenu() -> UIMenu {
 		return UIMenu(title: "New Dataset", children: [
-			UIAction(title: "Take Image", image: UIImage(systemName: "camera")) { (action) in
+			UIAction(title: "Scan Document", image: UIImage(systemName: "camera")) { (action) in
 				self.createWithName(method: 0)
 			},
 			UIAction(title: "Import Image", image: UIImage(systemName: "square.and.arrow.down")) { (action) in
@@ -95,14 +97,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
     }
 	
 	// MARK: Data Import Handling
-    
-  /// Creates a dataset menu, displays it, and pins it to the middle of screen when the plus button is pressed
-	///
-	/// - Returns: Implicitly returns a new collection view object by displaying it to the user. Also saves the new dataset to Core Data
-	/// - Authors: Kaleb Kim
-  @IBAction func didTapNewDatasetButton() {
-
-  }
 	
     /// Creates a new ``Dataset`` and adds it to CoreData by adding the new dataset to a created ``DatasetProject`` object
 	///

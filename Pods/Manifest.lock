@@ -1,0 +1,28 @@
+PODS:
+  - AAInfographics (7.3.0)
+  - SpreadsheetView (0.9.1)
+
+DEPENDENCIES:
+  - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
+  - SpreadsheetView
+
+SPEC REPOS:
+  trunk:
+    - SpreadsheetView
+
+EXTERNAL SOURCES:
+  AAInfographics:
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+CHECKOUT OPTIONS:
+  AAInfographics:
+    :commit: 94c2acb9575cd06a9030a066e586b0e42aa38560
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+SPEC CHECKSUMS:
+  AAInfographics: ee2a7959acdd0a00243b7f5a3f03a1fa2bdf0781
+  SpreadsheetView: 688dbd19f2b355df0eb09e486266fd913a013449
+
+PODFILE CHECKSUM: 33eec7fea8419066afec8c5be37d13099b4ba67a
+
+COCOAPODS: 1.11.3

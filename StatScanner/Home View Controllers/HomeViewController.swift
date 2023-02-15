@@ -119,7 +119,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		case 0:
 			self?.dbuilder.name = new.getName()
 			self?.dbuilder.icon = new.getIcon()
-			self?.captureImage()
+			self?.scanDocument()
 		case 1:
 			self?.dbuilder.name = new.getName()
 			self?.dbuilder.icon = new.getIcon()
@@ -146,6 +146,16 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
         
         present(alert, animated: true, completion: nil)
     }
+	
+	// MARK: Scan Handling
+	
+	/// Function for scanning documents and running the *document* image processing pipeline instead of live view camera feed processing
+	/// - Authors: Kamran Hussain
+	func scanDocument() {
+		let documentCameraViewController = VNDocumentCameraViewController()
+		documentCameraViewController.delegate = self
+		present(documentCameraViewController, animated: true)
+	}
     
 	// MARK: OCR Handling
 	
@@ -239,6 +249,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			print("not text")
 		}
 	}
+	
+	// MARK: Data Importing
 	
 	///Import an image from the user's library by presenting a view controller and having the user select which image they would like to be scanned. Sends the image through the scanning pipeline
 	/// - Authors: Kamran Hussain
@@ -490,4 +502,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             present(alert, animated: true, completion: nil)
         }
     }
+}
+
+// MARK: Document Scan Handling
+
+@available(iOS 16.0, *)
+extension HomeViewController: VNDocumentCameraViewControllerDelegate {
+	func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+		
+//        self.activityIndicator.startAnimating()
+		controller.dismiss(animated: true) {
+			DispatchQueue.global(qos: .userInitiated).async {
+				for pageNumber in 0 ..< scan.pageCount {
+					let image = scan.imageOfPage(at: pageNumber)
+//                    self.processImage(image: image)
+				}
+				DispatchQueue.main.async {
+//                    if let resultsVC = self.resultsViewController {
+//                        self.navigationController?.pushViewController(resultsVC, animated: true)
+//                    }
+//                    self.activityIndicator.stopAnimating()
+				}
+			}
+		}
+	}
 }

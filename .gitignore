@@ -9,3 +9,4 @@ StatScanner.xcworkspace/xcshareddata/*
 StatScanner.xcworkspace/xcuserdata/*
 Builds/*
 StatScanner.xcodeproj/project.pbxproj
+Pods/Pods.xcodeproj/project.pbxproj

@@ -58,23 +58,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
-        let version = UIView(frame: CGRect(x: (view.frame.size.width-150)/2, y: 0, width: 150, height: 150))
-        
-        let build = UILabel(frame: CGRect(x: 0, y: version.frame.size.height/2, width: 4*version.frame.size.width/5, height : version.frame.size.height/2))
-        build.text = UIApplication.versionBuild()
-        build.numberOfLines = 1
-        build.textAlignment = .center
-        
-        let infoB = UIButton()
-        infoB.frame = CGRect(x: 4*version.frame.size.width/5, y: version.frame.size.height/2, width: version.frame.size.width/5, height: version.frame.size.height/2)
-        infoB.setImage(UIImage(systemName: "info.circle"), for: .normal)
-        infoB.tintColor = .systemBlue
-        infoB.addTarget(self, action: #selector(self.infoScreen), for: .touchUpInside)
-        
-        version.addSubview(build)
-        version.addSubview(infoB)
-        tableView.tableFooterView = version
-        
         view.addSubview(tableView)
     }
     
@@ -90,10 +73,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @objc func setDataSetObject(_ notification: Notification) {
         self.proj = notification.object as? DataSetProject
         self.datasetobj = self.proj.datasetobject!
-    }
-    
-    @objc func infoScreen() {
-        print("tapped info button")
     }
     
     func loadData() {

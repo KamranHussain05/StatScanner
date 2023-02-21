@@ -55,6 +55,7 @@ class Footer: UICollectionReusableView {
     @IBOutlet var infofooter : UIButton!
     
     override func layoutSubviews() {
-        infofooter.setTitle("", for: .normal)
+        infofooter.setTitle(UIApplication.versionBuild() + "  ", for: .normal)
+        infofooter.semanticContentAttribute = .forceRightToLeft
     }
 }

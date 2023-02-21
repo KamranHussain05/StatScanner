@@ -152,16 +152,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbV-pa-8KZ">
-                                                    <rect key="frame" x="192.5" y="-1" width="30.5" height="35"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30.5" id="QIM-uc-sCI"/>
-                                                        <constraint firstAttribute="height" constant="35" id="vPd-ke-ZKh"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <rect key="frame" x="194.5" y="8" width="26" height="26"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal">
                                                         <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        </preferredSymbolConfiguration>
                                                     </state>
                                                     <connections>
                                                         <action selector="onInfoClick" destination="kjN-nm-ZNR" eventType="touchUpInside" id="dEf-tb-hKc"/>

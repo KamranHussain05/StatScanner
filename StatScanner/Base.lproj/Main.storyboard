@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5pe-kv-U1c">
-                                <rect key="frame" x="-1" y="-1" width="414" height="896"/>
+                                <rect key="frame" x="-2" y="-3" width="415" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
@@ -67,12 +67,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDI-T2-Ujr">
-                                        <rect key="frame" x="0.0" y="126" width="414" height="688"/>
+                                        <rect key="frame" x="0.0" y="126" width="415" height="690"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUI-D9-ujO">
                                             <size key="itemSize" width="180" height="258"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="50" height="34"/>
                                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
@@ -147,13 +147,42 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="infofooter" id="YIy-Sr-Ybf" customClass="Footer" customModule="StatScanner" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="258" width="415" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbV-pa-8KZ">
+                                                    <rect key="frame" x="192.5" y="-1" width="30.5" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30.5" id="QIM-uc-sCI"/>
+                                                        <constraint firstAttribute="height" constant="35" id="vPd-ke-ZKh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onInfoClick" destination="kjN-nm-ZNR" eventType="touchUpInside" id="dEf-tb-hKc"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="FbV-pa-8KZ" secondAttribute="bottom" id="96y-0m-ejl"/>
+                                                <constraint firstItem="FbV-pa-8KZ" firstAttribute="centerX" secondItem="YIy-Sr-Ybf" secondAttribute="centerX" id="keZ-6O-w6n"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="infofooter" destination="FbV-pa-8KZ" id="uMt-6F-Nks"/>
+                                            </connections>
+                                        </collectionReusableView>
                                         <connections>
                                             <outlet property="dataSource" destination="kjN-nm-ZNR" id="Are-tD-5ij"/>
                                             <outlet property="delegate" destination="kjN-nm-ZNR" id="zhE-cU-1dg"/>
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
-                                        <rect key="frame" x="349" y="78" width="45" height="45"/>
+                                        <rect key="frame" x="350" y="78" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="K9O-qj-Rp1"/>
                                             <constraint firstAttribute="width" constant="45" id="pNy-Cx-IFK"/>
@@ -358,6 +387,7 @@
         <image name="DataSetIcon12" width="512" height="512"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="104"/>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="102"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="plus.forwardslash.minus" catalog="system" width="128" height="115"/>

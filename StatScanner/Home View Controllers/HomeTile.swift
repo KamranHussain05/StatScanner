@@ -47,3 +47,14 @@ class HomeTiles: UICollectionViewCell {
     }
     
 }
+
+class Footer: UICollectionReusableView {
+    
+    static let identifier = "infofooter"
+    
+    @IBOutlet var infofooter : UIButton!
+    
+    override func layoutSubviews() {
+        infofooter.setTitle("", for: .normal)
+    }
+}

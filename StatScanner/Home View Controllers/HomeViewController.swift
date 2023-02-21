@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
     @IBOutlet var myCollectionView: UICollectionView!		/// Collection view grid layout, variablized for referencing
     @IBOutlet var newDatasetButton: UIButton!				/// New Dataset button that should bring up the menu. Enacts the ActionSheet
-	
+
 	private var scan: DataScannerViewController!			/// Variable for the scanning view controller
     private var selectedDataset: Dataset!					/// Skeleton class and variable for referencing the selected dataset from the collection view
 	private var sc: CGFloat = 0.05							/// Hard coded spacing value between cells
@@ -47,6 +47,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		// Handle view layouts and setup
 		let layout = UICollectionViewFlowLayout()
 		let width = CGFloat(UIScreen.main.bounds.width)
+		layout.footerReferenceSize = CGSizeMake(view.frame.size.width, 100)
 
 		if (width < 414) {
 		layoutConstraints(layout: layout, width: width)
@@ -408,6 +409,14 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
 @available(iOS 16.0, *)
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+	
+	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "infofooter", for: indexPath)
+	}
+	
+	@IBAction func onInfoClick() {
+		print("tapped info button")
+	}
     
     /// Specifies the number of cells to add to the collection view
 	///

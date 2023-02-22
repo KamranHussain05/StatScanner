@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
     @IBOutlet var myCollectionView: UICollectionView!		/// Collection view grid layout, variablized for referencing
     @IBOutlet var newDatasetButton: UIButton!				/// New Dataset button that should bring up the menu. Enacts the ActionSheet
-
+	
 	private var scan: DataScannerViewController!			/// Variable for the scanning view controller
     private var selectedDataset: Dataset!					/// Skeleton class and variable for referencing the selected dataset from the collection view
 	private var sc: CGFloat = 0.05							/// Hard coded spacing value between cells
@@ -41,28 +41,34 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	///	- Note: All main method processes should be started in this method for simplicity. It is possible this method will be changed
 	///	- Warning: This method may be moved to a new "Main" class or function in the future
 	///	- Authors: Kaleb Kim
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		// Handle view layouts and setup
 		let layout = UICollectionViewFlowLayout()
 		let width = CGFloat(UIScreen.main.bounds.width)
+		print(UIScreen.main.bounds.height)
 		layout.footerReferenceSize = CGSizeMake(view.frame.size.width, 100)
-
+		
 		if (width < 414) {
-		layoutConstraints(layout: layout, width: width)
+			layoutConstraints(layout: layout, width: width)
 		} else {
-		layoutConstraints(layout: layout, width: 414)
+			layoutConstraints(layout: layout, width: 414)
 		}
 		// Create the collection view
 		myCollectionView.collectionViewLayout = layout
-
+		
 		getAllItems()	// Load all the items from CoreData and load their class references into memory
-
+		
 		let newDatasetMenu = constructNewDatasetMenu()
 		newDatasetButton.showsMenuAsPrimaryAction = true
 		newDatasetButton.menu = newDatasetMenu
-    }
+		
+	}
+	
+	@IBAction func onInfoClick() {
+		print("tapped info button")
+	}
 	
 	// MARK: Frontend Construction Helper Methods
 	
@@ -410,13 +416,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 @available(iOS 16.0, *)
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
-	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-		return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "infofooter", for: indexPath)
-	}
-	
-	@IBAction func onInfoClick() {
-		print("tapped info button")
-	}
+//	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//		return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "infofooter", for: indexPath)
+//	}
     
     /// Specifies the number of cells to add to the collection view
 	///

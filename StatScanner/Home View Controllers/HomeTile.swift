@@ -48,14 +48,17 @@ class HomeTiles: UICollectionViewCell {
     
 }
 
-class Footer: UICollectionReusableView {
+class Footer: UIView {
     
-    static let identifier = "infofooter"
+    static let identifier = "footerview"
     
     @IBOutlet var infofooter : UIButton!
     
     override func layoutSubviews() {
+        
+        self.frame.size.width = UIScreen.main.bounds.width
         infofooter.setTitle(UIApplication.versionBuild() + "  ", for: .normal)
         infofooter.semanticContentAttribute = .forceRightToLeft
+        addSubview(infofooter)
     }
 }

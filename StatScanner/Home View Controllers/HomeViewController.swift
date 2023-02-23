@@ -11,18 +11,25 @@ import UIKit
 import UniformTypeIdentifiers
 import Vision
 import VisionKit
+import FirebaseCore
+import FirebaseAuth
+import GoogleSignIn
 
 // MARK: Home View Controller
-
-@available(iOS 16.0, *) // Check if iOS version 16 or greater is being used before loading style resources
 
 ///  Object that manages the Home View including dataset tiles, new dataset creation, and CoreData fetch and handling.
 ///  - Authors: Kamran Hussain, Kaleb Kim, Caden Pun
 ///
+
+var loggedin = false
+@available(iOS 16.0, *) // Check if iOS version 16 or greater is being used before loading style resources
 class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DataScannerViewControllerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!		/// Collection view grid layout, variablized for referencing
     @IBOutlet var newDatasetButton: UIButton!				/// New Dataset button that should bring up the menu. Enacts the ActionSheet
+	
+	@IBOutlet var footer : UIView!
+	@IBOutlet var infofooter : UIButton!
 	
 	private var scan: DataScannerViewController!			/// Variable for the scanning view controller
     private var selectedDataset: Dataset!					/// Skeleton class and variable for referencing the selected dataset from the collection view
@@ -64,6 +71,59 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		newDatasetButton.showsMenuAsPrimaryAction = true
 		newDatasetButton.menu = newDatasetMenu
 		
+		//footer.frame.size.width = UIScreen.main.bounds.width
+		infofooter.setTitle(UIApplication.versionBuild() + "  ", for: .normal)
+		infofooter.semanticContentAttribute = .forceRightToLeft
+		//footer.addSubview(infofooter)
+
+		let settingsMenu = UIMenu(title: "Settings", children: [
+			actions(), loginOptions()
+		])
+		infofooter.menu = settingsMenu
+		infofooter.showsMenuAsPrimaryAction = true
+	}
+	
+	//MARK: Footer
+	
+	func loginOptions() -> UIMenuElement {
+		var login : UIMenuElement
+		if (loggedin) {
+			login = UIMenu(title: "", options: .displayInline, children: [
+				UIAction(title: "Log Out", image: UIImage(systemName: "power"), attributes: .destructive) { (action) in
+					print("log out")
+				},
+				UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
+					print("profile")
+				}
+			])
+		} else {
+			login = UIAction(title: "Log In", image: UIImage(systemName: "rectangle.portrait.and.arrow.right")) { (action) in
+				print("log in")
+				self.signin()
+			}
+		}
+		return login
+	}
+	
+	func actions() -> UIMenuElement {
+		return UIMenu(title: "", options: .displayInline, children: [
+			UIAction(title: "Contact Us", image: UIImage(systemName: "mail")) { (action) in
+				print("contact us")
+			},
+			UIAction(title: "Upgrade", image: UIImage(systemName: "arrow.up.circle")) { (action) in
+				print("upgrade")
+			},
+			UIAction(title: "Watch Tutorial", image: UIImage(systemName: "play.rectangle.on.rectangle")) { (action) in
+				if let rr = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
+					UIApplication.shared.open(rr)
+				}
+			}
+		])
+	}
+	
+	func signin() {
+		GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+			guard error == nil else { return }}
 	}
 	
 	// MARK: Frontend Construction Helper Methods

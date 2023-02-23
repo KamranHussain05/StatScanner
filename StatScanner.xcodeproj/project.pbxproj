@@ -46,6 +46,7 @@
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
+		AF23D6A029A7FB350084A8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
 		AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */; };
 		AFD226D928B03156005FDB4C /* Randumb_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AFD226D828B03156005FDB4C /* Randumb_R.csv */; };
@@ -110,6 +111,7 @@
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
+		AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMAppAuthTests.swift; sourceTree = "<group>"; };
 		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
+				AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */,
 				A85092CA27497F7A00392240 /* Info.plist */,
 				4D052FBA28B354CB004A9F40 /* StatsScanner.xcdatamodeld */,
 				4D11804528B3526E00FA701A /* StatScanner-Bridging-Header.h */,
@@ -342,6 +345,7 @@
 				A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */,
 				A8CA563D277298B9006BDF61 /* Diet_R.csv in Resources */,
 				A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */,
+				AF23D6A029A7FB350084A8C2 /* GoogleService-Info.plist in Resources */,
 				A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */,
 				A85092C627497F7A00392240 /* Assets.xcassets in Resources */,
 				4D052FC028B35655004A9F40 /* StatScannerUITests in Resources */,

@@ -11,3 +11,4 @@ target 'StatScanner' do
   pod 'GoogleSignIn'
 
 end
+

@@ -112,8 +112,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func configure() {
         models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruct(title: "Creation Date", calc: date) {}, cellStruct(title: "Data Points", calc: points) {}]))
-        models.append(section(title:"Configuation", cells: [cellStruct(title: "Axis", calc: calcTypes[0]) {self.axisMenu()}, cellStruct(title: "Index") {self.indexMenu()}]))
-        models.append(section(title: "Averages", cells: [cellStruct(title: "Mean", calc: mean) {}, cellStruct(title: "Median", calc: median) {}, cellStruct(title: "Mode", calc: mode) {}]))
+        models.append(section(title:"Configuration", cells: [cellStruct(title: "Axis", calc: calcTypes[0]) {self.axisMenu()}, cellStruct(title: "Index") {self.indexMenu()}]))
+        models.append(section(title: "Average", cells: [cellStruct(title: "Mean", calc: mean) {}, cellStruct(title: "Median", calc: median) {}, cellStruct(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruct(title: "Min", calc: min) {}, cellStruct(title: "Max", calc: max) {}, cellStruct(title: "Range", calc: range) {}]))
         models.append(section(title: "Error", cells: [cellStruct(title: "Standard Deviation", calc: stddev) {}, cellStruct(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruct(title: "Standard Error", calc: error) {}]))
     }

@@ -77,7 +77,9 @@ class Footer: UIView {
                 print("upgrade")
             },
             UIAction(title: "Watch Tutorial", image: UIImage(systemName: "play.rectangle.on.rectangle")) { (action) in
-                print("watch tutorial")
+                if let rr = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
+                    UIApplication.shared.open(rr)
+                }
             }
         ])
         let settingsMenu = UIMenu(title: "Settings", children: [

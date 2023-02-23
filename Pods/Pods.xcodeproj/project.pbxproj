@@ -131,7 +131,7 @@
 		45EF5FE60BB85A7E11B6CC98165CBFEF /* SpreadsheetView+UIViewHierarchy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SpreadsheetView+UIViewHierarchy.swift"; path = "Framework/Sources/SpreadsheetView+UIViewHierarchy.swift"; sourceTree = "<group>"; };
 		46250E25E830DC770300161454AFB3BA /* Pods-StatScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StatScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		4894CC526AEFEF027A75FBB14C34ACCB /* Pods-StatScanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StatScanner-dummy.m"; sourceTree = "<group>"; };
-		4BD075821C1FF4F3A16FA27B79874C74 /* Pods-StatScanner */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-StatScanner"; path = Pods_StatScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BD075821C1FF4F3A16FA27B79874C74 /* Pods_StatScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5514916C4118796326C1FC35C8933F86 /* AAInfographics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AAInfographics.release.xcconfig; sourceTree = "<group>"; };
 		5563CED97B7CCBF93B3E0FC7106C2377 /* IndexPath+Column.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IndexPath+Column.swift"; path = "Framework/Sources/IndexPath+Column.swift"; sourceTree = "<group>"; };
 		57AC6388C1F846BF2F65AFCB8002C172 /* AATooltip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AATooltip.swift; path = AAInfographics/AAOptionsModel/AATooltip.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		9894723110D735F3FC3AAA66EE34FEBB /* SpreadsheetView+Touches.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SpreadsheetView+Touches.swift"; path = "Framework/Sources/SpreadsheetView+Touches.swift"; sourceTree = "<group>"; };
 		99A85E048D01FA861D218795C8B25EB2 /* SpreadsheetView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpreadsheetView.swift; path = Framework/Sources/SpreadsheetView.swift; sourceTree = "<group>"; };
 		9BB2B1E1856ABBC753E5C4E4BB38E140 /* Pods-StatScanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-StatScanner.modulemap"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FBFEEEE51181C1B3714A02FEB91DBBB /* AAPlotOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AAPlotOptions.swift; path = AAInfographics/AAOptionsModel/AAPlotOptions.swift; sourceTree = "<group>"; };
 		A0B0B138381FF7869E0146EC217D2134 /* SpreadsheetView+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SpreadsheetView+UIScrollViewDelegate.swift"; path = "Framework/Sources/SpreadsheetView+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
 		A53D77FD06A40A3BB71333907945338D /* AASeries.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AASeries.swift; path = AAInfographics/AAOptionsModel/AASeries.swift; sourceTree = "<group>"; };
@@ -247,7 +247,6 @@
 				8FE51F4FF908BD9B64AFD98732FBC1E3 /* SpreadsheetViewDelegate.swift */,
 				870AE2DC1ECF563D1DA77E2874C3E26C /* Support Files */,
 			);
-			name = SpreadsheetView;
 			path = SpreadsheetView;
 			sourceTree = "<group>";
 		};
@@ -342,7 +341,6 @@
 				0C90AEB9C11BE6AF297180524A608EF4 /* Resources */,
 				1D07D0379DF1D01C26755843ACCE8996 /* Support Files */,
 			);
-			name = AAInfographics;
 			path = AAInfographics;
 			sourceTree = "<group>";
 		};
@@ -365,7 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				D6CCB9D258E15D810E80DB9950E2B5AC /* AAInfographics */,
-				4BD075821C1FF4F3A16FA27B79874C74 /* Pods-StatScanner */,
+				4BD075821C1FF4F3A16FA27B79874C74 /* Pods_StatScanner.framework */,
 				AE9B884EBD08952D3197671321FAA308 /* SpreadsheetView */,
 			);
 			name = Products;
@@ -455,7 +453,7 @@
 			);
 			name = "Pods-StatScanner";
 			productName = Pods_StatScanner;
-			productReference = 4BD075821C1FF4F3A16FA27B79874C74 /* Pods-StatScanner */;
+			productReference = 4BD075821C1FF4F3A16FA27B79874C74 /* Pods_StatScanner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7A631E5C62ECCBC60F6C77B6DBB7B0A1 /* SpreadsheetView */ = {

@@ -1,13 +1,32 @@
 PODS:
   - AAInfographics (7.3.0)
+  - AppAuth (1.6.0):
+    - AppAuth/Core (= 1.6.0)
+    - AppAuth/ExternalUserAgent (= 1.6.0)
+  - AppAuth/Core (1.6.0)
+  - AppAuth/ExternalUserAgent (1.6.0):
+    - AppAuth/Core
+  - GoogleSignIn (7.0.0):
+    - AppAuth (~> 1.5)
+    - GTMAppAuth (< 3.0, >= 1.3)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
+  - GTMAppAuth (2.0.0):
+    - AppAuth/Core (~> 1.6)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.5)
+  - GTMSessionFetcher/Core (3.1.0)
   - SpreadsheetView (0.9.1)
 
 DEPENDENCIES:
   - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
+  - GoogleSignIn
   - SpreadsheetView
 
 SPEC REPOS:
   trunk:
+    - AppAuth
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - SpreadsheetView
 
 EXTERNAL SOURCES:
@@ -21,8 +40,12 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AAInfographics: ee2a7959acdd0a00243b7f5a3f03a1fa2bdf0781
+  AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
+  GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
+  GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
+  GTMSessionFetcher: c9e714f7eec91a55641e2bab9f45fd83a219b882
   SpreadsheetView: 688dbd19f2b355df0eb09e486266fd913a013449
 
-PODFILE CHECKSUM: 33eec7fea8419066afec8c5be37d13099b4ba67a
+PODFILE CHECKSUM: 53bbb97a07d9217afeadcc041c291d15e84746df
 
 COCOAPODS: 1.11.3

@@ -53,6 +53,7 @@ class Footer: UIView {
     static let identifier = "footerview"
     
     @IBOutlet var infofooter : UIButton!
+    var loggedin = false
     
     override func layoutSubviews() {
         self.frame.size.width = UIScreen.main.bounds.width
@@ -60,15 +61,21 @@ class Footer: UIView {
         infofooter.semanticContentAttribute = .forceRightToLeft
         addSubview(infofooter)
         infofooter.showsMenuAsPrimaryAction = true
-        
-        let login = UIMenu(title: "", options: .displayInline, children: [
-            UIAction(title: "Log Out", image: UIImage(systemName: "power"), attributes: .destructive) { (action) in
-                print("log out")
-            },
-            UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
-                print("profile")
+        var login : UIMenuElement
+        if (loggedin) {
+            login = UIMenu(title: "", options: .displayInline, children: [
+                UIAction(title: "Log Out", image: UIImage(systemName: "power"), attributes: .destructive) { (action) in
+                    print("log out")
+                },
+                UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
+                    print("profile")
+                }
+            ])
+        } else {
+            login = UIAction(title: "Log In", image: UIImage(systemName: "rectangle.portrait.and.arrow.right")) { (action) in
+                print("log in")
             }
-        ])
+        }
         let actions = UIMenu(title: "", options: .displayInline, children: [
             UIAction(title: "Contact Us", image: UIImage(systemName: "mail")) { (action) in
                 print("contact us")

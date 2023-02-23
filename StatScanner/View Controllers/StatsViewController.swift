@@ -58,23 +58,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
-        let version = UIView(frame: CGRect(x: (view.frame.size.width-150)/2, y: 0, width: 150, height: 150))
-        
-        let build = UILabel(frame: CGRect(x: 0, y: version.frame.size.height/2, width: 4*version.frame.size.width/5, height : version.frame.size.height/2))
-        build.text = UIApplication.versionBuild()
-        build.numberOfLines = 1
-        build.textAlignment = .center
-        
-        let infoB = UIButton()
-        infoB.frame = CGRect(x: 4*version.frame.size.width/5, y: version.frame.size.height/2, width: version.frame.size.width/5, height: version.frame.size.height/2)
-        infoB.setImage(UIImage(systemName: "info.circle"), for: .normal)
-        infoB.tintColor = .systemBlue
-        infoB.addTarget(self, action: #selector(self.infoScreen), for: .touchUpInside)
-        
-        version.addSubview(build)
-        version.addSubview(infoB)
-        tableView.tableFooterView = version
-        
         view.addSubview(tableView)
     }
     
@@ -90,10 +73,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @objc func setDataSetObject(_ notification: Notification) {
         self.proj = notification.object as? DataSetProject
         self.datasetobj = self.proj.datasetobject!
-    }
-    
-    @objc func infoScreen() {
-        print("tapped info button")
     }
     
     func loadData() {
@@ -133,8 +112,8 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func configure() {
         models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {self.textfieldAlert("New Dataset Name", action: "Rename")}, cellStruct(title: "Creation Date", calc: date) {}, cellStruct(title: "Data Points", calc: points) {}]))
-        models.append(section(title:"Configuation", cells: [cellStruct(title: "Axis", calc: calcTypes[0]) {self.axisMenu()}, cellStruct(title: "Index") {self.indexMenu()}]))
-        models.append(section(title: "Averages", cells: [cellStruct(title: "Mean", calc: mean) {}, cellStruct(title: "Median", calc: median) {}, cellStruct(title: "Mode", calc: mode) {}]))
+        models.append(section(title:"Configuration", cells: [cellStruct(title: "Axis", calc: calcTypes[0]) {self.axisMenu()}, cellStruct(title: "Index") {self.indexMenu()}]))
+        models.append(section(title: "Average", cells: [cellStruct(title: "Mean", calc: mean) {}, cellStruct(title: "Median", calc: median) {}, cellStruct(title: "Mode", calc: mode) {}]))
         models.append(section(title: "Scope", cells: [cellStruct(title: "Min", calc: min) {}, cellStruct(title: "Max", calc: max) {}, cellStruct(title: "Range", calc: range) {}]))
         models.append(section(title: "Error", cells: [cellStruct(title: "Standard Deviation", calc: stddev) {}, cellStruct(title: "Mean Absolute Deviation", calc: abdev) {}, cellStruct(title: "Standard Error", calc: error) {}]))
     }

@@ -47,3 +47,44 @@ class HomeTiles: UICollectionViewCell {
     }
     
 }
+
+class Footer: UIView {
+    
+    static let identifier = "footerview"
+    
+    @IBOutlet var infofooter : UIButton!
+    
+    override func layoutSubviews() {
+        self.frame.size.width = UIScreen.main.bounds.width
+        infofooter.setTitle(UIApplication.versionBuild() + "  ", for: .normal)
+        infofooter.semanticContentAttribute = .forceRightToLeft
+        addSubview(infofooter)
+        infofooter.showsMenuAsPrimaryAction = true
+        
+        let login = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: "Log Out", image: UIImage(systemName: "power"), attributes: .destructive) { (action) in
+                print("log out")
+            },
+            UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
+                print("profile")
+            }
+        ])
+        let actions = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: "Contact Us", image: UIImage(systemName: "mail")) { (action) in
+                print("contact us")
+            },
+            UIAction(title: "Upgrade", image: UIImage(systemName: "arrow.up.circle")) { (action) in
+                print("upgrade")
+            },
+            UIAction(title: "Watch Tutorial", image: UIImage(systemName: "play.rectangle.on.rectangle")) { (action) in
+                if let rr = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
+                    UIApplication.shared.open(rr)
+                }
+            }
+        ])
+        let settingsMenu = UIMenu(title: "Settings", children: [
+            actions, login
+        ])
+        infofooter.menu = settingsMenu
+    }
+}

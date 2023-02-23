@@ -35,7 +35,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AAInfographics:
-    :commit: 94c2acb9575cd06a9030a066e586b0e42aa38560
+    :commit: 8bd798ec722ff26fe9e248b6a1921e7626e2d7f6
     :git: https://github.com/AAChartModel/AAChartKit-Swift.git
 
 SPEC CHECKSUMS:

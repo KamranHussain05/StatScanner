@@ -1,0 +1,57 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e982f2023a16149445c46031218e521828c"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98a7ddc7ff28d79fbc52f004013ae1991f"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e988f22b41fa69d0bb0d9566ba329902a5d"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98b327dc9fb006e54a4d49ecdb77363b9a"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e986c0c3dae22ae447d137f464b218734bc"
+    }
+  ],
+  "containerPath" : "/Users/cadenpun/Documents/GitHub/StatsScanner/Pods/Pods.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/cadenpun/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/cadenpun/Library/Developer/Xcode/DerivedData/Pods-cwwvxrvsazwljxhazbykaduipcfh/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/cadenpun/Library/Developer/Xcode/DerivedData/Pods-cwwvxrvsazwljxhazbykaduipcfh/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

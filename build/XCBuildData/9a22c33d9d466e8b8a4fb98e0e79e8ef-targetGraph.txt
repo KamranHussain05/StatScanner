@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+AAInfographics in Pods, no dependencies
+SpreadsheetView in Pods, no dependencies
+Pods-StatScanner in Pods, depends on:
+AAInfographics in Pods (explicit)
+SpreadsheetView in Pods (explicit)

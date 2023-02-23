@@ -47,9 +47,46 @@
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
+		AFA6C8B529A6FFB300C1C0F2 /* GTMAppAuth.docc in Sources */ = {isa = PBXBuildFile; fileRef = AFA6C8B429A6FFB300C1C0F2 /* GTMAppAuth.docc */; };
+		AFA6C8BB29A6FFB300C1C0F2 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA6C8B129A6FFB300C1C0F2 /* GTMAppAuth.framework */; };
+		AFA6C8C229A6FFB300C1C0F2 /* GTMAppAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */; };
+		AFA6C8C329A6FFB300C1C0F2 /* GTMAppAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = AFA6C8B329A6FFB300C1C0F2 /* GTMAppAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AFA6C8C629A6FFB300C1C0F2 /* GTMAppAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA6C8B129A6FFB300C1C0F2 /* GTMAppAuth.framework */; platformFilter = ios; };
+		AFA6C8C729A6FFB300C1C0F2 /* GTMAppAuth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFA6C8B129A6FFB300C1C0F2 /* GTMAppAuth.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */; };
 		AFD226D928B03156005FDB4C /* Randumb_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AFD226D828B03156005FDB4C /* Randumb_R.csv */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFA6C8BC29A6FFB300C1C0F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A85092AE27497F6F00392240 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFA6C8B029A6FFB300C1C0F2;
+			remoteInfo = GTMAppAuth;
+		};
+		AFA6C8BE29A6FFB300C1C0F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A85092AE27497F6F00392240 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A85092B527497F6F00392240;
+			remoteInfo = StatScanner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFA6C8C829A6FFB400C1C0F2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AFA6C8C729A6FFB300C1C0F2 /* GTMAppAuth.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +135,11 @@
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
+		AFA6C8B129A6FFB300C1C0F2 /* GTMAppAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMAppAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA6C8B329A6FFB300C1C0F2 /* GTMAppAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMAppAuth.h; sourceTree = "<group>"; };
+		AFA6C8B429A6FFB300C1C0F2 /* GTMAppAuth.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = GTMAppAuth.docc; sourceTree = "<group>"; };
+		AFA6C8BA29A6FFB300C1C0F2 /* GTMAppAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTMAppAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMAppAuthTests.swift; sourceTree = "<group>"; };
 		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
 		AFD226D828B03156005FDB4C /* Randumb_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Randumb_R.csv; sourceTree = "<group>"; };
 		CB7A731F1ABA7EB1B9D6412C /* Pods_StatScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +154,22 @@
 				4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */,
 				A8088984277EFA2C00B8C2FE /* CoreData.framework in Frameworks */,
 				8D17AE4A56F738F94642A322 /* Pods_StatScanner.framework in Frameworks */,
+				AFA6C8C629A6FFB300C1C0F2 /* GTMAppAuth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA6C8AE29A6FFB300C1C0F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA6C8B729A6FFB300C1C0F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFA6C8BB29A6FFB300C1C0F2 /* GTMAppAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +237,8 @@
 				A85092B827497F6F00392240 /* StatScanner */,
 				4D052FBD28B3562D004A9F40 /* StatScannerTests */,
 				4D052FBF28B35654004A9F40 /* StatScannerUITests */,
+				AFA6C8B229A6FFB300C1C0F2 /* GTMAppAuth */,
+				AFA6C8C029A6FFB300C1C0F2 /* GTMAppAuthTests */,
 				A85092B727497F6F00392240 /* Products */,
 				A8BD6DEB27794A800048912C /* Frameworks */,
 				1F291427D55372448DC04E64 /* Pods */,
@@ -189,6 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				A85092B627497F6F00392240 /* StatScanner.app */,
+				AFA6C8B129A6FFB300C1C0F2 /* GTMAppAuth.framework */,
+				AFA6C8BA29A6FFB300C1C0F2 /* GTMAppAuthTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,7 +308,35 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AFA6C8B229A6FFB300C1C0F2 /* GTMAppAuth */ = {
+			isa = PBXGroup;
+			children = (
+				AFA6C8B329A6FFB300C1C0F2 /* GTMAppAuth.h */,
+				AFA6C8B429A6FFB300C1C0F2 /* GTMAppAuth.docc */,
+			);
+			path = GTMAppAuth;
+			sourceTree = "<group>";
+		};
+		AFA6C8C029A6FFB300C1C0F2 /* GTMAppAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */,
+			);
+			path = GTMAppAuthTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AFA6C8AC29A6FFB300C1C0F2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFA6C8C329A6FFB300C1C0F2 /* GTMAppAuth.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		A85092B527497F6F00392240 /* StatScanner */ = {
@@ -258,6 +348,7 @@
 				A85092B327497F6F00392240 /* Frameworks */,
 				A85092B427497F6F00392240 /* Resources */,
 				A2FCE9FB9226B34F99D3631C /* [CP] Embed Pods Frameworks */,
+				AFA6C8C829A6FFB400C1C0F2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +359,43 @@
 			productReference = A85092B627497F6F00392240 /* StatScanner.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AFA6C8B029A6FFB300C1C0F2 /* GTMAppAuth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFA6C8CD29A6FFB400C1C0F2 /* Build configuration list for PBXNativeTarget "GTMAppAuth" */;
+			buildPhases = (
+				AFA6C8AC29A6FFB300C1C0F2 /* Headers */,
+				AFA6C8AD29A6FFB300C1C0F2 /* Sources */,
+				AFA6C8AE29A6FFB300C1C0F2 /* Frameworks */,
+				AFA6C8AF29A6FFB300C1C0F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GTMAppAuth;
+			productName = GTMAppAuth;
+			productReference = AFA6C8B129A6FFB300C1C0F2 /* GTMAppAuth.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AFA6C8B929A6FFB300C1C0F2 /* GTMAppAuthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFA6C8CE29A6FFB400C1C0F2 /* Build configuration list for PBXNativeTarget "GTMAppAuthTests" */;
+			buildPhases = (
+				AFA6C8B629A6FFB300C1C0F2 /* Sources */,
+				AFA6C8B729A6FFB300C1C0F2 /* Frameworks */,
+				AFA6C8B829A6FFB300C1C0F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFA6C8BD29A6FFB300C1C0F2 /* PBXTargetDependency */,
+				AFA6C8BF29A6FFB300C1C0F2 /* PBXTargetDependency */,
+			);
+			name = GTMAppAuthTests;
+			productName = GTMAppAuthTests;
+			productReference = AFA6C8BA29A6FFB300C1C0F2 /* GTMAppAuthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -275,12 +403,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					A85092B527497F6F00392240 = {
 						CreatedOnToolsVersion = 13.1;
 						LastSwiftMigration = 1310;
+					};
+					AFA6C8B029A6FFB300C1C0F2 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					AFA6C8B929A6FFB300C1C0F2 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = A85092B527497F6F00392240;
 					};
 				};
 			};
@@ -298,6 +433,8 @@
 			projectRoot = "";
 			targets = (
 				A85092B527497F6F00392240 /* StatScanner */,
+				AFA6C8B029A6FFB300C1C0F2 /* GTMAppAuth */,
+				AFA6C8B929A6FFB300C1C0F2 /* GTMAppAuthTests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +462,20 @@
 				4D2F168F279BE9C70096F9DA /* Awards_R.csv in Resources */,
 				A8CA563F277298C7006BDF61 /* Graduate_R.csv in Resources */,
 				A85092C127497F6F00392240 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA6C8AF29A6FFB300C1C0F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA6C8B829A6FFB300C1C0F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +552,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AFA6C8AD29A6FFB300C1C0F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFA6C8B529A6FFB300C1C0F2 /* GTMAppAuth.docc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFA6C8B629A6FFB300C1C0F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFA6C8C229A6FFB300C1C0F2 /* GTMAppAuthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFA6C8BD29A6FFB300C1C0F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFA6C8B029A6FFB300C1C0F2 /* GTMAppAuth */;
+			targetProxy = AFA6C8BC29A6FFB300C1C0F2 /* PBXContainerItemProxy */;
+		};
+		AFA6C8BF29A6FFB300C1C0F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A85092B527497F6F00392240 /* StatScanner */;
+			targetProxy = AFA6C8BE29A6FFB300C1C0F2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A85092BF27497F6F00392240 /* Main.storyboard */ = {
@@ -639,6 +819,132 @@
 			};
 			name = Release;
 		};
+		AFA6C8C929A6FFB400C1C0F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pods.GTMAppAuth;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AFA6C8CA29A6FFB400C1C0F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pods.GTMAppAuth;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AFA6C8CB29A6FFB400C1C0F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pods.GTMAppAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatScanner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StatScanner";
+			};
+			name = Debug;
+		};
+		AFA6C8CC29A6FFB400C1C0F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pods.GTMAppAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StatScanner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StatScanner";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -656,6 +962,24 @@
 			buildConfigurations = (
 				A85092E427497F7B00392240 /* Debug */,
 				A85092E527497F7B00392240 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFA6C8CD29A6FFB400C1C0F2 /* Build configuration list for PBXNativeTarget "GTMAppAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFA6C8C929A6FFB400C1C0F2 /* Debug */,
+				AFA6C8CA29A6FFB400C1C0F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFA6C8CE29A6FFB400C1C0F2 /* Build configuration list for PBXNativeTarget "GTMAppAuthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFA6C8CB29A6FFB400C1C0F2 /* Debug */,
+				AFA6C8CC29A6FFB400C1C0F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

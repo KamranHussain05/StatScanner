@@ -167,9 +167,6 @@
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                     <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="onInfoClick" destination="kjN-nm-ZNR" eventType="touchUpInside" id="6YI-0q-6UJ"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

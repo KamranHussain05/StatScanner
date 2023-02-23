@@ -66,10 +66,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		
 	}
 	
-	@IBAction func onInfoClick() {
-		print("tapped info button")
-	}
-	
 	// MARK: Frontend Construction Helper Methods
 	
 	/// Set the layout constraints and ensure the content frame clip to the edges of the device. This function ensures UI elements are properly adapted properly to difference screen resolutions, scales, and sizes.

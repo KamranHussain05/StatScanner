@@ -76,21 +76,29 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		infofooter.semanticContentAttribute = .forceRightToLeft
 		//footer.addSubview(infofooter)
 
-		let settingsMenu = UIMenu(title: "Settings", children: [
-			actions(), loginOptions()
-		])
-		infofooter.menu = settingsMenu
+		//infofooter.menu = menuGen()
+		infofooter.menu = UIMenu(children: [UIDeferredMenuElement.uncached { [weak self] completion in
+				if let menu = self?.menuGen() as? UIMenu {
+					completion([menu])
+				}
+			
+		}])
 		infofooter.showsMenuAsPrimaryAction = true
+		
 	}
 	
 	//MARK: Footer
+	
+	func menuGen() -> UIMenu {
+		return UIMenu(title: "Settings", options: .displayInline, children: [actions(), loginOptions()])
+	}
 	
 	func loginOptions() -> UIMenuElement {
 		var login : UIMenuElement
 		if (loggedin) {
 			login = UIMenu(title: "", options: .displayInline, children: [
 				UIAction(title: "Log Out", image: UIImage(systemName: "power"), attributes: .destructive) { (action) in
-					print("log out")
+					self.signout()
 				},
 				UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
 					print("profile")
@@ -100,7 +108,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			login = UIAction(title: "Log In", image: UIImage(systemName: "rectangle.portrait.and.arrow.right")) { (action) in
 				print("log in")
 				self.signin()
-				//self.verifyuser(user: <#T##GIDGoogleUser#>)
 			}
 		}
 		return login
@@ -128,21 +135,26 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 		let config = GIDConfiguration(clientID: clientID)
 		GIDSignIn.sharedInstance.configuration = config
-		GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-			guard error == nil else { return }}
+		GIDSignIn.sharedInstance.signIn(withPresenting: self) { signResult, error in
+			guard error == nil else { return }
+			guard let user = signResult?.user else {return}
+			self.verifyuser(user: user) }
 	}
 	
 	func signout() {
 		try? Auth.auth().signOut()
 		GIDSignIn.sharedInstance.signOut()
+		loggedin = false
 	}
 	
 	func verifyuser(user: GIDGoogleUser) {
 		Task {
 			guard let idToken = user.idToken?.tokenString else {return}
 			let accessToken = user.accessToken.tokenString
-			let credential = OAuthProvider.credential(withProviderID: idToken, accessToken: accessToken)
+			let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
 			try await Auth.auth().signIn(with: credential)
+			loggedin = true
+			print("verified")
 		}
 	}
 	

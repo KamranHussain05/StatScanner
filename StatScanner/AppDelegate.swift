@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
-              //loggedin = false
+              loggedin = false
             } else {
-              //loggedin = true
+              loggedin = true
             }
           }
         

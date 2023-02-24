@@ -100,6 +100,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			login = UIAction(title: "Log In", image: UIImage(systemName: "rectangle.portrait.and.arrow.right")) { (action) in
 				print("log in")
 				self.signin()
+				//self.verifyuser(user: <#T##GIDGoogleUser#>)
 			}
 		}
 		return login
@@ -110,8 +111,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			UIAction(title: "Contact Us", image: UIImage(systemName: "mail")) { (action) in
 				print("contact us")
 			},
-			UIAction(title: "Upgrade", image: UIImage(systemName: "arrow.up.circle")) { (action) in
-				print("upgrade")
+			UIAction(title: "Donate", image: UIImage(systemName: "dollarsign")) { (action) in
+				if let gf = URL(string: "https://www.buymeacoffee.com/StatScanner") {
+					UIApplication.shared.open(gf)
+				}
 			},
 			UIAction(title: "Watch Tutorial", image: UIImage(systemName: "play.rectangle.on.rectangle")) { (action) in
 				if let rr = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {

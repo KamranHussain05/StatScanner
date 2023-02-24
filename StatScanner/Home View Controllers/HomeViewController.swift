@@ -122,8 +122,25 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	}
 	
 	func signin() {
+		guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+		let config = GIDConfiguration(clientID: clientID)
+		GIDSignIn.sharedInstance.configuration = config
 		GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
 			guard error == nil else { return }}
+	}
+	
+	func signout() {
+		try? Auth.auth().signOut()
+		GIDSignIn.sharedInstance.signOut()
+	}
+	
+	func verifyuser(user: GIDGoogleUser) {
+		Task {
+			guard let idToken = user.idToken?.tokenString else {return}
+			let accessToken = user.accessToken.tokenString
+			let credential = OAuthProvider.credential(withProviderID: idToken, accessToken: accessToken)
+			try await Auth.auth().signIn(with: credential)
+		}
 	}
 	
 	// MARK: Frontend Construction Helper Methods

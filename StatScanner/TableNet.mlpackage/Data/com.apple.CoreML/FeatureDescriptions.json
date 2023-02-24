@@ -1,0 +1,18 @@
+{
+  "Outputs" : {
+    "Identity_1" : {
+      "MLFeatureShortDescription" : "Table Mask"
+    },
+    "Identity" : {
+      "MLFeatureShortDescription" : "Column Mask"
+    }
+  },
+  "Inputs" : {
+    "input_1" : {
+      "MLFeatureShortDescription" : "Input Image"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}

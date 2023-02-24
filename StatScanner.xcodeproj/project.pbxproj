@@ -19,6 +19,7 @@
 		4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */; };
 		4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9A288F551300BB1C03 /* Calculations.swift */; };
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
+		4D4363E929A84AB100177509 /* TableNet.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 4D4363E829A84AB100177509 /* TableNet.mlpackage */; };
 		4DA417F529906B2F004E87BA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
 		4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE04DFC28551E7900C5D5BC /* CloudKit.framework */; };
@@ -68,6 +69,7 @@
 		4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTransformer.swift; sourceTree = "<group>"; };
 		4D3B6E9A288F551300BB1C03 /* Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
+		4D4363E829A84AB100177509 /* TableNet.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = TableNet.mlpackage; sourceTree = "<group>"; };
 		4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphDirectorViewController.swift; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
 		4DE04DFC28551E7900C5D5BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -206,6 +208,7 @@
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
+				4D4363E829A84AB100177509 /* TableNet.mlpackage */,
 				A85092CA27497F7A00392240 /* Info.plist */,
 				4D052FBA28B354CB004A9F40 /* StatsScanner.xcdatamodeld */,
 				4D11804528B3526E00FA701A /* StatScanner-Bridging-Header.h */,
@@ -385,6 +388,7 @@
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
+				4D4363E929A84AB100177509 /* TableNet.mlpackage in Sources */,
 				4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */,
 				4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */,
 				346D63DC28B4BED000AEFB65 /* PhotoViewController.swift in Sources */,

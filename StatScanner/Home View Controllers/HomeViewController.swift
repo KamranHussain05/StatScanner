@@ -71,12 +71,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		newDatasetButton.showsMenuAsPrimaryAction = true
 		newDatasetButton.menu = newDatasetMenu
 		
-		//footer.frame.size.width = UIScreen.main.bounds.width
 		infofooter.setTitle(UIApplication.versionBuild() + "  ", for: .normal)
 		infofooter.semanticContentAttribute = .forceRightToLeft
-		//footer.addSubview(infofooter)
 
-		//infofooter.menu = menuGen()
 		infofooter.menu = UIMenu(children: [UIDeferredMenuElement.uncached { [weak self] completion in
 				if let menu = self?.menuGen() as? UIMenu {
 					completion([menu])
@@ -105,10 +102,15 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 				}
 			])
 		} else {
-			login = UIAction(title: "Log In", image: UIImage(systemName: "rectangle.portrait.and.arrow.right")) { (action) in
-				print("log in")
-				self.signin()
-			}
+			login = UIMenu(title: "", options: .displayInline, children: [
+				UIAction(title: "Google Log In", image: UIImage(named: "googleicon")) { (action) in
+					print("google log in")
+					self.signin()
+				},
+				UIAction(title: "Apple Log In", image: UIImage(systemName: "apple.logo")) { (action) in
+					print("apple log in")
+				}
+			])
 		}
 		return login
 	}
@@ -135,9 +137,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 		let config = GIDConfiguration(clientID: clientID)
 		GIDSignIn.sharedInstance.configuration = config
-		GIDSignIn.sharedInstance.signIn(withPresenting: self) { signResult, error in
+		GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
 			guard error == nil else { return }
-			guard let user = signResult?.user else {return}
+			guard let user = result?.user else {return}
 			self.verifyuser(user: user) }
 	}
 	

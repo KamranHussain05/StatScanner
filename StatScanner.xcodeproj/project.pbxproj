@@ -47,6 +47,7 @@
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
 		AF23D6A029A7FB350084A8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */; };
+		AF23D6A229A948080084A8C2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF23D6A129A948080084A8C2 /* ProfileViewController.swift */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
 		AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */; };
 		AFD226D928B03156005FDB4C /* Randumb_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AFD226D828B03156005FDB4C /* Randumb_R.csv */; };
@@ -112,6 +113,7 @@
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
 		AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF23D6A129A948080084A8C2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
 		AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMAppAuthTests.swift; sourceTree = "<group>"; };
 		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */,
 				346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */,
 				346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */,
+				AF23D6A129A948080084A8C2 /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				A85092BE27497F6F00392240 /* OCRScanner.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
+				AF23D6A229A948080084A8C2 /* ProfileViewController.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */,

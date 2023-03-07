@@ -237,6 +237,7 @@ Icons
 * <a href="https://www.flaticon.com/free-icons/pie-chart" title="pie chart icons">Pie chart icons created by Freepik - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/curve" title="curve icons">Curve icons created by Freepik - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/stocks" title="stocks icons">Stocks icons created by Freepik - Flaticon</a>
+* <a target="_blank" href="https://icons8.com/icon/17904/google">Google</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

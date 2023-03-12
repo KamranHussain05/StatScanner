@@ -54,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5pe-kv-U1c">
-                                <rect key="frame" x="-4" y="-5" width="416" height="897"/>
+                                <rect key="frame" x="-5" y="-7" width="415" height="898"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
@@ -68,7 +68,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDI-T2-Ujr">
-                                        <rect key="frame" x="0.0" y="126" width="416" height="659"/>
+                                        <rect key="frame" x="0.0" y="126" width="415" height="661"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUI-D9-ujO">
                                             <size key="itemSize" width="180" height="258"/>
@@ -153,10 +153,10 @@
                                             <outlet property="delegate" destination="kjN-nm-ZNR" id="zhE-cU-1dg"/>
                                         </connections>
                                     </collectionView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-V0-iYQ" customClass="Footer" customModule="StatScanner" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="785" width="415" height="33"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-V0-iYQ">
+                                        <rect key="frame" x="0.0" y="787" width="415" height="33"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-Yl-8We">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-Yl-8We">
                                                 <rect key="frame" x="157.5" y="10" width="100" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="w9C-9s-QBW"/>
@@ -175,12 +175,9 @@
                                             <constraint firstItem="TAG-Yl-8We" firstAttribute="height" secondItem="kk3-V0-iYQ" secondAttribute="height" id="uNK-Qe-1mR"/>
                                             <constraint firstItem="TAG-Yl-8We" firstAttribute="top" secondItem="kk3-V0-iYQ" secondAttribute="top" constant="10" id="vkX-oz-R3m"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="infofooter" destination="TAG-Yl-8We" id="NyO-he-Kxp"/>
-                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
-                                        <rect key="frame" x="351" y="78" width="45" height="45"/>
+                                        <rect key="frame" x="350" y="78" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="K9O-qj-Rp1"/>
                                             <constraint firstAttribute="width" constant="45" id="pNy-Cx-IFK"/>
@@ -205,6 +202,7 @@
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="centerX" secondItem="5pe-kv-U1c" secondAttribute="centerX" id="bvJ-hw-mvk"/>
                                     <constraint firstItem="wDI-T2-Ujr" firstAttribute="leading" secondItem="ogi-92-6oJ" secondAttribute="leading" id="fXT-B8-Hqz"/>
                                     <constraint firstItem="kk3-V0-iYQ" firstAttribute="height" secondItem="5pe-kv-U1c" secondAttribute="height" multiplier="0.0367893" id="fcE-wc-a8x"/>
+                                    <constraint firstItem="kk3-V0-iYQ" firstAttribute="width" secondItem="5pe-kv-U1c" secondAttribute="width" id="gqh-90-q2M"/>
                                     <constraint firstItem="F2f-ho-Wv8" firstAttribute="top" secondItem="ogi-92-6oJ" secondAttribute="top" constant="30" id="nKm-Yu-sys"/>
                                 </constraints>
                             </view>
@@ -214,6 +212,8 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="footer" destination="kk3-V0-iYQ" id="qXh-1c-7vA"/>
+                        <outlet property="infofooter" destination="TAG-Yl-8We" id="mIu-72-mtl"/>
                         <outlet property="myCollectionView" destination="wDI-T2-Ujr" id="Hh0-BO-2UQ"/>
                         <outlet property="newDatasetButton" destination="F2f-ho-Wv8" id="nJC-Yp-Kkt"/>
                     </connections>

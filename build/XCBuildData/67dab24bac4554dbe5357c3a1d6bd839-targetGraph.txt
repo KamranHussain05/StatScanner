@@ -1,0 +1,9 @@
+Target dependency graph (5 targets)
+AAInfographics in Pods, no dependencies
+AppAuth in Pods, no dependencies
+AppAuthTests in Pods, depends on:
+AppAuth in Pods (explicit)
+SpreadsheetView in Pods, no dependencies
+Pods-StatScanner in Pods, depends on:
+AAInfographics in Pods (explicit)
+SpreadsheetView in Pods (explicit)

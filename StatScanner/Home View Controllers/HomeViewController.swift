@@ -11,18 +11,25 @@ import UIKit
 import UniformTypeIdentifiers
 import Vision
 import VisionKit
+import FirebaseCore
+import FirebaseAuth
+import GoogleSignIn
 
 // MARK: Home View Controller
-
-@available(iOS 16.0, *) // Check if iOS version 16 or greater is being used before loading style resources
 
 ///  Object that manages the Home View including dataset tiles, new dataset creation, and CoreData fetch and handling.
 ///  - Authors: Kamran Hussain, Kaleb Kim, Caden Pun
 ///
+
+var loggedin = false
+@available(iOS 16.0, *) // Check if iOS version 16 or greater is being used before loading style resources
 class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DataScannerViewControllerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!		/// Collection view grid layout, variablized for referencing
     @IBOutlet var newDatasetButton: UIButton!				/// New Dataset button that should bring up the menu. Enacts the ActionSheet
+	
+	@IBOutlet var footer : UIView!
+	@IBOutlet var infofooter : UIButton!
 	
 	private var scan: DataScannerViewController!			/// Variable for the scanning view controller
     private var selectedDataset: Dataset!					/// Skeleton class and variable for referencing the selected dataset from the collection view
@@ -64,6 +71,93 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		newDatasetButton.showsMenuAsPrimaryAction = true
 		newDatasetButton.menu = newDatasetMenu
 		
+		infofooter.setTitle(UIApplication.versionBuild() + "  ", for: .normal)
+		infofooter.semanticContentAttribute = .forceRightToLeft
+
+		infofooter.menu = UIMenu(children: [UIDeferredMenuElement.uncached { [weak self] completion in
+				if let menu = self?.menuGen() as? UIMenu {
+					completion([menu])
+				}
+			
+		}])
+		infofooter.showsMenuAsPrimaryAction = true
+		
+	}
+	
+	//MARK: Footer
+	
+	func menuGen() -> UIMenu {
+		return UIMenu(title: "Settings", options: .displayInline, children: [actions(), loginOptions()])
+	}
+	
+	func loginOptions() -> UIMenuElement {
+		var login : UIMenuElement
+		if (loggedin) {
+			login = UIMenu(title: "", options: .displayInline, children: [
+				UIAction(title: "Log Out", image: UIImage(systemName: "power"), attributes: .destructive) { (action) in
+					self.signout()
+				},
+				UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
+					print("profile")
+				}
+			])
+		} else {
+			login = UIMenu(title: "", options: .displayInline, children: [
+				UIAction(title: "Google Log In", image: UIImage(named: "googleicon")) { (action) in
+					print("google log in")
+					self.signin()
+				},
+				UIAction(title: "Apple Log In", image: UIImage(systemName: "apple.logo")) { (action) in
+					print("apple log in")
+				}
+			])
+		}
+		return login
+	}
+	
+	func actions() -> UIMenuElement {
+		return UIMenu(title: "", options: .displayInline, children: [
+			UIAction(title: "Contact Us", image: UIImage(systemName: "mail")) { (action) in
+				print("contact us")
+			},
+			UIAction(title: "Donate", image: UIImage(systemName: "dollarsign")) { (action) in
+				if let gf = URL(string: "https://www.buymeacoffee.com/StatScanner") {
+					UIApplication.shared.open(gf)
+				}
+			},
+			UIAction(title: "Watch Tutorial", image: UIImage(systemName: "play.rectangle.on.rectangle")) { (action) in
+				if let rr = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
+					UIApplication.shared.open(rr)
+				}
+			}
+		])
+	}
+	
+	func signin() {
+		guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+		let config = GIDConfiguration(clientID: clientID)
+		GIDSignIn.sharedInstance.configuration = config
+		GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+			guard error == nil else { return }
+			guard let user = result?.user else {return}
+			self.verifyuser(user: user) }
+	}
+	
+	func signout() {
+		try? Auth.auth().signOut()
+		GIDSignIn.sharedInstance.signOut()
+		loggedin = false
+	}
+	
+	func verifyuser(user: GIDGoogleUser) {
+		Task {
+			guard let idToken = user.idToken?.tokenString else {return}
+			let accessToken = user.accessToken.tokenString
+			let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+			try await Auth.auth().signIn(with: credential)
+			loggedin = true
+			print("verified")
+		}
 	}
 	
 	// MARK: Frontend Construction Helper Methods

@@ -47,10 +47,25 @@
 		A8CA56472772991E006BDF61 /* Titanic_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA56462772991E006BDF61 /* Titanic_R.csv */; };
 		A8CA564927729924006BDF61 /* Video_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = A8CA564827729924006BDF61 /* Video_R.csv */; };
 		AF189FB3289C7D6100D181CA /* PooperScooper_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */; };
+		AF23D6A029A7FB350084A8C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */; };
+		AF23D6A229A948080084A8C2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF23D6A129A948080084A8C2 /* ProfileViewController.swift */; };
 		AF28848E289B312D00BDEDD5 /* DatasetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */; };
 		AFB3F2A928ACAEA7004DF451 /* DeviceHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */; };
 		AFD226D928B03156005FDB4C /* Randumb_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = AFD226D828B03156005FDB4C /* Randumb_R.csv */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFA6C8C829A6FFB400C1C0F2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +114,10 @@
 		A8CA564827729924006BDF61 /* Video_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Video_R.csv; sourceTree = "<group>"; };
 		AAA07B1DC6A235BDC6E39EDE /* Pods_StatsScanner_StatsScannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatsScanner_StatsScannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF189FB2289C7D6100D181CA /* PooperScooper_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PooperScooper_R.csv; sourceTree = "<group>"; };
+		AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF23D6A129A948080084A8C2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetBuilder.swift; sourceTree = "<group>"; };
+		AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMAppAuthTests.swift; sourceTree = "<group>"; };
 		AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceHandling.swift; sourceTree = "<group>"; };
 		AFD226D828B03156005FDB4C /* Randumb_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Randumb_R.csv; sourceTree = "<group>"; };
 		CB7A731F1ABA7EB1B9D6412C /* Pods_StatScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StatScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +169,7 @@
 				4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */,
 				346D63D928B4BE7E00AEFB65 /* CameraViewController.swift */,
 				346D63DB28B4BED000AEFB65 /* PhotoViewController.swift */,
+				AF23D6A129A948080084A8C2 /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -181,6 +200,7 @@
 				A85092B827497F6F00392240 /* StatScanner */,
 				4D052FBD28B3562D004A9F40 /* StatScannerTests */,
 				4D052FBF28B35654004A9F40 /* StatScannerUITests */,
+				AFA6C8C029A6FFB300C1C0F2 /* GTMAppAuthTests */,
 				A85092B727497F6F00392240 /* Products */,
 				A8BD6DEB27794A800048912C /* Frameworks */,
 				1F291427D55372448DC04E64 /* Pods */,
@@ -209,6 +229,7 @@
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
 				4D4363E829A84AB100177509 /* TableNet.mlpackage */,
+				AF23D69F29A7FB350084A8C2 /* GoogleService-Info.plist */,
 				A85092CA27497F7A00392240 /* Info.plist */,
 				4D052FBA28B354CB004A9F40 /* StatsScanner.xcdatamodeld */,
 				4D11804528B3526E00FA701A /* StatScanner-Bridging-Header.h */,
@@ -249,6 +270,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AFA6C8C029A6FFB300C1C0F2 /* GTMAppAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFA6C8C129A6FFB300C1C0F2 /* GTMAppAuthTests.swift */,
+			);
+			path = GTMAppAuthTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,6 +290,7 @@
 				A85092B327497F6F00392240 /* Frameworks */,
 				A85092B427497F6F00392240 /* Resources */,
 				A2FCE9FB9226B34F99D3631C /* [CP] Embed Pods Frameworks */,
+				AFA6C8C829A6FFB400C1C0F2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,7 +308,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					A85092B527497F6F00392240 = {
@@ -321,6 +351,7 @@
 				A8CA56392772989D006BDF61 /* Cholesterol_R.csv in Resources */,
 				A8CA563D277298B9006BDF61 /* Diet_R.csv in Resources */,
 				A8CA563B277298AD006BDF61 /* Crime_R.csv in Resources */,
+				AF23D6A029A7FB350084A8C2 /* GoogleService-Info.plist in Resources */,
 				A8CA56372772987F006BDF61 /* Birthweight_reduced_kg_R.csv in Resources */,
 				A85092C627497F7A00392240 /* Assets.xcassets in Resources */,
 				4D052FC028B35655004A9F40 /* StatScannerUITests in Resources */,
@@ -386,6 +417,7 @@
 				A85092BE27497F6F00392240 /* OCRScanner.swift in Sources */,
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
+				AF23D6A229A948080084A8C2 /* ProfileViewController.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				4D4363E929A84AB100177509 /* TableNet.mlpackage in Sources */,
@@ -557,7 +589,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatScanner/Info.plist;
@@ -580,8 +612,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Kamranhussain.StatScanner;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.KamranHussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CadenPun.StatScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -608,7 +639,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = T4FSA2B9WN;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatScanner/Info.plist;
@@ -631,8 +662,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Kamranhussain.StatScanner;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.KamranHussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CadenPun.StatScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";

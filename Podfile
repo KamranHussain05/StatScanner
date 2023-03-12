@@ -8,5 +8,9 @@ target 'StatScanner' do
   # Pods for StatsScanner
   pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
   pod 'SpreadsheetView'
+  pod 'GoogleSignIn'
+  pod 'FirebaseCore'
+  pod 'FirebaseAuth'
 
 end
+

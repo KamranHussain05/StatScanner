@@ -15,8 +15,31 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.299403141682-od07vkahgh7615npvbc37macrdurklhp</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.KamranHussain.StatScanner</string>
+			</array>
+		</dict>
+	</array>
+	<key>CLIENT_ID</key>
+	<string>299403141682-od07vkahgh7615npvbc37macrdurklhp.apps.googleusercontent.com</string>
 	<key>ITSEncryptionExportComplianceCode</key>
 	<string></string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.299403141682-od07vkahgh7615npvbc37macrdurklhp</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

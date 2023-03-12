@@ -14,6 +14,8 @@ import VisionKit
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import MessageUI
+import SafariServices
 
 // MARK: Home View Controller
 
@@ -23,7 +25,7 @@ import GoogleSignIn
 
 var loggedin = false
 @available(iOS 16.0, *) // Check if iOS version 16 or greater is being used before loading style resources
-class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DataScannerViewControllerDelegate {
+class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DataScannerViewControllerDelegate, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var myCollectionView: UICollectionView!		/// Collection view grid layout, variablized for referencing
     @IBOutlet var newDatasetButton: UIButton!				/// New Dataset button that should bring up the menu. Enacts the ActionSheet
@@ -127,6 +129,22 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		return UIMenu(title: "", options: .displayInline, children: [
 			UIAction(title: "Contact Us", image: UIImage(systemName: "mail")) { (action) in
 				print("contact us")
+				// implement support email and google form
+				let email = "pppoopoo@gmail.com"
+				if MFMailComposeViewController.canSendMail() {
+					let mailer = MFMailComposeViewController()
+					mailer.delegate = self
+					mailer.mailComposeDelegate = self
+					mailer.setSubject("Feedback / Support")
+					mailer.setToRecipients([email])
+					self.present(mailer, animated: true)
+				} else {
+					guard let form = URL(string: "https://google.com") else {
+						return
+					}
+					let smelly = SFSafariViewController(url: form)
+					self.present(smelly, animated: true)
+				}
 			},
 			UIAction(title: "Donate", image: UIImage(systemName: "dollarsign")) { (action) in
 				if let gf = URL(string: "https://www.buymeacoffee.com/StatScanner") {
@@ -166,6 +184,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			loggedin = true
 			print("verified")
 		}
+	}
+	
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		controller.dismiss(animated: true)
 	}
 	
 	// MARK: Frontend Construction Helper Methods

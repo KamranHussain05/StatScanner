@@ -105,10 +105,18 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			login = UIMenu(title: "", options: .displayInline, children: [
 				UIAction(title: "Google Log In", image: UIImage(named: "googleicon")) { (action) in
 					print("google log in")
-					self.signin()
+					//self.signin()
+					let dialog = UIAlertController(title:"Coming Soon!", message:"Currently not a top priority :(", preferredStyle: .alert)
+					let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
+					dialog.addAction(okAction)
+					self.present(dialog, animated:true)
 				},
 				UIAction(title: "Apple Log In", image: UIImage(systemName: "apple.logo")) { (action) in
 					print("apple log in")
+					let dialog = UIAlertController(title:"Coming Soon!", message:"Currently not a top priority :(", preferredStyle: .alert)
+					let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
+					dialog.addAction(okAction)
+					self.present(dialog, animated:true)
 				}
 			])
 		}

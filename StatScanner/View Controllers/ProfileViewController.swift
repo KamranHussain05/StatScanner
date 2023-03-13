@@ -29,11 +29,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     private var models = [section]()
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        configure()
-    }
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        configure()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +42,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         
         let user = Auth.auth().currentUser
+        name = user!.displayName
         email = user!.email
-        accountage = String(Calendar.current.dateComponents([.day], from: user!.metadata.creationDate!).day!)
+        accountage = "\(String(Calendar.current.dateComponents([.day], from: user!.metadata.creationDate!).day!)) days"
         
         view.addSubview(tableView)
+        configure()
     }
     
     override func viewDidLayoutSubviews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(tabBarController!.tabBar.frame.height)).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
@@ -61,26 +62,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func configure() {
         models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {}, cellStruct(title: "Email", calc: email) {}, cellStruct(title: "Account Age", calc: accountage) {}, cellStruct(title: "Sign-In Method", calc: method) {}]))
-    }
-    
-    // MARK: Text Field Handling
-    
-    func textfieldAlert(_ title: String, action: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction(title: action, style: .default, handler: { _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-            }
-
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel/*, handler: { _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-            }
-        }*/))
-        alert.popoverPresentationController?.sourceView = self.view
-        present(alert, animated:true)
     }
     
     // MARK: Table View Configuration
@@ -100,7 +81,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].cells[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StatsCell.identifier, for: indexPath) as? StatsCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.identifier, for: indexPath) as? ProfileCell else {
             return UITableViewCell()
         }
         cell.configure(with: model)
@@ -111,21 +92,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.deselectRow(at: indexPath, animated: true)
         let model = models[indexPath.section].cells[indexPath.row]
         model.handler()
-        self.tableView.reloadData()
-    }
-    
-    func updateCalcs(newCalc:[Double], num:Int) {
-        models[0].cells[2].calc = String(num)
-        models[2].cells[0].calc = String(round(1000 * newCalc[0]) / 1000)
-        models[2].cells[1].calc = String(round(1000 * newCalc[1]) / 1000)
-        models[2].cells[2].calc = String(round(1000 * newCalc[2]) / 1000)
-        models[3].cells[0].calc = String(round(1000 * newCalc[3]) / 1000)
-        models[3].cells[1].calc = String(round(1000 * newCalc[4]) / 1000)
-        models[3].cells[2].calc = String(round(1000 * newCalc[5]) / 1000)
-        models[4].cells[0].calc = String(round(1000 * newCalc[6]) / 1000)
-        models[4].cells[1].calc = String(round(1000 * newCalc[7]) / 1000)
-        models[4].cells[2].calc = String(round(1000 * newCalc[8]) / 1000)
-        
         self.tableView.reloadData()
     }
     

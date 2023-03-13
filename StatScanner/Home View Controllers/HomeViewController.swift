@@ -101,19 +101,21 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 				},
 				UIAction(title: "Profile", image: UIImage(systemName: "person.circle")) { (action) in
 					print("profile")
+					let profile = ProfileViewController()
+					self.present(profile, animated: true)
 				}
 			])
 		} else {
 			login = UIMenu(title: "", options: .displayInline, children: [
 				UIAction(title: "Google Log In", image: UIImage(named: "googleicon")) { (action) in
 					print("google log in")
-					//self.signin()
+					self.signin()
 					let dialog = UIAlertController(title:"Coming Soon!", message:"Currently not a top priority :(", preferredStyle: .alert)
 					let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
 					dialog.addAction(okAction)
 					self.present(dialog, animated:true)
 				},
-				UIAction(title: "Apple Log In", image: UIImage(systemName: "apple.logo")) { (action) in
+				UIAction(title: "Apple Log In", image: UIImage(systemName: "applelogo")) { (action) in
 					print("apple log in")
 					let dialog = UIAlertController(title:"Coming Soon!", message:"Currently not a top priority :(", preferredStyle: .alert)
 					let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
@@ -139,22 +141,26 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 					mailer.setToRecipients([email])
 					self.present(mailer, animated: true)
 				} else {
-					guard let form = URL(string: "https://google.com") else {
+					guard let url = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") else {
 						return
 					}
-					let smelly = SFSafariViewController(url: form)
+					let smelly = SFSafariViewController(url: url)
 					self.present(smelly, animated: true)
 				}
 			},
 			UIAction(title: "Donate", image: UIImage(systemName: "dollarsign")) { (action) in
-				if let gf = URL(string: "https://www.buymeacoffee.com/StatScanner") {
-					UIApplication.shared.open(gf)
+				guard let url = URL(string: "https://www.buymeacoffee.com/StatScanner") else {
+					return
 				}
+				let smelly = SFSafariViewController(url: url)
+				self.present(smelly, animated: true)
 			},
 			UIAction(title: "Watch Tutorial", image: UIImage(systemName: "play.rectangle.on.rectangle")) { (action) in
-				if let rr = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
-					UIApplication.shared.open(rr)
+				guard let url = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") else {
+					return
 				}
+				let smelly = SFSafariViewController(url: url)
+				self.present(smelly, animated: true)
 			}
 		])
 	}

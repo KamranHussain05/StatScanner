@@ -86,7 +86,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		
 	}
 	
-	//MARK: Footer
+	//MARK: Footer Menu
 	
 	func menuGen() -> UIMenu {
 		return UIMenu(title: "Settings", options: .displayInline, children: [actions(), loginOptions()])
@@ -109,7 +109,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			login = UIMenu(title: "", options: .displayInline, children: [
 				UIAction(title: "Google Log In", image: UIImage(named: "googleicon")) { (action) in
 					print("google log in")
-					self.signin()
+					//self.signin()
 					let dialog = UIAlertController(title:"Coming Soon!", message:"Currently not a top priority :(", preferredStyle: .alert)
 					let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
 					dialog.addAction(okAction)
@@ -125,6 +125,10 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			])
 		}
 		return login
+	}
+	
+	@objc func tapOutside() {
+		self.dismiss(animated: true)
 	}
 	
 	func actions() -> UIMenuElement {
@@ -195,7 +199,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		controller.dismiss(animated: true)
 	}
-	
+
 	// MARK: Frontend Construction Helper Methods
 	
 	/// Set the layout constraints and ensure the content frame clip to the edges of the device. This function ensures UI elements are properly adapted properly to difference screen resolutions, scales, and sizes.

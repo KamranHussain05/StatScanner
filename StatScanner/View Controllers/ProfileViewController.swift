@@ -19,7 +19,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     private var email: String!
     private var accountage: String!
     private var method: String!
-    private var back: UIButton!
     
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -28,11 +27,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }()
 
     private var models = [section]()
-    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        configure()
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +37,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let user = Auth.auth().currentUser
         name = user!.displayName
-        email = user!.email
         accountage = "\(String(Calendar.current.dateComponents([.day], from: user!.metadata.creationDate!).day!)) days"
+        email = user!.email
+        method = user!.providerData[0].providerID
         
         view.addSubview(tableView)
         configure()
@@ -52,16 +47,24 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLayoutSubviews() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 450).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        if touch?.view != self {
+            navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true)
+        }
+    }
+    
     //MARK: TABLE INIT
     
     func configure() {
-        models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {}, cellStruct(title: "Email", calc: email) {}, cellStruct(title: "Account Age", calc: accountage) {}, cellStruct(title: "Sign-In Method", calc: method) {}]))
+        models.append(section(title: "Information", cells: [cellStruct(title: "Name", calc: name) {}, cellStruct(title: "Account Age", calc: accountage) {}, cellStruct(title: "Email", calc: email) {}, cellStruct(title: "Sign-In Method", calc: method) {}]))
     }
     
     // MARK: Table View Configuration

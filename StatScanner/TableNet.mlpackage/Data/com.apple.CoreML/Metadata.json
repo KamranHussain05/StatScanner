@@ -1,6 +1,0 @@
-{
-  "MLModelVersionStringKey" : "0.1",
-  "MLModelDescriptionKey" : "TableNet model that returns a mask for the number of columns and any identified tables in the input image",
-  "MLModelAuthorKey" : "Kamran Hussain",
-  "MLModelLicenseKey" : "MIT"
-}

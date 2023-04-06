@@ -4924,7 +4924,7 @@
 			baseConfigurationReference = 459A7FDA478C1EC93377111760B57677 /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
-				DEVELOPMENT_TEAM = T4FSA2B9WN;
+				DEVELOPMENT_TEAM = 76G3N963K9;
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -5141,7 +5141,7 @@
 			baseConfigurationReference = C2DF0F7708BD459460DF5E9242499B6E /* GoogleSignIn.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
-				DEVELOPMENT_TEAM = T4FSA2B9WN;
+				DEVELOPMENT_TEAM = 76G3N963K9;
 				IBSC_MODULE = GoogleSignIn;
 				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

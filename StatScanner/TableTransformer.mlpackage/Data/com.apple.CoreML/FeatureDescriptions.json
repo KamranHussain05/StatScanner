@@ -4,18 +4,18 @@
       "MLFeatureShortDescription" : "--"
     },
     "input_38" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : "labels"
     },
     "var_2298" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : "scores"
     },
     "tensor_31" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : "boundingBoxes"
     }
   },
   "Inputs" : {
     "pixel_values_1" : {
-      "MLFeatureShortDescription" : "--"
+      "MLFeatureShortDescription" : "scannedDocument"
     }
   },
   "TrainingInputs" : {

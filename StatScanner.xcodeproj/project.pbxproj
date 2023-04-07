@@ -18,6 +18,7 @@
 		4D2F168F279BE9C70096F9DA /* Awards_R.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4D2F168E279BE9C60096F9DA /* Awards_R.csv */; };
 		4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */; };
 		4D35245529DF9001000018E3 /* TableTransformer.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 4D35245429DF9001000018E3 /* TableTransformer.mlpackage */; };
+		4D35245729DF92A6000018E3 /* CoordinateTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D35245629DF92A6000018E3 /* CoordinateTranslator.swift */; };
 		4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9A288F551300BB1C03 /* Calculations.swift */; };
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
 		4DA417F529906B2F004E87BA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */; };
@@ -83,6 +84,7 @@
 		4D2F168E279BE9C60096F9DA /* Awards_R.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Awards_R.csv; sourceTree = "<group>"; usesTabs = 0; };
 		4D2F1690279C8F940096F9DA /* NSObjectTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTransformer.swift; sourceTree = "<group>"; };
 		4D35245429DF9001000018E3 /* TableTransformer.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = TableTransformer.mlpackage; sourceTree = "<group>"; };
+		4D35245629DF92A6000018E3 /* CoordinateTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateTranslator.swift; sourceTree = "<group>"; };
 		4D3B6E9A288F551300BB1C03 /* Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
 		4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphDirectorViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */,
 				4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */,
 				4D3B6E9A288F551300BB1C03 /* Calculations.swift */,
+				4D35245629DF92A6000018E3 /* CoordinateTranslator.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
 				A85092BD27497F6F00392240 /* OCRScanner.swift */,
 				AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */,
@@ -418,6 +421,7 @@
 				A85092BA27497F6F00392240 /* AppDelegate.swift in Sources */,
 				4D2F168A279AAEDE0096F9DA /* CoreDataManager.swift in Sources */,
 				AF23D6A229A948080084A8C2 /* ProfileViewController.swift in Sources */,
+				4D35245729DF92A6000018E3 /* CoordinateTranslator.swift in Sources */,
 				A8BD6DF72779AE030048912C /* DataBridge.swift in Sources */,
 				A8088980277EF1C600B8C2FE /* HomeViewController.swift in Sources */,
 				4D2F1691279C8F940096F9DA /* NSObjectTransformer.swift in Sources */,

@@ -1,0 +1,6 @@
+{
+  "MLModelVersionStringKey" : "v1.0.0",
+  "MLModelDescriptionKey" : "Transformer based vision model that calculates the bounding boxes for table structure recognition.",
+  "MLModelAuthorKey" : "Microsoft",
+  "MLModelLicenseKey" : "MIT and Apache 1.0"
+}

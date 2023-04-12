@@ -656,6 +656,7 @@ extension HomeViewController: VNDocumentCameraViewControllerDelegate {
 			DispatchQueue.global(qos: .userInitiated).async {
 				for pageNumber in 0 ..< scan.pageCount {
 					let image = scan.imageOfPage(at: pageNumber)
+					print(image.size)
 //                    self.processImage(image: image)
 				}
 				DispatchQueue.main.async {

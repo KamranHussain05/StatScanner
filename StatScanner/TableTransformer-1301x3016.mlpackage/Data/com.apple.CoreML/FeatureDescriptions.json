@@ -1,0 +1,24 @@
+{
+  "Outputs" : {
+    "var_2280" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "input_38" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "var_2298" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "tensor_31" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Inputs" : {
+    "pixel_values_1" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}

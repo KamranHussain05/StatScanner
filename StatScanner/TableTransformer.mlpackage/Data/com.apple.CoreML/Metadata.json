@@ -1,6 +1,0 @@
-{
-  "MLModelVersionStringKey" : "v1.0.0",
-  "MLModelDescriptionKey" : "ML Model that extracts table structure from document images",
-  "MLModelAuthorKey" : "Microsoft",
-  "MLModelLicenseKey" : "Apache"
-}

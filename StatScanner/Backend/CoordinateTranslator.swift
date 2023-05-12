@@ -11,40 +11,47 @@ import VisionKit
 
 class CoordinateTransformer {
     
-    private var coor : [[Float]]!
+    private var coor : [[[Float]]]!
     private var data : [[String]]!
-    private var img : UIImage!
+    private var img : CGImage!
     private var currentString : String!
+    private var textRecRequest = VNRecognizeTextRequest()
+    private var requestHandler : VNImageRequestHandler!
     
-    init(coor: [[Float]], img: UIImage!) {
+    // Executes a procedure with internal helper functions to run OCR on every data point.
+    init(coor: [[[Float]]], img: UIImage!) {
         self.coor = coor
-        self.img = img
+        self.img = img.cgImage
+        
+        self.textRecRequest = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
+        self.textRecRequest.recognitionLevel = .accurate
+        self.textRecRequest.usesLanguageCorrection = true
+        
+        self.requestHandler = VNImageRequestHandler(cgImage: self.img)
         shapeData()
         processingCoordinates()
     }
     
-    func scanshit(i: Int, j: Int, count: Int) {
-        let box = coor[count]
+    func scanShit(i: Int, j: Int) {
+        let box = coor[i][j]
         let x1 = box[0]
         let y1 = box[1]
         let x2 = box[2]
         let y2 = box[3]
-        let cropped = img.ciImage?.cropped(to: CGRect(x: Double(x1), y: Double(y1), width: Double(x2-x1), height: Double(y2-y1)))
         
-        // Create a new image-request handler.
-        let requestHandler = VNImageRequestHandler(cgImage: cropped as! CGImage)
-
-        // Create a new request to recognize text.
-        let request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
-
+        let region = CGRect(x: Double(x1), y: Double(y1), width: Double(x2-x1), height: Double(y2-y1))
+        self.textRecRequest.regionOfInterest = region
+        
         do {
             // Perform the text-recognition request.
-            try requestHandler.perform([request])
+            currentString = ""
+            try self.requestHandler.perform([self.textRecRequest])
         } catch {
             print("Unable to perform the requests: \(error).")
         }
+        
     }
-    
+
     func recognizeTextHandler(request: VNRequest, error: Error?) {
         guard let observations =
                 request.results as? [VNRecognizedTextObservation] else {
@@ -56,47 +63,34 @@ class CoordinateTransformer {
         }
         
         // Process the recognized strings.
-        currentString = recognizedStrings.first!
+        processResults(recognizedStrings)
+    }
+    
+    func processResults(_ text: [String]) {
+        print(text)
+        for item in text{
+            currentString += item
+        }
     }
     
     func processingCoordinates() {
-        var count = 0
-        for i in 0...data.count-1 {
-            for j in 0...data[i].count-1{
-                scanshit(i: i, j: j, count: count)
+        for i in 0..<coor.count {
+            for j in 0..<coor[i].count {
+                scanShit(i: i, j: j)
                 data[i][j] = currentString
-                count+=1
+                currentString = ""
             }
         }
     }
     
     func shapeData() {
-        var row = 0
-        var maxcountrow = 0
-        var col = 0
-        var maxcountcol = 0
-        for i in 1...coor.count-1 {
-            if (coor[i][0] == coor[i-1][0]) {
-                row+=1
-            } else {
-                row = 0
-            }
-            if(coor[i][1] == coor[i-1][1]) {
-                col+=1
-            } else {
-                col = 0
-            }
-            if (maxcountrow < row) {
-                maxcountrow = row
-            }
-            if (maxcountcol < col) {
-                maxcountcol = col
-            }
-        }
-        data = Array(repeating: Array(repeating: "empty", count: maxcountrow), count: maxcountcol)
+        print(coor.count, coor[0].count, coor[0][0].count)
+        self.data = Array(repeating: Array(repeating: "empty", count: coor[0].count), count: coor.count)
+        print(data.count, data[0].count)
+              
     }
     
     func result()-> [[String]] {
-        return data
+        return self.data
     }
 }

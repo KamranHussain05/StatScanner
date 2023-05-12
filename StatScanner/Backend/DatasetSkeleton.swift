@@ -88,6 +88,20 @@ public class Dataset: NSObject, NSCoding {
         self.graphData = self.genGraphData(array: self.rawData)
     }
     
+    init(name: String, icon: UIImage, appendable: [[String]], from_scan: Bool) {
+        super.init()
+        
+        self.name = name
+        self.icon = icon
+        self.creationDate = formatter.string(from: Date())
+        self.rawData = appendable
+        self.keys = self.solveKeys(self.rawData)
+        self.calculations = Array<Double>(repeating: 0.0, count: 9)
+        self.updateNumData()
+        self.calculations = Calculations(dataset : self.numericalData).calculate()
+        self.graphData = self.genGraphData(array: self.rawData)
+    }
+    
     init(name: String, icon: UIImage) {
         super.init()
         
@@ -155,9 +169,10 @@ public class Dataset: NSObject, NSCoding {
         self.numericalData = result
     }
     
-   /// Clean rawData array
+    /// Clean rawData array
     private func cleanRaw() {
-        for i in 0...self.rawData.count-1 {
+        let n = self.rawData.count
+        for i in (0..<n).reversed() {
             var count = 0
             for j in 0...self.rawData[0].count-1 {
                 if (rawData[i][j].isEmpty) {
@@ -168,16 +183,16 @@ public class Dataset: NSObject, NSCoding {
                 self.rawData.remove(at: i)
             }
         }
-        for j in 0...self.rawData[0].count-1 {
+        for j in 0..<self.rawData[0].count {
             var count = 0
-            for i in 0...self.rawData.count-1 {
+            for i in 0..<self.rawData.count {
                 let str = rawData[i][j].trimmingCharacters(in: .whitespacesAndNewlines)
                 if (str.isEmpty) {
                     count+=1
                 }
             }
             if (count == self.rawData.count) {
-                for x in 0...rawData.count-1 {
+                for x in 0..<rawData.count {
                     self.rawData[x].remove(at: j)
                 }
             }
@@ -334,7 +349,7 @@ public class Dataset: NSObject, NSCoding {
             bald[i] = self.numericalData[idx]
         }
         
-        var newCalcs = Calculations(dataset:bald).calculate()
+        let newCalcs = Calculations(dataset:bald).calculate()
         print(newCalcs)
         return newCalcs
     }
@@ -350,7 +365,7 @@ public class Dataset: NSObject, NSCoding {
             bald[i] = self.numericalData[idx]
         }
         
-        var newCalcs = Calculations(dataset:bald).calculate()
+        let newCalcs = Calculations(dataset:bald).calculate()
         print(newCalcs)
         return newCalcs
     }

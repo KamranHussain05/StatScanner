@@ -34,6 +34,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 	@IBOutlet var infofooter : UIButton!
 	
 	private var scan: DataScannerViewController!			/// Variable for the scanning view controller
+	private var infer = ModelPostProcess()					/// Reference for the model post-processing pipelin
     private var selectedDataset: Dataset!					/// Skeleton class and variable for referencing the selected dataset from the collection view
 	private var sc: CGFloat = 0.05							/// Hard coded spacing value between cells
     private var models = [DataSetProject]()					/// Array of CoreData models that contain Dataset, and tile image
@@ -169,6 +170,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		])
 	}
 	
+	// MARK: User Account Login
+	
 	func signin() {
 		guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 		let config = GIDConfiguration(clientID: clientID)
@@ -294,97 +297,32 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		present(documentCameraViewController, animated: true)
 	}
     
-	// MARK: OCR Handling
-	
-    /// Scan a document by taking a photo of it. Presents the custom view controller for scanning and visualizes the optical character recognition to let the user make a better scan.
-	///
-	/// - Warning: This method is extremely computationally heavy and needs to be optimized for better compatibility with older apple devices. Additionally this method is currently not fully functional as elements are scanned into a 1-dimensional array
-	///
-	/// - Returns: Implicitly returns a ``DataScannerViewController`` by presenting it to the user until they take a scan.
-	///
-	/// - Authors: Caden Pun
-	func captureImage() {
-		scan = DataScannerViewController(
-			recognizedDataTypes: [.text()],
-			qualityLevel: .fast, recognizesMultipleItems: true,
-		   isHighFrameRateTrackingEnabled: true,
-		   isPinchToZoomEnabled: false,
-		   isHighlightingEnabled: true)
-		let d = 70.0
-		let photo = UIButton(frame: CGRect(x: (view.frame.size.width-d)/2, y: view.frame.size.height-2.75*d, width: d, height: d))
-		photo.layer.cornerRadius = d/2
-		photo.layer.borderWidth = 5
-		photo.layer.borderColor = UIColor.white.cgColor
-		photo.layer.backgroundColor = UIColor.white.cgColor
-		photo.addTarget(self, action: #selector(self.photo), for: .touchUpInside)
-		let p = 90.0
-		let outer = UIButton(frame: CGRect(x: (view.frame.size.width-p)/2, y: view.frame.size.height-2.75*d-(p-d)/2, width: p, height: p))
-		outer.layer.cornerRadius = p/2
-		outer.layer.borderWidth = 5
-		outer.layer.borderColor = UIColor.white.cgColor
-		scan.view.addSubview(outer)
-		scan.view.addSubview(photo)
-		scan.delegate = self
+	func processImage(image: UIImage) {
+		// Load and configure the model
+		let model_config = MLModelConfiguration()
+		model_config.computeUnits = .cpuAndGPU
 		
-		present(scan, animated: true) {
-			try? self.scan.startScanning()
-		}
-    }
-	
-	/// Handles the photo capture button. Sends the photo to the scanning stitch method for processing into a 2D array.
-	/// - Authors: Caden Pun
-	@objc func photo() {
-		print("pressed the button")
-		Task {
-			try await asyncStuff()
-		}
-		scan.dismiss(animated: true)
-	}
-
-	/// Asynchronously attempts to solve the scanned data from a 1D array into a 2D array.
-	/// - Warning: This function is currently too computationally expensive and should be optimized. Additionally it is not fully functional.
-	/// - Authors: Caden Pun
-	@objc func asyncStuff() async throws {
-		var data = ""
-		var oneD : [String] = []
-		var iter = scan.recognizedItems.makeAsyncIterator()
-		while let list = await iter.next() {
-			for item in list {
-				switch item {
-				case .text(let text):
-					data.append(text.transcript)
-				default:
-					print("not text")
-				}
-			}
-		}
-		print(data)
-		while (data.contains("\n")) {
-			let index = data.firstIndex(of: "\n")
-			let point = String(data[...index!])
-			let replaced = data.replacingOccurrences(of: point, with: "")
-			data = replaced
-			oneD.append(point)
-		}
-		for i in 0...oneD.count-1 {
-			let replaced = oneD[i].replacingOccurrences(of: "\n", with: "")
-			oneD[i] = replaced
-		}
-		print(oneD)
-		scan.stopScanning()
+		// Run prediction on the image
+		let model = try! TableTransformer_1301x3016(configuration: model_config)
+		let inputs = TableTransformer_1301x3016Input(pixel_values_1: image.toCVPixelBuffer()!)
+		let outputs = try? model.prediction(input: inputs)
 		
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: OCRScanner.processResults(strArray: oneD))
+		// Extract logits and predicted boxes from outputs. Ignore the other two auxillary outputs
+		let logits = outputs!.var_2280
+		let pred_boxes = outputs!.var_2298
+		
+		// Post Process outputs
+		let processed_outputs = self.infer.postProcess(logits: logits, pred_boxes: pred_boxes, target_sizes: image.size, threshold: 0.9)
+		
+		print("============ FINAL BOXES ===============")
+		print(processed_outputs)
+		
+		// Send to dataset building
+		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
+		print(extracted_data.result())
+		
+		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: extracted_data.result(), from_scan: true)
 		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-	}
-	
-	// Datascanner method for internal debugging. Ensures the text bounding boxes capture the right text.
-	internal func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
-		switch item {
-		case .text(let text):
-			print(text.transcript)
-		default:
-			print("not text")
-		}
 	}
 	
 	// MARK: Data Importing
@@ -409,13 +347,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			return
 		}
 
-		let scanner = OCRScanner(img: info[.editedImage] as! UIImage)
 		//let scanner = ScanViewController()
 		// this creates a new dataset with the array returned from the ocr pipeline
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
+		//self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
 
 		// creates a new dataset in coredata
-		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		//self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 
 		print(image) // for checking
 	}
@@ -651,21 +588,71 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension HomeViewController: VNDocumentCameraViewControllerDelegate {
 	func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
 		
-//        self.activityIndicator.startAnimating()
 		controller.dismiss(animated: true) {
 			DispatchQueue.global(qos: .userInitiated).async {
 				for pageNumber in 0 ..< scan.pageCount {
 					let image = scan.imageOfPage(at: pageNumber)
 					print(image.size)
-//                    self.processImage(image: image)
-				}
-				DispatchQueue.main.async {
-//                    if let resultsVC = self.resultsViewController {
-//                        self.navigationController?.pushViewController(resultsVC, animated: true)
-//                    }
-//                    self.activityIndicator.stopAnimating()
+					let reshaped_image = image.resizeImageTo(size: CGSize(width:1301, height: 2016))
+					print(reshaped_image!.size)
+                    self.processImage(image: reshaped_image!)
 				}
 			}
 		}
+	}
+}
+
+// MARK: UIImage Extensions
+
+extension UIImage {
+	func toCVPixelBuffer() -> CVPixelBuffer? {
+		let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+		var pixelBuffer : CVPixelBuffer?
+		let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(self.size.width), Int(self.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+		guard status == kCVReturnSuccess else {
+			return nil
+		}
+
+		if let pixelBuffer = pixelBuffer {
+			CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+			let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer)
+
+			let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+			let context = CGContext(data: pixelData, width: Int(self.size.width), height: Int(self.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+
+			context?.translateBy(x: 0, y: self.size.height)
+			context?.scaleBy(x: 1.0, y: -1.0)
+
+			UIGraphicsPushContext(context!)
+			self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+			UIGraphicsPopContext()
+			CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: 0))
+
+			return pixelBuffer
+		}
+
+		return nil
+	}
+	
+	func resizeImageTo(size: CGSize) -> UIImage? {
+		UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+		self.draw(in: CGRect(origin: CGPoint.zero, size: size))
+		let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+		UIGraphicsEndImageContext()
+		return resizedImage
+	}
+}
+
+extension Array where Element == [CGFloat] {
+	func transpose() -> [[CGFloat]] {
+		guard let firstRow = first else { return [] }
+		let rowCount = firstRow.count
+		var transposed: [[CGFloat]] = .init(repeating: [], count: rowCount)
+		for row in self {
+			for (i, element) in row.enumerated() {
+				transposed[i].append(element)
+			}
+		}
+		return transposed
 	}
 }

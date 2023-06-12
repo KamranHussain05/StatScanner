@@ -18,12 +18,10 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/Library/Caches/actions/xcodebuild
-          key: {{ runner.os }}-{{ hashFiles('**/Podfile.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/Podfile.lock') }}
 
-      - uses: actions/xcodebuild@v2
-        with:
-          workspace: MyProject.xcworkspace
-          scheme: MyProject
-          configuration: Release
-          sdk: iphoneos
-          destination: 'platform=iOS Simulator,name=iPhone 13' 
+      - name: Build and Test
+        run: |
+          xcodebuild build -workspace StatScanner.xcworkspace -scheme StatScanner -destination "platform=iOS Simulator,name=iPhone 13" -configuration Release
+          xcodebuild test -workspace StatScanner.xcworkspace -scheme StatScanner -destination "platform=iOS Simulator,name=iPhone 13"
+

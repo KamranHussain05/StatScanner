@@ -7,24 +7,23 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Set up Swift
-        uses: actions/setup-swift@v2
+      - uses: actions/cache@v2
         with:
-          swift-version: '5.4'
+          path: ~/Library/Caches/actions/xcodebuild
+          key: {{ runner.os }}-{{ hashFiles('**/Podfile.lock') }}
 
-      - name: Build and Test
-        run: |
-          swift build
-          swift test
+      - uses: actions/xcodebuild@v2
+        with:
+          workspace: MyProject.xcworkspace
+          scheme: MyProject
+          configuration: Release
+          sdk: iphoneos
+          destination: 'platform=iOS Simulator,name=iPhone 13' 

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class VisionDebugView: UIViewController {
-    @IBOutlet private var imageView = UIImageView()
+    // @IBOutlet private var imageView = UIImageView()
     private var image = UIImage()
     
     override func viewDidLoad() {

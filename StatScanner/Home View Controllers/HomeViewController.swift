@@ -166,6 +166,9 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 				}
 				let smelly = SFSafariViewController(url: url)
 				self.present(smelly, animated: true)
+			},
+			UIAction(title: "OCR Debug", image: UIImage(systemName: "gear")) { (action) in
+				self.present(VisionDebugView(), animated: true)
 			}
 		])
 	}

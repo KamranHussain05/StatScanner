@@ -11,7 +11,13 @@ import UIKit
 class VisionDebugView: UIViewController {
     @IBOutlet private var imageView = UIImageView()
     private var image = UIImage()
-    @IBOutlet private var back = UIButton()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
+    @IBAction func back() {
+        self.dismiss(animated: true)
+    }
 }

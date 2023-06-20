@@ -40,6 +40,7 @@ class CoordinateTransformer {
         let y2 = box[3]
         
         let region = CGRect(x: Double(x1), y: Double(y1), width: Double(x2-x1), height: Double(y2-y1))
+        print(region.debugDescription.stringArray)
         self.textRecRequest.regionOfInterest = region
         
         do {

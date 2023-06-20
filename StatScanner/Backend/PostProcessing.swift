@@ -33,7 +33,7 @@ class ModelPostProcess {
         
         let scores = scoresAndLabels.map { $0.0 }
         let labels = scoresAndLabels.map { $0.1 }
-        let boxes = scaleBoxes(targetSizes: target_sizes, boxes: centerToCornersFormat(bboxesCenter: out_boxes))
+        let boxes = scaleBoxes(targetSize: target_sizes, boxes: centerToCornersFormat(bboxesCenter: out_boxes))
         
         let filtered = filterResults(scores: scores, labels: labels, boxes: boxes, threshold: threshold)
         print(filtered)
@@ -91,24 +91,29 @@ class ModelPostProcess {
         return ["scores": filteredScores, "labels": filteredLabels, "boxes": filteredBoxes]
     }
     
-    func scaleBoxes(targetSizes: CGSize?, boxes: [[Float]]) -> [[Float]] {
-        guard let targetSizes = targetSizes else {
+    func scaleBoxes(targetSize: CGSize, boxes: [[Float]]) -> [[Float]] {
+        // Check if the target size is valid.
+        guard targetSize.width > 0 && targetSize.height > 0 else {
             return boxes
         }
         
-        let imgH: [CGFloat] = [targetSizes.height]
-        let imgW: [CGFloat] = [targetSizes.width]
+        // Calculate the scale factors.
+        let scaleX = Float(targetSize.width) / boxes[0][2]
+        let scaleY = Float(targetSize.height) / boxes[0][3]
         
-        let scaleFct = [imgW, imgH, imgW, imgH].transpose().map { $0.map { Float($0) } }
         
-        
-        let scaledBoxes = boxes.enumerated().map { (i, box) -> [Float] in
-            let scale = scaleFct[min(i, scaleFct.count - 1)]
-            return [box[0] * scale[0], box[1] * scale[1], box[2] * scale[2], box[3] * scale[3]]
+        var outboxes = boxes
+        // Scale the bounding boxes.
+        for i in 0 ..< outboxes.count {
+            outboxes[i][0] *= scaleX
+            outboxes[i][1] *= scaleY
+            outboxes[i][2] *= scaleX
+            outboxes[i][3] *= scaleY
         }
         
-        return scaledBoxes
+        return outboxes
     }
+
     
     func softmax(_ x: [[Float]]) -> [[Float]] {
         var result: [[Float]] = []

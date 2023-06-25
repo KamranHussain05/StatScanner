@@ -10,6 +10,8 @@ import CoreML
 
 class ModelPostProcess {
     
+    private var filtered_results = [String: Any]()
+    
     func postProcess(logits: MLMultiArray, pred_boxes: MLMultiArray, target_sizes: CGSize, threshold: Float = 0.8) -> [[[Float]]] {
         let out_boxes = convertMultiArrayToFloatArray(pred_boxes)
         let out_logits = convertMultiArrayToFloatArray(logits)
@@ -36,11 +38,17 @@ class ModelPostProcess {
         let boxes = scaleBoxes(targetSize: target_sizes, boxes: centerToCornersFormat(bboxesCenter: out_boxes))
         
         let filtered = filterResults(scores: scores, labels: labels, boxes: boxes, threshold: threshold)
+        self.filtered_results = filtered
         print(filtered)
         let sortedBoxes = sortBoxesByAxis(boxes: filtered["boxes"] as! [[Float]], labels: filtered["labels"] as! [Int]) // 0 - rows, 1 - colummns
         let final_boxes = findBoxes(sortedBoxes)
         
         return final_boxes
+    }
+    
+    // Must always call the postprocess function before to avoid memory leakage or null return
+    func getFilteredResults() -> [String : Any] {
+        return self.filtered_results
     }
     
     func findBoxes(_ boxes : [String : Any]) -> [[[Float]]] {

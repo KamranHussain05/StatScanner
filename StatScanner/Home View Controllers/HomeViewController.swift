@@ -166,9 +166,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 				}
 				let smelly = SFSafariViewController(url: url)
 				self.present(smelly, animated: true)
-			},
-			UIAction(title: "OCR Debug", image: UIImage(systemName: "gear")) { (action) in
-				self.present(VisionDebugView(), animated: true)
 			}
 		])
 	}
@@ -235,11 +232,14 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			},
 			UIAction(title: "Create Empty Dataset", image: UIImage(systemName: "doc.badge.plus")) { (action) in
 				self.createWithName(method: 3)
+			},
+			UIAction(title: "OCR Debug", image: UIImage(systemName: "wrench")) { (action) in
+				self.present(VisionDebugView(), animated: true)
 			}
 		])
     }
 	
-	// MARK: Data Import Handling
+	// MARK: CSV Import Handling
 	
     /// Creates a new ``Dataset`` and adds it to CoreData by adding the new dataset to a created ``DatasetProject`` object
 	///
@@ -324,8 +324,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
 		print(extracted_data.result())
 		
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: extracted_data.result(), from_scan: true)
-		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		let debugViewController = VisionDebugView()
+		debugViewController.setValues(outputs: self.infer.getFilteredResults(), image: image)
+		present(debugViewController, animated: true)
+		
+		
+//		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: extracted_data.result(), from_scan: true)
+//		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 	}
 	
 	// MARK: Data Importing

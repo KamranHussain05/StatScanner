@@ -5,19 +5,26 @@
 //  Created by Kamran Hussain on 6/20/23.
 //
 
-import Foundation
 import UIKit
 
 class VisionDebugView: UIViewController {
-    // @IBOutlet private var imageView = UIImageView()
+
     private var image = UIImage()
+    private var bounding_boxes = [[Float]]()
+    private var scores = [Float]()
+    private var labels = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(self.bounding_boxes)
     }
     
-    @IBAction func back() {
-        self.dismiss(animated: true)
+    func setValues(outputs: [String : Any], image: UIImage) {
+        self.bounding_boxes = outputs["boxes"] as! [[Float]]
+        self.scores = outputs["scores"] as! [Float]
+        self.labels = outputs["labels"]
+        self.image = image
     }
+
 }

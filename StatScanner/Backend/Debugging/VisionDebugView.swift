@@ -2,7 +2,7 @@
 //  VisionDebugView.swift
 //  StatScanner
 //
-//  Created by Kamran Hussain on 6/20/23.
+//  Created by Kamran Hussain and Kaleb Kim on 6/20/23.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class VisionDebugView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawBoundingBoxes(boxes: self.bounding_boxes, scores: self.scores)
+        self.drawBoundingBoxes(boxes: self.bounding_boxes, scores: self.scores)
         print(self.bounding_boxes)
     }
     
@@ -28,10 +28,10 @@ class VisionDebugView: UIViewController {
         for a in boxes {
             let box = UIBezierPath.init()
             let boxColor = UIColor(red: 1.000, green: 0.000, blue: 0.000, alpha: 1.000).cgColor
-            box.move(to: CGPoint.init(x: Double(a[0]), y: Double(a[1])))
-            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[3])))
-            box.addLine(to: CGPoint.init(x: Double(a[4]), y: Double(a[5])))
-            box.addLine(to: CGPoint.init(x: Double(a[6]), y: Double(a[7])))
+            box.move(to: CGPoint.init(x: Double(a[0]), y: Double(a[1]))) // top left
+            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[1]))) // top right
+            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[3]))) // bottom right
+            box.addLine(to: CGPoint.init(x: Double(a[0]), y: Double(a[3]))) // bottom left
             box.close()
             
             let shapeLayer = CAShapeLayer()

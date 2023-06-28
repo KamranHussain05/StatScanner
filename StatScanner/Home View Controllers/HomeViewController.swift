@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	
-	/// Setups the view initially, basically the main method of the App. All commands, view elements, and fetching is done from this function, after the basic setup is done.
+	/// Loads visuals to create a menu for other view controllers/views.
 	/// - Parameters: None
 	/// - Returns: None
 	///	- Note: All main method processes should be started in this method for simplicity. It is possible this method will be changed
@@ -81,7 +81,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 				if let menu = self?.menuGen() as? UIMenu {
 					completion([menu])
 				}
-			
 		}])
 		infofooter.showsMenuAsPrimaryAction = true
 		
@@ -324,8 +323,11 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
 		print(extracted_data.result())
 		
+		// MARK: BUGGGGGG
 		let debugViewController = VisionDebugView()
 		debugViewController.setValues(outputs: self.infer.getFilteredResults(), image: image)
+		self.view.addSubview(debugViewController.view)
+		debugViewController.didMove(toParent: self)
 		present(debugViewController, animated: true)
 		
 		

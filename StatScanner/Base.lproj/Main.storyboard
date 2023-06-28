@@ -50,15 +50,15 @@
             <objects>
                 <viewController storyboardIdentifier="home" title="Home" id="kjN-nm-ZNR" customClass="HomeViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5j-Nm-Tqd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5pe-kv-U1c">
-                                <rect key="frame" x="-5" y="-7" width="415" height="898"/>
+                                <rect key="frame" x="-5" y="-7" width="415" height="888"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
-                                        <rect key="frame" x="20" y="78" width="324" height="40"/>
+                                        <rect key="frame" x="20" y="30" width="324" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="36W-7S-v1f"/>
                                             <constraint firstAttribute="width" constant="324" id="lzN-zQ-DYA"/>
@@ -68,7 +68,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDI-T2-Ujr">
-                                        <rect key="frame" x="0.0" y="126" width="415" height="661"/>
+                                        <rect key="frame" x="0.0" y="78" width="415" height="733.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUI-D9-ujO">
                                             <size key="itemSize" width="180" height="258"/>
@@ -154,10 +154,10 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-V0-iYQ">
-                                        <rect key="frame" x="0.0" y="787" width="415" height="33"/>
+                                        <rect key="frame" x="0.0" y="811.5" width="415" height="32.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-Yl-8We">
-                                                <rect key="frame" x="157.5" y="10" width="100" height="33"/>
+                                                <rect key="frame" x="157.5" y="10" width="100" height="32.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="w9C-9s-QBW"/>
                                                 </constraints>
@@ -177,7 +177,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
-                                        <rect key="frame" x="350" y="78" width="45" height="45"/>
+                                        <rect key="frame" x="350" y="30" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="K9O-qj-Rp1"/>
                                             <constraint firstAttribute="width" constant="45" id="pNy-Cx-IFK"/>
@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2688.4057971014495" y="-1428.3482142857142"/>
+            <point key="canvasLocation" x="-2483" y="-1381"/>
         </scene>
         <!--expandedview-->
         <scene sceneID="9dh-AC-QbQ">
@@ -369,6 +369,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Back"/>
                                 <connections>
                                     <action selector="back" destination="JD3-Ys-j06" eventType="touchUpInside" id="Wj2-Uj-YO3"/>
+                                    <action selector="backButton:" destination="JD3-Ys-j06" eventType="touchUpInside" id="y5U-1e-fnR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -376,12 +377,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="eoG-JS-qaP" id="9Io-gT-5bK"/>
                         <outlet property="imageView" destination="Rcs-eQ-To6" id="pUc-6D-3sy"/>
+                        <segue destination="kjN-nm-ZNR" kind="presentation" identifier="debugViewSegue" id="paX-pf-tKu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ly9-BP-TL9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1917" y="-1428"/>
+            <point key="canvasLocation" x="-3364" y="-1381"/>
         </scene>
         <!--Stats-->
         <scene sceneID="aLk-E0-kei">

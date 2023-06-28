@@ -324,11 +324,13 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		print(extracted_data.result())
 		
 		// MARK: BUGGGGGG
-		let debugViewController = VisionDebugView()
-		debugViewController.setValues(outputs: self.infer.getFilteredResults(), image: image)
-		self.view.addSubview(debugViewController.view)
-		debugViewController.didMove(toParent: self)
-		present(debugViewController, animated: true)
+		
+		DispatchQueue.main.async {
+			let debugViewController = self.storyboard?.instantiateViewController(withIdentifier: "debugView") as! VisionDebugView
+			debugViewController.modalPresentationStyle = .fullScreen
+			debugViewController.setValues(outputs: self.infer.getFilteredResults(), image: image)
+			self.present(debugViewController, animated: true)
+		}
 		
 		
 //		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: extracted_data.result(), from_scan: true)

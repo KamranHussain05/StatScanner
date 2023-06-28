@@ -339,52 +339,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rcs-eQ-To6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rcs-eQ-To6">
                                 <rect key="frame" x="10" y="95" width="394" height="750"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spu-cz-nz1">
-                                <rect key="frame" x="326" y="48" width="62" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Back"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENu-Ys-7hS">
-                                <rect key="frame" x="326" y="48" width="62" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Back"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Debug View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNV-Rb-5k6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Debug View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNV-Rb-5k6">
                                 <rect key="frame" x="20" y="62" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoG-JS-qaP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoG-JS-qaP">
                                 <rect key="frame" x="326" y="48" width="62" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back"/>
                                 <connections>
-                                    <action selector="back" destination="JD3-Ys-j06" eventType="touchUpInside" id="Wj2-Uj-YO3"/>
                                     <action selector="backButton:" destination="JD3-Ys-j06" eventType="touchUpInside" id="y5U-1e-fnR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0pP-x5-fpW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eoG-JS-qaP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZNV-Rb-5k6" secondAttribute="trailing" constant="8" symbolic="YES" id="4pj-WO-jho"/>
+                            <constraint firstItem="eoG-JS-qaP" firstAttribute="bottom" secondItem="ZNV-Rb-5k6" secondAttribute="bottom" id="6tQ-Kx-9nG"/>
+                            <constraint firstItem="eoG-JS-qaP" firstAttribute="top" secondItem="0pP-x5-fpW" secondAttribute="top" id="Ey7-Lr-h9k"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="top" secondItem="eoG-JS-qaP" secondAttribute="bottom" constant="12" id="FuH-if-dRM"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="centerX" secondItem="aj4-V8-98w" secondAttribute="centerX" id="QgK-0t-YQ6"/>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="trailing" secondItem="eoG-JS-qaP" secondAttribute="trailing" constant="26" id="fiw-u5-4wU"/>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="bottom" secondItem="Rcs-eQ-To6" secondAttribute="bottom" constant="17" id="it2-wo-tIF"/>
+                            <constraint firstItem="ZNV-Rb-5k6" firstAttribute="leading" secondItem="aj4-V8-98w" secondAttribute="leadingMargin" id="phD-eQ-HZl"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="leading" secondItem="0pP-x5-fpW" secondAttribute="leading" constant="10" id="zfK-Oh-zKh"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="eoG-JS-qaP" id="9Io-gT-5bK"/>
-                        <outlet property="imageView" destination="Rcs-eQ-To6" id="pUc-6D-3sy"/>
+                        <outlet property="back" destination="eoG-JS-qaP" id="dq2-Ke-3ZT"/>
                         <segue destination="kjN-nm-ZNR" kind="presentation" identifier="debugViewSegue" id="paX-pf-tKu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ly9-BP-TL9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3378" y="-1400"/>
+            <point key="canvasLocation" x="-3475" y="-1367"/>
         </scene>
         <!--Stats-->
         <scene sceneID="aLk-E0-kei">

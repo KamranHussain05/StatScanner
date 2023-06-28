@@ -29,7 +29,7 @@ class CoordinateTransformer {
         
         self.requestHandler = VNImageRequestHandler(cgImage: self.img)
         shapeData()
-        processingCoordinates()
+        //processingCoordinates()
     }
     
     func scanShit(i: Int, j: Int) {
@@ -88,7 +88,6 @@ class CoordinateTransformer {
         print(coor.count, coor[0].count, coor[0][0].count)
         self.data = Array(repeating: Array(repeating: "empty", count: coor[0].count), count: coor.count)
         print(data.count, data[0].count)
-              
     }
     
     func result()-> [[String]] {

@@ -372,7 +372,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="back" destination="eoG-JS-qaP" id="dq2-Ke-3ZT"/>
                         <segue destination="kjN-nm-ZNR" kind="presentation" identifier="debugViewSegue" id="paX-pf-tKu"/>
                     </connections>
                 </viewController>

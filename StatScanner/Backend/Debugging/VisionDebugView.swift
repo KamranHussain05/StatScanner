@@ -20,9 +20,10 @@ class VisionDebugView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.drawBoundingBoxes(boxes: self.bounding_boxes, scores: self.scores)
+        
         self.imview.image = self.image
         self.view.addSubview(self.imview)
+        self.drawBoundingBoxes(boxes: self.bounding_boxes, scores: self.scores)
         
         print(self.bounding_boxes)
     }
@@ -30,12 +31,14 @@ class VisionDebugView: UIViewController {
     // draws bounding boxes wow that's crazy
     func drawBoundingBoxes(boxes: [[Float]], scores: [Float]) {
         for a in boxes {
-            let box = UIBezierPath.init()
+            let width = a[2] - a[0]
+            let height = a[3] - a[1]
+            let box = UIBezierPath(rect: CGRect(x: CGFloat(a[0]), y: CGFloat(a[1]), width: CGFloat(height), height: CGFloat(width)))
             let boxColor = UIColor(red: 1.000, green: 0.000, blue: 0.000, alpha: 1.000).cgColor
-            box.move(to: CGPoint.init(x: Double(a[0]), y: Double(a[1]))) // top left
-            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[1]))) // top right
-            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[3]))) // bottom right
-            box.addLine(to: CGPoint.init(x: Double(a[0]), y: Double(a[3]))) // bottom left
+//            box.move(to: CGPoint.init(x: Double(a[0]), y: Double(a[1]))) // top left
+//            box.addLine(to: CGPoint.init(x: Double(a[1]), y: Double(a[0]))) // top right
+//            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[3]))) // bottom right
+//            box.addLine(to: CGPoint.init(x: Double(a[0]), y: Double(a[3]))) // bottom left
             box.close()
             
             let shapeLayer = CAShapeLayer()

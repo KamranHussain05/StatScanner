@@ -362,9 +362,14 @@
                         <constraints>
                             <constraint firstItem="eoG-JS-qaP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZNV-Rb-5k6" secondAttribute="trailing" constant="8" symbolic="YES" id="4pj-WO-jho"/>
                             <constraint firstItem="eoG-JS-qaP" firstAttribute="bottom" secondItem="ZNV-Rb-5k6" secondAttribute="bottom" id="6tQ-Kx-9nG"/>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="bottom" secondItem="Rcs-eQ-To6" secondAttribute="bottom" constant="17" id="9Ay-WU-PKe"/>
                             <constraint firstItem="eoG-JS-qaP" firstAttribute="top" secondItem="0pP-x5-fpW" secondAttribute="top" id="Ey7-Lr-h9k"/>
                             <constraint firstItem="Rcs-eQ-To6" firstAttribute="top" secondItem="eoG-JS-qaP" secondAttribute="bottom" constant="12" id="FuH-if-dRM"/>
+                            <constraint firstItem="eoG-JS-qaP" firstAttribute="top" secondItem="0pP-x5-fpW" secondAttribute="top" id="HLk-9T-odg"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="top" secondItem="ZNV-Rb-5k6" secondAttribute="bottom" constant="12" id="Ku8-w2-Vwy"/>
                             <constraint firstItem="Rcs-eQ-To6" firstAttribute="centerX" secondItem="aj4-V8-98w" secondAttribute="centerX" id="QgK-0t-YQ6"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="leading" secondItem="0pP-x5-fpW" secondAttribute="leading" constant="10" id="X40-js-SdT"/>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="trailing" secondItem="Rcs-eQ-To6" secondAttribute="trailing" constant="10" id="dv1-fn-gOL"/>
                             <constraint firstItem="0pP-x5-fpW" firstAttribute="trailing" secondItem="eoG-JS-qaP" secondAttribute="trailing" constant="26" id="fiw-u5-4wU"/>
                             <constraint firstItem="0pP-x5-fpW" firstAttribute="bottom" secondItem="Rcs-eQ-To6" secondAttribute="bottom" constant="17" id="it2-wo-tIF"/>
                             <constraint firstItem="ZNV-Rb-5k6" firstAttribute="leading" secondItem="aj4-V8-98w" secondAttribute="leadingMargin" id="phD-eQ-HZl"/>
@@ -372,6 +377,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imview" destination="Rcs-eQ-To6" id="2yO-Vk-fYa"/>
                         <segue destination="kjN-nm-ZNR" kind="presentation" identifier="debugViewSegue" id="paX-pf-tKu"/>
                     </connections>
                 </viewController>

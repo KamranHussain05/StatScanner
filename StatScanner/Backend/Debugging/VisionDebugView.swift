@@ -11,6 +11,7 @@ class VisionDebugView: UIViewController {
     private var image = UIImage()
     private var bounding_boxes = [[Float]]()
     private var scores = [Float]()
+    @IBOutlet private var imview : UIImageView! = UIImageView()
     private var labels = [Int]()
     
     @IBAction func backButton(_ sender: Any) {
@@ -20,6 +21,9 @@ class VisionDebugView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.drawBoundingBoxes(boxes: self.bounding_boxes, scores: self.scores)
+        self.imview.image = self.image
+        self.view.addSubview(self.imview)
+        
         print(self.bounding_boxes)
     }
     

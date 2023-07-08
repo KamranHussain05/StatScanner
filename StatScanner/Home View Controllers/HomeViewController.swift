@@ -231,9 +231,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			},
 			UIAction(title: "Create Empty Dataset", image: UIImage(systemName: "doc.badge.plus")) { (action) in
 				self.createWithName(method: 3)
-			},
-			UIAction(title: "OCR Debug", image: UIImage(systemName: "wrench")) { (action) in
-				self.present(VisionDebugView(), animated: true)
 			}
 		])
     }
@@ -323,7 +320,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
 		print(extracted_data.result())
 		
-		// MARK: BUGGGGGG
+		// MARK: DEBUGGING ====//////
 		
 		DispatchQueue.main.async {
 			let debugViewController = self.storyboard?.instantiateViewController(withIdentifier: "debugView") as! VisionDebugView

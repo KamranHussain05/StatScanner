@@ -99,27 +99,48 @@ class ModelPostProcess {
         return ["scores": filteredScores, "labels": filteredLabels, "boxes": filteredBoxes]
     }
     
+//    func scaleBoxes(targetSize: CGSize, boxes: [[Float]]) -> [[Float]] {
+//        // Check if the target size is valid.
+//        guard targetSize.width > 0 && targetSize.height > 0 else {
+//            fatalError("target size is incorrect")
+//        }
+//
+//        // Calculate the scale factors.
+//        let scaleX = Float(targetSize.width)
+//        let scaleY = Float(targetSize.height)
+//
+//        var outboxes = boxes
+//        // Scale the bounding boxes.
+//        for i in 0 ..< outboxes.count {
+//            outboxes[i][0] *= scaleX
+//            outboxes[i][1] *= scaleY
+//            outboxes[i][2] *= scaleX
+//            outboxes[i][3] *= scaleY
+//        }
+//
+//        return outboxes
+//    }
+    
     func scaleBoxes(targetSize: CGSize, boxes: [[Float]]) -> [[Float]] {
-        // Check if the target size is valid.
-        guard targetSize.width > 0 && targetSize.height > 0 else {
-            fatalError("target size is incorrect")
+        let imgH = Float(targetSize.height)
+        let imgW = Float(targetSize.width)
+        
+        var scaledBoxes: [[Float]] = []
+        
+        for box in boxes {
+            var scaledBox: [Float] = []
+            
+            for i in 0..<box.count {
+                let scaledCoordinate = box[i] * [imgW, imgH, imgW, imgH][i]
+                scaledBox.append(scaledCoordinate)
+            }
+            
+            scaledBoxes.append(scaledBox)
         }
         
-        // Calculate the scale factors.
-        let scaleX = Float(targetSize.width)
-        let scaleY = Float(targetSize.height)
-        
-        var outboxes = boxes
-        // Scale the bounding boxes.
-        for i in 0 ..< outboxes.count {
-            outboxes[i][0] *= scaleX
-            outboxes[i][1] *= scaleY
-            outboxes[i][2] *= scaleX
-            outboxes[i][3] *= scaleY
-        }
-        
-        return outboxes
+        return scaledBoxes
     }
+
 
     
     func softmax(_ x: [[Float]]) -> [[Float]] {

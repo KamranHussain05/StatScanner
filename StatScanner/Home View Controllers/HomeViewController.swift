@@ -324,7 +324,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		
 		DispatchQueue.main.async {
 			let debugViewController = self.storyboard?.instantiateViewController(withIdentifier: "debugView") as! VisionDebugView
-			debugViewController.modalPresentationStyle = .fullScreen
+//			debugViewController.modalPresentationStyle = .fullScreen
 			debugViewController.setValues(outputs: self.infer.getFilteredResults(), image: image)
 			self.present(debugViewController, animated: true)
 		}
@@ -355,14 +355,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			print("No image found")
 			return
 		}
-
-		//let scanner = ScanViewController()
-		// this creates a new dataset with the array returned from the ocr pipeline
-		//self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
-
-		// creates a new dataset in coredata
-		//self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-
+		let shapedImage = image.resizeImageTo(size: CGSize(width: 1301, height: 2016))
+		processImage(image: shapedImage!)
 		print(image) // for checking
 	}
 	

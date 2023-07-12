@@ -102,13 +102,12 @@ class ModelPostProcess {
     func scaleBoxes(targetSize: CGSize, boxes: [[Float]]) -> [[Float]] {
         // Check if the target size is valid.
         guard targetSize.width > 0 && targetSize.height > 0 else {
-            return boxes
+            fatalError("target size is incorrect")
         }
         
         // Calculate the scale factors.
-        let scaleX = Float(targetSize.width) / boxes[0][2]
-        let scaleY = Float(targetSize.height) / boxes[0][3]
-        
+        let scaleX = Float(targetSize.width)
+        let scaleY = Float(targetSize.height)
         
         var outboxes = boxes
         // Scale the bounding boxes.

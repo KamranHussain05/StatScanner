@@ -33,17 +33,13 @@ class VisionDebugView: UIViewController {
         for a in boxes {
             let width = a[2] - a[0]
             let height = a[3] - a[1]
-            let box = UIBezierPath(rect: CGRect(x: CGFloat(a[0]), y: CGFloat(a[1]), width: CGFloat(height), height: CGFloat(width)))
-            let boxColor = UIColor(red: 1.000, green: 0.000, blue: 0.000, alpha: 1.000).cgColor
-//            box.move(to: CGPoint.init(x: Double(a[0]), y: Double(a[1]))) // top left
-//            box.addLine(to: CGPoint.init(x: Double(a[1]), y: Double(a[0]))) // top right
-//            box.addLine(to: CGPoint.init(x: Double(a[2]), y: Double(a[3]))) // bottom right
-//            box.addLine(to: CGPoint.init(x: Double(a[0]), y: Double(a[3]))) // bottom left
-            box.close()
+            let box = UIBezierPath(rect: CGRect(x: CGFloat(a[0]), y: CGFloat(a[1]), width: CGFloat(width), height: CGFloat(height)))
             
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = box.cgPath
-            shapeLayer.strokeColor = boxColor
+            shapeLayer.strokeColor = UIColor.red.cgColor
+            shapeLayer.opacity = 1.0
+            shapeLayer.fillColor = UIColor.clear.cgColor
             self.view.layer.addSublayer(shapeLayer)
         }
     }

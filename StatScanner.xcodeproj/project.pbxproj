@@ -23,6 +23,7 @@
 		4D3524752A0423D7000018E3 /* StatScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3524742A0423D7000018E3 /* StatScannerTests.swift */; };
 		4D3B6E9B288F551300BB1C03 /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9A288F551300BB1C03 /* Calculations.swift */; };
 		4D3B6E9D288F551B00BB1C03 /* DatasetSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */; };
+		4D462F202A4220EF00F25119 /* VisionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D462F1F2A4220EF00F25119 /* VisionDebugView.swift */; };
 		4DA417F529906B2F004E87BA /* GraphDirectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */; };
 		4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE04DF82850357300C5D5BC /* DataPointViewController.swift */; };
 		4DE04DFD28551E7900C5D5BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE04DFC28551E7900C5D5BC /* CloudKit.framework */; };
@@ -102,6 +103,7 @@
 		4D3524742A0423D7000018E3 /* StatScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatScannerTests.swift; sourceTree = "<group>"; };
 		4D3B6E9A288F551300BB1C03 /* Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 		4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatasetSkeleton.swift; sourceTree = "<group>"; };
+		4D462F1F2A4220EF00F25119 /* VisionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDebugView.swift; sourceTree = "<group>"; };
 		4DA417F429906B2F004E87BA /* GraphDirectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphDirectorViewController.swift; sourceTree = "<group>"; };
 		4DE04DF82850357300C5D5BC /* DataPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPointViewController.swift; sourceTree = "<group>"; };
 		4DE04DFC28551E7900C5D5BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -178,11 +180,9 @@
 				AFB3F2A828ACAEA7004DF451 /* DeviceHandling.swift */,
 				4D3B6E9C288F551B00BB1C03 /* DatasetSkeleton.swift */,
 				4D3B6E9A288F551300BB1C03 /* Calculations.swift */,
-				4D35245629DF92A6000018E3 /* CoordinateTranslator.swift */,
 				A8BD6DF62779AE030048912C /* DataBridge.swift */,
-				A85092BD27497F6F00392240 /* OCRScanner.swift */,
 				AF28848D289B312D00BDEDD5 /* DatasetBuilder.swift */,
-				4D35246C29ECC689000018E3 /* PostProcessing.swift */,
+				4D462F1E2A4220DB00F25119 /* Debugging */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -215,6 +215,24 @@
 				4D3524742A0423D7000018E3 /* StatScannerTests.swift */,
 			);
 			path = StatScannerTests;
+			sourceTree = "<group>";
+		};
+		4D462F1E2A4220DB00F25119 /* Debugging */ = {
+			isa = PBXGroup;
+			children = (
+				4D462F1F2A4220EF00F25119 /* VisionDebugView.swift */,
+			);
+			path = Debugging;
+			sourceTree = "<group>";
+		};
+		4D462F212A42232000F25119 /* VisionProcessingVisionProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				4D35245629DF92A6000018E3 /* CoordinateTranslator.swift */,
+				4D35246C29ECC689000018E3 /* PostProcessing.swift */,
+				A85092BD27497F6F00392240 /* OCRScanner.swift */,
+			);
+			path = VisionProcessingVisionProcessing;
 			sourceTree = "<group>";
 		};
 		4DE04DF72850344B00C5D5BC /* CoreData */ = {
@@ -261,6 +279,7 @@
 				0AF0015A2782BEA4001BF87E /* View Controllers */,
 				4DE04DF72850344B00C5D5BC /* CoreData */,
 				0AF001592782BE61001BF87E /* Backend */,
+				4D462F212A42232000F25119 /* VisionProcessingVisionProcessing */,
 				A85092BF27497F6F00392240 /* Main.storyboard */,
 				A85092C727497F7A00392240 /* LaunchScreen.storyboard */,
 				A85092C527497F7A00392240 /* Assets.xcassets */,
@@ -485,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D462F202A4220EF00F25119 /* VisionDebugView.swift in Sources */,
 				A8088979277EEF8500B8C2FE /* HomeTile.swift in Sources */,
 				346D63DA28B4BE7E00AEFB65 /* CameraViewController.swift in Sources */,
 				4DE04DF92850357300C5D5BC /* DataPointViewController.swift in Sources */,
@@ -713,7 +733,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatScanner/Info.plist;
@@ -736,7 +756,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KamranHussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KamranHussain.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -763,7 +783,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76G3N963K9;
+				DEVELOPMENT_TEAM = 6H8K5S7FRP;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StatScanner/Info.plist;
@@ -786,7 +806,7 @@
 				);
 				MARKETING_VERSION = 0.0.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KamranHussain.StatScanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KamranHussain.StatsScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";

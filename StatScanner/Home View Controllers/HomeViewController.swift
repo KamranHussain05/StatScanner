@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 	
-	/// Setups the view initially, basically the main method of the App. All commands, view elements, and fetching is done from this function, after the basic setup is done.
+	/// Loads visuals to create a menu for other view controllers/views.
 	/// - Parameters: None
 	/// - Returns: None
 	///	- Note: All main method processes should be started in this method for simplicity. It is possible this method will be changed
@@ -81,7 +81,6 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 				if let menu = self?.menuGen() as? UIMenu {
 					completion([menu])
 				}
-			
 		}])
 		infofooter.showsMenuAsPrimaryAction = true
 		
@@ -236,7 +235,7 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		])
     }
 	
-	// MARK: Data Import Handling
+	// MARK: CSV Import Handling
 	
     /// Creates a new ``Dataset`` and adds it to CoreData by adding the new dataset to a created ``DatasetProject`` object
 	///
@@ -302,10 +301,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		let model_config = MLModelConfiguration()
 		model_config.computeUnits = .cpuAndGPU
 		
-		// Run prediction on the image
+		// Run prediction on the image using the 1301 x 2016 model
 		let model = try! TableTransformer_1301x3016(configuration: model_config)
 		let inputs = TableTransformer_1301x3016Input(pixel_values_1: image.toCVPixelBuffer()!)
 		let outputs = try? model.prediction(input: inputs)
+		
+		print(outputs!.var_2298)
 		
 		// Extract logits and predicted boxes from outputs. Ignore the other two auxillary outputs
 		let logits = outputs!.var_2280
@@ -318,11 +319,21 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		print(processed_outputs)
 		
 		// Send to dataset building
-		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
-		print(extracted_data.result())
+//		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
+//		print(extracted_data.result())
 		
-		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: extracted_data.result(), from_scan: true)
-		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
+		// MARK: DEBUGGING ====//////
+		
+		DispatchQueue.main.async {
+			let debugViewController = self.storyboard?.instantiateViewController(withIdentifier: "debugView") as! VisionDebugView
+//			debugViewController.modalPresentationStyle = .fullScreen
+			debugViewController.setValues(outputs: self.infer.getFilteredResults(), image: image)
+			self.present(debugViewController, animated: true)
+		}
+		
+		
+//		self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: extracted_data.result(), from_scan: true)
+//		self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
 	}
 	
 	// MARK: Data Importing
@@ -346,14 +357,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 			print("No image found")
 			return
 		}
-
-		//let scanner = ScanViewController()
-		// this creates a new dataset with the array returned from the ocr pipeline
-		//self.dbuilder.dataset = Dataset(name: self.dbuilder.name, icon: self.dbuilder.icon, appendable: scanner.getResults())
-
-		// creates a new dataset in coredata
-		//self.createItem(item: self.dbuilder.dataset, name: self.dbuilder.name)
-
+		let shapedImage = image.resizeImageTo(size: CGSize(width: 1301, height: 2016))
+		processImage(image: shapedImage!)
 		print(image) // for checking
 	}
 	

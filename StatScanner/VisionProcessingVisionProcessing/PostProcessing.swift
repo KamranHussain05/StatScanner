@@ -10,6 +10,8 @@ import CoreML
 
 class ModelPostProcess {
     
+    private var filtered_results = [String: Any]()
+    
     func postProcess(logits: MLMultiArray, pred_boxes: MLMultiArray, target_sizes: CGSize, threshold: Float = 0.8) -> [[[Float]]] {
         let out_boxes = convertMultiArrayToFloatArray(pred_boxes)
         let out_logits = convertMultiArrayToFloatArray(logits)
@@ -33,14 +35,21 @@ class ModelPostProcess {
         
         let scores = scoresAndLabels.map { $0.0 }
         let labels = scoresAndLabels.map { $0.1 }
-        let boxes = scaleBoxes(targetSizes: target_sizes, boxes: centerToCornersFormat(bboxesCenter: out_boxes))
+        let corneredBoxes = centerToCornersFormat(bboxesCenter: out_boxes)
+        let boxes = scaleBoxes(targetSize: target_sizes, boxes: corneredBoxes)
         
         let filtered = filterResults(scores: scores, labels: labels, boxes: boxes, threshold: threshold)
+        self.filtered_results = filtered
         print(filtered)
         let sortedBoxes = sortBoxesByAxis(boxes: filtered["boxes"] as! [[Float]], labels: filtered["labels"] as! [Int]) // 0 - rows, 1 - colummns
         let final_boxes = findBoxes(sortedBoxes)
         
         return final_boxes
+    }
+    
+    // Must always call the postprocess function before to avoid memory leakage or null return
+    func getFilteredResults() -> [String : Any] {
+        return self.filtered_results
     }
     
     func findBoxes(_ boxes : [String : Any]) -> [[[Float]]] {
@@ -91,24 +100,23 @@ class ModelPostProcess {
         return ["scores": filteredScores, "labels": filteredLabels, "boxes": filteredBoxes]
     }
     
-    func scaleBoxes(targetSizes: CGSize?, boxes: [[Float]]) -> [[Float]] {
-        guard let targetSizes = targetSizes else {
-            return boxes
-        }
-        
-        let imgH: [CGFloat] = [targetSizes.height]
-        let imgW: [CGFloat] = [targetSizes.width]
-        
-        let scaleFct = [imgW, imgH, imgW, imgH].transpose().map { $0.map { Float($0) } }
-        
-        
-        let scaledBoxes = boxes.enumerated().map { (i, box) -> [Float] in
-            let scale = scaleFct[min(i, scaleFct.count - 1)]
-            return [box[0] * scale[0], box[1] * scale[1], box[2] * scale[2], box[3] * scale[3]]
+    func scaleBoxes(targetSize: CGSize, boxes: [[Float]]) -> [[Float]] {
+        let width = Float(targetSize.width)
+        let height = Float(targetSize.height)
+        var scaledBoxes: [[Float]] = []
+        print(targetSize)
+        for box in boxes {
+            var scaledBox: [Float] = []
+            for i in 0..<box.count {
+                let scaledCoordinate = box[i] * [width, height, width, height][i]
+                scaledBox.append(scaledCoordinate)
+            }
+            scaledBoxes.append(scaledBox)
         }
         
         return scaledBoxes
     }
+
     
     func softmax(_ x: [[Float]]) -> [[Float]] {
         var result: [[Float]] = []

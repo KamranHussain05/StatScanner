@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kjN-nm-ZNR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -50,15 +50,15 @@
             <objects>
                 <viewController storyboardIdentifier="home" title="Home" id="kjN-nm-ZNR" customClass="HomeViewController" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5j-Nm-Tqd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="5pe-kv-U1c">
-                                <rect key="frame" x="-5" y="-7" width="415" height="898"/>
+                                <rect key="frame" x="-5" y="-7" width="415" height="888"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatScanner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U12-ad-HSg">
-                                        <rect key="frame" x="20" y="78" width="324" height="40"/>
+                                        <rect key="frame" x="20" y="30" width="324" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="36W-7S-v1f"/>
                                             <constraint firstAttribute="width" constant="324" id="lzN-zQ-DYA"/>
@@ -68,7 +68,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wDI-T2-Ujr">
-                                        <rect key="frame" x="0.0" y="126" width="415" height="661"/>
+                                        <rect key="frame" x="0.0" y="78" width="415" height="733.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUI-D9-ujO">
                                             <size key="itemSize" width="180" height="258"/>
@@ -154,10 +154,10 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk3-V0-iYQ">
-                                        <rect key="frame" x="0.0" y="787" width="415" height="33"/>
+                                        <rect key="frame" x="0.0" y="811.5" width="415" height="32.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-Yl-8We">
-                                                <rect key="frame" x="157.5" y="10" width="100" height="33"/>
+                                                <rect key="frame" x="157.5" y="10" width="100" height="32.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="w9C-9s-QBW"/>
                                                 </constraints>
@@ -177,7 +177,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2f-ho-Wv8">
-                                        <rect key="frame" x="350" y="78" width="45" height="45"/>
+                                        <rect key="frame" x="350" y="30" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="K9O-qj-Rp1"/>
                                             <constraint firstAttribute="width" constant="45" id="pNy-Cx-IFK"/>
@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nov-x4-ybY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2688.4057971014495" y="-1428.3482142857142"/>
+            <point key="canvasLocation" x="-2483" y="-1381"/>
         </scene>
         <!--expandedview-->
         <scene sceneID="9dh-AC-QbQ">
@@ -330,6 +330,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmj-pu-42O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-414.49275362318843" y="-664.28571428571422"/>
+        </scene>
+        <!--debugView-->
+        <scene sceneID="QXq-dR-lBg">
+            <objects>
+                <viewController storyboardIdentifier="debugView" title="debugView" keyboardType="off" id="JD3-Ys-j06" customClass="VisionDebugView" customModule="StatScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aj4-V8-98w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rcs-eQ-To6">
+                                <rect key="frame" x="10" y="95" width="394" height="750"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0pP-x5-fpW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="bottom" secondItem="Rcs-eQ-To6" secondAttribute="bottom" constant="17" id="9Ay-WU-PKe"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="centerX" secondItem="aj4-V8-98w" secondAttribute="centerX" id="QgK-0t-YQ6"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="leading" secondItem="0pP-x5-fpW" secondAttribute="leading" constant="10" id="X40-js-SdT"/>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="trailing" secondItem="Rcs-eQ-To6" secondAttribute="trailing" constant="10" id="dv1-fn-gOL"/>
+                            <constraint firstItem="0pP-x5-fpW" firstAttribute="bottom" secondItem="Rcs-eQ-To6" secondAttribute="bottom" constant="17" id="it2-wo-tIF"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="top" secondItem="0pP-x5-fpW" secondAttribute="top" constant="47" id="tB6-5N-wxR"/>
+                            <constraint firstItem="Rcs-eQ-To6" firstAttribute="leading" secondItem="0pP-x5-fpW" secondAttribute="leading" constant="10" id="zfK-Oh-zKh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imview" destination="Rcs-eQ-To6" id="2yO-Vk-fYa"/>
+                        <segue destination="kjN-nm-ZNR" kind="presentation" identifier="debugViewSegue" id="paX-pf-tKu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ly9-BP-TL9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3475" y="-1367"/>
         </scene>
         <!--Stats-->
         <scene sceneID="aLk-E0-kei">

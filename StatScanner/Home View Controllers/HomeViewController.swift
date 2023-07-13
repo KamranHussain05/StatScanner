@@ -301,10 +301,12 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		let model_config = MLModelConfiguration()
 		model_config.computeUnits = .cpuAndGPU
 		
-		// Run prediction on the image
+		// Run prediction on the image using the 1301 x 2016 model
 		let model = try! TableTransformer_1301x3016(configuration: model_config)
 		let inputs = TableTransformer_1301x3016Input(pixel_values_1: image.toCVPixelBuffer()!)
 		let outputs = try? model.prediction(input: inputs)
+		
+		print(outputs!.var_2298)
 		
 		// Extract logits and predicted boxes from outputs. Ignore the other two auxillary outputs
 		let logits = outputs!.var_2280
@@ -317,8 +319,8 @@ class HomeViewController: UIViewController, UIDocumentPickerDelegate, UIImagePic
 		print(processed_outputs)
 		
 		// Send to dataset building
-		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
-		print(extracted_data.result())
+//		let extracted_data = CoordinateTransformer(coor: processed_outputs, img: image)
+//		print(extracted_data.result())
 		
 		// MARK: DEBUGGING ====//////
 		

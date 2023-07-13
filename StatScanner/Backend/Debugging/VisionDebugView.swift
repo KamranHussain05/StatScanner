@@ -40,7 +40,7 @@ class VisionDebugView: UIViewController {
             shapeLayer.strokeColor = UIColor.red.cgColor
             shapeLayer.opacity = 1.0
             shapeLayer.fillColor = UIColor.clear.cgColor
-            self.view.layer.addSublayer(shapeLayer)
+            imview.layer.addSublayer(shapeLayer)
         }
     }
     

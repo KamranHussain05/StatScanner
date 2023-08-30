@@ -72,9 +72,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
-
-StatScanner is an IOS app designed to process and visualize any numerical data. You can create predictions, get basic stats, and visualize your data by simply scanning a paper, importing a csv file, or manually entering data. Data can be visualized as bar graphs, pie charts, dot plots, and more in addition to basic statistics. 
+StatScanner is an iOS app designed to process and visualize any numerical data. Create predictions, fetches stats, and visualize data by simply scanning a paper, importing a .csv, or creating and editing a new dataset. With a minimalistic UI and a list of growing features, this tool achieves all things statistics.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -255,4 +253,3 @@ Icons
 [issues-url]: https://github.com/KamranHussain05/StatScanner/issues
 [license-shield]: https://img.shields.io/github/license/KamranHussain05/StatScanner.svg?style=for-the-badge
 [license-url]: https://github.com/KamranHussain05/StatScanner/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png

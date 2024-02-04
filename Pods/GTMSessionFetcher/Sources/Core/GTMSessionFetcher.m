@@ -713,6 +713,25 @@ static GTMSessionFetcherTestBlock _Nullable gGlobalTestBlock;
     }
   }
 
+  if ([fetchRequest valueForHTTPHeaderField:@"User-Agent"] == nil) {
+    id<GTMUserAgentProvider> userAgentProvider = _userAgentProvider;
+    NSString *cachedUserAgent = userAgentProvider.cachedUserAgent;
+    if (cachedUserAgent) {
+      // The User-Agent is already cached in memory, so set it synchronously.
+      [fetchRequest setValue:cachedUserAgent forHTTPHeaderField:@"User-Agent"];
+    } else if (userAgentProvider != nil) {
+      // The User-Agent is not cached in memory. Fetch it asynchronously.
+      [self updateUserAgentAsynchronouslyForRequest:fetchRequest
+                                  userAgentProvider:userAgentProvider
+                                           mayDelay:mayDelay
+                                       mayAuthorize:mayAuthorize
+                                        mayDecorate:mayDecorate];
+      // This method can't continue until the User-Agent header is fetched. The above
+      // method call will re-enter this method later, but with the User-Agent header set.
+      return;
+    }
+  }
+
   NSString *effectiveHTTPMethod = [fetchRequest valueForHTTPHeaderField:@"X-HTTP-Method-Override"];
   if (effectiveHTTPMethod == nil) {
     effectiveHTTPMethod = fetchRequest.HTTPMethod;
@@ -1002,6 +1021,49 @@ static GTMSessionFetcherTestBlock _Nullable gGlobalTestBlock;
   }
 
   return session;
+}
+
+// Asynchronously calculates the User-Agent header from |userAgentProvider|, then
+// sets it in |fetchRequest| and continues the request.
+- (void)updateUserAgentAsynchronouslyForRequest:(NSMutableURLRequest *)fetchRequest
+                              userAgentProvider:(id<GTMUserAgentProvider>)userAgentProvider
+                                       mayDelay:(BOOL)mayDelay
+                                   mayAuthorize:(BOOL)mayAuthorize
+                                    mayDecorate:(BOOL)mayDecorate {
+  GTMSESSION_LOG_DEBUG_VERBOSE(
+      @"GTMSessionFetcher fetching User-Agent from GTMUserAgentProvider %@...", _userAgentProvider);
+  __weak __typeof__(self) weakSelf = self;
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    __strong __typeof__(self) strongSelf = weakSelf;
+    if (!strongSelf) {
+      GTMSESSION_LOG_DEBUG_VERBOSE(@"GTMSessionFetcher deallocated before GTMUserAgentProvider "
+                                   @"fetch dispatched, ignoring.");
+      return;
+    }
+    NSString *userAgent = [userAgentProvider userAgent];
+    GTMSESSION_LOG_DEBUG_VERBOSE(@"Fetched User-Agent string: [%@]", userAgent);
+    GTMSESSION_ASSERT_DEBUG(userAgentProvider.cachedUserAgent != nil,
+                            @"GTMUserAgentProvider %@ should have cached user agent now that it's "
+                            @"calculated, but returned nil",
+                            userAgentProvider);
+    BOOL shouldStop;
+    @synchronized(strongSelf) {
+      GTMSessionMonitorSynchronized(strongSelf);
+      [strongSelf->_request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+      shouldStop = strongSelf->_userStoppedFetching;
+    }
+    if (shouldStop) {
+      NSError *error = [NSError errorWithDomain:kGTMSessionFetcherErrorDomain
+                                           code:GTMSessionFetcherErrorUserCancelled
+                                       userInfo:nil];
+      [strongSelf invokeFetchCallbacksOnCallbackQueueWithData:nil
+                                                        error:error
+                                                  mayDecorate:NO
+                                       shouldReleaseCallbacks:YES];
+    } else {
+      [strongSelf beginFetchMayDelay:mayDelay mayAuthorize:mayAuthorize mayDecorate:mayDecorate];
+    }
+  });
 }
 
 NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **outError) {
@@ -1740,22 +1802,24 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
                           startingAtIndex:(NSUInteger)index {
   GTMSessionCheckNotSynchronized(self);
   if (index >= decorators.count) {
-    GTMSESSION_LOG_DEBUG(@"GTMSessionFetcher decorate requestWillStart %zu decorators complete",
-                         decorators.count);
+    GTMSESSION_LOG_DEBUG_VERBOSE(
+        @"GTMSessionFetcher decorate requestWillStart %zu decorators complete", decorators.count);
     [self beginFetchMayDelay:NO mayAuthorize:NO mayDecorate:NO];
     return;
   }
 
   __weak __typeof__(self) weakSelf = self;
   id<GTMFetcherDecoratorProtocol> decorator = decorators[index];
-  GTMSESSION_LOG_DEBUG(@"GTMSessionFetcher decorate requestWillStart %zu decorators, index %zu, "
-                       @"retry count %zu, decorator %@",
-                       decorators.count, index, self.retryCount, decorator);
+  GTMSESSION_LOG_DEBUG_VERBOSE(
+      @"GTMSessionFetcher decorate requestWillStart %zu decorators, index %zu, "
+      @"retry count %zu, decorator %@",
+      decorators.count, index, self.retryCount, decorator);
   [decorator fetcherWillStart:self
             completionHandler:^(NSURLRequest *_Nullable newRequest, NSError *_Nullable error) {
-              GTMSESSION_LOG_DEBUG(@"GTMSessionFetcher decorator requestWillStart index %zu "
-                                   @"complete, newRequest %@, error %@",
-                                   index, newRequest, error);
+              GTMSESSION_LOG_DEBUG_VERBOSE(
+                  @"GTMSessionFetcher decorator requestWillStart index %zu "
+                  @"complete, newRequest %@, error %@",
+                  index, newRequest, error);
               __strong __typeof__(self) strongSelf = weakSelf;
               if (!strongSelf) {
                 GTMSESSION_LOG_DEBUG(@"GTMSessionFetcher destroyed before requestWillStart "
@@ -1783,8 +1847,8 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
                    shouldReleaseCallbacks:(BOOL)shouldReleaseCallbacks {
   GTMSessionCheckNotSynchronized(self);
   if (index >= decorators.count) {
-    GTMSESSION_LOG_DEBUG(@"GTMSessionFetcher decorate requestDidFinish %zu decorators complete",
-                         decorators.count);
+    GTMSESSION_LOG_DEBUG_VERBOSE(
+        @"GTMSessionFetcher decorate requestDidFinish %zu decorators complete", decorators.count);
     [self invokeFetchCallbacksOnCallbackQueueWithData:data
                                                 error:error
                                           mayDecorate:NO
@@ -1794,14 +1858,15 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
 
   __weak __typeof__(self) weakSelf = self;
   id<GTMFetcherDecoratorProtocol> decorator = decorators[index];
-  GTMSESSION_LOG_DEBUG(@"GTMSessionFetcher decorate requestDidFinish %zu decorators, index %zu, "
-                       @"retry count %zu, decorator %@",
-                       decorators.count, index, self.retryCount, decorator);
+  GTMSESSION_LOG_DEBUG_VERBOSE(
+      @"GTMSessionFetcher decorate requestDidFinish %zu decorators, index %zu, "
+      @"retry count %zu, decorator %@",
+      decorators.count, index, self.retryCount, decorator);
   [decorator fetcherDidFinish:self
                      withData:data
                         error:error
             completionHandler:^{
-              GTMSESSION_LOG_DEBUG(
+              GTMSESSION_LOG_DEBUG_VERBOSE(
                   @"GTMSessionFetcher decorator requestDidFinish index %zu complete", index);
               __strong __typeof__(self) strongSelf = weakSelf;
               if (!strongSelf) {
@@ -1997,7 +2062,7 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
   [holdSelf destroyRetryTimer];
 
   BOOL sendStopNotification = YES;
-  BOOL cancelStopFetcher = NO;
+  BOOL callbacksPending = NO;
   @synchronized(self) {
     GTMSessionMonitorSynchronized(self);
 
@@ -2069,7 +2134,7 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
         }
       }
     }
-    cancelStopFetcher = _stopFetchingTriggersCompletionHandler && _userStoppedFetching;
+    callbacksPending = _stopFetchingTriggersCompletionHandler && _userStoppedFetching;
   }  // @synchronized(self)
 
   // If the NSURLSession needs to be invalidated, but needs to wait until the delegate method
@@ -2087,9 +2152,7 @@ NSData *_Nullable GTMDataFromInputStream(NSInputStream *inputStream, NSError **o
     self.authorizer = nil;
   }
 
-  if (!cancelStopFetcher) {
-    [service fetcherDidStop:self];
-  }
+  [service fetcherDidStop:self callbacksPending:callbacksPending];
 
 #if GTM_BACKGROUND_TASK_FETCHING
   [self endBackgroundTask];
@@ -2821,13 +2884,15 @@ static _Nullable id<GTMUIApplicationProtocol> gSubstituteUIApp;
       if (_receivedProgressBlock) {
         [self invokeOnCallbackQueueUnlessStopped:^{
           GTMSessionFetcherReceivedProgressBlock progressBlock;
+          int64_t downloadedLength;
           @synchronized(self) {
             GTMSessionMonitorSynchronized(self);
 
             progressBlock = self->_receivedProgressBlock;
+            downloadedLength = self->_downloadedLength;
           }
           if (progressBlock) {
-            progressBlock((int64_t)bufferLength, self->_downloadedLength);
+            progressBlock((int64_t)bufferLength, downloadedLength);
           }
         }];
       }
@@ -3690,6 +3755,7 @@ static NSMutableDictionary *gSystemCompletionHandlers = nil;
             testBlockAccumulateDataChunkCount = _testBlockAccumulateDataChunkCount,
             comment = _comment,
             log = _log,
+            userAgentProvider = _userAgentProvider,
             stopFetchingTriggersCompletionHandler = _stopFetchingTriggersCompletionHandler;
 
 #if !STRIP_GTM_FETCH_LOGGING
@@ -4573,7 +4639,8 @@ NSString *GTMFetcherCleanedUserAgentString(NSString *str) {
 
   // Delete http token separators and remaining whitespace
   static NSCharacterSet *charsToDelete = nil;
-  if (charsToDelete == nil) {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
     // Make a set of unwanted characters
     NSString *const kSeparators = @"()<>@;:\\\"/[]?={}";
 
@@ -4581,7 +4648,7 @@ NSString *GTMFetcherCleanedUserAgentString(NSString *str) {
         [[NSCharacterSet whitespaceAndNewlineCharacterSet] mutableCopy];
     [mutableChars addCharactersInString:kSeparators];
     charsToDelete = [mutableChars copy];  // hang on to an immutable copy
-  }
+  });
 
   while (1) {
     NSRange separatorRange = [result rangeOfCharacterFromSet:charsToDelete];
@@ -4674,6 +4741,65 @@ NSString *GTMFetcherSystemVersionString(void) {
   });
   return sSavedSystemString;
 }
+
+@implementation GTMUserAgentStringProvider
+
+@synthesize userAgent = _userAgent;
+
+- (instancetype)initWithUserAgentString:(NSString *)userAgentString {
+  self = [super init];
+  if (self) {
+    _userAgent = [userAgentString copy];
+  }
+  return self;
+}
+
+#pragma mark - GTMUserAgentProvider
+
+- (nullable NSString *)cachedUserAgent {
+  return _userAgent;
+}
+
+- (NSString *)userAgent {
+  return _userAgent;
+}
+
+@end
+
+@interface GTMStandardUserAgentProvider () {
+  NSBundle *_Nullable _bundle;
+}
+
+@property(atomic, copy) NSString *cachedUserAgent;
+
+@end
+
+@implementation GTMStandardUserAgentProvider
+
+@synthesize cachedUserAgent = _cachedUserAgent;
+
+- (instancetype)initWithBundle:(nullable NSBundle *)bundle {
+  self = [super init];
+  if (self) {
+    _bundle = bundle;
+  }
+  return self;
+}
+
+#pragma mark - GTMUserAgentProvider
+
+- (NSString *)userAgent {
+  NSString *userAgent = self.cachedUserAgent;
+  if (!userAgent) {
+    // This might invoke `GTMFetcherStandardUserAgentString()` more than once if two threads enter
+    // here concurrently, but the result will be the same for both.
+    userAgent = GTMFetcherStandardUserAgentString(_bundle);
+    self.cachedUserAgent = userAgent;
+  }
+  return userAgent;
+}
+
+@end
 
 NSString *GTMFetcherStandardUserAgentString(NSBundle *_Nullable bundle) {
   NSString *result = [NSString stringWithFormat:@"%@ %@", GTMFetcherApplicationIdentifier(bundle),
